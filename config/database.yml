@@ -1,0 +1,32 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: avalia_mais_development
+  pool: 5
+  username: root
+  password: root
+  host: localhost
+test:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: avalia_mais_test
+  pool: 5
+  username: root
+  password: root
+  host: localhost
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: avalia_mais_production
+  pool: 5
+  username: root
+  password: root
+  host: localhost
+
+
+
+
