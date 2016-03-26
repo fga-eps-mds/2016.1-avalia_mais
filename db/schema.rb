@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326184231) do
+ActiveRecord::Schema.define(version: 20160326192419) do
 
   create_table "companies", force: :cascade do |t|
     t.datetime "created_at",             null: false
@@ -20,9 +20,22 @@ ActiveRecord::Schema.define(version: 20160326184231) do
     t.string   "segment",    limit: 255
   end
 
+  create_table "evaluations", force: :cascade do |t|
+    t.integer  "response_time", limit: 4
+    t.integer  "grade",         limit: 4
+    t.string   "resolved",      limit: 255
+    t.string   "uf",            limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "company_id",    limit: 4
+  end
+
+  add_index "evaluations", ["company_id"], name: "index_evaluations_on_company_id", using: :btree
+
   create_table "parsers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "evaluations", "companies"
 end
