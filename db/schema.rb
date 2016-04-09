@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326192419) do
+ActiveRecord::Schema.define(version: 20160409174501) do
 
   create_table "companies", force: :cascade do |t|
     t.datetime "created_at",             null: false
@@ -35,6 +35,18 @@ ActiveRecord::Schema.define(version: 20160326192419) do
   create_table "parsers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.string   "email",        limit: 255
+    t.string   "gender",       limit: 255
+    t.string   "password",     limit: 255
+    t.string   "login",        limit: 255
+    t.datetime "dateBirthday"
+    t.string   "image",        limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_foreign_key "evaluations", "companies"
