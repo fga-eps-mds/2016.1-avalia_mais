@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :parsers
 
   get '/company/new' => 'company#new'
-  get '/company/:id' => 'company#show'
+  get '/company/:id' => 'company#show', :as => 'company'
   
   post '/company/new', controller: 'company', action: 'create', :as => 'create_company'
 
