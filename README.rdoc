@@ -1,7 +1,5 @@
 == README
-{<img src="https://codeclimate.com/github/KarineValenca/avalia_mais/badges/gpa.svg" />}[https://codeclimate.com/github/KarineValenca/avalia_mais]
-
-{<img src="https://codeclimate.com/github/KarineValenca/avalia_mais/badges/coverage.svg" />}[https://codeclimate.com/github/KarineValenca/avalia_mais/coverage]
+{<img src="https://codeclimate.com/github/KarineValenca/avalia_mais/badges/gpa.svg" />}[https://codeclimate.com/github/KarineValenca/avalia_mais] {<img src="https://codeclimate.com/github/KarineValenca/avalia_mais/badges/coverage.svg" />}[https://codeclimate.com/github/KarineValenca/avalia_mais/coverage]
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
