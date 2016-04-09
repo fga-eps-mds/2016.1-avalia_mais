@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   post "/upload", controller: 'parsers', action: 'upload'
   post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
   resources :parsers
+
+  get '/company/new' => 'company#new'
+  get '/company/:id' => 'company#show'
+  
+  post '/company/new', controller: 'company', action: 'create', :as => 'create_company'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
