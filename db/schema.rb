@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160326192419) do
+ActiveRecord::Schema.define(version: 20160411165401) do
 
   create_table "companies", force: :cascade do |t|
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "name",       limit: 255
-    t.string   "segment",    limit: 255
+    t.integer  "segment_id", limit: 4
   end
+
+  add_index "companies", ["segment_id"], name: "index_companies_on_segment_id", using: :btree
 
   create_table "evaluations", force: :cascade do |t|
     t.integer  "response_time", limit: 4
@@ -37,5 +39,12 @@ ActiveRecord::Schema.define(version: 20160326192419) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "segments", force: :cascade do |t|
+    t.text     "segment",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_foreign_key "companies", "segments"
   add_foreign_key "evaluations", "companies"
 end
