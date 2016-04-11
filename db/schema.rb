@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(version: 20160411165401) do
   end
 
   create_table "segments", force: :cascade do |t|
-    t.text     "segment",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_foreign_key "companies", "segments"
