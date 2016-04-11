@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  response_time: 1
+  grade: 1
+  resolved: MyString
+  uf: MyString
+
+two:
+  response_time: 1
+  grade: 1
+  resolved: MyString
+  uf: MyString
