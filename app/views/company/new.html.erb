@@ -6,7 +6,7 @@
 	<%= f.text_field :name %></br>
 
 <!-- 	<%= f.label :Segmento %></br>
-	<%= f.text_field :segment %></br> -->
+	<%= f.select :segment_id, Segment.all.collect {|a| a.segment} %></br> -->
 
 	<%= f.label :Endereço %></br>
 	<%= f.text_area :address, size: "60x12" %></br>
@@ -20,7 +20,7 @@
 	<%= f.label :Email %></br>
 	<%= f.text_field :email %></br>
 
-	<%= f.label :Descrição %></br>
+	<%= f.label :description %></br>
 	<%= f.text_area :description, size: "60x12" %></br></br>
 
 	<%= f.submit "Cadastrar" %>

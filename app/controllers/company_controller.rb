@@ -20,7 +20,7 @@ class CompanyController < ApplicationController
 	end
 
 	def company_params
-		params[:company].permit(:name, :segment, :address, :UF, :telephone, :email)
+		params[:company].permit(:name, :segment_id, :address, :UF, :telephone, :email, :description)
 	end
 
 end
