@@ -1,2 +1,24 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>Cadastre um usuário</h1>
+
+<%= form_for @user, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+	
+	<%= f.label :Nome  %></br>
+	<%= f.text_field :name %></br>
+
+	<%= f.label :Email %></br>
+	<%= f.text_field :email%></br>
+
+	<%= f.label :Apelido %></br>
+	<%= f.text_field :login%></br>
+
+	<%= f.label :Data_de_nascimento %></br>
+	<%= f.text_field :dateBirthday %></br>
+
+	<%= f.label :Senha %></br>
+	<%= f.password_field :password %></br>
+
+	<%= f.label :Genero %></br>
+	<%= f.text_field :gender %></br>
+	
+	<%= f.submit "Cadastrar" %>
+<% end %>

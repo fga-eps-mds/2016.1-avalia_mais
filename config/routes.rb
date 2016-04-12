@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   post "/upload", controller: 'parsers', action: 'upload'
   post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
   resources :parsers
+
+  get '/users/new' => 'user#new'
+  post '/users/new', controller: 'users', action: 'create', :as => 'create_user'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
