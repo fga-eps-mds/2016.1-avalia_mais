@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411165401) do
+ActiveRecord::Schema.define(version: 20160413155350) do
 
   create_table "companies", force: :cascade do |t|
     t.datetime "created_at",                  null: false
@@ -32,13 +32,14 @@ ActiveRecord::Schema.define(version: 20160411165401) do
     t.integer  "response_time", limit: 4
     t.integer  "grade",         limit: 4
     t.string   "resolved",      limit: 255
-    t.string   "uf",            limit: 255
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "company_id",    limit: 4
+    t.integer  "uf_id",         limit: 4
   end
 
   add_index "evaluations", ["company_id"], name: "index_evaluations_on_company_id", using: :btree
+  add_index "evaluations", ["uf_id"], name: "index_evaluations_on_uf_id", using: :btree
 
   create_table "parsers", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -51,6 +52,13 @@ ActiveRecord::Schema.define(version: 20160411165401) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "ufs", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   add_foreign_key "companies", "segments"
   add_foreign_key "evaluations", "companies"
+  add_foreign_key "evaluations", "ufs"
 end

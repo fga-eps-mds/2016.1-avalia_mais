@@ -3,8 +3,7 @@ class CreateEvaluations < ActiveRecord::Migration
     create_table :evaluations do |t|
       t.integer :response_time
       t.integer :grade
-      t.string :resolved
-      t.string :uf
+      t.string :resolved	
 
       t.timestamps null: false
     end
