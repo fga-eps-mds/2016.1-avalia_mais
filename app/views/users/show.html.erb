@@ -1,6 +1,5 @@
 <h1>Seus dados</h1>
 
-
 <h1><%= @user.name %></h1>
 
 <p><%= @user.login %></p>
@@ -12,3 +11,6 @@
 <p><%= @user.gender %></p>
 
 <p><%= @user.dateBirthday %></p>	
+
+<%= button_to "Editar", {action: "edit", id: @user.id} %>
+
