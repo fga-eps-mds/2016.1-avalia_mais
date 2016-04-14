@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
   resources :parsers
 
-  get '/company/new' => 'company#new'
-  get '/company/:id' => 'company#show', :as => 'company'
+  get '/company/new' => 'companies#new'
+  get '/company/:id' => 'companies#show', :as => 'company'
   
-  post '/company/new', controller: 'company', action: 'create', :as => 'create_company'
+  post '/company/new', controller: 'companies', action: 'create', :as => 'create_company'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
