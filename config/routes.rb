@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   post '/users/new', controller: 'users', action: 'create', :as => 'create_user'
   post '/users/edit', controller: 'users', action: 'edit', :as => 'edit_user'
+  post '/users/update', controller: 'users', action: 'update', :as => 'update_user'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

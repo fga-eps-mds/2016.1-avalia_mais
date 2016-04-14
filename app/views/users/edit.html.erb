@@ -1,19 +1,25 @@
 <h1>Atualize seus dados</h1>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
+  	<%= form_for(@user) do |f| %>
 
-      <%= f.label :name %>
+      <%= f.label :Nome %>
       <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :email %>
+      <%= f.label :Email %>
       <%= f.email_field :email, class: 'form-control' %>
 
+      <%= f.label :Senha %>
+      <%= f.text_field :password, class: 'form-control' %>
+
+      <%= f.label :Genero %>
+      <%= f.text_field :gender, class: 'form-control' %>
+
+      <%= f.label :Data %>
+      <%= f.date_field :dateBirthday, class: 'form-control' %>
+
+  		<%= f.submit %>
     <% end %>
 
-<%= button_to "Salvar", {action: "update", id: @user.id} %>
 
-   
-  </div>
-</div>
+<!--  	<%= button_to "Salvar", {action: "update", id: @user.id} %>
+ --> 
