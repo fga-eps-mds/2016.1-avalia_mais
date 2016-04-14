@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 	 	@user = User.new(user_params)
 		if @user.save
 			flash[:notice] = 'Cadastro efetuado com sucesso!'
-			redirect_to action: "new"
+			redirect_to :action => "show",:id => @user.id
+
 		else
 			render :new
 		end
