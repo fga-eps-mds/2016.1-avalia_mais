@@ -11,19 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413155350) do
+ActiveRecord::Schema.define(version: 20160414221656) do
 
   create_table "companies", force: :cascade do |t|
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.string   "name",          limit: 255
-    t.text     "address",       limit: 65535
-    t.string   "UF",            limit: 255
-    t.string   "telephone",     limit: 255
-    t.string   "email",         limit: 255
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "name",              limit: 255
+    t.text     "address",           limit: 65535
+    t.string   "UF",                limit: 255
+    t.string   "telephone",         limit: 255
+    t.string   "email",             limit: 255
     t.boolean  "authenticated"
-    t.text     "description",   limit: 65535
-    t.integer  "segment_id",    limit: 4
+    t.text     "description",       limit: 65535
+    t.integer  "segment_id",        limit: 4
+    t.string   "logo_file_name",    limit: 255
+    t.string   "logo_content_type", limit: 255
+    t.integer  "logo_file_size",    limit: 4
+    t.datetime "logo_updated_at"
   end
 
   add_index "companies", ["segment_id"], name: "index_companies_on_segment_id", using: :btree

@@ -1,6 +1,6 @@
 <h1>Cadastre uma nova empresa</h1>
 
-<%= form_for @company, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+<%= form_for @company, url: {action: "create"}, html: {multipart: true, class: "nifty_form"} do |f| %>
 	
 	<% if @company.errors.any? %>
 		
@@ -18,11 +18,14 @@
 	<%= f.label :name  %></br>
 	<%= f.text_field :name %></br>
 
+	<%= f.label :logo %></br>
+	<%= f.file_field :logo %></br>
+
 	<%= f.label :Segmento %></br>
 	<%= f.select :segment_id, Segment.all.collect {|a| [a.name, a.id]} %></br>
 
 	<%= f.label :Endereço %></br>
-	<%= f.text_area :address, size: "60x12" %></br>
+	<%= f.text_field :address, size: "60x12" %></br>
 
 	<%= f.label :UF %></br>
 	<%= f.text_field :UF %></br>
