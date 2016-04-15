@@ -13,4 +13,4 @@
 <p><%= @user.dateBirthday.to_s %></p>	
 
 <%= button_to "Editar", {action: "edit", id: @user.id} %>
-
+<%= link_to 'Deletar', {action: 'destroy', id: @user.id}%>

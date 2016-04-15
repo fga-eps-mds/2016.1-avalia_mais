@@ -26,6 +26,14 @@ class UsersController < ApplicationController
 		params[:user].permit(:name, :email, :password, :login, :dateBithday, :gender)
 	end
 
+	def destroy
+ 	 @user = User.find(params[:id])
+ 	 @user.destroy
+	
+	redirect_to :action => "new"
+
+	end
+
 	def update
 
     	@user = User.find(params[:id])
