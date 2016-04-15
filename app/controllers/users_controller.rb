@@ -7,8 +7,6 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])		
 	end
 
-
-
 	def create
 	 	@user = User.new(user_params)
 		if @user.save
@@ -21,8 +19,7 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])			
-
+		@user = User.find(params[:id])		
 	end
 
 	def user_params
@@ -35,7 +32,7 @@ class UsersController < ApplicationController
 
     	if @user.update_attributes(user_params)
     		redirect_to :action => "show",:id => @user.id
-    		# flash[:success] = "Profile updated"
+    		flash[:success] = "Profile updated"
     	else
       		render 'edit'
     	end

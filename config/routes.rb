@@ -14,11 +14,11 @@ Rails.application.routes.draw do
 
   get '/users/new' => 'users#new'
   get '/users/:id' => 'users#show', :as => 'user'
-  get '/users/update'
 
   post '/users/new', controller: 'users', action: 'create', :as => 'create_user'
   post '/users/edit', controller: 'users', action: 'edit', :as => 'edit_user'
-  post '/users/update', controller: 'users', action: 'update', :as => 'update_user'
+  patch '/users/update/', controller: 'users', action: 'update', :as => 'update_user'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -10,7 +10,7 @@
 
 <p><%= @user.gender %></p>
 
-<p><%= @user.dateBirthday %></p>	
+<p><%= @user.dateBirthday.to_s %></p>	
 
 <%= button_to "Editar", {action: "edit", id: @user.id} %>
 

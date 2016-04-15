@@ -1,6 +1,6 @@
 <h1>Atualize seus dados</h1>
 
-  	<%= form_for(@user) do |f| %>
+      <%= form_for(@user, :url => { :action => "update", params: {id: @user.id}} ) do |f| %>
 
       <%= f.label :Nome %>
       <%= f.text_field :name, class: 'form-control' %>
@@ -15,11 +15,8 @@
       <%= f.text_field :gender, class: 'form-control' %>
 
       <%= f.label :Data %>
-      <%= f.date_field :dateBirthday, class: 'form-control' %>
+      <%= f.date_select :dateBirthday %>
 
   		<%= f.submit %>
+
     <% end %>
-
-
-<!--  	<%= button_to "Salvar", {action: "update", id: @user.id} %>
- --> 
