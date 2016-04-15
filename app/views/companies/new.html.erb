@@ -1,43 +1,46 @@
-<h1>Cadastre uma nova empresa</h1>
+<section id="cadastrar_empresa">
+	<%= image_tag("fundoPrincipal.jpg", :alt => "background_image") %>
 
-<%= form_for @company, url: {action: "create"}, html: {multipart: true, class: "nifty_form"} do |f| %>
+	<header>
+        <span>avalia&nbsp;<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %></span>
+    </header>
+
+    <section id="form_empresa">
+    	<h3>Cadastre sua Empresa</h3><br/><br/><br/><br/><br/>
+    	
+		<%= form_for @company, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
 	
-	<% if @company.errors.any? %>
-		
-		<h2> Errors: </h2>
-		<ul>
-			<% @company.errors.full_messages.each do |message|%>
-			<li> <%= message %> </li>
-			
-			<%end%>
-		</ul>>
+			<% if @company.errors.any? %>
+				
+				<h2> Errors: </h2>
+				<ul>
+					<% @company.errors.full_messages.each do |message|%>
+					<li> <%= message %> </li>
+					
+					<%end%>
+				</ul>>
 
-	<%end%> 
+			<%end%> 
 
+			<%= f.text_field :name , :placeholder => "Nome da Empresa", :class => "form_control"%><br/><br/>
 
-	<%= f.label :name  %></br>
-	<%= f.text_field :name %></br>
+			<%= f.file_field :logo %></br>
 
-	<%= f.label :logo %></br>
-	<%= f.file_field :logo %></br>
+			<%= f.select :segment_id, options_for_select(["Segmento", "Administradores de Consórcios", "Agências de Viagens", "Artigos Espotivos", "Bancos / Financeiras / Administradores de Cartões", "Banco de Dados e Cadastros de  Consumidores","Comércio Eletrônico"],:disabled => ["Segmento"]), :class => 'genForm_dropBox'%></br></br>
 
-	<%= f.label :Segmento %></br>
-	<%= f.select :segment_id, Segment.all.collect {|a| [a.name, a.id]} %></br>
+			<%= f.text_field :address, :placeholder => "Endereço da Empresa", :class => "form_control" %><br/><br/>
 
-	<%= f.label :Endereço %></br>
-	<%= f.text_field :address, size: "60x12" %></br>
+			<%= f.text_field :UF, :placeholder => "UF da Empresa", :class => "form_control" %><br/><br/>
 
-	<%= f.label :UF %></br>
-	<%= f.text_field :UF %></br>
+			<%= f.text_field :telephone , :placeholder => "Telefone de Contato", :class => "form_control" %><br/></br/>
 
-	<%= f.label :telefone %></br>
-	<%= f.text_field :telephone %></br>
+			<%= f.text_field :email , :placeholder => "E-mail da Empresa", :class => "form_control"%><br/><br/>
 
-	<%= f.label :Email %></br>
-	<%= f.text_field :email %></br>
+			<%= f.text_area :description,  :placeholder => "Descrição", :id => "tarea" %><br/><br/>
 
-	<%= f.label :description %></br>
-	<%= f.text_area :description, size: "60x12" %></br></br>
+			<%= button_tag(type: 'submit', class: "btn btn-primary") do %> Confirmar <% end %><br/></br/><br/></br/>
 
-	<%= f.submit "Cadastrar" %>
-<% end %>
+		<% end %>
+		</section>
+	</section>
+<section id="linear"></section
