@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title> Avalia +</title>
 </head>
+
 <body>
 	<header id="header">
 		<span>
@@ -24,10 +25,11 @@
 				<%= f.password_field :password, :class => "text" , :placeholder => "Confirme a senha" %>
 			</span></br></br>
 				<%= f.text_field :email, :class => "text" , :placeholder => "E-mail" %>
-				<%= f.text_field :dateBirthday, :class => "text" , :placeholder => "dd/mm/aaaa" %></br></br>
+				<%= f.date_field :dateBirthday %></br></br>
 			<span class="radio">
-				Masculino <%= f.radio_button :gender, :value => "m", :class => "radio"%>
-				Feminino <%= f.radio_button :gender, :value => "f", :class => "radio"%>
+				Masculino <%= f.radio_button :gender, "m", :class => "radio"%>
+				Feminino <%= f.radio_button :gender, "f", :class => "radio"%>
+
 			</span></br></br>
 			<%= f.submit "Cadastrar", :id => "button" %>
 
