@@ -21,4 +21,13 @@
 	<%= f.text_field :gender %></br>
 	
 	<%= f.submit "Cadastrar" %>
+
+
+	<%= @user.errors.full_messages if @user.errors.any? %>
+
 <% end %>
+
+
+<% if flash[:error] -%>
+  <p class="error"><%= flash[:error] %></p>
+<% end -%>

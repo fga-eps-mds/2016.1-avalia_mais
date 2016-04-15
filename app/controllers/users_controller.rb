@@ -14,6 +14,7 @@ class UsersController < ApplicationController
 			redirect_to :action => "show",:id => @user.id
 
 		else
+			flash[:error] = "Somethig is wrong"
 			render :new
 		end
 	end
@@ -27,10 +28,10 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
- 	 @user = User.find(params[:id])
- 	 @user.destroy
+ 		@user = User.find(params[:id])
+ 		@user.destroy
 	
-	redirect_to :action => "new"
+		redirect_to :action => "new"
 
 	end
 
