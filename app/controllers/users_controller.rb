@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 			redirect_to :action => "show",:id => @user.id
 
 		else
-			flash[:error] = "Somethig is wrong"
 			render :new
 		end
 	end

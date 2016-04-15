@@ -22,8 +22,11 @@
 	
 	<%= f.submit "Cadastrar" %>
 
-
-	<%= @user.errors.full_messages if @user.errors.any? %>
+	<% @user.errors.messages.values.each do |msg| %>
+  		<% msg.each do |m| %>
+   			<li><%= m %></li>
+  		<%end %>
+	<% end %>
 
 <% end %>
 
