@@ -1,36 +1,50 @@
 <h1>Cadastre um usuário</h1>
 
-<%= form_for @user, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-	
-	<%= f.label :Nome  %></br>
-	<%= f.text_field :name %></br>
+<head>
+	<meta charset="utf-8">
+	<title> Avalia +</title>
+</head>
+<body>
+	<header id="header">
+		<span>
+			Avalia
+			<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
+		</span>
+	</header>
+	<section id="line"></section>
+	<section id="section-form">
+		<h2>Cadastre um usuário</h2></br></br>
+		<%= form_for @user, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+			<span>
+				<%= f.text_field :name, :class => "text" , :placeholder => "Nome completo" %>
+				<%= f.text_field :login, :class => "text" , :placeholder => "Apelido" %>
+			</span></br></br>
+			<span>
+				<%= f.password_field :password, :class => "text" , :placeholder => "Senha" %>
+				<%= f.password_field :password, :class => "text" , :placeholder => "Confirme a senha" %>
+			</span></br></br>
+				<%= f.text_field :email, :class => "text" , :placeholder => "E-mail" %>
+				<%= f.text_field :dateBirthday, :class => "text" , :placeholder => "dd/mm/aaaa" %></br></br>
+			<span class="radio">
+				Masculino <%= f.radio_button :gender, :value => "m", :class => "radio"%>
+				Feminino <%= f.radio_button :gender, :value => "f", :class => "radio"%>
+			</span></br></br>
+			<%= f.submit "Cadastrar", :id => "button" %>
 
-	<%= f.label :Email %></br>
-	<%= f.text_field :email%></br>
+			<% @user.errors.messages.values.each do |msg| %>
+  				<% msg.each do |m| %>
+   					<li><%= m %></li>
+  				<%end %>
+			<% end %>
 
-	<%= f.label :Apelido %></br>
-	<%= f.text_field :login%></br>
+			<% if flash[:error] -%>
+  				<p class="error"><%= flash[:error] %></p>
+			<% end -%>
 
-	<%= f.label :Data_de_nascimento %></br>
-	<%= f.date_field :dateBirthday %></br>
-
-	<%= f.label :Senha %></br>
-	<%= f.password_field :password %></br>
-
-	<%= f.label :Genero %></br>
-	<%= f.text_field :gender %></br>
-	
-	<%= f.submit "Cadastrar" %>
-
-	<% @user.errors.messages.values.each do |msg| %>
-  		<% msg.each do |m| %>
-   			<li><%= m %></li>
-  		<%end %>
-	<% end %>
-
-<% end %>
+		<% end %>
+	</section>
+</body>
 
 
-<% if flash[:error] -%>
-  <p class="error"><%= flash[:error] %></p>
-<% end -%>
+
+
