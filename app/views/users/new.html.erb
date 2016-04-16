@@ -5,10 +5,10 @@
 
 <body>
 	<header id="header">
-		<span>
-			Avalia
-			<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
-		</span>
+		<span>avalia&nbsp; <%= link_to :controller => :welcome, :action => :index do %>
+ 				<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
+				<% end %>
+				</span>
 	</header>
 	<section id="line"></section>
 	<section id="section-form">

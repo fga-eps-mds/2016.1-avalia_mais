@@ -10,11 +10,16 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+
+  #root
   root 'welcome#index'
+
+  #general
   post "/upload", controller: 'parsers', action: 'upload'
   post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
   resources :parsers
 
+  #users
   get '/users/new' => 'users#new'
   get '/users/:id' => 'users#show', :as => 'user'
 
@@ -22,6 +27,7 @@ Rails.application.routes.draw do
   post '/users/edit', controller: 'users', action: 'edit', :as => 'edit_user'
   patch '/users/update/', controller: 'users', action: 'update', :as => 'update_user'
 
+  #entry
   get '/entry/enter' => 'entry#enter'
   post '/entry/enter', controller: 'entry', action: 'enter', :as => 'edit_entry'
 

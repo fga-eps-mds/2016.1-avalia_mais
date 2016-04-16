@@ -8,7 +8,11 @@
 		
 			<%= image_tag("fundoPrincipal.png", :alt => "Fundo") %>
 			<header>
-				<span>avalia&nbsp; <%= image_tag("AVALIA_LOGO.png", :alt => "logo") %></span>
+				<span>avalia&nbsp; <%= link_to :controller => :welcome, :action => :index do %>
+ 				<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
+				<% end %>
+				</span>
+
 				<nav id="menu">
 				<ul>
 				    <li><a href="">Categorias</a></li>&nbsp;&nbsp;&nbsp;

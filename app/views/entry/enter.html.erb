@@ -1,4 +1,15 @@
 <h1>Entre</h1>
 
-<%= link_to "Entrar"%>
 <%= link_to "Cadastrar", :controller => :users, :action => :new %>
+      
+<h1>Email ou apelido</h1>
+<%= text_field :name, :class => "text" , :placeholder => "Email ou Apelido" %>
+
+<h1>Senha</h1>
+<%= text_field :login, :class => "text" , :placeholder => "Senha" %>
+
+<%= button_to "Entrar"%>
+
+<div>
+<%= link_to "Esqueceu senha"%>
+</div>
