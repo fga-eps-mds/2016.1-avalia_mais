@@ -1,5 +1,5 @@
 <section id="cadastrar_empresa">
-	<%= image_tag("fundoPrincipal.jpg", :alt => "background_image") %>
+	<%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>
 
 	<header>
         <span>avalia&nbsp;<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %></span>
@@ -26,7 +26,8 @@
 
 			<%= f.file_field :logo %></br>
 
-			<%= f.select :segment_id, options_for_select(["Segmento", "Administradores de Consórcios", "Agências de Viagens", "Artigos Espotivos", "Bancos / Financeiras / Administradores de Cartões", "Banco de Dados e Cadastros de  Consumidores","Comércio Eletrônico"],:disabled => ["Segmento"]), :class => 'genForm_dropBox'%></br></br>
+			<%= f.select :segment_id, Segment.all.collect {|a| [a.name, a.id]}%></br></br>
+
 
 			<%= f.text_field :address, :placeholder => "Endereço da Empresa", :class => "form_control" %><br/><br/>
 
