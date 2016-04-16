@@ -1,15 +1,24 @@
-<h1>Entre</h1>
+<link rel="stylesheet" type="text/css" href="entry.scss">
+<header id="header">
+	<span>avalia&nbsp; <%= link_to :controller => :welcome, :action => :index do %>
+			<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
+		<% end %>
+	</span>
+</header>
+<%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>
+<section id="line"></section>
+<section id="section-form">
+	<%= button_to "Cadastrar", :controller => :users, :action => :new, :id => "button-signup"%>
+	      
+	<h1>Email ou apelido</h1>
 
-<%= link_to "Cadastrar", :controller => :users, :action => :new %>
-      
-<h1>Email ou apelido</h1>
-<%= text_field :name, :class => "text" , :placeholder => "Email ou Apelido" %>
+	<%= text_field :name, :class => "text" , :placeholder => "Email ou Apelido" %>
 
-<h1>Senha</h1>
-<%= text_field :login, :class => "text" , :placeholder => "Senha" %>
+	<h1>Senha</h1>
+	<%= password_field :login, :class => "text" , :placeholder => "Senha" %>
 
-<%= button_to "Entrar"%>
-
-<div>
-<%= link_to "Esqueceu senha"%>
-</div>
+	<%= button_to "Entrar"%>
+	<div>
+	<%= link_to "Esqueceu senha"%>
+	</div>
+</section>
