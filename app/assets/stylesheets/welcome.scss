@@ -29,6 +29,7 @@
 			height: 665px;
 			 
 		}
+
 		#teste > img:first-child{z-index: -1000; width: 100%;margin-right: 0px; height: 100%}
 		#gradienteTeste{
 			margin-top:-665px;
@@ -52,14 +53,15 @@
 			margin-left: 50px;
 		}
 		header span img{
-			height: 60px;
+			height: 100%;
+			width: 40%;
 			vertical-align: bottom;
 		}
 		nav#menu{
 			position: relative;
 			float:right;
 			margin-right: 20px;
-			margin-top: -630px;
+			margin-top: -650px;
 			
 			z-index: 100;
 		}
@@ -68,6 +70,9 @@
 		}
 		#menu ul li{
 			display: inline-block;
+			padding-right: 20px;
+			font-family: 'OpenSans-Light';
+			font-size: 15px;
 		}
 		#menu ul li a{
 			color: #CCC;
@@ -76,7 +81,14 @@
 		#menu ul li a:hover{
 			color: #FFFFFF;
 		}
-		#menu ul li.pipe{color:#FF4040;}
+		#menu ul li.pipe{
+			color:#FF4040;
+			background-color: #E3625F;
+			width: 4px;
+			height: 5px;
+			transform: rotate(90deg);
+			padding-left: 10px;
+		}
 		
 		#principal{
 			z-index: 120;
@@ -90,17 +102,20 @@
 		}
 		#principal h3{
 			font-family: 'OpenSans';
-			font-size: 38px;
+			font-size: 28px;
 			text-align: center;
 			color: #FFF;
-			letter-spacing: 6px;
+			letter-spacing: 8px;
 			opacity: 0.80;
 		}
 		#principal p{
-			font-family: f1;
+			font-family: 'OpenSans-Light';
+			padding-top: 18px;
 			font-size: 16px;
 			color: #FFF;
 			text-align: center;
+			padding-bottom: 18px;
+			letter-spacing: 1px;
 
 		}
 		form.forme-email{
@@ -110,7 +125,7 @@
 		.input-subscrypt{
 		    z-index: 100;
 		    width: 400px;
-		    height: 40px;
+		    height: 50px;
 		    color: #FFF;
 		    font-size: 16px;
 		    -webkit-border-radius: 8px;
@@ -121,11 +136,13 @@
 		    background-color: rgba(0, 0, 0, 0.2);
 		 	font-size: 16px;
 		 	letter-spacing: 0.2em;
-			    
+			font-family: 'OpenSans-Light';
+			padding-left: 20px;
+
 		}
 		.butto-subscrypt{
 			position: absolute;
-			padding-top: 5px;
-		margin-left: -40px;
+			padding-top: 12px;
+			margin-left: -40px;
 
 		}

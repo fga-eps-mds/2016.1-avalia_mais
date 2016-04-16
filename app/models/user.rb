@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   		:within => 4..50,
   		:too_short => 'Apelido com no minimo 3 caracters',
   		:too_long => 'Apelido com no maximo 50 caracters'
+  	
 
 end
 
