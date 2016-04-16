@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'users/show'
   get 'users/edit'
   get 'users/destroy'
+  get 'entry/enter'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -20,6 +21,9 @@ Rails.application.routes.draw do
   post '/users/new', controller: 'users', action: 'create', :as => 'create_user'
   post '/users/edit', controller: 'users', action: 'edit', :as => 'edit_user'
   patch '/users/update/', controller: 'users', action: 'update', :as => 'update_user'
+
+  get '/entry/enter' => 'entry#enter'
+  post '/entry/enter', controller: 'entry', action: 'enter', :as => 'edit_entry'
 
 
   # Example of regular route:
