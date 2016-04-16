@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('/assets/fonts/OpenSans-Bold.ttf') format('ttf'),
+         url('/assets/fonts/OpenSans-BoldItalic.ttf') format('ttf'),
+         url('/assets/fonts/OpenSans-ExtraBold.ttf') format('ttf'),
+         url('/assets/fonts/OpenSans-ExtraBoldItalic.ttf') format('ttf'),
+         url('/assets/fonts/OpenSans-Light.ttf') format('ttf'),
+         url('/assets/fonts/OpenSans-LightItalic.ttf') format('ttf'),
+         url('/assets/fonts/OpenSans-Semibold.ttf') format('ttf'),
+         url('/assets/fonts/OpenSans-Regular.ttf') format('ttf');
+}
