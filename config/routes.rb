@@ -1,18 +1,15 @@
 Rails.application.routes.draw do
-  get 'welcone/index'
 
   get 'users/new'
   get 'users/show'
   get 'users/edit'
   get 'users/destroy'
 
-
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #root 'welcome#index'
+  root 'welcome#index'
   post "/upload", controller: 'parsers', action: 'upload'
   post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
   resources :parsers
