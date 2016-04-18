@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414221656) do
+ActiveRecord::Schema.define(version: 20160418142801) do
 
   create_table "companies", force: :cascade do |t|
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "name",              limit: 255
     t.text     "address",           limit: 65535
-    t.string   "UF",                limit: 255
     t.string   "telephone",         limit: 255
     t.string   "email",             limit: 255
     t.boolean  "authenticated"
@@ -28,9 +27,11 @@ ActiveRecord::Schema.define(version: 20160414221656) do
     t.string   "logo_content_type", limit: 255
     t.integer  "logo_file_size",    limit: 4
     t.datetime "logo_updated_at"
+    t.integer  "uf_id",             limit: 4
   end
 
   add_index "companies", ["segment_id"], name: "index_companies_on_segment_id", using: :btree
+  add_index "companies", ["uf_id"], name: "index_companies_on_uf_id", using: :btree
 
   create_table "evaluations", force: :cascade do |t|
     t.integer  "response_time", limit: 4
@@ -63,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160414221656) do
   end
 
   add_foreign_key "companies", "segments"
+  add_foreign_key "companies", "ufs"
   add_foreign_key "evaluations", "companies"
   add_foreign_key "evaluations", "ufs"
 end

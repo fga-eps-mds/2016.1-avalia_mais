@@ -31,7 +31,7 @@
 
 			<%= f.text_field :address, :placeholder => "Endereço da Empresa", :class => "form_control" %><br/><br/>
 
-			<%= f.text_field :UF, :placeholder => "UF da Empresa", :class => "form_control" %><br/><br/>
+			<%= f.select :uf_id, Uf.all.collect {|uf| [uf.name, uf.id]}%><br/><br/>
 
 			<%= f.text_field :telephone , :placeholder => "Telefone de Contato", :class => "form_control" %><br/></br/>
 
