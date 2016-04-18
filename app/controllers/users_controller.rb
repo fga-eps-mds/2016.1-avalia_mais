@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 	end
 
 	def user_params
-		params[:user].permit(:name, :email, :password, :login, :dateBithday, :gender)
+		params[:user].permit(:name, :email, :password, :password_confirmation,:login, :dateBithday, :gender)
 	end
 
 	def destroy
