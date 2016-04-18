@@ -2,7 +2,7 @@
 	<%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>
 
 	<header>
-        <span>avalia&nbsp;<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %></span>
+        <span  id="header-span-new">avalia&nbsp;<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %></span>
     </header>
 
     <section id="form_empresa">
@@ -28,7 +28,6 @@
 
 			<%= f.select :segment_id, Segment.all.collect {|a| [a.name, a.id]}%></br></br>
 
-
 			<%= f.text_field :address, :placeholder => "Endereço da Empresa", :class => "form_control" %><br/><br/>
 
 			<%= f.select :uf_id, Uf.all.collect {|uf| [uf.name, uf.id]}%><br/><br/>
@@ -44,4 +43,4 @@
 		<% end %>
 		</section>
 	</section>
-<section id="linear"></section
+<section id="linear-new"></section
