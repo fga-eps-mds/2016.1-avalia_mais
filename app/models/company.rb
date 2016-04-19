@@ -1,21 +1,50 @@
 class Company < ActiveRecord::Base
-	has_many :evaluations
-	belongs_to :segment
-	belongs_to :uf
-	has_attached_file :logo, styles: { large: "600x600>", default: "400x400#"}, default_url: "/images/:style/missing.png"
-	validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
-	validates_attachment_file_name :logo, matches: /jpe?g\Z/
-	validates_with AttachmentSizeValidator, attributes: :logo, less_than: 1.megabyte
-	validates_attachment :logo, presence: true, content_type: { content_type: "image/jpeg" }
+    has_many :evaluations
+    belongs_to :segment
+    
+    #validations to register a company
+    #image logo
+    has_attached_file :logo, styles: { large: "600x600>", default: "400x400#"}, default_url: "/images/:style/missing.png"
+    validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
+    validates_attachment_file_name :logo, matches: /jpe?g\Z/
+    validates_with AttachmentSizeValidator, attributes: :logo, less_than: 1.megabytes
+    validates_attachment :logo, content_type: { content_type: "image/jpeg" }
 
-	# validates :name, 
-	# 	presence: { :message => "Informe o nome da empresa." },
-	# 	uniqueness: { :message => "Uma empresa já foi cadastrada com esse nome."},	
-	# 	length: { minimum: 2, maximum: 50 } 
 
-	# validates :address,
-	# 	length: { minimum: 3, maximum: 80 }
+    #name
+    validates :name,
+        presence: { :message => "Informe o nome da empresa" },
+        uniqueness: { :message => "Uma empresa já foi cadastra com esse nome" }    
 
-	# validates :description, length: { maximum: 500 }
+    validates_length_of :name,
+        :allow_blank => false,
+        :within => 1..50,
+        :too_short => 'O nome da empresa deve ter no mínimo 1 caracter',
+        :too_long => 'O nome da empresa deve ter no máximo 50 caracters'
+
+    #email
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
+    validates :email,
+        :allow_blank => true,
+        format: { with: VALID_EMAIL_REGEX }
+
+    #telephone
+    validates :telephone,
+        :allow_blank => true,
+        numericality: { :message => "O telefone deve conter apenas números" }
+
+
+    #address
+    validates_length_of :address,
+        :allow_blank => true,
+        :within => 3..80,
+        :too_short => 'O endereço deve ter no mínimo 3 caracters',
+        :too_long => 'O endereço deve ter no máximo 80 caracters'
+
+    #description
+    validates_length_of :description,
+        :allow_blank => true,
+        :within => 0..500,
+        :too_long => 'A descrição deve ter no máximo 500 caracters'
 
 end
