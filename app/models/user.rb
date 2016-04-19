@@ -10,11 +10,11 @@ class User < ActiveRecord::Base
 
 	#password
   	#validades :password, :presence => true
-	validates :password_confirmation, :presence => true
-	#validates_length_of :password,
-	#			  		:within => 4..16,
-	#			  		:too_short => 'Senha tem que ter com no minimo 4 caracters',
-	#			  		:too_long => 'Senha tem que tercom no maximo 16 caracters'
+	#validates :password_confirmation, :presence => true
+	validates_length_of :password,
+				  		:within => 4..16,
+				  		:too_short => 'Senha tem que ter com no minimo 4 caracters',
+				  		:too_long => 'Senha tem que tercom no maximo 16 caracters'
  	validates :password, confirmation: true
 
   	#gender
