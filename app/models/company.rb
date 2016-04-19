@@ -14,13 +14,13 @@ class Company < ActiveRecord::Base
     #name
     validates :name,
         presence: { :message => "Informe o nome da empresa" },
-        uniqueness: { :message => "Uma empresa já foi cadastra com esse nome" }    
+        uniqueness: { :message => "Uma empresa já foi cadastrada com esse nome" }    
 
     validates_length_of :name,
         :allow_blank => false,
         :within => 1..50,
-        :too_short => 'O nome da empresa deve ter no mínimo 1 caracter',
-        :too_long => 'O nome da empresa deve ter no máximo 50 caracters'
+        :too_short => 'O nome da empresa deve ter no mínimo 2 caracteres',
+        :too_long => 'O nome da empresa deve ter no máximo 50 caracteres'
 
     #email
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i

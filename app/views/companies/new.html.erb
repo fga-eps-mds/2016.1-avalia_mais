@@ -7,28 +7,27 @@
 
     <section id="form_empresa">
     	<h3>Cadastre sua Empresa</h3><br/><br/><br/><br/><br/>
-    	
-		<%= form_for @company, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
-	
-			<% if @company.errors.any? %>
-				
-				<h2> Errors: </h2>
+
+    	<% if @company.errors.any? %>
 				<ul>
-					<% @company.errors.full_messages.each do |message|%>
-					<li> <%= message %> </li>
-					
+					<% @company.errors.messages.values.each do |message|%>
+						<% message.each do |m| %>
+							<li> <%= m %> </li>
+						<%end%>
 					<%end%>
-				</ul>>
+				</ul>
 
-			<%end%> 
+			<%end%> <br/>
+    	
+		<%= form_for @company, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>			
 
-			<%= f.text_field :name , :placeholder => "Nome da Empresa", :class => "form_control"%><br/><br/>
+			<%= f.text_field :name , :placeholder => "Nome da Empresa", :maxlength => 50, :class => "form_control"%><br/><br/>
 
 			<%= f.file_field :logo %></br>
 
 			<%= f.select :segment_id, Segment.all.collect {|a| [a.name, a.id]}%></br></br>
 
-			<%= f.text_field :address, :placeholder => "Endereço da Empresa", :class => "form_control" %><br/><br/>
+			<%= f.text_field :address, :placeholder => "Endereço da Empresa", :maxlength => 80, :class => "form_control" %><br/><br/>
 
 			<%= f.select :uf_id, Uf.all.collect {|uf| [uf.name, uf.id]}%><br/><br/>
 
@@ -36,11 +35,15 @@
 
 			<%= f.text_field :email , :placeholder => "E-mail da Empresa", :class => "form_control"%><br/><br/>
 
-			<%= f.text_area :description,  :placeholder => "Descrição", :id => "tarea" %><br/><br/>
+			<%= f.text_area :description,  :placeholder => "Descrição", :maxlength => 500, :id => "tarea" %><br/><br/>
 
-			<%= button_tag(type: 'submit', class: "btn btn-primary") do %> Confirmar <% end %><br/></br/><br/></br/>
+			<%= button_tag(type: 'submit', class: "btn btn-primary") do %> Confirmar <% end %><br/>
+
+
+
+			<br/></br/><br/></br/>
 
 		<% end %>
 		</section>
 	</section>
-<section id="linear-new"></section
+<section id="linear-new"></section>
