@@ -46,21 +46,16 @@ header span{
 	font-family: f3;
 }
 #section-form {
+	padding-top: 10%;
 	text-align: center; 
-	height: 500px;
-	position: relative;
+	height: 100%;
+	position: center;
 	top: 150px;
 	font-size: 20px;
 	z-index: 0;
 }
 #section-form h2{
 	font-size: 40px;
-}
-
-.text {
-	padding-left: 16px;
-		font-size: 20px;
-		
 }
 .input-text{
 	padding-left: 16px;
@@ -71,14 +66,16 @@ header span{
 	font-size: 20px;
 }
 .text{
+	padding-left: 16px;
+	font-size: 20px;
 	background-color: rgba(0, 0, 0, 0.2);
 	width: 300px;
   	height: 40px;
   	border-radius: 8px;
   	border: 0;
-		box-shadow: -2px -2px 1px #7F6F15;
-		color: #FFF;
-		font-size: 16px;
+	box-shadow: -2px -2px 1px #7F6F15;
+	color: #FFF;
+	font-size: 16px;
 }
 .radio{
 	text-align: center;

@@ -1,4 +1,10 @@
 class User < ActiveRecord::Base
+	#default values
+	after_initialize :init
+    def init
+      self.active  ||= true	
+      self.admin  ||= false	
+    end
 	#name
 	validates_length_of :name,
   		:within => 3..50,
@@ -9,7 +15,6 @@ class User < ActiveRecord::Base
 	validates :email, :presence => { :message => 'Email nao pode ser vazio' }, length: { maximum: 50}, uniqueness: true
 
 	#password
-  	#validades :password, :presence => true
 	#validates :password_confirmation, :presence => true
 	validates_length_of :password,
 				  		:within => 4..16,

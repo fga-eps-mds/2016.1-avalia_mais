@@ -25,11 +25,10 @@
 				<%= f.password_field :password_confirmation, :class => "text" , :placeholder => "Confirme a senha" %>
 			</span></br></br>
 				<%= f.text_field :email, :class => "text" , :placeholder => "E-mail" %>
-				<%= f.date_field :dateBirthday, :class => "text", :placeholder => "dd/mm/aaaa"%></br></br>
+				<%= f.date_select :dateBirthday, :class => "text", :placeholder => "dd/mm/aaaa"%></br></br>
 			<span class="radio">
 				Masculino <%= f.radio_button :gender, "m", :class => "radio"%>
 				Feminino <%= f.radio_button :gender, "f", :class => "radio"%>
-
 			</span></br></br>
 			<%= f.submit "Cadastrar", :id => "button" %>
 

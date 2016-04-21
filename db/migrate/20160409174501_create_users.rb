@@ -8,7 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :login
       t.datetime :dateBirthday
       t.string :image
-      #t.boolean :active
+      t.boolean :active
+      t.boolean :admin
 
       t.timestamps null: false
     end

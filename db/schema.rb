@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20160409174501) do
     t.string   "login",        limit: 255
     t.datetime "dateBirthday"
     t.string   "image",        limit: 255
+    t.boolean  "active"
+    t.boolean  "admin"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
