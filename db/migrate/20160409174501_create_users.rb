@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :gender
       t.string :password
       t.string :login
-      t.datetime :dateBirthday
+      t.date :dateBirthday
       t.string :image
       t.boolean :active
       t.boolean :admin

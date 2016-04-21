@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20160409174501) do
     t.string   "gender",       limit: 255
     t.string   "password",     limit: 255
     t.string   "login",        limit: 255
-    t.datetime "dateBirthday"
+    t.date     "dateBirthday"
     t.string   "image",        limit: 255
     t.boolean  "active"
     t.boolean  "admin"
