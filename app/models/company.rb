@@ -18,9 +18,9 @@ class Company < ActiveRecord::Base
 
     validates_length_of :name,
         :allow_blank => false,
-        :within => 1..50,
+        :within => 2..85,
         :too_short => 'O nome da empresa deve ter no mínimo 2 caracteres',
-        :too_long => 'O nome da empresa deve ter no máximo 50 caracteres'
+        :too_long => 'O nome da empresa deve ter no máximo 85 caracteres'
 
     #email
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
