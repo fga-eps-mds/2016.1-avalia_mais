@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'users/new'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/destroy'
   get 'entry/enter'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -27,10 +23,10 @@ Rails.application.routes.draw do
 
   #users
   get '/users/new' => 'users#new'
-  get '/users/:id' => 'users#show', :as => 'user'
+  get '/users/:id' => 'users#show'
+  get '/users/edit/:id' => 'users#edit', :as => 'user_edit'
 
   post '/users/new', controller: 'users', action: 'create', :as => 'create_user'
-  post '/users/edit', controller: 'users', action: 'edit', :as => 'edit_user'
   patch '/users/update/', controller: 'users', action: 'update', :as => 'update_user'
 
   #entry
