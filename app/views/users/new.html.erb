@@ -4,12 +4,10 @@
 </head>
 
 <body>
-	<header id="header">
-		<span><%= link_to :controller => :welcome, :action => :index do %>
- 				<%= image_tag("logo1.png", :alt => "logo") %>
-				<% end %>
-				</span>
-	</header>
+	<header>
+        <span id="header-span-new">avalia&nbsp;<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %></span>
+    </header>
+    
 	<%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>
 	<section id="line"></section>
 	<section id="section-form">
@@ -25,10 +23,10 @@
 				<%= f.password_field :password_confirmation, :class => "text" , :placeholder => "Confirme a senha" %>
 			</span></br></br>
 				<%= f.text_field :email, :class => "text" , :placeholder => "E-mail" %>
-				<%= f.date_select :dateBirthday, :class => "text", :placeholder => "dd/mm/aaaa"%></br></br>
-			<span class="radio">
-				Masculino <%= f.radio_button :gender, "m", :class => "radio"%>
-				Feminino <%= f.radio_button :gender, "f", :class => "radio"%>
+				<%= f.date_field :dateBirthday, :class => "text", :placeholder => "dd/mm/aaaa"%></br></br>
+			<span id="radio">
+				Masculino <%= f.radio_button :gender, "m", :class => "radio-btn"%>
+				Feminino <%= f.radio_button :gender, "f", :class => "radio-btn"%>
 			</span></br></br>
 			<%= f.submit "Cadastrar", :id => "button" %>
 
