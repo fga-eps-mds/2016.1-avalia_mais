@@ -1,0 +1,98 @@
+<!-- 
+<h1>Seus dados</h1>
+
+<h1><%= @user.name %></h1>
+
+<p><%= @user.login %></p>
+
+<p><%= @user.email %></p>
+
+<p><%= @user.password %></p>
+
+<p><%= @user.gender %></p>
+
+<p><%= @user.dateBirthday.to_s %></p>	
+
+<%= button_to "Editar", {action: "edit", id: @user.id} %>
+<%= link_to 'Deletar', {action: 'destroy', id: @user.id}%> 
+ -->
+
+ <header id="header-logado">
+        <%= image_tag("logo1.png", :alt => "logo") %>
+        <form action="#" method="post" class="forme-email">
+            <div class="input-mail">
+              <input type="text" class="input-subscrypt" placeholder="Buscar" >
+               <input type="image" width="25px" height="35px" class="butto-subscrypt" onsubmit="submit();" <%= image_tag("tool.svg", :alt => "logo") %> 
+              </div>
+            </form>
+        <nav id="menu-logado">
+        <ul>
+            <li><a href="">Categorias</a></li>&nbsp;&nbsp;&nbsp;
+			<li><a href="">Ranking</a></li>&nbsp;&nbsp;
+			<li class="pipe">|</li>&nbsp;&nbsp;
+			<li><%= link_to "Entrar", :controller => :entry, :action => :enter %></li>
+        </ul>         
+        </nav>
+      </header>
+
+
+<section id="corpo">
+  <h1>Perfil</h1><br>
+  <hr SIZE="5" NOSHADE/>
+<section id="principal">
+
+<table>
+    <tr >
+      <th>Nome</th>
+      <td><%= @user.name %></td>
+       <!--<td class="editar">Editar</td>-->
+       <td class="editar"><%= link_to "Editar", users_edit_path(:id => @user.id, :name => @user.name), remote: true %></td>
+    </tr>
+
+    <tr>
+      <th>Apelido</th>
+      <td><%= @user.login %></td>
+       <td class="no-editar">Editar</td>
+    </tr>
+   
+   <tr >
+    <th>E-mail</th>
+     <td><%= @user.email %></td>
+      <td class="no-editar">Editar</td>
+    </tr>
+    
+    <tr >
+      <th>G&ecirc;nero</th>
+      <td > 
+        <% if @user.gender == "m" %>
+          <%="masculino"%> 
+        <% else %> 
+          <%="feminino"%>
+        <%end%>
+      </td>
+       <td class="editar">Editar</td>
+    </tr>
+    
+    <tr >
+      <th>Data Nascimento</th>
+      <td><%= @user.dateBirthday.to_s %></td>
+       <td class="editar">Editar</td>
+    </tr>
+  
+    <tr >
+      <th>Foto</th>
+      <td>Gesiel dos santos Freitas</td>
+       <td class="editar">Editar</td>
+    </tr>
+    
+    <tr>
+      <th>Senha</th>
+      <td><%= @user.password %></td>
+      <td class="editar">Editar</td>
+    </tr>
+</table>
+
+</section>
+</section>
+
+</body>

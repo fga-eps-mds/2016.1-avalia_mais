@@ -1,0 +1,21 @@
+<link rel="stylesheet" type="text/css" href="entry.scss">
+<header id="header">
+	<span> <%= link_to :controller => :welcome, :action => :index do %>
+			<%= image_tag("logo1.png", :alt => "logo", :id => "logo-avalia") %>
+		<% end %>
+	</span>
+</header>
+<%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>
+<section id="line"></section>
+<section id="section-form">
+
+		<h1>Login</h1></br>
+		<input type="text" placeholder="E-mail ou apelido" class="text"></input></br></br>
+		<input type="password" placeholder="Senha" class="text"></input></br></br>
+
+		<%= button_tag "Entrar", :id => "button-signup"%></br></br>
+		<%= link_to "Cadastrar", :controller => :users, :action => :new %></br>
+		<div>
+		<%= link_to "Esqueceu senha"%>
+		</div>
+</section>

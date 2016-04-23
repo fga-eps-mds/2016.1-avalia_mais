@@ -63,6 +63,20 @@ ActiveRecord::Schema.define(version: 20160418142801) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string   "name",         limit: 255
+    t.string   "email",        limit: 255
+    t.string   "gender",       limit: 255
+    t.string   "password",     limit: 255
+    t.string   "login",        limit: 255
+    t.date     "dateBirthday"
+    t.string   "image",        limit: 255
+    t.boolean  "active"
+    t.boolean  "admin"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   add_foreign_key "companies", "segments"
   add_foreign_key "companies", "ufs"
   add_foreign_key "evaluations", "companies"

@@ -1,0 +1,148 @@
+// Place all the styles related to the welcone controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+*{
+		margin: 0;
+		padding: 0;
+	}
+
+				@font-face{
+					font-family: f1;
+					src:url(fonts/AvenirNextLTPro-Regular.otf);
+				}
+		@font-face{
+
+		font-family: f3;
+		src:url(fonts/AvenirNextLTPro-BoldCn.otf);
+
+				}
+				@font-face{
+					font-family: f2;
+					src:url(fonts/AvenirNextLTPro-Demi.otf);
+				}
+		#teste{
+			margin-right: 0px;
+			margin-left: 0px;
+			margin-top: 0px;
+			margin-bottom: 0px;
+			width: 100%;
+			height: 665px;
+			 
+		}
+
+		#teste > img:first-child{z-index: -1000; width: 100%;margin-right: 0px; height: 100%}
+		#gradienteTeste{
+			margin-top:-665px;
+			margin-left: 0px;
+			width: 100%;
+			height: 673px;
+			background-image: -webkit-linear-gradient(320deg, #07213F 0%, #0E2E51 47%, #06203D 100%);
+		   background-image: -o-linear-gradient(320deg, #07213F 0%, #0E2E51 47%, #06203D 100%);
+		   background-image: linear-gradient(50deg, #07213F 0%, #0E2E51 47%, #06203D 100%);
+		   opacity: 0.87;
+		   z-index: 100;
+		}
+		header span{
+			font-family: f3;
+			position: absolute;
+			text-transform: uppercase;
+			font-size: 30px;
+			color: #FFF;
+			top: 10px;
+			z-index: 100;
+			margin-left: 50px;
+		}
+		header span img{
+			height: 100%;
+			width: 40%;
+			vertical-align: bottom;
+		}
+		nav#menu{
+			position: relative;
+			float:right;
+			margin-right: 20px;
+			margin-top: -650px;
+			
+			z-index: 100;
+		}
+		#menu ul{
+			list-style: none;
+		}
+		#menu ul li{
+			display: inline-block;
+			padding-right: 20px;
+			font-family: 'OpenSans-Light';
+			font-size: 15px;
+		}
+		#menu ul li a{
+			color: #CCC;
+			text-decoration: none;
+		}
+		#menu ul li a:hover{
+			color: #FFFFFF;
+		}
+		#menu ul li.pipe{
+			color:#FF4040;
+			background-color: #E3625F;
+			width: 4px;
+			height: 5px;
+			transform: rotate(90deg);
+			padding-left: 10px;
+		}
+		
+		#principal{
+			z-index: 120;
+			position: absolute;
+			width: 700px;
+			height: 350px;
+			left:50%;
+			top:50%;
+			margin-left: -350px;
+			margin-top:   -100px;
+		}
+		#principal h3{
+			font-family: 'OpenSans';
+			font-size: 28px;
+			text-align: center;
+			color: #FFF;
+			letter-spacing: 8px;
+			opacity: 0.80;
+		}
+		#principal p{
+			font-family: 'OpenSans-Light';
+			padding-top: 18px;
+			font-size: 16px;
+			color: #FFF;
+			text-align: center;
+			padding-bottom: 18px;
+			letter-spacing: 1px;
+
+		}
+		form.forme-email{
+			position: relative;
+			margin-left: 150px;
+		}
+		.input-subscrypt{
+		    z-index: 100;
+		    width: 400px;
+		    height: 50px;
+		    color: #FFF;
+		    font-size: 16px;
+		    -webkit-border-radius: 8px;
+		    -moz-border-radius: 8px;
+		    border-radius: 8px;
+		    border: 3px solid #E3625f;
+		    padding-left: 10px;
+		    background-color: rgba(0, 0, 0, 0.2);
+		 	font-size: 16px;
+		 	letter-spacing: 0.2em;
+			font-family: 'OpenSans-Light';
+			padding-left: 20px;
+
+		}
+		.butto-subscrypt{
+			position: absolute;
+			padding-top: 12px;
+			margin-left: -40px;
+
+		}
