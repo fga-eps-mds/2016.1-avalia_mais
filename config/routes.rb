@@ -16,16 +16,16 @@ Rails.application.routes.draw do
   resources :parsers
 
 
-  get '/company/new' => 'companies#new'
-  get '/company/:id' => 'companies#show', :as => 'company'
-  
-  post '/company/new', controller: 'companies', action: 'create', :as => 'create_company'
+  get  '/company/new' => 'companies#new'
+  get  '/company/:id' => 'companies#show', :as => 'company'
+  post '/company/new' => 'companies#create'
+
 
   #users
   get   '/users/new'      => 'users#new'
+  post  '/users/new'      => 'users#create', :as => 'create_user'
   get   '/users/:id'      => 'users#show'
   get   '/users/edit/:id' => 'users#edit', :as => 'user_edit'
-  post  '/users/new', controller: 'users', action: 'create', :as => 'create_user'
   patch '/users/update/', controller: 'users', action: 'update', :as => 'update_user'
 
   #login
