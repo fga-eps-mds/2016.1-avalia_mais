@@ -22,17 +22,16 @@ Rails.application.routes.draw do
   post '/company/new', controller: 'companies', action: 'create', :as => 'create_company'
 
   #users
-  get '/users/new' => 'users#new'
-  get '/users/:id' => 'users#show'
-  get '/users/edit/:id' => 'users#edit', :as => 'user_edit'
-
-  post '/users/new', controller: 'users', action: 'create', :as => 'create_user'
+  get   '/users/new'      => 'users#new'
+  get   '/users/:id'      => 'users#show'
+  get   '/users/edit/:id' => 'users#edit', :as => 'user_edit'
+  post  '/users/new', controller: 'users', action: 'create', :as => 'create_user'
   patch '/users/update/', controller: 'users', action: 'update', :as => 'update_user'
 
-  #entry
-  get '/entry/enter' => 'entry#enter'
-  post '/entry/enter', controller: 'entry', action: 'enter', :as => 'edit_entry'
-
+  #login
+  get    'login'  => 'sessions#new'
+  post   'login'  => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 
 
   # Example of regular route:
