@@ -5,7 +5,10 @@
 
 <body>
 	<header>
-        <span id="header-span-new">avalia&nbsp;<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %></span>
+        <span  id="header-span-new">avalia&nbsp;
+        	<%= link_to :controller => :welcome, :action => :index do %>
+        	<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
+        	<% end %>
     </header>
     
 	<%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>

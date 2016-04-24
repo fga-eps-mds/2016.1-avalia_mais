@@ -47,36 +47,7 @@ nav#menu {
 	z-index: 100;
 }
 
-#menu ul {
-	list-style: none;
-}
-
-#menu ul li {
-	display: inline-block;
-	padding-right: 20px;
-	font-family: 'OpenSans-Light';
-	font-size: 15px;
-}
-
-#menu ul li a{
-	color: #CCC;
-	text-decoration: none;
-}
-
-#menu ul li a:hover {
-	color: #FFFFFF;
-}
-
-#menu ul li.pipe {
-	color:#FF4040;
-	background-color: #E3625F;
-	width: 4px;
-	height: 5px;
-	transform: rotate(90deg);
-	padding-left: 10px;
-}
-
-#principal{
+#principal {
 	z-index: 120;
 	position: absolute;
 	width: 700px;
@@ -88,51 +59,98 @@ nav#menu {
 }
 
 #principal h3 {
-	font-family: 'OpenSans';
-	font-size: 28px;
+	font-family: AvenirNext-Regular;
+	font-size: 32px;
 	text-align: center;
 	color: #FFF;
-	letter-spacing: 8px;
+	letter-spacing: 5px;
 	opacity: 0.80;
+	font-weight: bold;
 }
 
 #principal p {
-	font-family: 'OpenSans-Light';
+	font-family: AvenirNext-Regular;
 	padding-top: 18px;
-	font-size: 16px;
+	font-size: 18px;
 	color: #FFF;
 	text-align: center;
 	padding-bottom: 18px;
 	letter-spacing: 1px;
-
+	margin-top: 20px;
 }
 
 form.forme-email {
 	position: relative;
 	margin-left: 150px;
+	margin-top: 10px;
 }
 
-.input-subscrypt {
+.input-subscript {
     z-index: 100;
     width: 400px;
     height: 50px;
     color: #FFF;
-    font-size: 16px;
+    font-size: 18px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
     border: 3px solid #E3625f;
     padding-left: 10px;
     background-color: rgba(0, 0, 0, 0.2);
- 	font-size: 16px;
- 	letter-spacing: 0.2em;
-	font-family: 'OpenSans-Light';
+ 	letter-spacing: 1px;
+	font-family: AvenirNext-Regular;
 	padding-left: 20px;
 
 }
 
-.butto-subscrypt {
+.button-subscript {
 	position: absolute;
 	padding-top: 12px;
 	margin-left: -40px;
+}
+
+#header-span-index {
+  z-index: 101;
+  position: absolute;
+  top: 10px;
+  text-transform: uppercase;
+  margin-left: 50px;
+  font-size: 30px;
+  color: #FFF;
+  font-family: Impact;
+}
+
+#header-span-index img {
+  height: 60px;
+  vertical-align: bottom;
+}
+
+#menu_show_index {
+	position: fixed;
+	z-index: 200;
+	right: 20px;
+	top: 25px;
+}
+
+#menu_show_index ul {
+  list-style: none;
+}
+
+#menu_show_index ul li {
+  margin-top: 9px;
+  display: inline-block;
+}
+
+#menu_show_index ul li a {
+  font-family: AvenirNext-Regular;
+  color: #CCC;
+  text-decoration: none;
+}
+
+#menu_show_index ul li a:hover{
+  color: #FF4040;
+}
+
+#menu_show_index ul li.pipe{
+  color:#FF4040;
 }

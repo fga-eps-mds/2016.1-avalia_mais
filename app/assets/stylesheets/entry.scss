@@ -1,33 +1,4 @@
-// Place all the styles related to the entry controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-/*header span img{
-	height: 100%;
-	width: 40%;
-	vertical-align: bottom;
-
-}
-header span{
-	margin-left: 50px;
-	position: absolute;
-	font-size: 30px;
-	color: #07213f;
-	top: 10px;
-	text-transform: uppercase;
-	font-family: f3;
-}*/
-#button-entry{
-	text-align: center;
-	width: 5%;
-	font-size: 16px;
-	color: #FFF;
-	border: 0;
-	height: 40px;
-	border-radius: 4px;
-	background: vertical-align;
-	background-color: #f44336;
-}
-#button-signup{
+#button-signup {
 	text-align: center;
 	width: 10%;
 	font-size: 16px;
@@ -36,13 +7,35 @@ header span{
 	height: 40px;
 	border-radius: 4px;
 	background: vertical-align;
-	background-color: #0e0b8a;
+	background-color: #07213F;
+	margin-left: 0px;
 }
-.hr{
+
+.hr {
 	width: 20%;
 	background-color: #111;
 	margin-left: 575px; 
 	vertical-align: center;
 	color: #111;
 	opacity: 0.5;
+}
+
+#header-enter {
+  z-index: 101;
+  position: absolute;
+  top: 10px;
+  text-transform: uppercase;
+  margin-left: 50px;
+  font-size: 30px;
+  color: #07213F;
+  font-family: Impact;
+}
+
+#header-enter img {
+  height: 60px;
+  vertical-align: bottom;
+}
+
+#section-form h1{
+	color: #07213F;
 }
