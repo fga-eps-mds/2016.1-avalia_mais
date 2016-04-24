@@ -2,7 +2,11 @@
 	<%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>
 
 	<header>
-        <span  id="header-span-new">avalia&nbsp;<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %></span>
+        <span  id="header-span-new">
+        	avalia&nbsp;
+        	<%= link_to :controller => :welcome, :action => :index do %>
+        	<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
+        	<% end %>
     </header>
 
     <section id="form_empresa">
@@ -38,7 +42,6 @@
 			<%= f.text_area :description,  :placeholder => "Descrição", :maxlength => 500, :id => "tarea" %><br/><br/>
 
 			<%= button_tag(type: 'submit', class: "btn btn-primary") do %> Confirmar <% end %><br/>
-
 
 
 			<br/></br/><br/></br/>
