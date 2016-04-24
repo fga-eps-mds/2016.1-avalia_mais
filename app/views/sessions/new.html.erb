@@ -10,13 +10,18 @@
 <section id="line"></section>
 <section id="section-form">
 
-		<h1>Login</h1></br>
-		<input type="text" placeholder="E-mail ou apelido" class="text"></input></br></br>
-		<input type="password" placeholder="Senha" class="text"></input></br></br>
+	<%= form_for(:session, url: login_path) do |f| %>
 
-		<%= button_tag "Entrar", :id => "button-signup"%></br></br>
-		<%= link_to "Cadastrar", :controller => :users, :action => :new %></br>
-		<div>
-		<%= link_to "Esqueceu senha"%>
-		</div>
+
+		<h1>Login</h1></br>
+		<%= f.text_field :login, :class => "text" , :placeholder => "Apelido" %></br></br>
+		<%= f.password_field :password, :class => "text" , :placeholder => "Senha" %></br></br>
+		
+		<%= f.submit "Entrar", :id => "button-signup"%></br></br>
+	<% end %>
+
+	<%= link_to "Cadastrar", :controller => :users, :action => :new %></br>
+	<div>
+	<%= link_to "Esqueci minha senha"%>
+	</div>
 </section>
