@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+	has_many :evaluations
+	
 	#default values
 	after_initialize :init
     def init
@@ -13,10 +15,10 @@ class User < ActiveRecord::Base
   		:too_long => 'Nome tem que ter no maximo 50 caracters'
 
 	#email
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
 	validates :email, :presence => { :message => 'Email nao pode ser vazio' }, length: { maximum: 50}, uniqueness: true
 
 	#password
-	#validates :password_confirmation, :presence => true
 	validates_length_of :password,
 				  		:within => 4..16,
 				  		:too_short => 'Senha tem que ter com no minimo 4 caracters',

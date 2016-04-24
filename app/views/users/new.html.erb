@@ -4,16 +4,26 @@
 </head>
 
 <body>
-	<header id="header">
-		<span><%= link_to :controller => :welcome, :action => :index do %>
- 				<%= image_tag("logo1.png", :alt => "logo") %>
-				<% end %>
-				</span>
-	</header>
+	<header>
+        <span id="header-span-index">
+        	<%= link_to :controller => :welcome, :action => :index do %>
+        	<%= image_tag("logo2.png", :alt => "logo") %>
+        	<% end %>
+        </span>
+    </header>
 	<%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>
 	<section id="line"></section>
 	<section id="section-form">
-		<h2>Cadastre um usuário</h2></br></br>
+		<% if @user.errors.any? %>
+			<ul>
+				<% @user.errors.messages.values.each do |msg| %>
+					<% msg.each do |m| %>
+						<li><%= m %></li>
+					<%end %>
+				<% end %>
+			</ul>	
+		<% end %>
+		<h2 id="title-new">Cadastre um usuário</h2></br></br>
 
 		<%= form_for @user, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
 			<span>
@@ -25,22 +35,13 @@
 				<%= f.password_field :password_confirmation, :class => "text" , :placeholder => "Confirme a senha" %>
 			</span></br></br>
 				<%= f.text_field :email, :class => "text" , :placeholder => "E-mail" %>
-				<%= f.date_select :dateBirthday, :class => "text", :placeholder => "dd/mm/aaaa"%></br></br>
-			<span class="radio">
-				Masculino <%= f.radio_button :gender, "m", :class => "radio"%>
-				Feminino <%= f.radio_button :gender, "f", :class => "radio"%>
+				<%= f.date_field :dateBirthday, :class => "text", :placeholder => "dd/mm/aaaa"%></br></br>
+			<span id="radio">
+				Masculino <%= f.radio_button :gender, "m", :class => "radio-btn"%>
+				Feminino <%= f.radio_button :gender, "f", :class => "radio-btn"%>
 			</span></br></br>
 			<%= f.submit "Cadastrar", :id => "button" %>
 
-			<% @user.errors.messages.values.each do |msg| %>
-  				<% msg.each do |m| %>
-   					<li><%= m %></li>
-  				<%end %>
-			<% end %>
-
-			<% if flash[:error] -%>
-  				<p class="error"><%= flash[:error] %></p>
-			<% end -%>
 
 		<% end %>
 	</section>

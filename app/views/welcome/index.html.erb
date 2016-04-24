@@ -1,43 +1,43 @@
-<head>
-	<meta charset="utf-8">
-	<title> Avalia +</title>
-</head>
+<section id="teste">		
+	<%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>
 
-<body>
-	<section id="teste">
+	<header>
+        <span id="header-span-index">
+        	<%= link_to :controller => :welcome, :action => :index do %>
+        	<%= image_tag("logo2.png", :alt => "logo") %>
+        	<% end %>
+        </span>
+    </header>
+
+	<!-- <header>
+		<span><%= link_to :controller => :welcome, :action => :index do %>
+			<%= image_tag("logo2.png", :alt => "logo") %>
+		<% end %>
+		</span> -->
+
+        <nav id="menu_show_index">
+          <ul>
+              <li><a href="">Categorias</a></li>&nbsp;&nbsp;&nbsp;
+              <li><a href="">Ranking</a></li>&nbsp;&nbsp;
+              <li class="pipe">|</li>&nbsp;&nbsp;
+			  <li><%= link_to "Entrar", :controller => :entry, :action => :enter %></li>
+          </ul>         
+        </nav>
+	</header>
+
+	<section id="principal">
+		<h3>Aqui você pode bem mais</h3>
+		<p>Plataforma onde você pode avaliar sua empresa, e muito mais. Avalie, consulte, reclame, ajude e discuta subre problemas e soluções.</p><br />
+		<form action="#" method="post" class="forme-email">
+				<div class="input-mail">
+   			<input type="text" class="input-subscript" placeholder="Buscar" >
+   			 <input type="image" width="25px" height="35px" class="button-subscript" onsubmit="submit();" <%= image_tag("tool.svg", :alt => "logo") %> 
+    		</div>
+		</form>
 		
-			<%= image_tag("fundoPrincipal.png", :alt => "Fundo") %>
-			<header>
-				<span><%= link_to :controller => :welcome, :action => :index do %>
- 				<%= image_tag("logo2.png", :alt => "logo") %>
-				<% end %>
-				</span>
-
-				<nav id="menu">
-				<ul>
-				    <li><a href="">Categorias</a></li>
-				    <li><a href="">Ranking</a></li>
-				    <li class="pipe"</li>
-				    <li><%= link_to "Entrar", :controller => :entry, :action => :enter %></li>
-				</ul>					
-				</nav>
-			</header>
-			<section id="principal">
-				<h3>Aqui você pode bem mais</h3>
-				<p>Plataforma onde você pode avaliar sua empresa, e muito mais. Avalie, consulte, reclame, ajude e discuta subre problemas e soluções.</p><br />
-				<form action="#" method="post" class="forme-email">
-	   				<div class="input-mail">
-	       			<input type="text" class="input-subscrypt" placeholder="Buscar" >
-	       			 <input type="image" width="25px" height="35px" class="butto-subscrypt" onsubmit="submit();" <%= image_tag("tool.svg", :alt => "logo") %> 
-	        		</div>
-        		</form>
-				
-			</section>
-			
-	</section>
-	<section id="gradienteTeste"></section>
-	</body>
-
+	</section>		
+</section>
+<section id="gradienteTeste"></section>
 
 
 
