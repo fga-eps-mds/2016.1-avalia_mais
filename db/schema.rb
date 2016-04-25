@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418142801) do
+ActiveRecord::Schema.define(version: 20160425015736) do
 
   create_table "companies", force: :cascade do |t|
     t.datetime "created_at",                      null: false
@@ -64,17 +64,17 @@ ActiveRecord::Schema.define(version: 20160418142801) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",         limit: 255
-    t.string   "email",        limit: 255
-    t.string   "gender",       limit: 255
-    t.string   "password",     limit: 255
-    t.string   "login",        limit: 255
+    t.string   "name",            limit: 255
+    t.string   "email",           limit: 255
+    t.string   "gender",          limit: 255
+    t.string   "password_digest", limit: 255
+    t.string   "login",           limit: 255
     t.date     "dateBirthday"
-    t.string   "image",        limit: 255
+    t.string   "image",           limit: 255
     t.boolean  "active"
     t.boolean  "admin"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_foreign_key "companies", "segments"
