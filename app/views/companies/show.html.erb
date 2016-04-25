@@ -1,30 +1,37 @@
 <header id="header-show">
   <%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
-    <form action="#" method="post" class="forme-email">
+    <form action="#" method="post" class="forme-email-show">
       <div class="input-mail">
-          <input type="text" class="input-subscript" placeholder="Buscar" >
-          <%= image_tag("tool.svg", :width => "22", :height => "22", :id => "button-subscript", :onClick => "submit()") %>
-          <!-- <input type="image"  src="tool.svg" width="22px" height="22px" class="button-subscrypt" alt="" onsubmit="submit();"> -->
+          <input type="text" class="input-subscript-show" placeholder="Buscar"  <%= image_tag("tool.svg", :alt => "logo") %>
+          <%= image_tag("tool.svg", :width => "22", :height => "22", :id => "button-subscript-show", :onClick => "submit()") %>
         </div>
     </form>
-        <nav id="menu">
+        <nav id="menu_show">
           <ul>
               <li><a href="">Categorias</a></li>&nbsp;&nbsp;&nbsp;
               <li><a href="">Ranking</a></li>&nbsp;&nbsp;
               <li class="pipe">|</li>&nbsp;&nbsp;
-              <li><a href="">Entrar</a></li>
+              <li><%= link_to "Entrar", :controller => :entry, :action => :enter %></li>
           </ul>         
         </nav>
 </header>
 
 <%= image_tag(@company.logo.url(:default), :width => "125", :height => "125", :id => "image-company") %>
 
-<div id="info_empresa">
+<div id="name_company">
     <h1><%= @company.name %></h1>
-    <h2><%= @company.telephone %></h2>
-    <h2><%= @company.email %></h2>
-    <h2><%= @company.segment.name %></h2>
 </div>
+
+<div id="info_empresa">
+    <%= @company.telephone %></br>
+    <%= @company.email %></br>
+</div>
+
+<div id="name_segment">
+  <h2><%= @company.segment.name %></h2>
+</div>
+
+<%= image_tag("segments/artigos_esportivos.png", :alt => "segment image", :width => "80", :height => "80", :id => "image-segment") %>
 
 <div class="container">
   <div class="btn-group">
@@ -38,6 +45,3 @@
 <section id="description">
   <p><%= @company.description %></p>
 </section>
-
-
-

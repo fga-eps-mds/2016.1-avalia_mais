@@ -19,13 +19,13 @@
   margin-left: 80px;
 }
 
-form.forme-email{
+form.forme-email-show{
     position: relative;
     margin-left: 150px;
-    margin-top: -40px;
+    margin-top: -35px;
 }
 
-.input-subscript{
+.input-subscript-show{
   z-index: 100;
   width: 400px;
   height: 30px;
@@ -40,38 +40,39 @@ form.forme-email{
   font-family: AvenirNext-Regular;        
 }
 
-.button-subscript{
+.button-subscript-show{
   position: absolute;
   padding-top: 5px;
   margin-left: -30px;
 }
 
-nav#menu{
+nav#menu_show{
     position: relative;
     float:right;
     margin-right: 20px;
     z-index: 100;
     margin-top:-30px;
 }
-#menu ul{
+
+#menu_show ul{
   list-style: none;
 }
 
-#menu ul li{
+#menu_show ul li{
   margin-top: 9px;
   display: inline-block;
 }
-#menu ul li a{
+#menu_show ul li a{
   font-family: AvenirNext-Regular;
   color: #CCC;
   text-decoration: none;
 }
 
-#menu ul li a:hover{
+#menu_show ul li a:hover{
   color: #FF4040;
 }
 
-#menu ul li.pipe{
+#menu_show ul li.pipe{
   color:#FF4040;
 }
 
@@ -144,18 +145,11 @@ hr{
   margin-left: 90px;
 }
 
-#info_empresa {
-  margin-top: 76px;
-  width: 500px;
-  height: 500px;
-  margin-left: 265px;
-}
-
 #description {
   position: absolute;
   width: 80%;
   margin-left: 130px;
-  margin-top: 50px;
+  margin-top: -10px;
   text-align: justify;
 }
 
@@ -217,17 +211,24 @@ body {
   }
 }
 
-#info_empresa h1 {
-  font-family: AvenirNext-Regular;
-  font-size: 25px;
-  color: #0B213A;
-}
-
-#info_empresa h2 {
+#info_empresa {
+  margin-top: 140px;
+  width: 500px;
+  height: 500px;
+  margin-left: 265px;
   font-family: AvenirNext-Regular;
   font-size: 16px;
   color: #848484;
-  opacity: 80%;
+
+}
+
+#name_company{
+  font-family: AvenirNext-Regular;
+  font-size: 26px;
+  color: #0B213A;
+  position: fixed;
+  left: 20%;
+  top: 11%;
 }
 
 section p {
@@ -237,8 +238,26 @@ section p {
   color: #848484;
 }
 
-#image-company{
+#image-company {
   position: absolute; 
   left: 110px;
   top: 80px;
+}
+
+#image-segment {
+  position: absolute; 
+  left: 1000px;
+  top: 90px;
+}
+
+#name_segment h2{
+  font-family: AvenirNext-Regular;
+  font-size: 16px;
+  color: #848484;
+  opacity: 80%;
+  margin-left: 0%;
+  margin-right: 4%;
+  position: fixed;
+  right: 10%;
+  top: 25%;
 }

@@ -1,5 +1,5 @@
 * {
-  box-sizing: border-box;
+  box-sizing: borddr-box;
   margin: 0;
   padding: 0;
 }
@@ -163,14 +163,13 @@ nav#menu-logado {
   color:#0B213A
 }
 
-#corpo#principal {
+#principal_table {
+  position: relative;
+  width: 50%;
+  height: 50%;
+  top: 10%;
+  left: 25%;
   z-index: 120;
-  position: absolute;
-  width: 800px;
-  height: 350px;
-  left:50%;
-  top:50%;
-  margin-left: -400px;
 }
 
 table {
@@ -204,6 +203,9 @@ td.editar {
   color: #0B213A;
   opacity: 0.9;
 }
+#table-itens{
+  color: #272b4f;
+}
 
 td.no-editar {
   color: #0B213A;
@@ -213,4 +215,23 @@ td.no-editar {
 hr {
   width: 40px;
   margin: auto;
+}
+#link-to-edit{
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+}
+#button-edit{
+  text-align: center;
+  position: fixed;
+  top: 80%;
+  left: 47.5%;
+  width: 60px;
+  font-size: 16px;
+  color: #FFF;
+  border: 0;
+  height: 40px;
+  border-radius: 4px;
+  background: vertical-align;
+  background-color: #07213F;
 }
