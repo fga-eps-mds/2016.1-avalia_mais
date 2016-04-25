@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   #users
   get   '/users/new'      => 'users#new'
   post  '/users/new'      => 'users#create', :as => 'create_user'
-  get   '/users/:id'      => 'users#show'
+  get   '/users/:id'      => 'users#show', :as => 'user_show'
   get   '/users/edit/:id' => 'users#edit', :as => 'user_edit'
   patch '/users/update/', controller: 'users', action: 'update', :as => 'update_user'
 
