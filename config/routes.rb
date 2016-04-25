@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
 
+ #get routes
   get 'users/new'
   get 'users/show'
   get 'users/edit'
   get 'users/destroy'
+  get '/users/new' => 'users#new'
+  get '/users/:id' => 'users#show', :as => 'user'
+
   get 'entry/enter'
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  get '/company/new' => 'companies#new'
+  get '/company/:id' => 'companies#show', :as => 'company'
 
-  # You can have the root of your site routed with "root"
+  get '/entry/enter' => 'entry#enter'
 
   #root
   root 'welcome#index'
@@ -18,26 +22,20 @@ Rails.application.routes.draw do
   post "/upload", controller: 'parsers', action: 'upload'
   post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
   resources :parsers
-
-
-  get '/company/new' => 'companies#new'
-  get '/company/:id' => 'companies#show', :as => 'company'
-  
+ 
   post '/company/new', controller: 'companies', action: 'create', :as => 'create_company'
 
   #users
-  get '/users/new' => 'users#new'
-  get '/users/:id' => 'users#show', :as => 'user'
 
   post '/users/new', controller: 'users', action: 'create', :as => 'create_user'
   post '/users/edit', controller: 'users', action: 'edit', :as => 'edit_user'
   patch '/users/update/', controller: 'users', action: 'update', :as => 'update_user'
 
   #entry
-  get '/entry/enter' => 'entry#enter'
   post '/entry/enter', controller: 'entry', action: 'enter', :as => 'edit_entry'
 
 
+  #evaluation
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
