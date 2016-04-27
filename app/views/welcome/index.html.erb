@@ -21,12 +21,14 @@
               <li><a href="">Ranking</a></li>&nbsp;&nbsp;
               <li class="pipe">|</li>&nbsp;&nbsp;
               
+              <% if current_user %>
+                Logged in as <%= current_user.name %>
+                <%= link_to "Sair", logout_path %>
+              <% else %>
+                <li><%= link_to "Entrar", login_path %></li> or
+                 <%= link_to "Cadastrar", :controller => :users, :action => :new %>
+              <% end %>
              
-             
-              <li><%= link_to "Entrar", login_path %></li> or
-              <%= link_to "Cadastrar", :controller => :users, :action => :new %>
-
-
           </ul>         
         </nav>
 	</header>
