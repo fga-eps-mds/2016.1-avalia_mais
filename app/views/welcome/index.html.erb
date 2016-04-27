@@ -22,12 +22,12 @@
               <li class="pipe">|</li>&nbsp;&nbsp;
               
               <% if current_user %>
-                Bem vindo <%= current_user.name %>
-                <li><%= link_to "Sair", logout_path %></li> or
-                <li><%= link_to "Cadastrar Empresa", company_new_path %></li>
+                Bem vindo <%= current_user.name %>&nbsp;&nbsp;&nbsp;
+                <li><%= link_to "Cadastrar Empresa", company_new_path %></li>&nbsp;&nbsp;&nbsp;&nbsp;
+                <li><%= link_to "Sair", logout_path %></li>
               <% else %>
-                <li><%= link_to "Entrar", login_path %></li> or
-                 <li><%= link_to "Cadastrar", :controller => :users, :action => :new %></li> or
+                <li><%= link_to "Entrar", login_path %></li> &nbsp;ou&nbsp;
+                 <li><%= link_to "Cadastrar-se", :controller => :users, :action => :new %></li>&nbsp;&nbsp;&nbsp;
                  <li><%= link_to "Cadastrar Empresa", company_new_path %></li>
               <% end %>
              

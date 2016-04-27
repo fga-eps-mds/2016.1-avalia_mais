@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 			log_in user
 			redirect_to user_show_path(user), notice: "Login realizado com sucesso"
 		else 
-			flash.now[:notice] = 'O login e/ou a senha inválidos'
+			flash.now[:notice] = 'Login e/ou a senha inválidos'
 			render 'new'
 		end
 	end
