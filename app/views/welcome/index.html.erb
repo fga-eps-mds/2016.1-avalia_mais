@@ -20,7 +20,13 @@
               <li><a href="">Categorias</a></li>&nbsp;&nbsp;&nbsp;
               <li><a href="">Ranking</a></li>&nbsp;&nbsp;
               <li class="pipe">|</li>&nbsp;&nbsp;
-              <li><%= link_to "Entrar", login_path %></li>
+              
+             
+             
+              <li><%= link_to "Entrar", login_path %></li> or
+              <%= link_to "Cadastrar", :controller => :users, :action => :new %>
+
+
           </ul>         
         </nav>
 	</header>

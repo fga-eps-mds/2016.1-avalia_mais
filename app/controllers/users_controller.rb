@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 	def create
 	 	@user = User.new(user_params)
 		if @user.save
+			# when user create his account he is already log in
+			session[:user_id] = @user.id
 			flash[:notice] = 'Cadastro efetuado com sucesso!'
 			redirect_to :action => "show",:id => @user.id
 

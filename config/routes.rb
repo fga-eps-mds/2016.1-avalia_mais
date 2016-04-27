@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   #root
   root 'welcome#index'
+  get 'home' => 'welcome#index'
 
   #general
   post "/upload", controller: 'parsers', action: 'upload'
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
   #login
   get    'login'  => 'sessions#new'
   post   'login'  => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
+  get '/logout', to: 'sessions#destroy'
 
 
   # Example of regular route:

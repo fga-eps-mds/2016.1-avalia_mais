@@ -1,5 +1,15 @@
 
  <header id="header-logado">
+
+       
+        
+            
+            <%= link_to "Sair", logout_path %>
+        
+            <%= link_to "Entrar", login_path %>
+            <%= link_to "Cadastrar", :controller => :users, :action => :new %>
+       
+
         <%= image_tag("logo1.png", :alt => "logo") %>
         <form action="#" method="post" class="forme-email">
             <div class="input-mail">
@@ -12,7 +22,11 @@
             <li><a href="">Categorias</a></li>&nbsp;&nbsp;&nbsp;
 			<li><a href="">Ranking</a></li>&nbsp;&nbsp;
 			<li class="pipe">|</li>&nbsp;&nbsp;
-			<li><%= link_to "Entrar", :controller => :entry, :action => :enter %></li>
+			
+     
+      <li><%= link_to "Entrar", :controller => :entry, :action => :enter %></li>
+      
+
         </ul>         
         </nav>
       </header>

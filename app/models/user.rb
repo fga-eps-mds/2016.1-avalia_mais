@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
   		:too_long => 'Nome tem que ter no maximo 50 caracters'
 
 	#email
-	validates :email, :presence => { :message => 'Email nao pode ser vazio' }, length: { maximum: 50}, uniqueness: true
+	validates :email, :presence => { :message => 'Email nao pode ser vazio' },
+		length: { maximum: 50}, uniqueness: true
 
 	# #password
 	# #validates :password_confirmation, :presence => true

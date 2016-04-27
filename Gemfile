@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use Paperclip to upload images
 gem 'paperclip', '~> 4.3.2'
 # Use Bcrypt to cryptograph password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '3.1.2'
 
 gem 'simplecov', :require => false, :group => :test
 # Use jquery as the JavaScript library
