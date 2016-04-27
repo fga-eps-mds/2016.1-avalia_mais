@@ -17,7 +17,7 @@
                  Bem vindo <%= current_user.name %>&nbsp;&nbsp;&nbsp;&nbsp;
                 <li><%= link_to "Sair", logout_path %></li>
               <% else %>
-                <li><%= link_to "Entrar", login_path %></li> or
+                <li><%= link_to "Entrar", login_path %></li> &nbsp;ou&nbsp;
                 <li><%= link_to "Cadastrar", :controller => :users, :action => :new %></li>
               <% end %>
 
@@ -79,12 +79,13 @@
   <%else%>
     <p><%= @company.description %></p>
   <%end%>
+  
+  <section id="stars_evaluations">
+    <%= image_tag("star3.jpeg") %>
+    <h2>(0 Avaliações)</h2>
+  </section>
 </section>
 
-<section id="stars_evaluations">
-  <%= image_tag("star3.jpeg") %>
-  <h2>(0 Avaliações)</h2>
-</section>
 
 <script>
     $(".avaliacao").click(function(){
