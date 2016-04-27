@@ -1,28 +1,9 @@
-<!-- 
-<header id="header-logado">
-    <%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
-    <form action="#" method="post" class="forme-email">
-        <div class="input-mail">
-          <input type="text" class="input-subscrypt" placeholder="Buscar" >
-           <input type="image" width="25px" height="35px" class="butto-subscrypt" onsubmit="submit();" <%= image_tag("tool.svg", :alt => "logo") %> 
-          </div>
-        </form>
-    <nav id="menu-logado">
-    <ul>
-        <li><a href="">Categorias</a></li>&nbsp;&nbsp;&nbsp;
-  <li><a href="">Ranking</a></li>&nbsp;&nbsp;
-  <li class="pipe">|</li>&nbsp;&nbsp;
-  <li><%= link_to "Entrar", :controller => :entry, :action => :enter %></li>
-    </ul>         
-    </nav>
-</header>
- -->
 <header id="header-show">
     <%= image_tag("AVALIA_LOGO.png", :alt => "logo", :id => "img-logo-show") %>
     <form action="#" method="post" class="forme-email-show">
       <div class="input-mail">
         <input type="text" class="input-subscrypt" placeholder="Buscar" >
-        <input type="image" width="20px" class="butto-subscrypt" onsubmit="submit();" <%= image_tag("tool.svg", :alt => "logo") %>
+        <input type="image" width="20px" class="butto-subscrypt" onsubmit="submit();" <%= image_tag("tool.svg", :alt => "logo")%>>
       </div>
     </form>
         <nav id="menu_show">
@@ -35,46 +16,113 @@
         </nav>
 </header>
 
-
 <section id="corpo">
-  <h1>Perfil</h1>
-  <section id="principal_table">
-    <table>
-        <tr >
-          <td id="table-itens">Nome</td>
-          <td><%= @user.name %></td>
-           <td></td>
-        </tr>
-        <tr>
-          <td id="table-itens">Apelido</td>
-          <td class="no-editar"><%= @user.login %></td>
-          <td></td>
-        </tr>
-       <tr >
-         <td id="table-itens">E-mail</td>
-         <td class="no-editar"><%= @user.email %></td>
-         <td></td>
-        </tr>
-        
-        <tr >
-          <td id="table-itens">G&ecirc;nero</td>
-          <td > 
-            <% if @user.gender == "m" %>
-              <%="Masculino"%> 
-            <% else %> 
-              <%="Feminino"%>
-            <%end%>
-          </td>
-          <td></td>
-        </tr>
-        <tr >
-          <td id="table-itens">Data Nascimento</td>
-          <td><%= @user.dateBirthday.to_s %></td>
-          <td></td>
-        </tr>
-    </table>
-  </section>
-  <section id="link-to-edit">
-    <%= button_to "Editar", users_edit_path(:id => @user.id, :name => @user.name), :id => "button-edit"%></br>
-  </section>
+  <h1>Perfil</h1><br>
+ <!-- <hr SIZE="5" NOSHADE/> -->
+<section id="principal">
+
+<table class="table" id="reload">
+    <tr class="editar-name">
+      <td>Nome</td>
+      <td><%= @user.name %></td>
+       <td ><a href="javascript: void(0);" id="show">Editar</a></td>
+    </tr>
+    <tr id="nome-update">
+          <%= form_for(@user, remote: true,  :url => { :action => "update", params: {id: @user.id,email: @user.email, password: @user.password, login:@user.login, dateBirthday: @user.dateBirthday, genero: @user.gender}} ) do |f| %>
+             <td class="form-update">Nome</td>
+            <td class="form-update"><%= f.text_field :name, class: 'form-control'%></td>
+            <td id="atualizar"><%= f.submit "Atualizar" %></td>
+
+             <% end %>
+      </tr>
+    <tr>
+      <td>Apelido</td>
+      <td><%= @user.login %></td>
+       <td class="no-editar">Editar</td>
+    </tr>
+   <tr >
+    <td>E-mail</td>
+     <td><%= @user.email %></td>
+      <td class="no-editar">Editar</td>
+    </tr>
+    
+    <tr >
+      <td>G&ecirc;nero</td>
+      <td > 
+        <% if @user.gender == "m" %>
+          <%="masculino"%> 
+        <% else %> 
+          <%="feminino"%>
+        <%end%>
+      </td>
+       <td ><a href="javascript: void(0);" id="show-genero">Editar</a></td>
+    </tr>
+     <tr id="genero-update">
+          <%= form_for(@user, remote: true,  :url => { :action => "update", params: {id: @user.id,email: @user.email, password: @user.password, name:@user.name, dateBirthday: @user.dateBirthday, login: @user.login}} ) do |f| %>
+             <td class="form-update">Genero</td>
+             <td>
+             <span>
+                Masculino <%= f.radio_button :gender, "m", :class => "radio"%> Feminino <%= f.radio_button :gender, "f", :class => "radio"%>
+              </span>
+                </td>
+            <td id="atualizar"><%= f.submit %></td>
+            <% end %>
+
+    
+    <tr >
+      <td>Data Nascimento</td>
+      <td><%= @user.dateBirthday.to_s %></td>
+       <td ><a href="javascript: void(0);" id="show-date">Editar</a></td>
+    </tr>
+    <tr id="date-update">
+          <%= form_for(@user, remote: true,  :url => { :action => "update", params: {id: @user.id,email: @user.email, password: @user.password, login:@user.login, name: @user.name, genero: @user.gender}} ) do |f| %>
+             <td class="form-update">Data Nascimento</td>
+            <td class="form-update"><%= f.date_field :dateBirthday, class: 'form-control'%></td>
+            <td id="atualizar"><%= f.submit%></td>
+             <% end %>
+      </tr>
+    <!--
+   
+    <tr >
+      <th>Foto</th>
+      <td>@user.</td>
+       <td class="editar">Editar</td>
+    </tr>
+    -->
+    <tr>
+      <td>Senha</td>
+      <td><%= @user.password %></td>
+      <td ><a href="javascript: void(0);" id="show-pass">Editar</a></td>
+    </tr>
+    <tr id="pass-update">
+          <%= form_for(@user, remote: true,  :url => { :action => "update", params: {id: @user.id,email: @user.email, dateBirthday: @user.dateBirthday, login:@user.login, name: @user.name, genero: @user.gender}} ) do |f| %>
+             <td class="form-update">Nova Senha</td>
+            <td class="form-update"><%= f.password_field :password%></td>
+            <td id="atualizar"><%= f.submit %></td>
+             <% end %>
+      </tr>
+</table>
+
 </section>
+</section>
+<script>
+        $("#show").click(function(){
+          $("#nome-update").show();
+        });
+
+        $("#atualizar").click(function(){
+           $("#nome-update").hide();
+         });
+        $("#show-genero").click(function(){
+          $("#genero-update").show();
+        }); 
+        $("#show-date").click(function(){
+          $("#date-update").show();
+        });
+        $("#show-pass").click(function(){
+          $("#pass-update").show();
+        }); 
+
+
+</script>
+</body>

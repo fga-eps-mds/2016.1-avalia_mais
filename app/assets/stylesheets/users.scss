@@ -172,46 +172,6 @@ nav#menu-logado {
   z-index: 120;
 }
 
-table {
-    position: absolute;
-    top: 0px;
-    border-collapse:collapse;
-    width: 100%;
-     text-align: right;
-}
-
-th {
-  display: block;
-  color:#0B213A;
-}
-
-th, td {
-  font-size: 26px;
-  padding: 8px;
-  text-align: left;
-  border-bottom: 6px solid #ddd;
-  font-family: 'OpenSans';
-}
-
-td {
-  text-decoration: none;
-  color:#E3625F;
-  font-weight: bold;
-}
-
-td.editar {
-  color: #0B213A;
-  opacity: 0.9;
-}
-#table-itens{
-  color: #272b4f;
-}
-
-td.no-editar {
-  color: #0B213A;
-  opacity: 0.15;
-}
-
 hr {
   width: 40px;
   margin: auto;
@@ -235,3 +195,38 @@ hr {
   background: vertical-align;
   background-color: #07213F;
 }
+table {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    text-align: right;
+}
+
+th{display: block; color:#0B213A;}
+th, td {
+  font-size: 20px;
+    padding: 6px;
+    text-align: left;
+    font-family: 'OpenSans';
+}
+ 
+td{ text-decoration: none; color:#E3625F;; font-weight: bold;}
+td.editar{color: #0B213A; opacity: 0.9;}
+td.no-editar {color: #0B213A; opacity: 0.15;}
+hr{width: 40px; margin: auto;}
+  .radio{display:inline;}  
+
+  #nome-update, #genero-update, #date-update, #pass-update{
+     position: relative;
+    display:none;
+      width: 430px; margin: 60px auto; padding: 60px 30px;
+    background: #c9d0de; border: 1px solid #e1e1e1;
+    -moz-box-shadow: 0px 0px 8px #444;
+    -webkit-box-shadow: 0px 0px 8px #444;
+    }
+#nome-update form, #genero-update form, #date-update form, #pass-update form{
+   background: #c9d0de;
+}
+.form-control{
+  width:250px;
+  min-width:200px;}

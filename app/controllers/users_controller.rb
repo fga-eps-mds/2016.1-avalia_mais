@@ -49,11 +49,14 @@ class UsersController < ApplicationController
 
     	@user = User.find(params[:id])
 
-    	if @user.update_attributes(user_params_update)
-    		redirect_to :action => "show",:id => @user.id
+    	if @user.update_attributes(user_params)
+    		respond_to do |format| format.html {redirect_to :action => "show",:id => @user.id}
     		flash[:success] = "Profile updated"
+    		format.js # views/users/update.js.erb
+    	end
     	else
       		render 'edit'
+      		format.js # views/users/update.js.erb
     	end
 
   	end
