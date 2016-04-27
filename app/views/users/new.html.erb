@@ -14,6 +14,9 @@
 	<%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>
 	<section id="line"></section>
 	<section id="section-form">
+
+	<li><%= link_to "Inicio", home_path %></li>
+	
 		<h2>Cadastre um usuário</h2></br></br>
 
 		<%= form_for @user, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>

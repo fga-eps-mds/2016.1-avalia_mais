@@ -10,8 +10,10 @@
 <section id="line"></section>
 <section id="section-form">
 
+
 	<%= form_for(:session, url: login_path) do |f| %>
 
+    	<li><%= link_to "Inicio", home_path %></li>
 
 		<h1>Login</h1></br>
 		<%= f.text_field :login, :class => "text" , :placeholder => "Apelido" %></br></br>
