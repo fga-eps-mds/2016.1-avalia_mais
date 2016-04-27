@@ -14,7 +14,7 @@
               <li class="pipe">|</li>&nbsp;&nbsp;
               
               <% if current_user %>
-                 Bem vindo <%= current_user.name %> 
+                 Bem vindo <%= current_user.name %>&nbsp;&nbsp;&nbsp;&nbsp;
                 <li><%= link_to "Sair", logout_path %></li>
               <% else %>
                 <li><%= link_to "Entrar", login_path %></li> or
@@ -25,7 +25,17 @@
         </nav>
 </header>
 
-<%= image_tag(@company.logo.url(:default), :width => "125", :height => "125", :id => "image-company") %>
+<% if @company.logo_file_name == nil %>
+  <%= image_tag("default_company_logo.png", :width => "125", :height => "125", :id => "image-company") %>
+<%else%>
+  <%= image_tag(@company.logo.url(:default), :width => "125", :height => "125", :id => "image-company") %>
+<%end%>
+
+<% if @company.authenticated == false %>
+  <%= image_tag("no_verified.png", :width => "40", :height => "40", :id => "image-verified") %>
+<%else%>
+  <%= image_tag("verified.png", :width => "40", :height => "40", :id => "image-verified") %>
+<%end%>
 
 <div id="name_company">
     <h1><%= @company.name %></h1>
@@ -40,17 +50,68 @@
   <h2><%= @company.segment.name %></h2>
 </div>
 
-<%= image_tag("segments/artigos_esportivos.png", :alt => "segment image", :width => "80", :height => "80", :id => "image-segment") %>
+<!--<%= image_tag("segments/artigos_esportivos.png", :alt => "segment image", :width => "80", :height => "80", :id => "image-segment") %>-->
 
 <div class="container">
   <div class="btn-group">
-    <div class="btn active">Geral</div>
-    <div class="btn">Avaliações</div>
-    <div class="btn">Fórum</div>
-    <div class="btn">FAQ</div>
+    <div class="btn geral">Geral</div>
+    <div class="btn avaliacao">Avaliações</div>
+    <div class="btn forum">Fórum</div>
+    <div class="btn faq">FAQ</div>
   </div>
 </div>
 
-<section id="description">
-  <p><%= @company.description %></p>
+<section id="avaliacao">
+  <p>Avaliacao da Empresa - Não Implementado</p> 
 </section>
+
+<section id="forum">
+  <p>Fórum da Empresa - Não Implementado</p> 
+</section>
+
+<section id="faq">
+  <p>FAQ da Empresa - Não Implementado</p> 
+</section>
+
+<section id="description">
+  <% if @company.description == nil %>
+    <p>Essa empresa não possui uma descrição.</p>
+  <%else%>
+    <p><%= @company.description %></p>
+  <%end%>
+</section>
+
+<section id="stars_evaluations">
+  <%= image_tag("star3.jpeg") %>
+  <h2>(0 Avaliações)</h2>
+</section>
+
+<script>
+    $(".avaliacao").click(function(){
+      $("#description").hide("slow");
+      $("#forum").hide("slow");
+      $("#faq").hide("slow");
+      $("#avaliacao").show("slow");
+    });
+
+    $(".geral").click(function(){
+      $("#avaliacao").hide("slow");
+      $("#forum").hide("slow");
+      $("#faq").hide("slow");
+      $("#description").show("slow");
+    });
+
+    $(".forum").click(function(){
+      $("#avaliacao").hide("slow");
+      $("#faq").hide("slow");
+      $("#description").hide("slow");
+      $("#forum").show("slow");
+    });
+
+    $(".faq").click(function(){
+      $("#avaliacao").hide("slow");
+      $("#forum").hide("slow");
+      $("#description").hide("slow");
+      $("#faq").show("slow");
+    });
+</script>

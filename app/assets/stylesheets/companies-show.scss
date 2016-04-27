@@ -52,6 +52,8 @@ nav#menu_show{
     margin-right: 20px;
     z-index: 100;
     margin-top:-30px;
+    color: #CCC;
+    font-size: 16px;
 }
 
 #menu_show ul{
@@ -153,6 +155,33 @@ hr{
   text-align: justify;
 }
 
+#avaliacao {
+  display: none;
+  position: absolute;
+  width: 80%;
+  margin-left: 130px;
+  margin-top: -10px;
+  text-align: justify;
+}
+
+#forum {
+  display: none;
+  position: absolute;
+  width: 80%;
+  margin-left: 130px;
+  margin-top: -10px;
+  text-align: justify;
+}
+
+#faq {
+  display: none;
+  position: absolute;
+  width: 80%;
+  margin-left: 130px;
+  margin-top: -10px;
+  text-align: justify;
+}
+
 .btn-group {
   position: relative;
   display: inline-block;
@@ -212,10 +241,10 @@ body {
 }
 
 #info_empresa {
-  margin-top: 140px;
+  margin-top: 132px;
   width: 500px;
   height: 500px;
-  margin-left: 265px;
+  margin-left: 263px;
   font-family: AvenirNext-Regular;
   font-size: 16px;
   color: #848484;
@@ -238,6 +267,28 @@ section p {
   color: #848484;
 }
 
+#image-verified {
+  position: absolute; 
+  left: 210px;
+  top: 65px;
+}
+
+#stars_evaluations {
+  position: absolute; 
+  left: 545px;
+  top: 510px;
+}
+
+#stars_evaluations h2{
+  position: absolute;
+  color: #848484;
+  font-family: AvenirNext-Regular;
+  font-size: 19px;  
+  text-align: justify;
+  left: 20%;
+}
+
+
 #image-company {
   position: absolute; 
   left: 110px;
@@ -252,12 +303,10 @@ section p {
 
 #name_segment h2{
   font-family: AvenirNext-Regular;
-  font-size: 16px;
-  color: #848484;
+  font-size: 19px;
+  color: #001d89;
   opacity: 80%;
-  margin-left: 0%;
-  margin-right: 4%;
   position: fixed;
-  right: 10%;
-  top: 25%;
+  left: 20.5%;
+  top: 24%;
 }
