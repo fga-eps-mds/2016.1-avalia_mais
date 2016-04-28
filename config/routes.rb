@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   post '/users/new', controller: 'users', action: 'create', :as => 'create_user'
   post '/users/edit', controller: 'users', action: 'edit', :as => 'edit_user'
   patch '/users/update/', controller: 'users', action: 'update', :as => 'update_user'
+  post '/users/destroy', controller: 'users', action: 'destroy', :as => 'destroy_user'
 
   #entry
   post '/entry/enter', controller: 'entry', action: 'enter', :as => 'edit_entry'

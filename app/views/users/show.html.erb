@@ -65,7 +65,7 @@
                 Masculino <%= f.radio_button :gender, "m", :class => "radio"%> Feminino <%= f.radio_button :gender, "f", :class => "radio"%>
               </span>
                 </td>
-            <td id="atualizar"><%= f.submit %></td>
+            <td id="atualizar"><%= f.submit "Atualizar" %></td>
             <% end %>
 
     
@@ -78,7 +78,7 @@
           <%= form_for(@user, remote: true,  :url => { :action => "update", params: {id: @user.id,email: @user.email, password: @user.password, login:@user.login, name: @user.name, genero: @user.gender}} ) do |f| %>
              <td class="form-update">Data Nascimento</td>
             <td class="form-update"><%= f.date_field :dateBirthday, class: 'form-control'%></td>
-            <td id="atualizar"><%= f.submit%></td>
+            <td id="atualizar"><%= f.submit "Atualizar" %></td>
              <% end %>
       </tr>
     <!--
@@ -91,17 +91,28 @@
     -->
     <tr>
       <td>Senha</td>
-      <td><%= @user.password %></td>
+      <td> ******** </td>
       <td ><a href="javascript: void(0);" id="show-pass">Editar</a></td>
     </tr>
-    <tr id="pass-update">
-          <%= form_for(@user, remote: true,  :url => { :action => "update", params: {id: @user.id,email: @user.email, dateBirthday: @user.dateBirthday, login:@user.login, name: @user.name, genero: @user.gender}} ) do |f| %>
+    <%= form_for(@user, remote: true,  :url => { :action => "update", params: {id: @user.id,email: @user.email, dateBirthday: @user.dateBirthday, login:@user.login, name: @user.name, genero: @user.gender}} ) do |f| %>
+    <tr id="pass-old">
+             <td class="form-update">Senha Antiga</td>
+            <td class="form-update"><%= f.password_field :password%></td>
+            <td></td>
+      </tr>
+      <tr id="pass-new">
              <td class="form-update">Nova Senha</td>
             <td class="form-update"><%= f.password_field :password%></td>
-            <td id="atualizar"><%= f.submit %></td>
-             <% end %>
+            <td></td>
       </tr>
-</table>
+      <tr id="pass-confirme">
+             <td class="form-update">Confirme a senha</td>
+            <td class="form-update"><%= f.password_field :password_confirmation%></td>
+            <td id="atualizar"><%= f.submit "Atualizar" %></td>
+      </tr>
+    <% end %>
+    </table>
+    <%= button_to "Excluir Minha Conta", :controller => :users, :action => "destroy", params:{id: @user.id},class: "btn btn-warning"%>
 
 </section>
 </section>
@@ -120,9 +131,9 @@
           $("#date-update").show();
         });
         $("#show-pass").click(function(){
-          $("#pass-update").show();
+          $("#pass-old").show();
+          $("#pass-new").show();
+          $("#pass-confirme").show();
         }); 
-
-
 </script>
 </body>
