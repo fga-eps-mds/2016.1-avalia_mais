@@ -12,11 +12,14 @@ Rails.application.routes.draw do
 
   get '/company/new' => 'companies#new'
   get '/company/:id' => 'companies#show', :as => 'company'
+  get '/company/:search' => 'companies#search', :as => 'company_search'
 
   get '/entry/enter' => 'entry#enter'
 
   #root
-  root 'welcome#index'
+  root 'welcome#index', :as => 'index'
+  post 'search' => 'welcome#search', :as => 'search_company'
+
 
   #general
   post "/upload", controller: 'parsers', action: 'upload'
@@ -25,12 +28,16 @@ Rails.application.routes.draw do
  
   post '/company/new', controller: 'companies', action: 'create', :as => 'create_company'
 
-  #users
 
+
+  #users
   post '/users/new', controller: 'users', action: 'create', :as => 'create_user'
   post '/users/edit', controller: 'users', action: 'edit', :as => 'edit_user'
   patch '/users/update/', controller: 'users', action: 'update', :as => 'update_user'
+  patch '/users/update/', controller: 'users', action: 'update_password', :as => 'update_user_password'
   post '/users/destroy', controller: 'users', action: 'destroy', :as => 'destroy_user'
+  patch '/users/destroy/', controller: 'users', action: 'destroy', :as => 'destroy_user_now'
+
 
   #entry
   post '/entry/enter', controller: 'entry', action: 'enter', :as => 'edit_entry'

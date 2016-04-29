@@ -23,7 +23,6 @@ class UsersController < ApplicationController
 		if @user.save
 			flash[:notice] = 'Cadastro efetuado com sucesso!'
 			redirect_to :action => "show",:id => @user.id
-
 		else
 			render :new
 		end
@@ -60,13 +59,28 @@ class UsersController < ApplicationController
     	end
 
   	end
+  	def update_password
+  		@user = User.find(params[:id])
+  		if @user.password == :password_old
+			if @user.update_attributes(user_params)
+    			respond_to do |format| format.html {redirect_to :action => "show",:id => @user.id}
+    			flash[:success] = "Profile updated"
+    			format.js
+    		end
+    		else
+    			render 'edit'
+      			format.js # views/users/update.js.erb
+    		end
+    	else	
+    		render 'edit'
+    	end
+  	end
 
   	def user_params
-		params[:user].permit(:name, :email, :password, :password_confirmation,:login, :dateBirthday, :gender)
+		params[:user].permit(:name, :email, :password,:password_confirmation,:login, :dateBirthday, :gender)
 	end
 
 	def user_params_update
 		params[:user].permit(:name, :email, :password,:login, :dateBirthday, :gender)
 	end
-
 end
