@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
 
 		if user && user.authenticate(params[:session][:password])
 			log_in user
-			redirect_to user_show_path(user), notice: 'Login realizado com sucesso'
+			# redirect_to user_show_path(user), notice: 'Login realizado com sucesso'
+			redirect_to :index, notice: 'Login realizado com sucesso'
 		else 
 			flash.now[:notice] = 'Login e/ou a senha inválidos'
 			render 'new'

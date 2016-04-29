@@ -22,13 +22,17 @@
               <li class="pipe">|</li>&nbsp;&nbsp;
               
               <% if current_user %>
-                Bem vindo <%= current_user.name %>&nbsp;&nbsp;&nbsp;
-                <li><%= link_to "Cadastrar Empresa", company_new_path %></li>&nbsp;&nbsp;&nbsp;&nbsp;
-                <li><%= link_to "Sair", logout_path %></li>
+                <div class="dropdown">
+                  <p class="dropbtn">&nbsp;Olá, <%= current_user.name %></p>
+                  <div class="dropdown-content" style="display:block; float: left;">
+                    <a href="#"><%= link_to "Perfil", :controller => "users", :action => :show ,:id => current_user.id %></a>
+                    <a href="#"><%= link_to "Cadastrar Empresa", company_new_path %></a>
+                    <a href="#"><%= link_to "Sair", logout_path %></a>
+                  </div>
+                </div>
               <% else %>
-                <li><%= link_to "Entrar", login_path %></li> &nbsp;ou&nbsp;
-                 <li><%= link_to "Cadastrar-se", :controller => :users, :action => :new %></li>&nbsp;&nbsp;&nbsp;
-                 <li><%= link_to "Cadastrar Empresa", company_new_path %></li>
+                 <li><%= link_to "Cadastrar Empresa", company_new_path %></li>&nbsp;&nbsp;
+                <li><%= link_to "Entrar", login_path %></li>
               <% end %>
              
           </ul>         
