@@ -1,14 +1,12 @@
-<section id="teste">		
-	<%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>
-
-	<header>
+<section id="teste">
+  <%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>
+  <header>
     <span id="header-span-index">avalia&nbsp;
-    	<%= link_to :controller => :welcome, :action => :index do %>
-    	<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
-    	<% end %>
+      <%= link_to :controller => :welcome, :action => :index do %>
+        <%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
+      <% end %>
     </span>
   </header>
-
   <header>
     <nav id="menu_show_index">
       <ul>
@@ -17,29 +15,32 @@
         <li class="pipe">|</li>&nbsp;&nbsp;
         
         <% if logged_in? %>
-          Bem vindo <%= current_user.name %>&nbsp;&nbsp;&nbsp;
-          <li><%= link_to "Cadastrar Empresa", company_new_path %></li>&nbsp;&nbsp;&nbsp;&nbsp;
-          <li><%= link_to "Sair", logout_path %></li>
+          <div class="dropdown">
+            <p class="dropbtn">&nbsp;Olá, <%= current_user.name %></p>
+            <div class="dropdown-content" style="display:block; float: left;">
+              <a href="#"><%= link_to "Perfil", :controller => "users", :action => :show ,:id => current_user.id %></a>
+              <a href="#"><%= link_to "Cadastrar Empresa", company_new_path %></a>
+              <a href="#"><%= link_to "Sair", logout_path %></a>
+            </div>
+          </div>
         <% else %>
-          <li><%= link_to "Entrar", login_path %></li> &nbsp;ou&nbsp;
-           <li><%= link_to "Cadastrar-se", :controller => :users, :action => :new %></li>&nbsp;&nbsp;&nbsp;
-           <li><%= link_to "Cadastrar Empresa", company_new_path %></li>
+          <li><%= link_to "Cadastrar Empresa", company_new_path %></li>&nbsp;&nbsp;
+          <li><%= link_to "Entrar", login_path %></li>
         <% end %>
-         
-        </ul>         
+        
+      </ul>
     </nav>
   </header>
-
-	<section id="principal">
-		<h3>Aqui você pode bem mais</h3>
-		<p>Plataforma onde você pode avaliar sua empresa, e muito mais. Avalie, consulte, reclame, ajude e discuta subre problemas e soluções.</p><br />
-		<form action="#" method="post" class="forme-email">
-				<div class="input-mail">
-   			<input type="text" class="input-subscript" placeholder="Buscar" >
-   			 <input type="image" width="25px" height="35px" class="button-subscript" onsubmit="submit();" <%= image_tag("tool.svg", :alt => "logo") %> 
-    		</div>
-		</form>
-		
-	</section>		
+  <section id="principal">
+    <h3>Aqui você pode bem mais</h3>
+    <p>Plataforma onde você pode avaliar sua empresa, e muito mais. Avalie, consulte, reclame, ajude e discuta subre problemas e soluções.</p><br />
+    <form action="#" method="post" class="forme-email">
+      <div class="input-mail">
+        <input type="text" class="input-subscript" placeholder="Buscar" >
+        <input type="image" width="25px" height="35px" class="button-subscript" onsubmit="submit();" <%= image_tag("tool.svg", :alt => "logo") %>
+      </div>
+    </form>
+    
+  </section>
 </section>
 <section id="gradienteTeste"></section>
