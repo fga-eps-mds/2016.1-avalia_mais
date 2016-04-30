@@ -1,0 +1,10 @@
+
+
+<%if @company.present?%>
+	<h2>Pesquisas relacionadas:</h2>
+	<% @company.each do |c|%>
+		<h3><%= link_to c.name, c %></h3>
+	<%end%>
+<%else%>
+	<h2>Busca não encontrada.</h2>
+<%end%>

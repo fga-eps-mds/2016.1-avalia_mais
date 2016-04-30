@@ -21,8 +21,8 @@
 		<h3>Avalie sua empresa. Resolva seu problema.</h3>
 		<p>Plataforma onde você pode avaliar sua empresa, e muito mais. Avalie, consulte, reclame, ajude e discuta subre problemas e soluções.</p><br />
 		<%= form_for(:company, url: search_company_path) do |f|%>
-			<%= f.text_field :name, :class => "input-subscript" %>
-			<%= f.submit "Buscar"%>
+			<%= f.text_field :search, :class => "input-subscript" %>
+			<%= f.submit "Buscar", :type => :image, :src => image_path("tool.svg")%>
 		<%end%>
 		
 	</section>		

@@ -18,8 +18,7 @@ Rails.application.routes.draw do
 
   #root
   root 'welcome#index', :as => 'index'
-  post 'search' => 'welcome#search', :as => 'search_company'
-
+  post '/company/search', controller: 'companies', action: 'search', :as => 'search_company'
 
   #general
   post "/upload", controller: 'parsers', action: 'upload'
@@ -28,7 +27,9 @@ Rails.application.routes.draw do
  
   post '/company/new', controller: 'companies', action: 'create', :as => 'create_company'
 
-
+  #search routes
+  get '/search/search', :as => 'search'
+  post '/search/search', controller: 'search', action: 'index'
 
   #users
   post '/users/new', controller: 'users', action: 'create', :as => 'create_user'
