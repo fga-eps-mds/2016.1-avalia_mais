@@ -1,10 +1,13 @@
 class SessionsController < ApplicationController
 
 	def new
+		if logged_in?
+			redirect_to home_path
+		end
 	end
 
 	def create
-		user = find_user
+		user = find_user_record
 
 		if user && user.authenticate(params[:session][:password])
 			log_in user
@@ -21,7 +24,7 @@ class SessionsController < ApplicationController
 		redirect_to home_path
 	end
 
-	def find_user
+	def find_user_record
 		User.find_by(login: params[:session][:login]) || User.find_by(email: params[:session][:login])
 	end
 

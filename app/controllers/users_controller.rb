@@ -1,14 +1,17 @@
 class UsersController < ApplicationController
 	def new
-	 	@user = User.new 
+		if !logged_in?
+	 		@user = User.new 
+		else
+			redirect_to home_path
+		end
 	end
 	
 	def show
-		@user = User.find(params[:id])		
-	end
-
-	def login
-		
+		@user = User.find(params[:id])
+		# if @user != current_user
+		# 	redirect_to home_path
+		# end		
 	end
 	
 	def create
@@ -25,12 +28,16 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])		
+		@user = User.find(params[:id])
+		# if @user != current_user
+		# 	redirect_to home_path
+		# end			
 	end
 
 	def user_params
 		params[:user].permit(:name, :email, :password, :password_confirmation,:login, :dateBirthday, :gender)
 	end
+	
 	def user_params_update
 		params[:user].permit(:name, :email, :password,:login, :dateBirthday, :gender)
 	end
