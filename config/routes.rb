@@ -43,6 +43,9 @@ Rails.application.routes.draw do
   #entry
   post '/entry/enter', controller: 'entry', action: 'enter', :as => 'edit_entry'
 
+  #segment
+   get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment' 
+
 
   #evaluation
 
