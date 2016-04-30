@@ -30,7 +30,7 @@
   <%= image_tag(@company.logo.url(:default), :width => "125", :height => "125", :id => "image-company") %>
 <%end%>
 
-<% if @company.authenticated == false %>
+<% if @company.authenticated != true %>
   <%= image_tag("no_verified.png", :width => "40", :height => "40", :id => "image-verified") %>
 <%else%>
   <%= image_tag("verified.png", :width => "40", :height => "40", :id => "image-verified") %>

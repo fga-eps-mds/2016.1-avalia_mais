@@ -26,7 +26,7 @@ class Company < ActiveRecord::Base
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
     validates :email,
         :allow_blank => true,
-        format: { with: VALID_EMAIL_REGEX }
+        format: { with: VALID_EMAIL_REGEX, :message => 'Insira um e-mail válido' }
 
     #telephone
     validates :telephone,

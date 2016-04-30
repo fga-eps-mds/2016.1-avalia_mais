@@ -160,7 +160,9 @@ nav#menu-logado {
 }
 
 #corpo {
-  background-color: #F0F0F0;width: 100%;height: 100%;
+  background-color: #F0F0F0;
+  width: 100%;
+  height: 100%;
   position: absolute;
 }
 
@@ -221,4 +223,13 @@ td.no-editar {
 hr {
   width: 40px;
   margin: auto;
+}
+
+#error_message {
+  list-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: AvenirNext-Regular;
+  color:  #FF0000;
+  z-index: 150;
 }

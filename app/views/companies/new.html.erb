@@ -17,7 +17,7 @@
 			<ul>
 				<% @company.errors.messages.values.each do |message|%>
 					<% message.each do |m| %>
-					<li> <%= m %> </li>
+					<li id="error_message" style="color: #0B213A"> <%= m %> </li>
 					<%end%>
 				<%end%>
 			</ul>

@@ -17,7 +17,17 @@
 
 			<li><%= link_to "Inicio", home_path %></li>
 
-			<h2>Cadastre um usuário</h2></br></br>
+			<h2>Cadastre um usuário</h2>
+
+				<% @user.errors.messages.values.each do |msg| %>
+					<% msg.each do |m| %>
+					<li id="error_message"><%= m %></li>
+					<%end %>
+				<% end %>
+
+				<% if flash[:error] -%>
+					<p class="error"><%= flash[:error] %></p>
+				<% end -%>
 
 			<%= form_for @user, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
 				<span>
@@ -36,15 +46,6 @@
 				</span></br></br>
 				<%= f.submit "Cadastrar", :id => "button" %>
 
-				<% @user.errors.messages.values.each do |msg| %>
-					<% msg.each do |m| %>
-					<li><%= m %></li>
-					<%end %>
-				<% end %>
-
-				<% if flash[:error] -%>
-					<p class="error"><%= flash[:error] %></p>
-				<% end -%>
 
 			<% end %>
 		</section>
