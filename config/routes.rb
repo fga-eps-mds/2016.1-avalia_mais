@@ -27,9 +27,6 @@ Rails.application.routes.draw do
  
   post '/company/new', controller: 'companies', action: 'create', :as => 'create_company'
 
-  #search routes
-  get '/search/search', :as => 'search'
-  post '/search/search', controller: 'search', action: 'index'
 
   #users
   post '/users/new', controller: 'users', action: 'create', :as => 'create_user'
@@ -44,7 +41,7 @@ Rails.application.routes.draw do
   post '/entry/enter', controller: 'entry', action: 'enter', :as => 'edit_entry'
 
   #segment
-   get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment' 
+  get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment' 
 
 
   #evaluation
