@@ -1,101 +1,102 @@
 
- <header id="header-logado">
+<header id="header-logado">
 
-        
-        <% if current_user %>
-            Bem vindo <%= current_user.name %>
-            <li><%= link_to "Inicio", home_path %></li>
-            <li><%= link_to "Sair", logout_path %></li>
-            <li><%= link_to "Cadastrar Empresa", company_new_path %></li>
-        <% else %>
-            <%= link_to "Entrar", login_path %>
-            <%= link_to "Cadastrar", :controller => :users, :action => :new %>
-        <% end %>
 
-        <%= image_tag("logo1.png", :alt => "logo") %>
-        <form action="#" method="post" class="forme-email">
-            <div class="input-mail">
-              <input type="text" class="input-subscrypt" placeholder="Buscar" >
-               <input type="image" width="25px" height="35px" class="butto-subscrypt" onsubmit="submit();" <%= image_tag("tool.svg", :alt => "logo") %> 
-              </div>
-            </form>
-        <nav id="menu-logado">
-        <ul>
-            <li><a href="">Categorias</a></li>&nbsp;&nbsp;&nbsp;
-			<li><a href="">Ranking</a></li>&nbsp;&nbsp;
-			<li class="pipe">|</li>&nbsp;&nbsp;
-			
-      <% if current_user %>
+  <% if logged_in? %>
+    Bem vindo <%= current_user.name %>
+    <li><%= link_to "Inicio", home_path %></li>
+    <li><%= link_to "Sair", logout_path %></li>
+    <li><%= link_to "Cadastrar Empresa", company_new_path %></li>
+  <% else %>
+    <%= link_to "Entrar", login_path %>
+    <%= link_to "Cadastrar", :controller => :users, :action => :new %>
+  <% end %>
+
+  <%= image_tag("logo1.png", :alt => "logo") %>
+  <form action="#" method="post" class="forme-email">
+    <div class="input-mail">
+      <input type="text" class="input-subscrypt" placeholder="Buscar" >
+      <input type="image" width="25px" height="35px" class="butto-subscrypt" onsubmit="submit();" <%= image_tag("tool.svg", :alt => "logo") %> 
+    </div>
+  </form>
+  <nav id="menu-logado">
+    <ul>
+      <li><a href="">Categorias</a></li>&nbsp;&nbsp;&nbsp;
+      <li><a href="">Ranking</a></li>&nbsp;&nbsp;
+      <li class="pipe">|</li>&nbsp;&nbsp;
+
+      <% if logged_in? %>
+
       <% else %>
-      <li><%= link_to "Entrar", :controller => :entry, :action => :enter %></li>
+        <li><%= link_to "Entrar", :controller => :entry, :action => :enter %></li>
       <% end %>
 
-        </ul>         
-        </nav>
-      </header>
+    </ul>         
+  </nav>
+</header>
 
 
 <section id="corpo">
   <h1>Perfil</h1><br>
   <hr SIZE="5" NOSHADE/>
-<section id="principal">
+  <section id="principal">
 
-<table>
-    <tr >
-      <th>Nome</th>
-      <td><%= @user.name %></td>
-      
-       <!--<td class="editar">Editar</td>-->
-      <% if current_user %>
-      <% else %>
-      <td class="editar"><%= link_to "Editar", user_edit_path(@user.id)%></td>
-      <% end %>
-    </tr>
+    <table>
+      <tr >
+        <th>Nome</th>
+        <td><%= @user.name %></td>
 
-    <tr>
-      <th>Apelido</th>
-      <td><%= @user.login %></td>
-       <td class="no-editar">Editar</td>
-    </tr>
-   
-   <tr >
-    <th>E-mail</th>
-     <td><%= @user.email %></td>
-      <td class="no-editar">Editar</td>
-    </tr>
-    
-    <tr >
-      <th>G&ecirc;nero</th>
-      <td > 
-        <% if @user.gender == "m" %>
-          <%="masculino"%> 
-        <% else %> 
-          <%="feminino"%>
-        <%end%>
-      </td>
-       <td class="editar">Editar</td>
-    </tr>
-    
-    <tr >
-      <th>Data Nascimento</th>
-      <td><%= @user.dateBirthday.to_s %></td>
-       <td class="editar">Editar</td>
-    </tr>
-  
-    <tr >
-      <th>Foto</th>
-      <td>Gesiel dos santos Freitas</td>
-       <td class="editar">Editar</td>
-    </tr>
-    
-    <tr>
-      <th>Senha</th>
-      <td><%= @user.password %></td>
-      <td class="editar">Editar</td>
-    </tr>
-</table>
+        <!--<td class="editar">Editar</td>-->
+        <% if current_user %>
+        <% else %>
+          <td class="editar"><%= link_to "Editar", user_edit_path(@user.id)%></td>
+        <% end %>
+      </tr>
 
-</section>
+      <tr>
+        <th>Apelido</th>
+        <td><%= @user.login %></td>
+        <td class="no-editar">Editar</td>
+      </tr>
+
+      <tr >
+        <th>E-mail</th>
+        <td><%= @user.email %></td>
+        <td class="no-editar">Editar</td>
+      </tr>
+
+      <tr >
+        <th>G&ecirc;nero</th>
+        <td > 
+          <% if @user.gender == "m" %>
+            <%="masculino"%> 
+          <% else %> 
+            <%="feminino"%>
+          <%end%>
+        </td>
+        <td class="editar">Editar</td>
+      </tr>
+
+      <tr >
+        <th>Data Nascimento</th>
+        <td><%= @user.dateBirthday.to_s %></td>
+        <td class="editar">Editar</td>
+      </tr>
+
+      <tr >
+        <th>Foto</th>
+        <td>Gesiel dos santos Freitas</td>
+        <td class="editar">Editar</td>
+      </tr>
+
+      <tr>
+        <th>Senha</th>
+        <td><%= @user.password %></td>
+        <td class="editar">Editar</td>
+      </tr>
+    </table>
+
+  </section>
 </section>
 
 </body>

@@ -2,38 +2,33 @@
 	<%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>
 
 	<header>
-        <span id="header-span-index">avalia&nbsp;
-        	<%= link_to :controller => :welcome, :action => :index do %>
-        	<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
-        	<% end %>
-        </span>
-    </header>
+    <span id="header-span-index">avalia&nbsp;
+    	<%= link_to :controller => :welcome, :action => :index do %>
+    	<%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
+    	<% end %>
+    </span>
+  </header>
 
-	<!-- <header>
-		<span><%= link_to :controller => :welcome, :action => :index do %>
-			<%= image_tag("logo2.png", :alt => "logo") %>
-		<% end %>
-		</span> -->
-
-        <nav id="menu_show_index">
-          <ul>
-              <li><a href="">Categorias</a></li>&nbsp;&nbsp;&nbsp;
-              <li><a href="">Ranking</a></li>&nbsp;&nbsp;
-              <li class="pipe">|</li>&nbsp;&nbsp;
-              
-              <% if current_user %>
-                Bem vindo <%= current_user.name %>&nbsp;&nbsp;&nbsp;
-                <li><%= link_to "Cadastrar Empresa", company_new_path %></li>&nbsp;&nbsp;&nbsp;&nbsp;
-                <li><%= link_to "Sair", logout_path %></li>
-              <% else %>
-                <li><%= link_to "Entrar", login_path %></li> &nbsp;ou&nbsp;
-                 <li><%= link_to "Cadastrar-se", :controller => :users, :action => :new %></li>&nbsp;&nbsp;&nbsp;
-                 <li><%= link_to "Cadastrar Empresa", company_new_path %></li>
-              <% end %>
-             
-          </ul>         
-        </nav>
-	</header>
+  <header>
+    <nav id="menu_show_index">
+      <ul>
+        <li><a href="">Categorias</a></li>&nbsp;&nbsp;&nbsp;
+        <li><a href="">Ranking</a></li>&nbsp;&nbsp;
+        <li class="pipe">|</li>&nbsp;&nbsp;
+        
+        <% if logged_in? %>
+          Bem vindo <%= current_user.name %>&nbsp;&nbsp;&nbsp;
+          <li><%= link_to "Cadastrar Empresa", company_new_path %></li>&nbsp;&nbsp;&nbsp;&nbsp;
+          <li><%= link_to "Sair", logout_path %></li>
+        <% else %>
+          <li><%= link_to "Entrar", login_path %></li> &nbsp;ou&nbsp;
+           <li><%= link_to "Cadastrar-se", :controller => :users, :action => :new %></li>&nbsp;&nbsp;&nbsp;
+           <li><%= link_to "Cadastrar Empresa", company_new_path %></li>
+        <% end %>
+         
+        </ul>         
+    </nav>
+  </header>
 
 	<section id="principal">
 		<h3>Aqui você pode bem mais</h3>

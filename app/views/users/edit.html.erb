@@ -1,23 +1,23 @@
 <h1>Atualize seus dados</h1>
 
-    <%= form_for(@user, :url => { :action => "update", params: {id: @user.id}} ) do |f| %>
+<%= form_for(@user, :url => { :action => "update", params: {id: @user.id}} ) do |f| %>
 
 
-      <%= f.label :Nome %>
-      <%= f.text_field :name, class: 'form-control' %>
+  <%= f.label :Nome %>
+  <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :Email %>
-      <%= f.email_field :email, class: 'form-control' %>
+  <%= f.label :Email %>
+  <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :Senha %>
-      <%= f.text_field :password, class: 'form-control' %>
+  <%= f.label :Senha %>
+  <%= f.text_field :password, class: 'form-control' %>
 
-      <%= f.label :Genero %>
-      <%= f.text_field :gender, class: 'form-control' %>
+  <%= f.label :Genero %>
+  <%= f.text_field :gender, class: 'form-control' %>
 
-      <%= f.label :Data %>
-      <%= f.date_select :dateBirthday %>
+  <%= f.label :Data %>
+  <%= f.date_select :dateBirthday %>
 
-  		<%= f.submit %>
+  <%= f.submit %>
 
-    <% end %>
+<% end %>
