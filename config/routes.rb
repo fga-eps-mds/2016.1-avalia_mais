@@ -1,26 +1,18 @@
 Rails.application.routes.draw do
 
-  get 'entry/enter'
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-
   #root
-  # root 'welcome#index'
-  root 'welcome#index', :as => 'index'
-  get 'home' => 'welcome#index'
+  root 'welcome#index', :as => 'home'
+  post '/company/search', controller: 'companies', action: 'search', :as => 'search_company'
 
   #general
   post "/upload", controller: 'parsers', action: 'upload'
   post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
   resources :parsers
 
-
   get  '/company/new' => 'companies#new'
   get  '/company/:id' => 'companies#show', :as => 'company'
-  post '/company/new' => 'companies#create'
+  get '/company/:search' => 'companies#search', :as => 'company_search'
+  post '/company/new' => 'companies#create', :as => 'create_company'
 
 
   #users
@@ -28,13 +20,22 @@ Rails.application.routes.draw do
   post  '/users/new'      => 'users#create', :as => 'create_user'
   get   '/users/:id'      => 'users#show', :as => 'user_show'
   get   '/users/edit/:id' => 'users#edit', :as => 'user_edit'
+
   patch '/users/update/', controller: 'users', action: 'update', :as => 'update_user'
+  patch '/users/update/', controller: 'users', action: 'update_password', :as => 'update_user_password'
+  patch '/users/destroy/', controller: 'users', action: 'destroy', :as => 'destroy_user_now'
+
 
   #login
   get    'login'  => 'sessions#new'
   post   'login'  => 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
+  #segment
+  get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment' 
+
+
+  #evaluation
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

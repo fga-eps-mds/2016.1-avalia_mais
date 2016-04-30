@@ -3,10 +3,12 @@
  	margin: 0;
  	padding: 0;
 }
+
 #header header {
 	width: 100%;
 	height: 30px;
 }
+
 #line {
 	position: fixed;
 	width: 100%;	
@@ -66,8 +68,31 @@ footer {
 	box-shadow: -2px -2px 1px #7F6F15;
 	color: #FFF;
 	font-size: 12px;
+  box-sizing: borddr-box;
+  margin: 0;
+  padding: 0;
+}
+
+#section-login {
+  padding-top: 10%;
+  text-align: center; 
+  height: 100%;
+  position: center;
+  top: 150px;
+  font-size: 20px;
+  z-index: 0;
   font-family: AvenirNext-Regular;
 }
+
+#title-new {
+  font-size: 40px;
+  color: #07213F;
+}
+
+.radio-btn {
+  width: 100px;
+}
+
 
 #radio {
 	text-align: center;
@@ -85,6 +110,20 @@ footer {
 	border-radius: 4px;
 	background: vertical-align;
 	background-color: #f44336;
+  text-align: center;
+  font-size: 25px;
+}
+
+#button {
+  text-align: center;
+  width: 10%;
+  font-size: 20px;
+  color: #FFF;
+  border: 0;
+  height: 40px;
+  border-radius: 4px;
+  background: vertical-align;
+  background-color: #f44336;
 }
 
 header#header-logado {
@@ -163,6 +202,7 @@ nav#menu-logado {
   background-color: #F0F0F0;
   width: 100%;
   height: 100%;
+  background-color: #F0F0F0;width: 100%;height: 100%;
   position: absolute;
 }
 
@@ -183,13 +223,47 @@ nav#menu-logado {
   margin-left: -400px;
 }
 
-table {
-    position: absolute;
-    top: 0px;
-    border-collapse:collapse;
-    width: 100%;
-     text-align: right;
+#principal_table {
+  position: relative;
+  width: 50%;
+  height: 50%;
+  top: 10%;
+  left: 25%;
+  z-index: 120;
 }
+
+hr {
+  width: 40px;
+  margin: auto;
+}
+#link-to-edit{
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+#button-edit{
+  text-align: center;
+  position: fixed;
+  top: 80%;
+  left: 47.5%;
+  width: 60px;
+  font-size: 16px;
+  color: #FFF;
+  border: 0;
+  height: 40px;
+  border-radius: 4px;
+  background: vertical-align;
+  background-color: #07213F;
+}
+
+table {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    text-align: right;
+}
+
 
 th {
   display: block;
@@ -232,4 +306,37 @@ hr {
   font-family: AvenirNext-Regular;
   color:  #FF0000;
   z-index: 150;
+}
+ 
+td{ text-decoration: none; color:#E3625F;; font-weight: bold;}
+td.editar{color: #0B213A; opacity: 0.9;}
+td.no-editar {color: #0B213A; opacity: 0.15;}
+hr{width: 40px; margin: auto;}
+.radio{display:inline;}  
+
+#nome-update, #genero-update, #date-update, #pass-old, #pass-new, #pass-confirme{
+     position: relative;
+    display:none;
+      width: 430px; margin: 60px auto; padding: 60px 30px;
+    background: #c9d0de; border: 1px solid #e1e1e1;
+    -moz-box-shadow: 0px 0px 8px #444;
+    -webkit-box-shadow: 0px 0px 8px #444;
+}
+
+#nome-update form, #genero-update form, #date-update form, #pass-update form{
+   background: #c9d0de;
+}
+.form-control{
+  width:250px;
+  min-width:200px;
+}
+.destroy-btn{
+  position: absolute;
+  left: 39.7137133%;
+}
+.error{
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  font-size: 20px;
 }

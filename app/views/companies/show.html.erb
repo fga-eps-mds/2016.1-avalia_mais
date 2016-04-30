@@ -49,8 +49,6 @@
   <h2><%= @company.segment.name %></h2>
 </div>
 
-<!--<%= image_tag("segments/artigos_esportivos.png", :alt => "segment image", :width => "80", :height => "80", :id => "image-segment") %>-->
-
 <div class="container">
   <div class="btn-group">
     <div class="btn geral">Geral</div>
@@ -93,21 +91,18 @@ $(".avaliacao").click(function(){
   $("#faq").hide("slow");
   $("#avaliacao").show("slow");
 });
-
 $(".geral").click(function(){
   $("#avaliacao").hide("slow");
   $("#forum").hide("slow");
   $("#faq").hide("slow");
   $("#description").show("slow");
 });
-
 $(".forum").click(function(){
   $("#avaliacao").hide("slow");
   $("#faq").hide("slow");
   $("#description").hide("slow");
   $("#forum").show("slow");
 });
-
 $(".faq").click(function(){
   $("#avaliacao").hide("slow");
   $("#forum").hide("slow");
