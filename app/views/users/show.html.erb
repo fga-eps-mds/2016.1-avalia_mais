@@ -1,32 +1,4 @@
-<header id="header-logado">
-
-  <%= image_tag("logo1.png", :alt => "logo") %>
-  <form action="#" method="post" class="forme-email">
-    <div class="input-mail">
-      <input type="text" class="input-subscrypt" placeholder="Buscar" >
-      <input type="image" width="25px" height="35px" class="butto-subscrypt" onsubmit="submit();" <%= image_tag("tool.svg", :alt => "logo") %> 
-    </div>
-  </form>
-  <nav id="menu-logado">
-    <ul>
-      <li><a href="">Categorias</a></li>&nbsp;&nbsp;&nbsp;
-      <li><a href="">Ranking</a></li>&nbsp;&nbsp;
-      <li class="pipe">|</li>&nbsp;&nbsp;
-
-      <% if logged_in? %>
-          Bem vindo <%= current_user.name %>
-          <li><%= link_to "Inicio", home_path %></li>
-          <li><%= link_to "Sair", logout_path %></li>
-          <li><%= link_to "Cadastrar Empresa", company_new_path %></li>
-      <% else %>
-          <%= link_to "Entrar", login_path %>
-          <%= link_to "Cadastrar", :controller => :users, :action => :new %>
-      <% end %>
-
-    </ul>         
-  </nav>
-</header>
-
+<%= render "navbar/navbar" %>
 <section id="corpo">
   <h1>Perfil</h1><br>
 <section id="principal">
@@ -92,7 +64,7 @@
     </tr>
     <tr>
       <td>Senha</td>
-      <td><%= @user.password %></td>
+      <td>*******</td>
       <td ><a href="javascript: void(0);" id="show-pass">Editar</a></td>
     </tr>
     <%= form_for(@user, remote: true,  :url => { :action => "update_password", params: {id: @user.id,email: @user.email, dateBirthday: @user.dateBirthday, login:@user.login, name: @user.name, genero: @user.gender}}) do |f| %>

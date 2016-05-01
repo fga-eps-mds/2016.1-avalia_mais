@@ -13,19 +13,19 @@
   top:0px;
 }
 
-#header-show > img:first-child{
+#header-show > img:first-child {
   margin-top:-10px;
   width: 50px;
   margin-left: 80px;
 }
 
-form.forme-email-show{
+form.forme-email-show {
     position: relative;
     margin-left: 150px;
     margin-top: -35px;
 }
 
-.input-subscript-show{
+.input-subscript-show {
   z-index: 100;
   width: 400px;
   height: 30px;
@@ -40,13 +40,13 @@ form.forme-email-show{
   font-family: AvenirNext-Regular;        
 }
 
-.button-subscript-show{
+.button-subscript-show {
   position: absolute;
   padding-top: 5px;
   margin-left: -30px;
 }
 
-nav#menu_show{
+nav#menu_show {
     position: relative;
     float:right;
     margin-right: 20px;
@@ -56,7 +56,7 @@ nav#menu_show{
     font-size: 16px;
 }
 
-#menu_show ul{
+#menu_show ul {
   list-style: none;
 }
 
@@ -74,19 +74,19 @@ nav#menu_show{
   color: #FF4040;
 }
 
-#menu_show ul li.pipe{
+#menu_show ul li.pipe {
   color:#FF4040;
 }
 
-#principal{
-    z-index: 120;
-    position: absolute;
-    width: 800px;
-    height: 350px;
-    left:50%;
-    top:50%;
-    margin-left: -400px;
-    margin-top:  -175px;
+#principal {
+  z-index: 120;
+  position: absolute;
+  width: 800px;
+  height: 350px;
+  left:50%;
+  top:50%;
+  margin-left: -400px;
+  margin-top:  -175px;
 }
 
 table {
@@ -119,7 +119,7 @@ td a{
   font-weight: bold;
 }
 
-tr.editar a{
+tr.editar a {
   opacity: 0.9;
 }
 
@@ -127,7 +127,7 @@ tr.no-editar a{
   opacity: 0.15;
 }
 
-hr{
+hr {
   width: 40px;
   margin: auto;
 }
@@ -251,7 +251,7 @@ body {
 
 }
 
-#name_company{
+#name_company {
   font-family: AvenirNext-Regular;
   font-size: 26px;
   color: #0B213A;
@@ -299,7 +299,7 @@ section p {
   top: 90px;
 }
 
-#name_segment h2{
+#name_segment h2 {
   font-family: AvenirNext-Regular;
   font-size: 19px;
   color: #001d89;

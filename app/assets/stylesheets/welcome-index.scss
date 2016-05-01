@@ -105,8 +105,9 @@ nav#menu {
 
 .button-subscript {
 	position: absolute;
-	padding-top: 12px;
+	padding-top: 25px;
 	margin-left: -40px;
+  z-index: 120;
 }
 
 #header-span-index {
