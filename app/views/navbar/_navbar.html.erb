@@ -2,7 +2,9 @@
 	<form action="#" method="post" class="navbar">
     <div class="navbar-search">
       <span class="nav-image">
-        <%= image_tag("AVALIA_LOGO.png", :alt => "logo", :width => "50", :height => "50") %>
+        <%= link_to :controller => :welcome, :action => :index do %>
+          <%= image_tag("AVALIA_LOGO.png", :alt => "logo", :width => "50", :height => "50") %>
+        <% end %>
       </span>
       <input type="text" class="input-search" placeholder="Buscar" >
       <input type="image" width="25px" height="35px" class="input-image" <%= image_tag("tool.svg", :alt => "logo") %>

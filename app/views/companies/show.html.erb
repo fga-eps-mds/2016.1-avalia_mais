@@ -47,10 +47,10 @@
 </section>
 
 <section id="description">
-  <% if @company.description == nil %>
-  <p>Essa empresa não possui uma descrição.</p>
+  <% if @company.description == nil || @company.description == "" %>
+    <p>Essa empresa não possui uma descrição.</p>
   <%else%>
-  <p><%= @company.description %></p>
+    <p><%= @company.description %></p>
   <%end%>
   
   <section id="stars_evaluations">
