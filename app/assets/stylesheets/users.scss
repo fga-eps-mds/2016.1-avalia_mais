@@ -46,20 +46,12 @@ footer {
 	font-size: 40px;
   color: #07213F;
 }
-
-.input-text {
-	padding-left: 16px;
-	font-size: 20px;
-	color: #999;
-}
-
 .radio-btn {
 	font-size: 20px;
 }
-
 .text {
 	padding-left: 16px;
-	font-size: 20px;
+	font-size: 18px;
 	background-color: rgba(0, 0, 0, 0.2);
 	width: 300px;
   height: 40px;
@@ -67,10 +59,7 @@ footer {
   border: 0;
 	box-shadow: -2px -2px 1px #7F6F15;
 	color: #FFF;
-	font-size: 12px;
-  box-sizing: borddr-box;
-  margin: 0;
-  padding: 0;
+  box-sizing: border-box;
 }
 
 #section-login {

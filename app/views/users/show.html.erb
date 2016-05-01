@@ -14,13 +14,13 @@
       <li class="pipe">|</li>&nbsp;&nbsp;
 
       <% if logged_in? %>
-        Bem vindo <%= current_user.name %>
-        <li><%= link_to "Inicio", home_path %></li>
-        <li><%= link_to "Sair", logout_path %></li>
-        <li><%= link_to "Cadastrar Empresa", company_new_path %></li>
+          Bem vindo <%= current_user.name %>
+          <li><%= link_to "Inicio", home_path %></li>
+          <li><%= link_to "Sair", logout_path %></li>
+          <li><%= link_to "Cadastrar Empresa", company_new_path %></li>
       <% else %>
-        <%= link_to "Entrar", login_path %>
-        <%= link_to "Cadastrar", :controller => :users, :action => :new %>
+          <%= link_to "Entrar", login_path %>
+          <%= link_to "Cadastrar", :controller => :users, :action => :new %>
       <% end %>
 
     </ul>         
