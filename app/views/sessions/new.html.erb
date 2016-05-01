@@ -1,20 +1,11 @@
-<link rel="stylesheet" type="text/css" href="entry.scss">
-<header id="header-enter">
-	<span>
-		avalia&nbsp;
-		<%= link_to :controller => :welcome, :action => :index do %>
-		<%= image_tag("logo3.png", :alt => "logo") %>
-		<% end %>
-	</span>
-</header>
+<%= render "navbar/navbar" %>
+
 <%= image_tag("fundoPrincipal.png", :alt => "img", :class => "img") %>
 <section id="line"></section>
 
 <section id="section-form">
 
 	<%= form_for(:session, url: login_path) do |f| %>
-
-		<li><%= link_to "Inicio", home_path %></li>
 
 		<h1>Login</h1></br>
 		<%= f.text_field :login, :class => "text" , :placeholder => "Apelido ou e-mail" %></br></br>

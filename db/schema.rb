@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20160425015736) do
     t.integer  "logo_file_size",    limit: 4
     t.datetime "logo_updated_at"
     t.integer  "uf_id",             limit: 4
-    t.string   "segment",           limit: 255
   end
 
   add_index "companies", ["segment_id"], name: "index_companies_on_segment_id", using: :btree
