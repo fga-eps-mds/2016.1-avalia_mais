@@ -1,81 +1,7 @@
-*{
-  margin: 0px;
-  padding: 0px;
-}
-
-#header-show {
-  width: 100%;
-  position: absolute;
-  height: 50px;
-  margin-bottom: 5px;
-  background-color: #07213F;
-  z-index: 100;
-  top:0px;
-}
-
-#header-show > img:first-child {
-  margin-top:-10px;
-  width: 50px;
-  margin-left: 80px;
-}
-
 form.forme-email-show {
-    position: relative;
-    margin-left: 150px;
-    margin-top: -35px;
-}
-
-.input-subscript-show {
-  z-index: 100;
-  width: 400px;
-  height: 30px;
-  color: #FFF;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  border: 1px solid #E3625f;
-  padding-left: 10px;
-  background-color: rgba(0, 0, 0, 0.2);
-  font-size: 15px;
-  font-family: AvenirNext-Regular;        
-}
-
-.button-subscript-show {
-  position: absolute;
-  padding-top: 5px;
-  margin-left: -30px;
-}
-
-nav#menu_show {
-    position: relative;
-    float:right;
-    margin-right: 20px;
-    z-index: 100;
-    margin-top:-30px;
-    color: #CCC;
-    font-size: 16px;
-}
-
-#menu_show ul {
-  list-style: none;
-}
-
-#menu_show ul li{
-  margin-top: 9px;
-  display: inline-block;
-}
-#menu_show ul li a{
-  font-family: AvenirNext-Regular;
-  color: #CCC;
-  text-decoration: none;
-}
-
-#menu_show ul li a:hover{
-  color: #FF4040;
-}
-
-#menu_show ul li.pipe {
-  color:#FF4040;
+  position: relative;
+  margin-left: 150px;
+  margin-top: -35px;
 }
 
 #principal {
@@ -214,10 +140,6 @@ hr {
   transition: stroke-dashoffset 1s cubic-bezier(0, 0.8, 0.2, 1);
   stroke-width: 1;
 }
-body {
-  margin: 0;
-  padding: 0;
-}
 .container {
   font-family: sans-serif;
   font-weight: 300;
@@ -248,7 +170,6 @@ body {
   font-family: AvenirNext-Regular;
   font-size: 16px;
   color: #848484;
-
 }
 
 #name_company {
@@ -285,7 +206,6 @@ section p {
   text-align: justify;
   margin-left: 40px;
 }
-
 
 #image-company {
   position: absolute; 

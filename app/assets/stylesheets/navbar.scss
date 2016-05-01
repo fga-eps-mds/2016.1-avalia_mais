@@ -5,7 +5,8 @@ header .navbar{
   height: 50px;
   margin-bottom: 5px;
   background-color: #07213F;
-  z-index: 100;
+  z-index: 200;
+  border-radius: 0px;
 }
 
 header .navbar > img:first-child {
@@ -66,7 +67,7 @@ header .navbar > img:first-child {
 }
 
 #navbar-menu ul li.pipe{
-  color:#FF4040;
+  color: #FF4040;
 }
 
 .nav-image{

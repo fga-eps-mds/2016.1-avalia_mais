@@ -1,8 +1,10 @@
 <%= render "navbar/navbar" %>
 
-<section id="corpo">
-  <section id="principal"> 
+<section class="show-segments">
     <div id="trans">
+
+      <h1>Empresas por Categoria</h1>
+
       <% @segment.each do |s| %>
         <% total = 0%>
         <% @company.each do |f| %>
@@ -12,16 +14,16 @@
         <%end%>
 
         <% if total > 0 %>
-          <h2><span><%=s.name%></span><span><%=total%></span></h2>
+          <h2><span><%=s.name%></span> (<span style="color: #FF4040"><%=total%></span>)</h2>
           <% @company.each do |f| %>
             <% if s.id == f.segment_id %>
-              <span> <%=link_to f.name, f%></span></br>
+              <span class ="link-to-company"><%=link_to f.name, f%></span></br>
             <%end%>
           <%end%>
         <%end%>
-      <%end%>  
+      <%end%>
+      </br></br></br>  
     </div>
-  </section> 
 <section>
 
  
