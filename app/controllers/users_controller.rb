@@ -52,10 +52,11 @@ class UsersController < ApplicationController
 	
 	# Deleting user 
 	def destroy
- 		@user = User.find(params[:id])
- 		@user.destroy
+		session[:user_id] = nil
+ 		user = User.find(params[:id])
+ 		user.destroy
 	
-		redirect_to :action => "new"
+		redirect_to home_path
 
 	end
 

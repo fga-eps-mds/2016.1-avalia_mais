@@ -202,13 +202,13 @@ nav#menu-logado {
   color:#0B213A
 }
 
-#corpo#principal {
+#principal-user-show {
   z-index: 120;
   position: absolute;
   width: 800px;
   height: 350px;
   left:50%;
-  top:50%;
+  top:28%;
   margin-left: -400px;
 }
 
@@ -297,11 +297,28 @@ hr {
   z-index: 150;
 }
  
-td{ text-decoration: none; color:#E3625F;; font-weight: bold;}
-td.editar{color: #0B213A; opacity: 0.9;}
-td.no-editar {color: #0B213A; opacity: 0.15;}
-hr{width: 40px; margin: auto;}
-.radio{display:inline;}  
+.attribute-name{ 
+  text-decoration: none; 
+  color:#07213F; 
+  font-weight: bold;
+}
+
+td.editar{
+  color: #0B213A; 
+  opacity: 0.9;
+}
+
+td.no-editar {
+  color: #0B213A; 
+  opacity: 0.15;
+}
+hr{
+  width: 40px;
+  margin: auto;
+}
+.radio{
+  display:inline;
+}  
 
 #nome-update, #genero-update, #date-update, #pass-old, #pass-new, #pass-confirme{
      position: relative;

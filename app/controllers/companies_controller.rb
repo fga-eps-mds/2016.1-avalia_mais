@@ -23,7 +23,6 @@ class CompaniesController < ApplicationController
 	end
 	
 	def search
-  		#company = Company.find_by(name: params[:company][:name])
   		@company = Company.where("name LIKE :search", :search => "%#{params[:company][:search]}%")
   		render "search"
   		

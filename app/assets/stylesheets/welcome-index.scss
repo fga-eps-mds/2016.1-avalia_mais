@@ -18,7 +18,7 @@
 	src:url(fonts/AvenirNextLTPro-Demi.otf);
 }
 
-#teste {
+#index-body {
 	margin-right: 0px;
 	margin-left: 0px;
 	margin-top: 0px;
@@ -29,14 +29,14 @@
 
 #gradienteTeste {
 	position: fixed;
-  	z-index: 100;
-  	width: 100%;
-  	height: 100%;
-  	top: 0;
-  	opacity: 0.92;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  opacity: 0.92;
 	background-image: -webkit-linear-gradient(320deg, #07213F 0%, #0E2E51 47%, #06203D 100%);
-   	background-image: -o-linear-gradient(320deg, #07213F 0%, #0E2E51 47%, #06203D 100%);
-   	background-image: linear-gradient(50deg, #07213F 0%, #0E2E51 47%, #06203D 100%);
+  background-image: -o-linear-gradient(320deg, #07213F 0%, #0E2E51 47%, #06203D 100%);
+  background-image: linear-gradient(50deg, #07213F 0%, #0E2E51 47%, #06203D 100%);
 }
 
 nav#menu {
