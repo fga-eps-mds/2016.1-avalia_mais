@@ -8,7 +8,7 @@
       <td><%= @user.name %></td>
       <td ><a href="javascript: void(0);" id="show">Editar</a></td>
     </tr>
-    <tr id="nome-update">
+    <tr id="nome-update" class="user-infos">
           <%= form_for(@user, remote: true,  :url => { :action => "update", params: {id: @user.id,email: @user.email, password: @user.password, login:@user.login, dateBirthday: @user.dateBirthday, genero: @user.gender}} ) do |f| %>
              <td class="form-update"></td>
             <td class="form-update"><%= f.text_field :name, class: 'form-control'%></td>
@@ -91,23 +91,54 @@
 
 </section>
 <script>
-        $("#show").click(function(){
-          $("#nome-update").toggle("fast");
-        });
 
-        $("#atualizar").click(function(){
-           $("#nome-update").hide();
-         });
+    var count = 0;
+
+        $("#show").click(function(){
+          $("#nome-update").toggle("slow");
+          if(count == 0){
+            $("#show").text("cancelar");
+            count = 1;
+          }else{
+            $("#show").text("Editar");
+            count = 0;
+          }
+        });
+        
         $("#show-genero").click(function(){
           $("#genero-update").toggle("slow");
+          if(count == 0){
+            $("#show-genero").text("cancelar");
+            count = 1;
+          }else{
+            $("#show-genero").text("Editar");
+            count = 0;
+          }
         }); 
+
         $("#show-date").click(function(){
           $("#date-update").toggle("slow");
+          if(count == 0){
+            $("#show-date").text("cancelar");
+            count = 1;
+          }else{
+            $("#show-date").text("Editar");
+            count = 0;
+          }
         });
+
         $("#show-pass").click(function(){
           $("#pass-old").toggle("slow");
           $("#pass-new").toggle("slow");
           $("#pass-confirme").toggle("slow");
+          if(count == 0){
+            $("#show-pass").text("cancelar");
+            count = 1;
+          }else{
+            $("#show-pass").text("Editar");
+            count = 0;
+          }
         }); 
+
 </script>
 </body>
