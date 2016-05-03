@@ -19,7 +19,6 @@ class UsersController < ApplicationController
 	
 	# Creating new user
 	def create
-
 	 	@user = User.new(user_params)
 
 
@@ -43,11 +42,11 @@ class UsersController < ApplicationController
 	end
 
 	def user_params
-		params[:user].permit(:name, :email, :password, :password_confirmation,:login, :dateBirthday, :gender)
+		params[:user].permit(:name, :email, :password, :password_confirmation,:login, :dateBirthday, :gender, :uf_id)
 	end
 	
 	def user_params_update
-		params[:user].permit(:name, :email, :password,:login, :dateBirthday, :gender)
+		params[:user].permit(:name, :email, :password,:login, :dateBirthday, :gender, :uf_id)
 	end
 	
 	# Deleting user 
@@ -75,12 +74,4 @@ class UsersController < ApplicationController
       		format.js # views/users/update.js.erb
     	end
   	end
-
-  	def user_params
-		params[:user].permit(:name, :email, :password,:password_confirmation,:login, :dateBirthday, :gender)
-	end
-
-	def user_params_update
-		params[:user].permit(:name, :email, :password,:login, :dateBirthday, :gender)
-	end
 end

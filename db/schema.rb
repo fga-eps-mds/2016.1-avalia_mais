@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20160425015736) do
     t.string   "image",           limit: 255
     t.boolean  "active"
     t.boolean  "admin"
-    t.string   "uf",              limit: 255
+    t.integer  "uf_id",           limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end

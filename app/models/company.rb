@@ -1,17 +1,6 @@
 class Company < ActiveRecord::Base
     has_many :evaluations
     belongs_to :segment
-    
-    def self.search(search)
-        debugger
-        print search
-        if search.blank?
-            where("name LIKE ?", "%#{search}%")
-            #redirecionar para a página de listar páginas
-        else
-            #flash[:notice] = 'Busca não encontrada!'
-        end
-    end
 
     #validations to register a company
     #image logo

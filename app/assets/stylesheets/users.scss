@@ -46,6 +46,19 @@ footer {
 	font-size: 40px;
   color: #07213F;
 }
+#section-form select {
+  padding-left: 16px;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height: 40px;
+  border-radius: 8px;
+  border: 0;
+  box-shadow: -2px -2px 1px #7F6F15;
+  color: #FFF;
+  box-sizing: border-box;
+}
+
 .radio-btn {
 	font-size: 20px;
 }
@@ -79,7 +92,7 @@ footer {
 }
 
 .radio-btn {
-  width: 100px;
+  width: 55px;
 }
 
 

@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :image
       t.boolean :active
       t.boolean :admin
-      t.string :uf
+      t.integer :uf_id
 
       t.timestamps null: false
     end
