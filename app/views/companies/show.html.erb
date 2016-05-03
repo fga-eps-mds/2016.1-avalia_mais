@@ -35,7 +35,14 @@
 </div>
 
 <section id="avaliacao">
-  <p>Avaliacao da Empresa - Não Implementado</p> 
+  <div class="barra">
+  <span class="bg"></span>
+  <div class="estrelas">
+      <% for e in 1..5 do %>    
+        <span class="star" id="<%=e%>"><span class="starAbsolute"></span></span>
+        <%end%>
+  </div>
+</div> 
 </section>
 
 <section id="forum">
@@ -85,4 +92,27 @@ $(".faq").click(function(){
   $("#description").hide("slow");
   $("#faq").show("slow");
 });
+
+
+  $('.star').on('mouseover', function(){
+    var indice = $('.star').index(this);
+    $('.star').removeClass('full');
+    for (var i = 0; i <= indice; i++) {
+      $('.star:eq('+i+')').addClass('full');
+    }
+  });
+  $('.star').on('mouseout', function(){
+      for (var i = 0; i <= indice; i++) {
+      $('.star:eq('+i+')').removeClass('full');
+    }
+  });
+  $('.star').on('click', function(){
+    var ponto = $(this).attr('id');
+    alert(ponto);
+    for (var i = 0; i <= indice; i++) {
+      $('.star:eq('+i+')').addClass('full');
+    }
+    
+  });
+
 </script>
