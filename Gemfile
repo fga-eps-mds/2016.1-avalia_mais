@@ -44,6 +44,7 @@ group :development, :test do
   gem "rspec-rails", ">= 2.0.1"
   gem 'cucumber-rails'
   gem 'database_cleaner'
+  gem 'selenium-webdriver', '~> 2.53'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
