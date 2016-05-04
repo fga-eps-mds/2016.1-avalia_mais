@@ -41,6 +41,9 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'metric_fu', '~> 4.12'
 
 group :development, :test do
+  gem "rspec-rails", ">= 2.0.1"
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
