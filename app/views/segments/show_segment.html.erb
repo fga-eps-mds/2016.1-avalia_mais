@@ -1,15 +1,18 @@
 
 <%= render "navbar/navbar" %>
 
+<div class="container show-segments>">
+<% segmentos  = 0%>
 <% @segment.each do |s| %>
         <% total = 0%>
+        <% segmentos = segmentos + 1%>
         <% @company.each do |f| %>
           <% if s.id == f.segment_id %>
             <% total = total +1 %>
           <%end%>
         <%end%>
         <% if total > 0 %>
-<div class="container show-segments">
+
  <div class="well col-sm-12 col-md-8 col-md-offset-2">
         <div class="row user-row">
             <div class="col-md-1" id="logo_segment">
@@ -19,11 +22,11 @@
             <div class="col-md-10 title-segment">
                 <strong><%=s.name%></strong><br>
             </div>
-            <div class="col-md-1 dropdown-user" data-for=".cyruxx">
-                (<span style="color: #FF4040"><%=total%></span>)<i class="glyphicon glyphicon-chevron-down text-muted"></i>
+            <div class="col-md-1 dropdown-user" data-for=".cyruxx-<%=segmentos%>">
+                (<span style="color: #FF4040"><%=total%></span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down") %>
             </div>
         </div>
-        <div class="row user-infos cyruxx">
+        <div class="row user-infos cyruxx-<%=segmentos%>">
             <div class="col-sm-10 col-md-10 col-md-offset-1">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
@@ -31,19 +34,21 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-6">
-                                <table class="table table-condensed table-responsive table-user-information">
-                                    <tbody>
-                                    <tr>
+                            <div class="col-md-10">
+                              <!--  <table class="table table-condensed table-responsive table-user-information">-->
+                                <ul>
+                                   
                                         <% @company.each do |f| %>
-                                        <% if s.id == f.segment_id %>
-                                        <td><%=link_to f.name, f%></td>
+                                            <% if s.id == f.segment_id %>
+                                                
+                                                    <li><%=link_to f.name, f%></li>
+                                                
+                                        
+                                             <%end%>
                                         <%end%>
-                                        <%end%>
-                                      </tr>
-                                    
-                                    </tbody>
-                                </table>
+                                      
+                                     
+                               </ul>
                             </div>
                         </div>
                     </div>
@@ -51,64 +56,27 @@
             </div>
         </div>
   </div>
+  
+  <%end%>
+  <%end%>
   </div>
-  <%end%>
-  <%end%>
   <script> 
-  //$(document).ready(function() {
-    var panels = $('.user-infos');
-    var panelsButton = $('.dropdown-user');
-    panels.hide();
+  // $(document).ready(function() {
+     $(".user-infos").hide();
+    
+    /*var panelsButton = $('.dropdown-user');
 
     //Click dropdown
-    panelsButton.click(function() {
+    */
+    $(".dropdown-user").click(function() {
         //get data-for attribute
         var dataFor = $(this).attr('data-for');
         var idFor = $(dataFor);
 
         //current button
         var currentButton = $(this);
-        idFor.slideToggle(400, function() {
-            //Completed slidetoggle
-            if(idFor.is(':visible'))
-            {
-                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
-            }
-            else
-            {
-                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
-            }
-        })
-  //  });
-
-
-    $('[data-toggle="tooltip"]').tooltip();
+         idFor.slideToggle(400, function() {
+        });
+    });   
 
   </script>
-  <!--
-      <section class="show-segments">
-    <div>
-
-      <h1>Empresas por Categoria</h1>
-
-      <% @segment.each do |s| %>
-        <% total = 0%>
-        <% @company.each do |f| %>
-          <% if s.id == f.segment_id %>
-            <% total = total +1 %>
-          <%end%>
-        <%end%>
-
-        <% if total > 0 %>
-          <h2><span><%=s.name%></span> (<span style="color: #FF4040"><%=total%></span>)</h2>
-          <% @company.each do |f| %>
-            <% if s.id == f.segment_id %>
-              <span class ="link-to-company"><%=link_to f.name, f%></span></br>
-            <%end%>
-          <%end%>
-        <%end%>
-      <%end%>
-      </br></br></br>  
-    </div>
-<section>
--->
