@@ -1,7 +1,6 @@
 
 <%= render "navbar/navbar" %>
-
-<div class="container show-segments>">
+<div class="container show-segments">
 <% segmentos  = 0%>
 <% @segment.each do |s| %>
         <% total = 0%>
@@ -35,7 +34,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-10">
-                              <!--  <table class="table table-condensed table-responsive table-user-information">-->
+                        
                                 <ul>
                                    
                                         <% @company.each do |f| %>
@@ -61,19 +60,13 @@
   <%end%>
   </div>
   <script> 
-  // $(document).ready(function() {
-     $(".user-infos").hide();
-    
-    /*var panelsButton = $('.dropdown-user');
 
-    //Click dropdown
-    */
+     $(".user-infos").hide();
     $(".dropdown-user").click(function() {
-        //get data-for attribute
         var dataFor = $(this).attr('data-for');
         var idFor = $(dataFor);
 
-        //current button
+    
         var currentButton = $(this);
          idFor.slideToggle(400, function() {
         });
