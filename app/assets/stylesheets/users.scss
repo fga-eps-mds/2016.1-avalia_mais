@@ -32,14 +32,23 @@ footer {
 }
 
 #section-form {
-	padding-top: 10%;
-	text-align: center; 
-	height: 100%;
-	position: center;
-	top: 150px;
+	position: absolute;
+  text-align: center;
+	height: 70%; 
+  width: 80%;
+  left: 10%;
+  top: 10%;
 	font-size: 20px;
 	z-index: 0;
   font-family: AvenirNext-Regular;
+}
+#section-form#erro-message{
+  position: relative;
+  text-align: left;
+  z-index: 2;
+}
+#form-new-user{
+  text-align: center;
 }
 
 #section-form h2 {
@@ -358,4 +367,8 @@ hr{
   top: 5%;
   left: 50%;
   font-size: 20px;
+}
+.field_with_errors{
+  display: inline;
+  padding-right: 5px;
 }
