@@ -25,12 +25,16 @@
   <h2><%= @company.segment.name %></h2>
 </div>
 
+
+
 <div class="container">
   <div class="btn-group">
-    <div class="btn geral">Geral</div>
-    <div class="btn avaliacao">Avaliações</div>
-    <div class="btn forum">Fórum</div>
-    <div class="btn faq">FAQ</div>
+    
+    <div id = "geral-js" class="btn geral">Geral</div>
+    <div id = "avaliacao-js" class="btn avaliacao">Avaliações</div>
+    <div id = "forum-js" class="btn forum">Fórum</div>
+    <div id = "faq-js" class="btn faq">FAQ</div>
+   
   </div>
 </div>
 
@@ -59,15 +63,15 @@
   <%else%>
     <p><%= @company.description %></p>
   <%end%>
-  
+ </section>
+
   <section id="stars_evaluations">
     <%= image_tag("star3.jpeg") %>
     <h2>(0 Avaliações)</h2>
   </section>
 </section>
 
-
-<script>
+<script id = 'js-options'>
 $(".avaliacao").click(function(){
   $("#description").hide("slow");
   $("#forum").hide("slow");

@@ -1,5 +1,4 @@
 #require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
-
 Given (/^I am on the log in page$/) do
 	visit 'http://localhost:3000/login'
 end
