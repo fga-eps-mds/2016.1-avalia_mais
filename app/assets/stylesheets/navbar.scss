@@ -109,8 +109,10 @@ header .navbar > img:first-child {
         font-size: 30px;
         color: #FFF;
         font-family: Impact;
-        margin-top: -10px;
+        margin-top: -2px;
         margin-left: 40px;
+        padding-right: 0px;
+        margin-right: 0px;
       }
 
       header ul {
@@ -150,11 +152,12 @@ header .navbar > img:first-child {
 
       }
       nav ul li:hover ul {
+      background-color: rgb(226,226,226);
       display: block;
-      margin-top: -1px;
+      margin-top: 0px;
       }
        nav ul li ul li a:hover{
-    background-color: rgb(226,226,226);
+    
     }
   nav ul li ul li a{
   width: inherit;
@@ -174,7 +177,6 @@ header .navbar > img:first-child {
   background-color: rgba(0, 0, 0, 0.2);
   font-size: 16px;
   letter-spacing: 1px;
-  margin-left: 105px;
   margin-top: 7px;   
 }
 
@@ -183,13 +185,27 @@ header .navbar > img:first-child {
   padding-top: 10px;
   margin-left: -30px;
 }
+@media screen and (max-width: 1093px) {
+.input-search{
+    width: 250px;
+  }
+
+}
+@media screen and (max-width: 943px) {
+.input-search{
+    display: none;
+  }
+   .input-image{
+    display: none;
+  }
+}
 @media screen and (max-width: 767px) {
   header nav {
     position: fixed;
     top: 0;
     right: 10px;
     bottom: 0;
-    width: 250px;
+    width: 200px;
     border-left: 1px solid #ccc;
     background: #fff;
     overflow-x: auto;
@@ -211,7 +227,7 @@ header .navbar > img:first-child {
   }
 
   header li a {
-    padding: 15px 10px;
+    padding: 5px 5px;
   }
 
   header li a:hover {

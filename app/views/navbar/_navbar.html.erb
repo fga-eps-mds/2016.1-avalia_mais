@@ -7,12 +7,12 @@
     <input type="checkbox" id="control-nav" />
     <label for="control-nav" class="control-nav"></label>
     <label for="control-nav" class="control-nav-close"></label>
-           
-    <nav class="navbar-right" role="navigation">
       <form action="" class="navbar-form navbar-left" role="search">
         <input type="text" class="input-search" placeholder="Buscar" >
         <input type="image" width="25px" height="35px" class="input-image" <%= image_tag("tool.svg", :alt => "logo") %>
-      </form>
+      </form>     
+    <nav class="navbar-right" role="navigation">
+      
       <ul class="list-auto navbar-right">
           <li><%= link_to "Inicio",:controller => :welcome, :action => :index%></li>
           <li>
@@ -23,7 +23,7 @@
           </li>
           <li class="pipe">|</li>
           <% if logged_in? %>
-            <li><a href="#">olá, <%= current_user.name %></a> 
+            <li><a href="#">Bem-Vindo, <%= current_user.name%></a> 
               <ul> 
                 <li>
                   <%= link_to "Perfil", :controller => "users", :action => :show ,:id => current_user.id %>
