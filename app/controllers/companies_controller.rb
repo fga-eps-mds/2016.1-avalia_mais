@@ -8,6 +8,9 @@ class CompaniesController < ApplicationController
 
 	def show
 		@company = Company.find(params[:id])
+		if logged_in?
+			@current_evaluation = current_user.evaluations.find_by(company_id: @company.id)
+		end
 	end
 
 	def create
