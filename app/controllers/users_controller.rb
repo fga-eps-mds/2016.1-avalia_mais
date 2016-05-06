@@ -48,6 +48,10 @@ class UsersController < ApplicationController
 	def user_params_update
 		params[:user].permit(:name, :email, :password,:login, :dateBirthday, :gender, :uf_id)
 	end
+
+	def password_params
+		params[:user].permit(:password, :password_confirmation)
+	end
 	
 	# Deleting user 
 	def destroy
@@ -66,12 +70,26 @@ class UsersController < ApplicationController
 
     	if @user.update_attributes(user_params)
     		respond_to do |format| format.html {redirect_to :action => "show",:id => @user.id}
-	    		flash[:success] = "Profile updated"
+	    		flash[:notice] = "Perfil atualizado"
 	    		format.js # views/users/update.js.erb
     		end
     	else
       		render 'edit'
       		format.js # views/users/update.js.erb
     	end
+  	end
+
+  	def update_password
+  		@user = User.find(params[:id])
+  		if  @user.authenticate(params[:user][:password_older])
+  			if @user.update_attributes(password_params)
+  				flash[:notice] = 'Senha atualizada com sucesso!'
+  			else
+  				flash[:notice] = 'Senha de confirmação invalida!'
+  			end
+  		else
+  			flash[:notice] = 'Senha invalida!'
+  		end
+  		redirect_to :action => "show",:id => @user.id
   	end
 end

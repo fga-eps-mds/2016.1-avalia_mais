@@ -1,9 +1,10 @@
 .container{
 	position: absolute;
 	font-family: AvenirNext-Regular;
-	top: 300px;
+	top: 400px;
+	z-index:1;
+	height: 100%;
 }
-/*.user-infos{display: none;}*/
 
 .show-segments h1 {
 	color: #07213F;

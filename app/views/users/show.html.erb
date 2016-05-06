@@ -1,5 +1,8 @@
 <%= render "navbar/navbar" %>
 <section id="corpo">
+  <% if flash[:notice] -%>
+          <p class="error"><%= flash[:notice] %></p>
+  <% end -%>
   <h1>Perfil</h1><br>
 <section id="principal-user-show">
 <table class="table">
@@ -67,10 +70,14 @@
       <td>*******</td>
       <td ><a href="javascript: void(0);" id="show-pass">Editar</a></td>
     </tr>
-    <%= form_for(@user, remote: true,  :url => { :action => "update_password", params: {id: @user.id,email: @user.email, dateBirthday: @user.dateBirthday, login:@user.login, name: @user.name, genero: @user.gender}}) do |f| %>
-
+    <%= form_for(@user,  url: update_user_password_path, params: {id: @user.id}) do |f| %>
+      <tr id="pass-older">
+             <td class="form-update attribute-name">Senha atual</td>
+            <td class="form-update"><%= f.password_field :password_older%></td>
+            <td></td>
+      </tr>
       <tr id="pass-new">
-             <td class="form-update attribute-name">Nova Senha</td>
+             <td class="form-update attribute-name">Nova senha</td>
             <td class="form-update"><%= f.password_field :password%></td>
             <td></td>
       </tr>
@@ -79,9 +86,7 @@
             <td class="form-update"><%= f.password_field :password_confirmation%></td>
             <td id="atualizar"><%= f.submit "Atualizar" %></td>
       </tr>
-      <% if flash[:error] -%>
-          <p class="error"><%= flash[:error] %></p>
-      <% end -%>
+      
     <% end %>
     </table>
     <%= form_for(@user, :url => { :action => "destroy", params: {id: @user.id}} ) do |f| %>
@@ -97,7 +102,7 @@
         $("#show").click(function(){
           $("#nome-update").toggle("slow");
           if(count == 0){
-            $("#show").text("cancelar");
+            $("#show").text("Cancelar");
             count = 1;
           }else{
             $("#show").text("Editar");
@@ -108,7 +113,7 @@
         $("#show-genero").click(function(){
           $("#genero-update").toggle("slow");
           if(count == 0){
-            $("#show-genero").text("cancelar");
+            $("#show-genero").text("Cancelar");
             count = 1;
           }else{
             $("#show-genero").text("Editar");
@@ -119,7 +124,7 @@
         $("#show-date").click(function(){
           $("#date-update").toggle("slow");
           if(count == 0){
-            $("#show-date").text("cancelar");
+            $("#show-date").text("Cancelar");
             count = 1;
           }else{
             $("#show-date").text("Editar");
@@ -128,11 +133,12 @@
         });
 
         $("#show-pass").click(function(){
-          $("#pass-old").toggle("slow");
+
+          $("#pass-older").toggle("slow");
           $("#pass-new").toggle("slow");
           $("#pass-confirme").toggle("slow");
           if(count == 0){
-            $("#show-pass").text("cancelar");
+            $("#show-pass").text("Cancelar");
             count = 1;
           }else{
             $("#show-pass").text("Editar");
