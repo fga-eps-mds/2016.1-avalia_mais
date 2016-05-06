@@ -3,7 +3,6 @@ Feature: Show company
 	As a vistor
 	I will search for a company
 
-	@javascript
 	Scenario: User did not logged in
 		Given I am at home page
 		And I fill in "Buscar" with "nike"
@@ -15,7 +14,6 @@ Feature: Show company
 	Scenario: User will login and create a new company
 		Given I am at login page
 		And I will login as "Empresario" 
-		Then the initial page should load with notice message "Login realizado com sucesso"
 		And I will click on 'Cadastrar Empresa'
 		And I will register my company
 		Then I should be redirect to my company page

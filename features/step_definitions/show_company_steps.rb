@@ -49,10 +49,6 @@ Then (/^I should be redirect to Nike page$/) do
 	expect(page).to have_content("Nike")
 end
 
-Then (/^the initial page should load with notice message "Login realizado com sucesso"/) do
-	expect(page).to have_content("Login realizado com sucesso")
-end
-
 Then (/^the page should have a link named "Nike"/) do
 	expect(page).to have_content("Nike")
 end
