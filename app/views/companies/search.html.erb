@@ -8,7 +8,7 @@
      	<%if @company.present? %>
      		<h2>Empresas encontradas com o termo "<%= params[:company][:search]%>"</h2>
 			<% @company.each do |c|%>
-				<p><%= link_to c.name, c %></p>
+				<p><%= link_to c.name, c , :id => params[:company][:name] %></p>
 			<%end%>
 		<%else%>
 			<h2>Nenhuma Empresa encontrada com o termo "<%= params[:company][:search]%>".</h2>
