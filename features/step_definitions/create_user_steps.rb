@@ -1,0 +1,67 @@
+#Scenario 1
+
+And (/^I will press on "Entrar" link$/) do
+	click_link("Entrar")
+end
+
+And (/^I will be redirect to login page$/) do
+	visit 'http://localhot:3000/login'
+end
+
+And (/^I will press "Cadastrar" button$/) do
+	click_link('Cadastrar')
+end
+
+And (/^I will be redirect to sign up page$/) do
+	visit 'http://localhot:3000/users/new'
+end
+
+And (/^I will fill "UsuarioTeste" in complete name/) do
+	fill_in 'user_name', :with => 'UsuarioTeste'
+end
+
+And (/^I will fill "teste" in nike name$/) do
+	fill_in 'user_login', :with => 'teste'
+end
+
+And (/^I will fill "123456" in password$/) do
+	fill_in 'user_password', :with => '1223456'
+end
+
+And (/^I will fill "123456" in confirm password$/) do
+	fill_in 'user_password_confirmation', :with => '123456'
+end
+
+And (/^I will fill "teste@email.com" in email$/) do
+	fill_in 'user_email', :with => 'teste@email.com'
+end
+
+And (/^I will fill "10-05-1990" in birthday$/) do
+	fill_in 'user_dateBirthday', :with => '10-05-1990'
+end
+
+And (/^I will choose "Masculino" in gender$/) do
+	choose('user_gender_m')
+end
+
+
+When (/^I press on "Cadastrar"$/) do
+	click_button ("Cadastrar")
+end
+
+Then (/^the user page is loaded with notice message "Cadastro efetuado com sucesso!"$/) do
+	expect(page).to have_content("Cadastro efetuado com sucesso!")
+end
+
+#Scenario 2
+
+Then (/^the user page is loaded with notice message "has already been taken"$/) do
+	expect(page).to have_content("has already been taken")
+end
+
+#Scenario 3
+
+Then (/^the user page is loaded with notice message "Email nao pode ser vazio"$/) do
+	expect(page).to have_content("Email nao pode ser vazio")
+end
+

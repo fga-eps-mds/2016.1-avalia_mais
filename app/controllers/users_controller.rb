@@ -75,8 +75,7 @@ class UsersController < ApplicationController
 	    		format.js # views/users/update.js.erb
     		end
     	else
-      		render 'edit'
-      		format.js # views/users/update.js.erb
+      		flash[:notice] = 'Erro invalido!'
     	end
   	end
 
