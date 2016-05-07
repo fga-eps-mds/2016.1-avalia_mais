@@ -5,43 +5,43 @@ Feature: Create User
 
 	Scenario: Succes in create an account
 		Given I am on the index
-		And I click on "Entrar"
-		And I am redirected to Login page
-		And I click on "Cadastrar"
-		And I am redirected to page "Cadastrar Usuario"
-		And I fill "Nome completo" field with "Usuário Teste"
-		And I fill "Apelido" field with "teste"
-		And I fill "Senha" field with "123456"
-		And I fill "Confirme a senha" field with "123456"
-		And I fill "Confirme a senha" field with "123456"
-		And I fill "E-mail" field with "teste@teste.com"
-		And I fill "Genero" with "Masculino"
-		When I press "Cadastrar" button
+		And I will press on "Entrar" link
+		And I will be redirect to login page
+		And I will press "Cadastrar" button
+		And I will be redirect to sign up page
+		And I will fill "UsuarioTeste" in complete name
+		And I will fill "teste" in nike name
+		And I will fill "123456" in password
+		And I will fill "123456" in confirm password
+		And I will fill "teste@email.com" in email
+		And I will fill "10-05-1990" in birthday
+		And I will choose "Masculino" in gender
+		When I press on "Cadastrar"
 		Then the user page is loaded with notice message "Cadastro efetuado com sucesso!"
 
 	Scenario: Account already exists
 		Given I am on the index
-		And I click on "Entrar"
-		And I am redirected to Login page
-		And I click on "Cadastrar"
-		And I am redirected to page "Cadastrar Usuario"
-		And I fill "Nome completo" field with "Usuário Teste"
-		And I fill "Apelido" field with "teste"
-		And I fill "Senha" field with "123456"
-		And I fill "Confirme a senha" field with "123456"
-		And I fill "Confirme a senha" field with "123456"
-		And I fill "E-mail" field with "teste@teste.com"
-		And I fill "Genero" with "Masculino"
-		When I press "Cadastrar" button
+		And I will press on "Entrar" link
+		And I will be redirect to login page
+		And I will press "Cadastrar" button
+		And I will be redirect to sign up page
+		And I will fill "UsuarioTeste" in complete name
+		And I will fill "teste" in nike name
+		And I will fill "123456" in password
+		And I will fill "123456" in confirm password
+		And I will fill "teste@email.com" in email
+		And I will fill "10-05-1990" in birthday
+		And I will choose "Masculino" in gender
+		When I press on "Cadastrar"
 		Then the user page is loaded with notice message "has already been taken"
 
 	Scenario: Required fields of new user are not filled
 		Given I am on the index
-		And I click on "Entrar"
-		And I am redirected to Login page
-		And I click on "Cadastrar"
-		And I am redirected to page "Cadastrar Usuario"
-		When I press "Cadastrar" button
+		And I will press on "Entrar" link
+		And I will be redirect to login page
+		And I will press "Cadastrar" buttun
+		And I will be redirect to sign up page
+		When I press on "Cadastrar"
 		Then the user page is loaded with notice message "Email nao pode ser vazio"
 
 

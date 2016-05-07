@@ -46,12 +46,3 @@ Feature: Create Company
 		And I am redirected to page "Cadastrar Empresa"
 		When I press "Confirmar" button
 		Then the new company page should reload with notice message "Informe o nome da empresa"
-
-
-
-
-
-
-
-
-

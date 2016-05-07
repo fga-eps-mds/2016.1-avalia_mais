@@ -51,9 +51,3 @@ Feature: Update User
 		And I fill "password-confirme" field with "0101"
 		When I press "Atualizar" button
 		Then the show page should load with notice message "Senha invalida!"	
-
-			
-
-		
-			
-

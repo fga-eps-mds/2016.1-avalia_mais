@@ -24,10 +24,6 @@ And (/^I will confirm pressing 'OK'$/) do
   page.driver.browser.switch_to.alert.accept    
 end
 
-#And (/^I will confirm pressing 'OK'/) do
-#	click_on("OK")
-#end
-
 Then (/^I should be redirect to index page/) do
 	expect(page).to have_content("Avalie sua empresa")
 end

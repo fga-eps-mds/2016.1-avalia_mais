@@ -1,3 +1,4 @@
+
 Feature: Show company
 	To see the informations about company
 	As a vistor
