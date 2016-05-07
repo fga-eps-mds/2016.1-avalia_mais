@@ -36,7 +36,8 @@ Rails.application.routes.draw do
 
 
   #evaluation
-
+  post '/company/show', controller: 'evaluations', action: 'rate', :as => 'rate'
+  post '/company/response', controller: 'evaluations', action: 'response_time', :as => 'response_time'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

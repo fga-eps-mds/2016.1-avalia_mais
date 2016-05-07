@@ -8,6 +8,9 @@ class CompaniesController < ApplicationController
 
 	def show
 		@company = Company.find(params[:id])
+		if logged_in?
+			@current_evaluation = current_user.evaluations.find_by(company_id: @company.id)
+		end
 	end
 
 	def create
@@ -23,9 +26,16 @@ class CompaniesController < ApplicationController
 	end
 	
 	def search
-  		@company = Company.where("name LIKE :search", :search => "%#{params[:company][:search]}%")
+		@search_param = params[:current_search][:search]
+  		@company = Company.where("name LIKE :search", :search => "%#{params[:current_search][:search]}%")
   		render "search"
   		
+	end
+
+	def search_nav_bar
+		@search_param
+		@company = Company.where("name LIKE :nav_search", :nav_search => "%#{params[:new_search][:nav_search]}%")
+  		render "search"
 	end
 
 	def company_params
