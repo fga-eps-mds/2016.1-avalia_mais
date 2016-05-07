@@ -2,60 +2,57 @@
 <%= render "navbar/navbar" %>
 
 <% @segment.each do |s| %>
-        <% total = 0%>
-        <% @company.each do |f| %>
-          <% if s.id == f.segment_id %>
-            <% total = total +1 %>
-          <%end%>
-        <%end%>
-        <% if total > 0 %>
-<div class="container show-segments">
- <div class="well col-sm-12 col-md-8 col-md-offset-2">
-        <div class="row user-row">
+  <% total = 0%>
+  <% @company.each do |f| %>
+    <% if s.id == f.segment_id %>
+      <% total = total +1 %>
+    <%end%>
+  <%end%>
+  <% if total > 0 %>
+      <div class="container show-segments">
+        <div class="well col-sm-12 col-md-8 col-md-offset-2">
+          <div class="row user-row">
             <div class="col-md-1" id="logo_segment">
-                <%= image_tag("default_segments.png", :alt => "img", :class => "mg-circle") %>
-
+              <%= image_tag("default_segments.png", :alt => "img", :class => "mg-circle") %>
             </div>
             <div class="col-md-10 title-segment">
-                <strong><%=s.name%></strong><br>
+               <strong><%=s.name%></strong><br>
             </div>
             <div class="col-md-1 dropdown-user" data-for=".cyruxx">
-                (<span style="color: #FF4040"><%=total%></span>)<i class="glyphicon glyphicon-chevron-down text-muted"></i>
+              (<span style="color: #FF4040"><%=total%></span>)<i class="glyphicon glyphicon-chevron-down text-muted"></i>
             </div>
-        </div>
-        <div class="row user-infos cyruxx">
+          </div>
+          <div class="row user-infos cyruxx">
             <div class="col-sm-10 col-md-10 col-md-offset-1">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Empresas Desta Categoria</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <table class="table table-condensed table-responsive table-user-information">
-                                    <tbody>
-                                    <tr>
-                                        <% @company.each do |f| %>
-                                        <% if s.id == f.segment_id %>
-                                        <td><%=link_to f.name, f%></td>
-                                        <%end%>
-                                        <%end%>
-                                      </tr>
-                                    
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Empresas Desta Categoria</h3>
                 </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <table class="table table-condensed table-responsive table-user-information">
+                        <tbody>
+                          <tr>
+                            <% @company.each do |f| %>
+                              <% if s.id == f.segment_id %>
+                              <td><%=link_to f.name, f%></td>
+                              <%end%>
+                            <%end%>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-  </div>
-  </div>
+    </div>
   <%end%>
-  <%end%>
+<%end%>
   <script> 
-  //$(document).ready(function() {
     var panels = $('.user-infos');
     var panelsButton = $('.dropdown-user');
     panels.hide();
@@ -78,37 +75,7 @@
             {
                 currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
             }
-        })
-  //  });
-
-
+        });
     $('[data-toggle="tooltip"]').tooltip();
 
   </script>
-  <!--
-      <section class="show-segments">
-    <div>
-
-      <h1>Empresas por Categoria</h1>
-
-      <% @segment.each do |s| %>
-        <% total = 0%>
-        <% @company.each do |f| %>
-          <% if s.id == f.segment_id %>
-            <% total = total +1 %>
-          <%end%>
-        <%end%>
-
-        <% if total > 0 %>
-          <h2><span><%=s.name%></span> (<span style="color: #FF4040"><%=total%></span>)</h2>
-          <% @company.each do |f| %>
-            <% if s.id == f.segment_id %>
-              <span class ="link-to-company"><%=link_to f.name, f%></span></br>
-            <%end%>
-          <%end%>
-        <%end%>
-      <%end%>
-      </br></br></br>  
-    </div>
-<section>
--->

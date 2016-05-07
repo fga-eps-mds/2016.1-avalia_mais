@@ -34,7 +34,7 @@
   <section id="principal">
     <h3>Avalie sua empresa. Resolva seu problema.</h3>
     <p>Plataforma onde você pode avaliar sua empresa, e muito mais. Avalie, consulte, reclame, ajude e discuta subre problemas e soluções.</p><br />
-    <%= form_for(:company, url: search_company_path) do |f|%>
+    <%= form_for(:current_search, url: search_company_path) do |f|%>
       <%= f.text_field :search, :class => "input-subscript forme-email", placeholder: "Buscar" %>
       <%= f.submit "Buscar", :type => :image, :src => image_path("tool.svg"), :class => "button-subscript"%>
     <%end%>

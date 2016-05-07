@@ -36,49 +36,64 @@
 
 
 <% if flash[:notice] -%>
-    <p class="error"><%= flash[:notice] %></p>
+  <p class="error"><%= flash[:notice] %></p>
 <% end -%>
 
 <section id="avaliacao">
-
-  <%if logged_in? %> 
-    <div class="barra">
-
+  <div class="barra">
+    <%if logged_in? %> 
       <div class="estrelas">
         <div id="check-response">
           A empresa respondeu as reclamações?
-            Sim  <input type="radio" class="response-radio" id="button-group">
-            Não<input type="radio" class="response-radio" id="button-group">
+          <form id="confirmation-response">
+            <% if @current_evaluation.present? %>
+              <%if @current_evaluation.response_time != nil%>
+                Sim  <input type="radio" name="confirm-response" value="yes" class="response-radio" id="confirm-radio" checked>
+                Não  <input type="radio" name="confirm-response" value="no" class="response-radio" id="decline-radio" disabled>
+              <%else%>
+                Sim  <input type="radio" name="confirm-response" value="yes" class="response-radio" id="confirm-radio" >
+                Não  <input type="radio" name="confirm-response" value="no" class="response-radio" id="decline-radio" checked>
+              <%end%>
+            <%else%>
+              Sim  <input type="radio" name="confirm-response" value="yes" class="response-radio" id="confirm-radio" >
+              Não  <input type="radio" name="confirm-response" value="no" class="response-radio" id="decline-radio" checked>
+            <%end%>
+          </form>
         </div></br></br></br></br>
         <span id="message-evaluation">
           Tempo de resposta da empresa:
         </span>
-          <%= form_for(:response, url: response_time_path) do |f|%>
+        <%= form_for(:response, url: response_time_path) do |f|%>
+          <%= f.hidden_field :user_id, :value => current_user.id%>
+          <%= f.hidden_field :company_id, :value => @company.id%>
+          <% if @current_evaluation.present? %>
+            <% if @current_evaluation.response_time != nil %>
+              <%= f.number_field :response_time, :class => "response-time-field", :min => 0, :step => 1, :value => @current_evaluation.response_time%>
+            <%else%>
+              <%= f.number_field :response_time, :class => "response-time-field", :min => 0, :step => 1, :value => :min%>
+            <%end%>
+          <%else%>
+            <%= f.number_field :response_time, :class => "response-time-field", :min => 0, :step => 1, :value => :min%>
+          <%end%>
+          <%= f.submit 'Submeter', :class => "btn btn-primary btn-sm btn-submit"%>
+        <%end%>
+        </br></br></br>
+        <span id="message-evaluation">
+          Avaliação pessoal:
+        </span>
+        <% for rates in 1..5 do %> 
+          <%= form_for(:evaluations, url: rate_path) do |f|%>
+            <%= f.hidden_field :rate, :value => rates%>
             <%= f.hidden_field :user_id, :value => current_user.id%>
             <%= f.hidden_field :company_id, :value => @company.id%>
-            <%= f.number_field :response_time, :min => 0, :step => 1, :value => @current_evaluation.response_time, :id => "response-field"%>
-            <%= f.submit 'Submeter', :class => "btn btn-primary btn-sm"%>
+            <%= f.submit 'Rates', :type => :image, :src => image_path("starpng.png"), :class => "star", :id => rates%>
           <%end%>
-          </br></br></br>
-        <span id="message-evaluation">
-          Avaliação geral:
-        </span>
-          <% for rates in 1..5 do %> 
-            <%= form_for(:evaluations, url: rate_path) do |f|%>
-              <%= f.hidden_field :rate, :value => rates%>
-              <%= f.hidden_field :user_id, :value => current_user.id%>
-              <%= f.hidden_field :company_id, :value => @company.id%>
-              <%= f.submit 'Rates', :type => :image, :src => image_path("starpng.png"), :class => "star", :id => rates%>
-            <%end%>
-          <%end%>
-      </div>
-      
-  <%else%>
-      <div class="estrelas">
-        <p>Para avaliar uma empresa é necessário realizar login.</p>
-      </div>
-    </div> 
-  <%end%>
+        <%end%>
+      </div> 
+    <%else%>
+      <p>Para avaliar uma empresa é necessário realizar login.</p>
+    <%end%>
+  </div> 
 </section>
 
 <section id="forum">
@@ -95,18 +110,26 @@
   <%else%>
     <p><%= @company.description %></p>
   <%end%>
-  
-
 </section>
 
-
 <script>
-  var current_rate  =  <%= @current_evaluation.rate%>;
-  if(current_rate > 0){
-    for (var i = 0; i < current_rate; i++) {
-      $('.star:eq('+i+')').addClass('full');
+  <%if @current_evaluation.present? %>
+    var current_rate  =  <%= @current_evaluation.rate%>;
+    if(current_rate > 0){
+      for (var i = 0; i < current_rate; i++) {
+        $('.star:eq('+i+')').addClass('full');
+      }
     }
-  }
+  <%end%>
+
+  $("#decline-radio").click(function(){
+    $(".response-time-field").attr("disabled", true);
+    $(".btn-submit").attr("disabled", true);
+  });
+  $("#confirm-radio").click(function(){
+    $(".response-time-field").attr("disabled", false);
+    $(".btn-submit").attr("disabled", false);
+  });
 
   $(".avaliacao").click(function(){
     $("#description").hide("slow");
@@ -138,7 +161,28 @@
     for (var i = 0; i <= indice; i++) {
       $('.star:eq('+i+')').addClass('full');
     }
-    
   });
+  $('.star').on('mouseover', function(){
+    var indice = $('.star').index(this);
+    $('.star').removeClass('full');
+    for (var i = 0; i <= indice; i++) {
+      $('.star:eq('+i+')').addClass('full');
+    }
+  });
+  $('.star').on('mouseout', function(){
+    var indice = $('.star').index(this);
+    for (var i = 0; i <= indice; i++) {
+      $('.star:eq('+i+')').removeClass('full');
+    }
+    <%if @current_evaluation.present? %>
+    var current_rate  =  <%= @current_evaluation.rate%>;
+    if(current_rate > 0){
+      for (var i = 0; i < current_rate; i++) {
+        $('.star:eq('+i+')').addClass('full');
+      }
+    }
+    <%end%>
+  });
+
 
 </script>
