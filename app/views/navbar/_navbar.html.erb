@@ -7,10 +7,10 @@
     <input type="checkbox" id="control-nav" />
     <label for="control-nav" class="control-nav"></label>
     <label for="control-nav" class="control-nav-close"></label>
-      <form action="" class="navbar-form navbar-left" role="search">
-        <input type="text" class="input-search" placeholder="Buscar" >
-        <input type="image" width="25px" height="35px" class="input-image" <%= image_tag("tool.svg", :alt => "logo") %>
-      </form>     
+      <%= form_for(:current_search, url: search_company_path, :class => "form-search") do |f|%>
+        <%= f.text_field :search, :class => "input-search", placeholder: "Buscar" %>
+        <%= f.submit "Buscar", :type => :image, :src => image_path("tool.svg"), :class => "input-image", width: "25px", height: "35px" %>
+      <%end%>
     <nav class="navbar-right" role="navigation">
       
       <ul class="list-auto navbar-right">

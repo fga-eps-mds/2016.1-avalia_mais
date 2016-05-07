@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 20160504214317) do
     t.integer  "response_time", limit: 4
     t.integer  "grade",         limit: 4
     t.string   "resolved",      limit: 255
-    t.integer  "rate",          limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.integer  "company_id",    limit: 4
