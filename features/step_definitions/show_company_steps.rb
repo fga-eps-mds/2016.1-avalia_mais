@@ -1,6 +1,6 @@
 # require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 
-# User did not logged in but search for a company, with id = 1
+# User did not logged in but search for a company and then another scenario doing login
 Given (/^I am at home page$/) do 
 	visit 'http://localhost:3000'
 end

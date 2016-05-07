@@ -1,4 +1,3 @@
-
 Given (/^I am already on the login page$/) do
 	visit 'http://localhost:3000/login'
 end
