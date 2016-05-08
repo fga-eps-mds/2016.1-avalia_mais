@@ -74,6 +74,7 @@ hr {
 }
 
 #description {
+  display: none;
   position: absolute;
   width: 80%;
   margin-left: 130px;
@@ -82,7 +83,6 @@ hr {
 }
 
 #avaliacao {
-  display: none;
   position: absolute;
   width: 80%;
   margin-left: 130px;
@@ -141,7 +141,7 @@ hr {
   transition: stroke-dashoffset 1s cubic-bezier(0, 0.8, 0.2, 1);
   stroke-width: 1;
 }
-.container {
+.container-show-company {
   font-family: sans-serif;
   font-weight: 300;
   color: #e3625f;
@@ -177,7 +177,7 @@ hr {
   font-family: AvenirNext-Regular;
   font-size: 26px;
   color: #0B213A;
-  position: fixed;
+  position: absolute;
   left: 20%;
   top: 11%;
 }
@@ -225,7 +225,7 @@ section p {
   font-size: 19px;
   color: #001d89;
   opacity: 80%;
-  position: fixed;
+  position: absolute;
   left: 20.5%;
   top: 24%;
 }

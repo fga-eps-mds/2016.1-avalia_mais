@@ -1,24 +1,37 @@
 #Scenario 1
-And (/^I fill "Buscar" field with "Azura Software"$/) do
-	fill_in 'company_search', :with => 'Azura Software'
+And (/^I fill "Buscar" field with "Azura"$/) do
+	fill_in 'Buscar', :with => 'Azura'
 end
 
-And (/^I press "Buscar" button$/) do
-	click_button ("Buscar")
-end
-
-And (/^The search page is loaded with message "Resultado da Busca"$/) do
-	expect(page).to have_content("Resultado da Busca")
-end
-
-When (/^I click on "Azura Software"$/) do
-	click_link ("Azura Software")
-end
-
-Then (/^I am redirected to company page with title "Azura Software"$/) do
+Then (/^The search page is loaded with company name "Azura Software"$/) do
 	expect(page).to have_content("Azura Software")
-	expect(page).to have_content("Bancos de Dados e Cadastros de Consumidores")
 end
+
 
 
 #Scenario 2
+And (/^I click on "Categorias"$/) do
+	click_link('Categorias')
+end
+
+And (/^The segments page is loaded with segments names$/) do
+	expect(page).to have_content("Bancos de Dados e Cadastros de Consumidores")
+end
+
+And (/^I click on "Bancos de Dados e Cadastros de Consumidores"$/) do
+	find(".segment-1").click
+end
+
+Then (/^The page now have company name "Azura Software"$/) do
+	expect(page).to have_content("Azura Software")
+end
+
+#Scenario 3
+And (/^I fill "Buscar" field with "xwztr"$/) do
+	fill_in 'Buscar', :with => 'xwztr'
+end
+
+Then (/^The search page is loaded with empty results$/) do
+	expect(page).to have_content("Nenhuma Empresa encontrada com o termo \"xwztr\".
+")
+end
