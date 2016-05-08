@@ -7,7 +7,7 @@
     <input type="checkbox" id="control-nav" />
     <label for="control-nav" class="control-nav"></label>
     <label for="control-nav" class="control-nav-close"></label>
-      <%= form_for(:current_search, url: search_company_path, :class => "form-search") do |f|%>
+      <%= form_for(:current_search, url: search_company_path, :html => {class: 'navbar-form navbar-left'}) do |f|%>
         <%= f.text_field :search, :class => "input-search", placeholder: "Buscar" %>
         <%= f.submit "Buscar", :type => :image, :src => image_path("tool.svg"), :class => "input-image", width: "25px", height: "35px" %>
       <%end%>
