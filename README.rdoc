@@ -1,4 +1,9 @@
 == README
+
+A collaborative work for the Software Development Methods and Management of Portfolios and projects courses of the University of Brasilia<br/>
+Project license: AGPL v3 (Read <a href="https://github.com/KarineValenca/avalia_mais/blob/master/LICENSE.md">LICENSE</a> file)<br/><br/>
+
+
 {<img src="https://codeclimate.com/github/KarineValenca/avalia_mais/badges/gpa.svg" />}[https://codeclimate.com/github/KarineValenca/avalia_mais] {<img src="https://coveralls.io/repos/github/KarineValenca/avalia_mais/badge.svg?branch=master" alt="Coverage Status" />}[https://coveralls.io/github/KarineValenca/avalia_mais?branch=master]
 
 {<img src="https://coveralls.io/repos/github/KarineValenca/avalia_mais/badge.svg?branch=dev" alt="Coverage Status" />}[https://coveralls.io/github/KarineValenca/avalia_mais?branch=dev]
