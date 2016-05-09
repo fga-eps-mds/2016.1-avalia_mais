@@ -1,7 +1,8 @@
 == README
 
-A collaborative work for the Software Development Methods and Management of Portfolios and projects courses of the University of Brasilia<br/>
-Project license: AGPL v3 Read {License File}[https://github.com/DesenhoDeSofwareUNB/SisGP/blob/master/LICENSE.md]<br/><br/>
+A collaborative work for the Software Development Methods and Management of Portfolios and projects courses of the University of Brasilia
+
+Project license: AGPL v3 Read {License File}[https://github.com/KarineValenca/avalia_mais/blob/master/LICENSE.md]
 
 
 
