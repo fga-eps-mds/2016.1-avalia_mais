@@ -4,8 +4,7 @@ Feature: Create Company
 	Should create an company page
 
 	Scenario: Success in create Company
-		Given I am on the log in system
-		And I do my login
+		Given I am logged in
 		And I click on "Cadastrar Empresa"
 		And I am redirected to page "Cadastrar Empresa"
 		And I fill "Nome da Empresa" field with "Azura Software"
@@ -17,22 +16,20 @@ Feature: Create Company
 		Then the company page is loaded with notice message "Cadastro efetuado com sucesso!"
 
 	Scenario: Create Company only with the required fields
-		Given I am on the log in system
-		And I do my login
+		Given I am logged in
 		And I click on "Cadastrar Empresa"
 		And I am redirected to page "Cadastrar Empresa"
 		And I fill "Nome da Empresa" field with "Obelisco"
 		When I press "Confirmar" button
 		Then the company page is loaded with notice message "Cadastro efetuado com sucesso!"
 
-	Scenario: User not to be logged
+	Scenario: User not logged in
 		Given I am on the index
-		And I click on "Cadastrar Empresa"
+		And I click on "Cadastrar Empresa" logged out
 		Then the login page is loaded with notice message "Para cadastrar uma empresa é preciso estar logado"
 
 	Scenario: Company's name already exists in the system
-		Given I am on the log in system
-		And I do my login
+		Given I am logged in
 		And I click on "Cadastrar Empresa"
 		And I am redirected to page "Cadastrar Empresa"
 		And I fill "Nome da Empresa" field with "Azura Software"
@@ -40,8 +37,7 @@ Feature: Create Company
 		Then the new company page should reload with notice message "Uma empresa já foi cadastrada com esse nome"
 
 	Scenario: Required fields are not filled
-		Given I am on the log in system
-		And I do my login
+		Given I am logged in
 		And I click on "Cadastrar Empresa"
 		And I am redirected to page "Cadastrar Empresa"
 		When I press "Confirmar" button

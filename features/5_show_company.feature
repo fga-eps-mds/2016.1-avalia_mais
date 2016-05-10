@@ -6,9 +6,9 @@ Feature: Show company
 
 	Scenario: User did not logged in
 		Given I am at home page
-		And I will search for "Nike"
-		When I press "Nike" button
-		Then I should be redirect to Nike page
+		And I will search for "Azura"
+		When I press "Azura" button
+		Then I should be redirect to Azura page
 
 	Scenario: User will login and create a new company
 		Given I am at login page I will log in 

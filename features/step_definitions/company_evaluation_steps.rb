@@ -1,15 +1,15 @@
 Given (/^I am on the log in page I will log in$/) do
 	visit 'http://localhost:3000/login'
-	fill_in 'session_login', :with=> 'teste'
+	fill_in 'session_login', :with=> 'robot'
 	fill_in 'session_password', :with=> '123456'
 	click_button ("Entrar")
 	expect(page).to have_content("Login realizado com sucesso")
 end
 
-And (/^I will search for "Nike" and visit the page$/) do
-	fill_in 'Buscar', :with=> 'Nike'
+And (/^I will search for "Oi Fixo" and visit the page$/) do
+	fill_in 'Buscar', :with=> 'Oi Fixo'
 	click_button ("Buscar")
-	click_link('Nike')
+	click_link('Oi Fixo')
 end
 
 And (/^I will fill "3" stars in personal evaluation$/) do
@@ -39,5 +39,9 @@ end
 
 Then (/^the page should give me a message "Sua avaliação por tempo de resposta foi realizada com sucesso!"/) do
 	expect(page).to have_content("Sua avaliação por tempo de resposta foi realizada com sucesso!")
+end
+
+Then (/^the page should give me a message "Valor deve ser maior ou igual a 0"/) do
+	expect(page).to have_content("Valor deve ser maior ou igual a 0")
 end
 

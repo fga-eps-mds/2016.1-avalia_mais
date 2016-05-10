@@ -7,17 +7,18 @@ end
 
 Given (/^I am at login page I will log in$/) do 
 	visit 'http://localhost:3000/login'
-	fill_in 'session_login', :with=> 'empresario'
+	fill_in 'session_login', :with=> 'robot'
 	fill_in 'session_password', :with=> '123456'
 	click_button ("Entrar")
 end
 
-And (/^I will search for "Nike"$/) do
-	fill_in 'Buscar', :with=> 'nike'
+And (/^I will search for "Azura"$/) do
+	fill_in 'Buscar', :with=> 'Azura'
 	click_button ("Buscar")
 end
 
 And (/^I will register my company/) do 
+	find("#welcome-user").click
 	click_link('Cadastrar Empresa')
 	fill_in 'company_name', :with=> 'EmpresaSoftware'
 	fill_in 'company_address', :with=> 'Rua do comercio, Loja 5'
@@ -27,19 +28,19 @@ And (/^I will register my company/) do
 	click_button ("Confirmar")
 end
 
-When (/^I press "Nike" button/) do
-	click_link('Nike')
+When (/^I press "Azura" button/) do
+	click_link('Azura')
 end
 
 Then (/^I should be redirect to my company page$/) do
 	expect(page).to have_content('EmpresaSoftware')
 end
 
-Then (/^I should be redirect to Nike page$/) do
-	expect(page).to have_content("Nike")
+Then (/^I should be redirect to Azura page$/) do
+	expect(page).to have_content("Azura")
 end
 
-Then (/^the page should have a link named "Nike"/) do
-	expect(page).to have_content("Nike")
+Then (/^the page should have a link named "Azura"/) do
+	expect(page).to have_content("Azura")
 end
 

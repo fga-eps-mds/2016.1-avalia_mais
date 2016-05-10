@@ -1,20 +1,9 @@
-#Feature 1
-
-#Scenario 1
-
-Given (/^I am on the log in system$/) do
-	visit 'http://localhost:3000/login'
-end
-
-And (/^I do my login$/) do
-	visit 'http://localhost:3000/login'
-	fill_in 'session_login', :with=> 'teste'
-	fill_in 'session_password', :with=> '123456'
-	click_button ("Entrar")
-	expect(page).to have_content("Login realizado com sucesso")
-end
-
 And (/^I click on "Cadastrar Empresa"$/) do
+	find("#welcome-user").click
+	click_link ("Cadastrar Empresa")
+end
+
+And (/^I click on "Cadastrar Empresa" logged out$/) do
 	click_link ("Cadastrar Empresa")
 end
 

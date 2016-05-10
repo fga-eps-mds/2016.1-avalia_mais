@@ -1,5 +1,3 @@
-#Scenario 1
-
 And (/^I will press on "Entrar" link$/) do
 	click_link("Entrar")
 end
@@ -16,24 +14,24 @@ And (/^I will be redirect to sign up page$/) do
 	visit 'http://localhot:3000/users/new'
 end
 
-And (/^I will fill "UsuarioTeste" in complete name/) do
-	fill_in 'user_name', :with => 'UsuarioTeste'
+And (/^I will fill "Robot" in complete name/) do
+	fill_in 'user_name', :with => 'Robot'
 end
 
-And (/^I will fill "teste" in nike name$/) do
-	fill_in 'user_login', :with => 'teste'
+And (/^I will fill "robot" in nickname$/) do
+	fill_in 'user_login', :with => 'robot'
 end
 
 And (/^I will fill "123456" in password$/) do
-	fill_in 'user_password', :with => '1223456'
+	fill_in 'user_password', :with => '123456'
 end
 
 And (/^I will fill "123456" in confirm password$/) do
 	fill_in 'user_password_confirmation', :with => '123456'
 end
 
-And (/^I will fill "teste@email.com" in email$/) do
-	fill_in 'user_email', :with => 'teste@email.com'
+And (/^I will fill "robot@gmail.com" in email$/) do
+	fill_in 'user_email', :with => 'robot@gmail.com'
 end
 
 And (/^I will fill "10-05-1990" in birthday$/) do
@@ -53,13 +51,11 @@ Then (/^the user page is loaded with notice message "Cadastro efetuado com suces
 	expect(page).to have_content("Cadastro efetuado com sucesso!")
 end
 
-#Scenario 2
 
 Then (/^the user page is loaded with notice message "has already been taken"$/) do
 	expect(page).to have_content("has already been taken")
 end
 
-#Scenario 3
 
 Then (/^the user page is loaded with notice message "Email nao pode ser vazio"$/) do
 	expect(page).to have_content("Email nao pode ser vazio")
