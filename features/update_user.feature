@@ -7,7 +7,7 @@ Feature: Update User
 		Given I am on the login user
 		And I do my login user
 		And I click on "Perfil"
-		And I click on "EditarN"
+		And I click on "Editar-name"
 		And I fill "name" field with "Camila"
 		When I press "Atualizar" button
 		Then the show page should load with notice message "Profile updated"
@@ -16,7 +16,7 @@ Feature: Update User
 		Given I am on the login user
 		And I do my login user
 		And I click on "Perfil"
-		And I click on "EditarD"
+		And I click on "show-dateBirthday"
 		And I fill "dateBirthday" field with "20-10-1994"
 		When I press "Atualizar" button
 		Then the show page should load with notice message "Profile updated"
@@ -25,8 +25,8 @@ Feature: Update User
 		Given I am on the login user
 		And I do my login user
 		And I click on "Perfil"
-		And I click on "EditarG"
-		And I fill "masculino" with "Masculino"
+		And I click on "show-gender"
+		And I fill "masculino" with "masculino"
 		When I press "Atualizar" button
 		Then the show page should load with notice message "Profile updated"
 
@@ -34,7 +34,7 @@ Feature: Update User
 		Given I am on the login user
 		And I do my login user
 		And I click on "Perfil"
-		And I click on "EditarS"
+		And I click on "show-pass"
 		And I fill "password-older" field with "1313"
 		And I fill "password-new" field with "0101"
 		And I fill "password-confirme" field with "0101"
@@ -45,7 +45,7 @@ Feature: Update User
 		Given I am on the login user
 		And I do my login user
 		And I click on "Perfil"
-		And I click on "EditarS"
+		And I click on "show-pass"
 		And I fill "password-older" field with "1010"
 		And I fill "password-new" field with "0101"
 		And I fill "password-confirme" field with "0101"

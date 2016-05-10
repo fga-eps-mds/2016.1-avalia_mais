@@ -11,11 +11,12 @@ And (/^I do my login user$/) do
 end
 
 And (/^I click on "Perfil"$/) do
+	find("#welcome-user").click
 	click_link ("Perfil")
 end
 
-And(/^I click on "EditarN"$/) do
-	click_link ("EditarN")
+And(/^I click on "Editar-name"$/) do
+	find("#show-name").click
 end
 
 And (/^I fill "name" field with "Camila"$/) do
@@ -30,20 +31,29 @@ Then (/^the show page should load with notice message "Profile updated"/) do
 	have_content("Profile updated")
 end
 
-#Scenario update
+#Scenario update gender
 
-And(/^I click on "EditarD"$/) do
-	click_link ("EditarD")
+And(/^I click on "show-gender"$/) do
+	find("#show-gender").click
 end
 
+And (/^I fill "masculino" with "masculino"$/) do
+	choose('masculino')
+end
+
+#Scenario update dateBirthday
+
+And(/^I click on "show-dateBirthday"$/) do
+	find("#show-dateBirthday").click
+end
 And (/^I fill "dateBirthday" field with "20-10-1994"$/) do
 	fill_in 'dateBirthday', :with => "20-10-1994"
 end
 
 #Scenario update password
 
-And(/^I click on "EditarS"$/) do
-	click_link ("EditarS")
+And(/^I click on "show-pass"$/) do
+	find("#show-pass").click
 end
 
 And (/^I fill "password-older" field with "1313"$/) do
@@ -56,12 +66,6 @@ end
 
 And (/^I fill "password-confirme" field with "0101"$/) do
 	fill_in 'password-confirme', :with => "0101"
-end
-
-#Scenario update gender
-
-And(/^I click on "EditarG"$/) do
-	click_link ("EditarG")
 end
 
 And (/^I fill "masculino" with "Masculino"$/) do

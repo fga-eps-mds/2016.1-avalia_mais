@@ -1,6 +1,9 @@
 
 <%= render "navbar/navbar" %>
 <div class="container show-segments">
+  <div id="title-segments">
+    <h1>Categorias</h1>
+  </div>
   <% segmentos  = 0%>
   <% @segment.each do |s| %>
     <% total = 0%>
@@ -20,7 +23,7 @@
           <div class="col-md-10 title-segment">
            <strong><%=s.name%></strong><br>
           </div>
-          <div class="col-md-1 dropdown-user segment-<%= s.id%>" data-for=".cyruxx-<%=segmentos%>">
+          <div class="col-md-1 dropdown-user segment-<%= s.id%>" data-for=".cyruxx-<%=segmentos%>" id="<%=total%>">
             (<span style="color: #FF4040"><%=total%></span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down ") %>
           </div>
         </div>
@@ -51,12 +54,24 @@
   <%end%>
 </div>
 <script> 
+var img_current = 0;
   $(".user-infos").hide();
   $(".dropdown-user").click(function() {
+    var id = $(this).attr('id');
     var dataFor = $(this).attr('data-for');
     var idFor = $(dataFor);
     var currentButton = $(this);
     idFor.slideToggle(400, function() {
+      if(img_current == 0){
+          currentButton.html('(<span style="color: #FF4040">'+id+'</span>)<%= image_tag("up.png", :alt => "abrir", :class => "img-down")%>');
+          img_current =1;
+
+      }else{
+        currentButton.html('(<span style="color: #FF4040">'+id+'</span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down")%>');
+        img_current = 0;
+      }
+
+
     });
   });   
 </script>

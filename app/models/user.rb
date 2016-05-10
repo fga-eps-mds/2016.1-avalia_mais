@@ -30,11 +30,8 @@ class User < ActiveRecord::Base
 				  		:too_short => 'Apelido com no minimo 4 caracters',
 				  		:too_long => 'Apelido com no maximo 15 caracters'
 
-	#password			  		
-	validates_length_of :password,
-				  		:within => 4..16,
-				  		:too_short => 'Senha deve conter no minimo 4 caracters',
-				  		:too_long => 'Senha deve conter no maximo 16 caracters'			  		
+			  		
+				  		
 
   	
 
