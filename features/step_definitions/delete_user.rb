@@ -1,14 +1,10 @@
-Given (/^I am already on the login page$/) do
-	visit 'http://localhost:3000/login'
-end
+# Delete user steps
 
-And (/^I will log in as 'Jose'$/) do
+Given (/^I am already on the login page I will log in$/) do
+	visit 'http://localhost:3000/login'
 	fill_in 'session_login', :with=> 'Jose'
 	fill_in 'session_password', :with=> '123456'
 	click_button ("Entrar")
-end
-
-And (/^I should be redirect to home page with a massage 'Login realizado com sucesso'/) do
 	expect(page).to have_content("Login realizado com sucesso")
 end
 

@@ -6,15 +6,11 @@ Feature: Show company
 
 	Scenario: User did not logged in
 		Given I am at home page
-		And I fill in "Buscar" with "nike"
-		And I press "Buscar" button
-		Then the page should have a link named "Nike"
+		And I will search for "Nike"
 		When I press "Nike" button
 		Then I should be redirect to Nike page
 
 	Scenario: User will login and create a new company
-		Given I am at login page
-		And I will login as "Empresario" 
-		And I will click on 'Cadastrar Empresa'
+		Given I am at login page I will log in 
 		And I will register my company
 		Then I should be redirect to my company page

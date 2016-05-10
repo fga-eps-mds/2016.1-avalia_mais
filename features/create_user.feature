@@ -39,7 +39,7 @@ Feature: Create User
 		Given I am on the index
 		And I will press on "Entrar" link
 		And I will be redirect to login page
-		And I will press "Cadastrar" buttun
+		And I will press "Cadastrar" button
 		And I will be redirect to sign up page
 		When I press on "Cadastrar"
 		Then the user page is loaded with notice message "Email nao pode ser vazio"

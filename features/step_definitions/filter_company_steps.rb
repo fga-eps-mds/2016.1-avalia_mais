@@ -8,7 +8,6 @@ Then (/^The search page is loaded with company name "Azura Software"$/) do
 end
 
 
-
 #Scenario 2
 And (/^I click on "Categorias"$/) do
 	click_link('Categorias')
@@ -20,6 +19,10 @@ end
 
 And (/^I click on "Bancos de Dados e Cadastros de Consumidores"$/) do
 	find(".segment-1").click
+end
+
+And (/^I press "Buscar" button$/) do
+	click_button ("Buscar")
 end
 
 Then (/^The page now have company name "Azura Software"$/) do
