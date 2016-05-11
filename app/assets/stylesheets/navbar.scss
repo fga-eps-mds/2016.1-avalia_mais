@@ -1,172 +1,98 @@
-/*header .navbar{
-  top: 0%;
-  width: 100%;
-  position: absolute;
-  height: 50px;
-  margin-bottom: 5px;
-  background-color: #07213F;
-  z-index: 200;
-  border-radius: 0px;
-}
-
-header .navbar > img:first-child {
-  margin-top:-10px;
-  width: 50px;
-  margin-left: 80px;
-}
-.form-search{
-  width:400px;
-}
-
-.input-search {
-  z-index: 100;
-  width: 400px;
-  height: 30px;
-  color: #FFF;
-  font-size: 16px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  border: 1px solid #E3625f;
-  padding-left: 10px;
-  background-color: rgba(0, 0, 0, 0.2);
-  font-size: 16px;
-  letter-spacing: 1px;
-  margin-left: 105px;
-  margin-top: 7px;   
-}
-
-.input-image {
-  position: absolute;
-  padding-top: 10px;
-  margin-left: -30px;
-}
-
-#navbar-menu {
-  float:right;
-  margin-right: 15px;
-  margin-top: 2px;
-  z-index: 105;
-  color: #CCC;
-  font-size: 16px;
-}
-
-#navbar-menu ul{
-  list-style: none;
-}
-
-#navbar-menu ul li{
-  margin-top: 9px;
-  display: inline-block;
-}
-#navbar-menu ul li a{
-  font-family: AvenirNext-Regular;
-  color: #CCC;
-  text-decoration: none;
-}
-
-#navbar-menu ul li a:hover{
-  color: #FFF;
-}
-
-#navbar-menu ul li.pipe{
-  color: #FF4040;
-}
-
-.nav-image{
-  position: absolute;
-  margin-left: 50px;
-  bottom: 5px;
-}
-*/
-
 .list-auto, .list-auto li { 
   width: 100%; 
   float: left; 
   display: block; 
   position: relative; 
 }
+
 .list-auto, .list-auto li { 
   width: auto; 
 }
  /* floats */
-      .float-l { float: left; }
+.float-l {
+  float: left;
+}
 
-      header {
-        font-family: f2;
-        min-height: 60px;
-        position: fixed;
-        padding-right: 22px;
-        top: 0;
-        right: 0;
-        left:0px;
-        background-color: #07213F;
-        z-index: 2;
-      }
-      header nav{
-        right: 20px;
-      }
+header {
+  font-family: f2;
+  min-height: 60px;
+  position: fixed;
+  padding-right: 22px;
+  top: 0;
+  right: 0;
+  left:0px;
+  background-color: #07213F;
+  z-index: 2;
+}
 
-      .logo-avalia{
-        text-transform: uppercase;
-        font-size: 30px;
-        color: #FFF;
-        font-family: Impact;
-        margin-top: -2px;
-        margin-left: 40px;
-        padding-right: 0px;
-        margin-right: 0px;
-      }
+header nav {
+  right: 20px;
+}
 
-      header ul {
-        padding: 15px 10px 0 0;
-        margin-left: 40px;
-      }
+.logo-avalia {
+  text-transform: uppercase;
+  font-size: 30px;
+  color: #FFF;
+  font-family: Impact;
+  margin-top: -2px;
+  margin-left: 40px;
+  padding-right: 0px;
+  margin-right: 0px;
+}
 
-      header li:first-child {
-        border: none;
-      }
+header ul {
+  padding: 15px 10px 0 0;
+  margin-left: 40px;
+}
 
-      header li a {
-        display: block;
-        padding: 0 10px;
-        color: #999;
-        font-size: 16px;
-        line-height: 30px;
-        text-decoration: none;
+header li:first-child {
+  border: none;
+}
 
-        -webkit-transition: all 300ms ease;
-        transition: all 300ms ease;
-      }
+header li a {
+  display: block;
+  padding: 0 10px;
+  color: #c3c3c3;
+  font-size: 16px;
+  line-height: 30px;
+  text-decoration: none;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  text-transform: capitalize;
+}
 
-      header li a:hover {
-        color:#FFF;
-      }
+header li a:hover {
+  color:#FFF;
+}
 
-      input#control-nav {
-        visibility: hidden;
-        position: absolute;
-        left: -9999px;
-        opacity: 0;
-      }
-      nav ul li ul {
-      display: none;
-      position: absolute;
+input#control-nav {
+  visibility: hidden;
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
 
-      }
-      nav ul li:hover ul {
-      background-color: rgb(226,226,226);
-      display: block;
-      margin-top: 0px;
-      }
-       nav ul li ul li a:hover{
+nav ul li ul {
+  display: none;
+  position: absolute;
+}
+
+nav ul li:hover ul {
+  background-color: rgb(226,226,226);
+  display: block;
+  margin-top: 0px;
+}
+
+nav ul li ul li a:hover {
     
-    }
-  nav ul li ul li a{
+}
+
+nav ul li ul li a {
   width: inherit;
   padding-right: 22px;
-  }
-  .input-search {
+}
+
+.input-search {
   z-index: 100;
   width: 400px;
   height: 30px;
@@ -222,11 +148,11 @@ header .navbar > img:first-child {
 
   header ul.list-auto {
     padding: 0;
+    right: 5px;
   }
 
   header ul.list-auto li {
-    width: 100%;
-  
+    width: 100%;  
   }
 
   header li a {
