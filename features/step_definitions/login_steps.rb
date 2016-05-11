@@ -11,8 +11,8 @@ And (/^I fill in "Apelido ou e-mail" with "invalidbot"$/) do
 	fill_in 'session_login', :with=> 'invalidbot'
 end
 
-And (/^I fill in "Senha" with "robot"$/) do
-	fill_in 'session_password', :with=> 'robot'
+And (/^I fill in "Senha" with "123456"$/) do
+	fill_in 'session_password', :with=> '123456'
 end
 
 When (/^I press "Entrar" button/) do

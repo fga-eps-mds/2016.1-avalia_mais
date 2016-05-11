@@ -66,10 +66,10 @@
           <% if @current_evaluation.present? %>
             <% if @current_evaluation.response_time != nil %>
               <%= f.number_field :response_time, :class => "response-time-field", :min => 0, :step => 1, :value => @current_evaluation.response_time%>
-            <%else%>
+            <% else %>
               <%= f.number_field :response_time, :class => "response-time-field", :min => 0, :step => 1, :value => :min%>
-            <%end%>
-          <%else%>
+            <% end %>
+          <% else %>
             <%= f.number_field :response_time, :class => "response-time-field", :min => 0, :step => 1, :value => :min%>
           <%end%>
           <%= f.submit 'Submeter', :class => "btn btn-primary btn-sm btn-submit"%>
@@ -83,7 +83,7 @@
             <%= f.hidden_field :rate, :value => rates%>
             <%= f.hidden_field :user_id, :value => current_user.id%>
             <%= f.hidden_field :company_id, :value => @company.id%>
-            <%= f.submit 'Rates', :type => :image, :src => image_path("starpng.png"), :class => "star", :id => rates%>
+            <%= f.submit 'Rates', :type => :image, :src => image_path("starpng.png"), :class => "star", :id=> 'star-'+rates.to_s%>
           <%end%>
         <%end%>
       </div> 
