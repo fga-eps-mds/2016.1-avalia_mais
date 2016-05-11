@@ -10,7 +10,7 @@
       <td ><a href="javascript: void(0);" id="show-name">Editar</a></td>
     </tr>
     <tr id="nome-update" class="user-infos">
-          <%= form_for(@user, :url => { :action => "update", params: {id: @user.id,dateBirthday: @user.dateBirthday, gender: @user.gender}} ) do |f| %>
+          <%= form_for(@user, remote: true, :url => { :action => "update", params: {id: @user.id,dateBirthday: @user.dateBirthday, gender: @user.gender}} ) do |f| %>
              <td class="form-update"></td>
             <td class="form-update"><%= f.text_field :name, class: 'form-control', :id => "name"%></td>
             <td id="atualizar"><%= f.submit "Atualizar" %></td>
@@ -45,7 +45,7 @@
        <td ><a href="javascript: void(0);" id="show-gender">Editar</a></td>
     </tr>
      <tr id="genero-update">
-          <%= form_for(@user, :url => { :action => "update", params: {id: @user.id,name:@user.name, dateBirthday: @user.dateBirthday}} ) do |f| %>
+          <%= form_for(@user, remote: true, :url => { :action => "update", params: {id: @user.id,name:@user.name, dateBirthday: @user.dateBirthday}} ) do |f| %>
              <td class="form-update"></td>
              <td>
              <span>
@@ -62,7 +62,7 @@
        <td ><a href="javascript: void(0);" id="show-dateBirthday">Editar</a></td>
     </tr>
     <tr id="date-update">
-      <%= form_for(@user,  :url => { :action => "update", params: {id: @user.id, name: @user.name, genero: @user.gender}} ) do |f| %>
+      <%= form_for(@user, remote: true, :url => { :action => "update", params: {id: @user.id, name: @user.name, genero: @user.gender}} ) do |f| %>
         <td class="form-update"></td>
         <td class="form-update"><%= f.date_field :dateBirthday, class: 'form-control', :id => "dateBirthday"%></td>
         <td id="atualizar"><%= f.submit "Atualizar" %></td>

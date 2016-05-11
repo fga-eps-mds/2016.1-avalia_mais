@@ -69,15 +69,15 @@ class UsersController < ApplicationController
 	def update
     	@user = User.find(params[:id])
     	if @user.update_attributes(user_params_update)
-    		#respond_to do |format| format.html {redirect_to :action => "show",:id => @user.id}
+    		respond_to do |format| format.html {redirect_to :action => "show",:id => @user.id}
 	    		flash[:notice] = "Perfil atualizado"
-	    		#format.js # views/users/update.js.erb
+	    		format.js # views/users/update.js.erb
 
-	    #	end	
+	    	end	
     	else
       		flash[:notice] = 'Erro ao atualizar o dado!'
     	end
-    	redirect_to :action => "show",:id => @user.id
+    	
   	end
 
   	def update_password
