@@ -58,6 +58,7 @@ class UsersController < ApplicationController
 	def destroy
 		session[:user_id] = nil
  		user = User.find(params[:id])
+ 		user.evaluations.delete_all
  		user.destroy
 	
 		redirect_to home_path

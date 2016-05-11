@@ -17,9 +17,19 @@
 </div>
 
 <div id="info_empresa">
-  <h2><%= @company.telephone%></h2></br>
-  <h3><%= @company.email %></h3></br>
-</div>
+  <%= @company.telephone%></br>
+  <%= @company.email %></br>
+
+</div></br>
+<% if @company.evaluations.present? %>
+  <div id="general-rate">
+    <h4>Nota geral da Empresa</h4> </br>
+    <h4 id="value-rate"><%= number_with_precision(@total_evaluations, :precision => 2)  %></h4>
+  </div>
+  <div id="image-general-rate">
+    <%= image_tag(@image_name, :width => "90", :height => "136.8", :id => "medal-image") %>
+  </div>
+<%end%>
 
 <div id="name_segment">
   <h2><%= @company.segment.name %></h2>
@@ -80,7 +90,7 @@
         </span>
         <% for rates in 1..5 do %> 
           <%= form_for(:evaluations, url: rate_path) do |f|%>
-            <%= f.hidden_field :rate, :value => rates%>
+            <%= f.hidden_field :grade, :value => rates%>
             <%= f.hidden_field :user_id, :value => current_user.id%>
             <%= f.hidden_field :company_id, :value => @company.id%>
             <%= f.submit 'Rates', :type => :image, :src => image_path("starpng.png"), :class => "star", :id=> 'star-'+rates.to_s%>
@@ -111,8 +121,8 @@
 
 <script>
   <%if @current_evaluation.present? %>
-    var current_rate  =  <%= @current_evaluation.rate%>;
-    if(current_rate > 0){
+    var current_rate  =  <%= @current_evaluation.grade%>;
+    if(current_rate >= 0){
       for (var i = 0; i < current_rate; i++) {
         $('.star:eq('+i+')').addClass('full');
       }
@@ -172,8 +182,8 @@
       $('.star:eq('+i+')').removeClass('full');
     }
     <%if @current_evaluation.present? %>
-    var current_rate  =  <%= @current_evaluation.rate%>;
-    if(current_rate > 0){
+    var current_rate  =  <%= @current_evaluation.grade%>;
+    if(current_rate >= 0){
       for (var i = 0; i < current_rate; i++) {
         $('.star:eq('+i+')').addClass('full');
       }
