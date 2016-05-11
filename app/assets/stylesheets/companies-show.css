@@ -210,6 +210,8 @@ hr {
 }
 #medal-image{
   position: absolute;
+  margin-top: 6px;
+  right: 5px;
 }
 
 section p {

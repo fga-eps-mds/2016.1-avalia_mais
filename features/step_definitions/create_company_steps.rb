@@ -8,7 +8,7 @@ And (/^I click on "Cadastrar Empresa" logged out$/) do
 end
 
 And (/^I am redirected to page "Cadastrar Empresa"$/) do
-	visit 'http://localhost:3000/company/new'
+	expect(page).to have_content("Cadastre sua Empresa")
 end
 
 And (/^I fill "Nome da Empresa" field with "Azura Software"$/) do

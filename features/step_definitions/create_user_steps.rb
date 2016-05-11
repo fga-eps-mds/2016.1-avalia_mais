@@ -3,7 +3,7 @@ And (/^I will press on "Entrar" link$/) do
 end
 
 And (/^I will be redirect to login page$/) do
-	visit 'http://localhot:3000/login'
+	expect(page).to have_content("Login")
 end
 
 And (/^I will press "Cadastrar" button$/) do
@@ -11,7 +11,7 @@ And (/^I will press "Cadastrar" button$/) do
 end
 
 And (/^I will be redirect to sign up page$/) do
-	visit 'http://localhot:3000/users/new'
+	expect(page).to have_content("Cadastre um usuário")
 end
 
 And (/^I will fill "Robot" in complete name/) do

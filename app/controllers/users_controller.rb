@@ -37,9 +37,9 @@ class UsersController < ApplicationController
 	# Searcing user to edit
 	def edit
 		@user = User.find(params[:id])
-		# if @user != current_user
-		# 	redirect_to home_path
-		# end			
+		if @user != current_user
+			redirect_to home_path
+		end			
 	end
 
 	def user_params
