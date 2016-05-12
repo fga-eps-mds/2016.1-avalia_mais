@@ -39,6 +39,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'metric_fu', '~> 4.12'
+gem 'coveralls', require: false
 
 group :development, :test do
   gem "rspec-rails", ">= 2.0.1"

@@ -1,0 +1,11 @@
+languages:
+   Ruby: true
+   JavaScript: true
+exclude_paths:
+- frontend/www/lib/**/*
+- frontend/report/lib/**/*
+- bower_components/angular/angular.js
+- bower_components/angular/angular.min.js
+- coverage/assets/0.10.0/application.js
+- bower_components/angular-loading-bar/build/loading-bar.js
+- bower_components/angular-loading-bar/src/loading-bar.js
