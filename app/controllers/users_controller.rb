@@ -12,9 +12,9 @@ class UsersController < ApplicationController
 	# Showing user data
 	def show
 		@user = User.find(params[:id])
-		# if @user != current_user
-		# 	redirect_to home_path
-		# end		
+		if @user != current_user
+			redirect_to home_path
+		end		
 	end
 	
 	# Creating new user
@@ -26,7 +26,8 @@ class UsersController < ApplicationController
 			# when user create his account he is already log in
 			session[:user_id] = @user.id
 			flash[:notice] = 'Cadastro efetuado com sucesso!'
-			redirect_to :action => "show",:id => @user.id
+			log_in @user
+			redirect_to home_path
 		else
 			render :new
 		end
@@ -36,9 +37,9 @@ class UsersController < ApplicationController
 	# Searcing user to edit
 	def edit
 		@user = User.find(params[:id])
-		# if @user != current_user
-		# 	redirect_to home_path
-		# end			
+		if @user != current_user
+			redirect_to home_path
+		end			
 	end
 
 	def user_params
@@ -46,13 +47,18 @@ class UsersController < ApplicationController
 	end
 	
 	def user_params_update
-		params[:user].permit(:name, :email, :password,:login, :dateBirthday, :gender, :uf_id)
+		params[:user].permit(:name, :dateBirthday, :gender)
 	end
-	
+
+	def password_params
+		params[:user].permit(:password, :password_confirmation)
+	end
+
 	# Deleting user 
 	def destroy
 		session[:user_id] = nil
  		user = User.find(params[:id])
+ 		user.evaluations.delete_all
  		user.destroy
 	
 		redirect_to home_path
@@ -61,17 +67,30 @@ class UsersController < ApplicationController
 
 	# Updating user 
 	def update
-
     	@user = User.find(params[:id])
-
-    	if @user.update_attributes(user_params)
+    	if @user.update_attributes(user_params_update)
     		respond_to do |format| format.html {redirect_to :action => "show",:id => @user.id}
-	    		flash[:success] = "Profile updated"
+	    		flash[:notice] = "Perfil atualizado"
 	    		format.js # views/users/update.js.erb
-    		end
+
+	    	end	
     	else
-      		render 'edit'
-      		format.js # views/users/update.js.erb
+      		flash[:notice] = 'Erro ao atualizar o dado!'
     	end
+    	
+  	end
+
+  	def update_password
+  		@user = User.find(params[:id])
+  		if  @user.authenticate(params[:user][:password_older])
+  			if @user.update_attributes(password_params)
+  				flash[:notice] = 'Senha atualizada com sucesso!'
+  			else
+  				flash[:notice] = 'Senha de confirmação invalida!'
+  			end
+  		else
+  			flash[:notice] = 'Senha invalida!'
+  		end
+  		redirect_to :action => "show",:id => @user.id
   	end
 end

@@ -29,7 +29,7 @@
 
 #gradienteTeste {
 	position: fixed;
-  z-index: 100;
+  z-index: 3;
   width: 100%;
   height: 100%;
   top: 0;
@@ -112,10 +112,7 @@ nav#menu {
 
 #header-span-index {
   z-index: 101;
-  position: absolute;
-  top: 10px;
   text-transform: uppercase;
-  margin-left: 50px;
   font-size: 30px;
   color: #FFF;
   font-family: Impact;
@@ -202,4 +199,19 @@ nav#menu {
 
 .dropdown:hover .dropbtn {
     color: #FF4040;
+}
+
+header {
+  z-index:100;
+}
+
+.logo-avalia-index {
+  text-transform: uppercase;
+  font-size: 30px;
+  color: #FFF;
+  font-family: Impact;
+  margin-top: -8px;
+  margin-left: 40px;
+  padding-right: 0px;
+  margin-right: 0px;
 }

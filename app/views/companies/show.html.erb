@@ -17,18 +17,29 @@
 </div>
 
 <div id="info_empresa">
-  <%= @company.telephone %></br>
+  <%= @company.telephone%></br>
   <%= @company.email %></br>
-</div>
+</div></br>
+<% if @company.evaluations.present? %>
+  <div id="general-rate">
+    <h4>Nota geral da Empresa</h4> </br>
+    <h4 id="value-rate"><%= number_with_precision(@total_evaluations, :precision => 2)  %></h4>
+  </div>
+  <div id="image-general-rate">
+    <%= image_tag(@image_name, :width => "90", :height => "136.8", :id => "medal-image") %>
+  </div>
+<%end%>
 
 <div id="name_segment">
   <h2><%= @company.segment.name %></h2>
 </div>
 
-<div class="container">
+
+
+<div class="container-show-company">
   <div class="btn-group">
-    <div class="btn geral">Geral</div>
     <div class="btn avaliacao">Avaliações</div>
+    <div class="btn geral">Geral</div>
     <div class="btn forum">Fórum</div>
     <div class="btn faq">FAQ</div>
   </div>
@@ -36,13 +47,59 @@
 
 <section id="avaliacao">
   <div class="barra">
-  <span class="bg"></span>
-  <div class="estrelas">
-      <% for e in 1..5 do %>    
-        <span class="star" id="<%=e%>"><span class="starAbsolute"></span></span>
+    <%if logged_in? %> 
+      <div class="estrelas">
+        <div id="check-response">
+          A empresa respondeu as reclamações?
+          <form id="confirmation-response">
+            <% if @current_evaluation.present? %>
+              <%if @current_evaluation.response_time != nil%>
+                Sim  <input type="radio" name="confirm-response" value="yes" class="response-radio" id="confirm-radio" checked>
+                Não  <input type="radio" name="confirm-response" value="no" class="response-radio" id="decline-radio" disabled>
+              <%else%>
+                Sim  <input type="radio" name="confirm-response" value="yes" class="response-radio" id="confirm-radio" >
+                Não  <input type="radio" name="confirm-response" value="no" class="response-radio" id="decline-radio" checked>
+              <%end%>
+            <%else%>
+              Sim  <input type="radio" name="confirm-response" value="yes" class="response-radio" id="confirm-radio" >
+              Não  <input type="radio" name="confirm-response" value="no" class="response-radio" id="decline-radio" checked>
+            <%end%>
+          </form>
+        </div></br></br></br></br>
+        <span id="message-evaluation">
+          Tempo de resposta da empresa:
+        </span>
+        <%= form_for(:response, url: response_time_path) do |f|%>
+          <%= f.hidden_field :user_id, :value => current_user.id%>
+          <%= f.hidden_field :company_id, :value => @company.id%>
+          <% if @current_evaluation.present? %>
+            <% if @current_evaluation.response_time != nil %>
+              <%= f.number_field :response_time, :class => "response-time-field", :min => 0, :step => 1, :value => @current_evaluation.response_time%>
+            <% else %>
+              <%= f.number_field :response_time, :class => "response-time-field", :min => 0, :step => 1, :value => :min%>
+            <% end %>
+          <% else %>
+            <%= f.number_field :response_time, :class => "response-time-field", :min => 0, :step => 1, :value => :min%>
+          <%end%>
+          <%= f.submit 'Submeter', :class => "btn btn-primary btn-sm btn-submit"%>
         <%end%>
-  </div>
-</div> 
+        </br></br></br>
+        <span id="message-evaluation">
+          Avaliação pessoal:
+        </span>
+        <% for rates in 1..5 do %> 
+          <%= form_for(:evaluations, url: rate_path) do |f|%>
+            <%= f.hidden_field :grade, :value => rates%>
+            <%= f.hidden_field :user_id, :value => current_user.id%>
+            <%= f.hidden_field :company_id, :value => @company.id%>
+            <%= f.submit 'Rates', :type => :image, :src => image_path("starpng.png"), :class => "star", :id=> 'star-'+rates.to_s%>
+          <%end%>
+        <%end%>
+      </div> 
+    <%else%>
+      <p>Para avaliar uma empresa é necessário realizar login.</p>
+    <%end%>
+  </div> 
 </section>
 
 <section id="forum">
@@ -59,41 +116,64 @@
   <%else%>
     <p><%= @company.description %></p>
   <%end%>
-  
-  <section id="stars_evaluations">
-    <%= image_tag("star3.jpeg") %>
-    <h2>(0 Avaliações)</h2>
-  </section>
 </section>
 
-
 <script>
-$(".avaliacao").click(function(){
-  $("#description").hide("slow");
-  $("#forum").hide("slow");
-  $("#faq").hide("slow");
-  $("#avaliacao").show("slow");
-});
-$(".geral").click(function(){
-  $("#avaliacao").hide("slow");
-  $("#forum").hide("slow");
-  $("#faq").hide("slow");
-  $("#description").show("slow");
-});
-$(".forum").click(function(){
-  $("#avaliacao").hide("slow");
-  $("#faq").hide("slow");
-  $("#description").hide("slow");
-  $("#forum").show("slow");
-});
-$(".faq").click(function(){
-  $("#avaliacao").hide("slow");
-  $("#forum").hide("slow");
-  $("#description").hide("slow");
-  $("#faq").show("slow");
-});
 
+  <%if @current_evaluation.present? %>
+    var current_rate  =  <%= @current_evaluation.grade%>;
+    if(current_rate >= 0){
+      for (var i = 0; i < current_rate; i++) {
+        $('.star:eq('+i+')').addClass('full');
+      }
+    }
+  <%end%>
+  var selecionado = document.getElementById("decline-radio").checked; 
+    if (selecionado) {
+      $(".response-time-field").attr("disabled", true);
+      $(".btn-submit").attr("disabled", true);
+    }
 
+  $("#decline-radio").click(function(){
+    $(".response-time-field").attr("disabled", true);
+    $(".btn-submit").attr("disabled", true);
+  });
+  $("#confirm-radio").click(function(){
+    $(".response-time-field").attr("disabled", false);
+    $(".btn-submit").attr("disabled", false);
+  });
+
+  $(".avaliacao").click(function(){
+    $("#description").hide("slow");
+    $("#forum").hide("slow");
+    $("#faq").hide("slow");
+    $("#avaliacao").show("slow");
+  });
+  $(".geral").click(function(){
+    $("#avaliacao").hide("slow");
+    $("#forum").hide("slow");
+    $("#faq").hide("slow");
+    $("#description").show("slow");
+  });
+  $(".forum").click(function(){
+    $("#avaliacao").hide("slow");
+    $("#faq").hide("slow");
+    $("#description").hide("slow");
+    $("#forum").show("slow");
+  });
+  $(".faq").click(function(){
+    $("#avaliacao").hide("slow");
+    $("#forum").hide("slow");
+    $("#description").hide("slow");
+    $("#faq").show("slow");
+  });
+
+  $('.star').on('click', function(){
+    var ponto = $(this).attr('id');
+    for (var i = 0; i <= indice; i++) {
+      $('.star:eq('+i+')').addClass('full');
+    }
+  });
   $('.star').on('mouseover', function(){
     var indice = $('.star').index(this);
     $('.star').removeClass('full');
@@ -102,17 +182,19 @@ $(".faq").click(function(){
     }
   });
   $('.star').on('mouseout', function(){
-      for (var i = 0; i <= indice; i++) {
+    var indice = $('.star').index(this);
+    for (var i = 0; i <= indice; i++) {
       $('.star:eq('+i+')').removeClass('full');
     }
-  });
-  $('.star').on('click', function(){
-    var ponto = $(this).attr('id');
-    alert(ponto);
-    for (var i = 0; i <= indice; i++) {
-      $('.star:eq('+i+')').addClass('full');
+    <%if @current_evaluation.present? %>
+    var current_rate  =  <%= @current_evaluation.grade%>;
+    if(current_rate >= 0){
+      for (var i = 0; i < current_rate; i++) {
+        $('.star:eq('+i+')').addClass('full');
+      }
     }
-    
+    <%end%>
   });
+
 
 </script>

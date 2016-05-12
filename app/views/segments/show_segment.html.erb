@@ -1,114 +1,77 @@
 
 <%= render "navbar/navbar" %>
-
-<% @segment.each do |s| %>
-        <% total = 0%>
-        <% @company.each do |f| %>
-          <% if s.id == f.segment_id %>
-            <% total = total +1 %>
-          <%end%>
-        <%end%>
-        <% if total > 0 %>
-<div class="container show-segments">
- <div class="well col-sm-12 col-md-8 col-md-offset-2">
-        <div class="row user-row">
-            <div class="col-md-1" id="logo_segment">
-                <%= image_tag("default_segments.png", :alt => "img", :class => "mg-circle") %>
-
-            </div>
-            <div class="col-md-10 title-segment">
-                <strong><%=s.name%></strong><br>
-            </div>
-            <div class="col-md-1 dropdown-user" data-for=".cyruxx">
-                (<span style="color: #FF4040"><%=total%></span>)<i class="glyphicon glyphicon-chevron-down text-muted"></i>
-            </div>
-        </div>
-        <div class="row user-infos cyruxx">
-            <div class="col-sm-10 col-md-10 col-md-offset-1">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Empresas Desta Categoria</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <table class="table table-condensed table-responsive table-user-information">
-                                    <tbody>
-                                    <tr>
-                                        <% @company.each do |f| %>
-                                        <% if s.id == f.segment_id %>
-                                        <td><%=link_to f.name, f%></td>
-                                        <%end%>
-                                        <%end%>
-                                      </tr>
-                                    
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="container-segments show-segments">
+  <div id="title-segments">
+    <h1>Categorias</h1>
   </div>
-  </div>
-  <%end%>
-  <%end%>
-  <script> 
-  //$(document).ready(function() {
-    var panels = $('.user-infos');
-    var panelsButton = $('.dropdown-user');
-    panels.hide();
-
-    //Click dropdown
-    panelsButton.click(function() {
-        //get data-for attribute
-        var dataFor = $(this).attr('data-for');
-        var idFor = $(dataFor);
-
-        //current button
-        var currentButton = $(this);
-        idFor.slideToggle(400, function() {
-            //Completed slidetoggle
-            if(idFor.is(':visible'))
-            {
-                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
-            }
-            else
-            {
-                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
-            }
-        })
-  //  });
-
-
-    $('[data-toggle="tooltip"]').tooltip();
-
-  </script>
-  <!--
-      <section class="show-segments">
-    <div>
-
-      <h1>Empresas por Categoria</h1>
-
-      <% @segment.each do |s| %>
-        <% total = 0%>
-        <% @company.each do |f| %>
-          <% if s.id == f.segment_id %>
-            <% total = total +1 %>
-          <%end%>
-        <%end%>
-
-        <% if total > 0 %>
-          <h2><span><%=s.name%></span> (<span style="color: #FF4040"><%=total%></span>)</h2>
-          <% @company.each do |f| %>
-            <% if s.id == f.segment_id %>
-              <span class ="link-to-company"><%=link_to f.name, f%></span></br>
-            <%end%>
-          <%end%>
-        <%end%>
+  <% segmentos  = 0%>
+  <% @segment.each do |s| %>
+    <% total = 0%>
+    <% segmentos = segmentos + 1%>
+    <% @company.each do |f| %>
+      <% if s.id == f.segment_id %>
+        <% total = total +1 %>
       <%end%>
-      </br></br></br>  
-    </div>
-<section>
--->
+    <%end%>
+    <% if total > 0 %>
+
+      <div class="well col-sm-12 col-md-8 col-md-offset-2">
+        <div class="row user-row">
+          <div class="col-md-1" id="logo_segment">
+            <%= image_tag("default_segments.png", :alt => "img", :class => "mg-circle") %>
+          </div>
+          <div class="col-md-10 title-segment">
+           <strong><%=s.name%></strong><br>
+          </div>
+          <div class="col-md-1 dropdown-user segment-<%= s.id%>" data-for=".cyruxx-<%=segmentos%>" id="<%=total%>">
+            (<span style="color: #FF4040"><%=total%></span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down ") %>
+          </div>
+        </div>
+        <div class="row user-infos cyruxx-<%=segmentos%>">
+          <div class="col-sm-10 col-md-10 col-md-offset-1">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Empresas Desta Categoria</h3>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-10">
+                    <ul>
+                      <% @company.each do |f| %>
+                        <% if s.id == f.segment_id %>
+                          <li><%=link_to f.name, f%></li>
+                        <%end%>
+                      <%end%>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <%end%>
+</div>
+<script> 
+var img_current = 0;
+  $(".user-infos").hide();
+  $(".dropdown-user").click(function() {
+    var id = $(this).attr('id');
+    var dataFor = $(this).attr('data-for');
+    var idFor = $(dataFor);
+    var currentButton = $(this);
+    idFor.slideToggle(400, function() {
+      if(img_current == 0){
+          currentButton.html('(<span style="color: #FF4040">'+id+'</span>)<%= image_tag("up.png", :alt => "abrir", :class => "img-down")%>');
+          img_current =1;
+
+      }else{
+        currentButton.html('(<span style="color: #FF4040">'+id+'</span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down")%>');
+        img_current = 0;
+      }
+
+
+    });
+  });   
+</script>

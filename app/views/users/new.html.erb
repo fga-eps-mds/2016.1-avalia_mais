@@ -3,16 +3,19 @@
 <%= image_tag("business_background.jpeg", :alt => "img", :class => "img") %>
 <section id="line"></section>
 <section id="section-form">
-	<h2>Cadastre um usuário</h2>
-	<% @user.errors.messages.values.each do |msg| %>
+	<div id="erro-message">
+		<% @user.errors.messages.values.each do |msg| %>
 		<% msg.each do |m| %>
 		<li id="error_message"><%= m %></li>
 		<%end %>
 	<% end %>
-
 	<% if flash[:error] -%>
 		<p class="error"><%= flash[:error] %></p>
 	<% end -%>
+	</div>
+	<div id="form-new-user">
+	<h2>Cadastre um usuário</h2>
+	
 
 	<%= form_for @user, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
 
@@ -28,8 +31,8 @@
 
 		<span>
 			<%= f.text_field :email, :class => "text" , :placeholder => "E-mail" %>
-			<%= f.date_field :dateBirthday, :class => "text", :placeholder => "dd/mm/aaaa"%></br></br>
-		</span>
+			<%= f.date_field :dateBirthday, :class => "text", :placeholder => "dd/mm/aaaa"%>
+		</span></br></br>
 
 		<span id="radio">
 			<%= f.select :uf_id, Uf.all.collect {|uf| [uf.name, uf.id]}, :class => "text"%>&nbsp;&nbsp;
@@ -40,6 +43,7 @@
 		<%= f.submit "Cadastrar", :id => "button" %></br></br></br>
 
 	<% end %>
+	</div>
 </section>
 
 

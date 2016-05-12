@@ -1,17 +1,18 @@
 <%= render "navbar/navbar" %>
-<section id="corpo">
+<section id="corpo-user">
+
   <h1>Perfil</h1><br>
 <section id="principal-user-show">
 <table class="table">
     <tr class="editar-name">
       <td class="attribute-name">Nome</td>
       <td><%= @user.name %></td>
-      <td ><a href="javascript: void(0);" id="show">Editar</a></td>
+      <td ><a href="javascript: void(0);" id="show-name">Editar</a></td>
     </tr>
     <tr id="nome-update" class="user-infos">
-          <%= form_for(@user, remote: true,  :url => { :action => "update", params: {id: @user.id,email: @user.email, password: @user.password, login:@user.login, dateBirthday: @user.dateBirthday, genero: @user.gender}} ) do |f| %>
+          <%= form_for(@user, remote: true, :url => { :action => "update", params: {id: @user.id,dateBirthday: @user.dateBirthday, gender: @user.gender}} ) do |f| %>
              <td class="form-update"></td>
-            <td class="form-update"><%= f.text_field :name, class: 'form-control'%></td>
+            <td class="form-update"><%= f.text_field :name, class: 'form-control', :id => "name"%></td>
             <td id="atualizar"><%= f.submit "Atualizar" %></td>
 
              <% end %>
@@ -26,7 +27,12 @@
      <td><%= @user.email %></td>
       <td class="no-editar">Editar</td>
     </tr>
-    
+    <tr >
+    <td class="attribute-name">UF</td>
+     <% uf = Uf.find(@user.uf_id) %>
+     <td><%= uf.name%></td>
+      <td class="no-editar">Editar</td>
+    </tr>
     <tr >
       <td class="attribute-name">G&ecirc;nero</td>
       <td > 
@@ -36,14 +42,14 @@
           <%="Feminino"%>
         <%end%>
       </td>
-       <td ><a href="javascript: void(0);" id="show-genero">Editar</a></td>
+       <td ><a href="javascript: void(0);" id="show-gender">Editar</a></td>
     </tr>
      <tr id="genero-update">
-          <%= form_for(@user, remote: true,  :url => { :action => "update", params: {id: @user.id,email: @user.email, password: @user.password, name:@user.name, dateBirthday: @user.dateBirthday, login: @user.login}} ) do |f| %>
+          <%= form_for(@user, remote: true, :url => { :action => "update", params: {id: @user.id,name:@user.name, dateBirthday: @user.dateBirthday}} ) do |f| %>
              <td class="form-update"></td>
              <td>
              <span>
-                Masculino <%= f.radio_button :gender, "m", :class => "radio"%> Feminino <%= f.radio_button :gender, "f", :class => "radio"%>
+                Masculino <%= f.radio_button :gender, "m", :class => "radio",  :id =>"masculino"%> Feminino <%= f.radio_button :gender, "f", :class => "radio", :id => "feminino"%>
               </span>
                 </td>
             <td id="atualizar"><%= f.submit "Atualizar" %></td>
@@ -53,12 +59,12 @@
     <tr >
       <td class="attribute-name">Data Nascimento</td>
       <td><%= post_date @user.dateBirthday %></td>
-       <td ><a href="javascript: void(0);" id="show-date">Editar</a></td>
+       <td ><a href="javascript: void(0);" id="show-dateBirthday">Editar</a></td>
     </tr>
     <tr id="date-update">
-      <%= form_for(@user, remote: true,  :url => { :action => "update", params: {id: @user.id,email: @user.email, password: @user.password, login:@user.login, name: @user.name, genero: @user.gender}} ) do |f| %>
+      <%= form_for(@user, remote: true, :url => { :action => "update", params: {id: @user.id, name: @user.name, genero: @user.gender}} ) do |f| %>
         <td class="form-update"></td>
-        <td class="form-update"><%= f.date_field :dateBirthday, class: 'form-control'%></td>
+        <td class="form-update"><%= f.date_field :dateBirthday, class: 'form-control', :id => "dateBirthday"%></td>
         <td id="atualizar"><%= f.submit "Atualizar" %></td>
       <% end %>
     </tr>
@@ -67,21 +73,22 @@
       <td>*******</td>
       <td ><a href="javascript: void(0);" id="show-pass">Editar</a></td>
     </tr>
-    <%= form_for(@user, remote: true,  :url => { :action => "update_password", params: {id: @user.id,email: @user.email, dateBirthday: @user.dateBirthday, login:@user.login, name: @user.name, genero: @user.gender}}) do |f| %>
-
+    <%= form_for(@user,  url: update_user_password_path, params: {id: @user.id}) do |f| %>
+      <tr id="pass-older">
+             <td class="form-update attribute-name">Senha atual</td>
+            <td class="form-update"><%= f.password_field :password_older, :id => "password-older"%></td>
+            <td></td>
+      </tr>
       <tr id="pass-new">
-             <td class="form-update attribute-name">Nova Senha</td>
-            <td class="form-update"><%= f.password_field :password%></td>
+             <td class="form-update attribute-name">Nova senha</td>
+            <td class="form-update"><%= f.password_field :password, :id => "password-new"%></td>
             <td></td>
       </tr>
       <tr id="pass-confirme">
              <td class="form-update attribute-name">Confirme a senha</td>
-            <td class="form-update"><%= f.password_field :password_confirmation%></td>
+            <td class="form-update"><%= f.password_field :password_confirmation, :id => "password-confirme"%></td>
             <td id="atualizar"><%= f.submit "Atualizar" %></td>
       </tr>
-      <% if flash[:error] -%>
-          <p class="error"><%= flash[:error] %></p>
-      <% end -%>
     <% end %>
     </table>
     <%= form_for(@user, :url => { :action => "destroy", params: {id: @user.id}} ) do |f| %>
@@ -94,21 +101,21 @@
 
     var count = 0;
 
-        $("#show").click(function(){
+        $("#show-name").click(function(){
           $("#nome-update").toggle("slow");
           if(count == 0){
-            $("#show").text("cancelar");
+            $("#show-name").text("Cancelar");
             count = 1;
           }else{
-            $("#show").text("Editar");
+            $("#show-name").text("Editar");
             count = 0;
           }
         });
         
-        $("#show-genero").click(function(){
+        $("#show-gender").click(function(){
           $("#genero-update").toggle("slow");
           if(count == 0){
-            $("#show-genero").text("cancelar");
+            $("#show-genero").text("Cancelar");
             count = 1;
           }else{
             $("#show-genero").text("Editar");
@@ -116,10 +123,10 @@
           }
         }); 
 
-        $("#show-date").click(function(){
+        $("#show-dateBirthday").click(function(){
           $("#date-update").toggle("slow");
           if(count == 0){
-            $("#show-date").text("cancelar");
+            $("#show-date").text("Cancelar");
             count = 1;
           }else{
             $("#show-date").text("Editar");
@@ -128,17 +135,17 @@
         });
 
         $("#show-pass").click(function(){
-          $("#pass-old").toggle("slow");
-          $("#pass-new").toggle("slow");
-          $("#pass-confirme").toggle("slow");
-          if(count == 0){
-            $("#show-pass").text("cancelar");
-            count = 1;
-          }else{
-            $("#show-pass").text("Editar");
-            count = 0;
-          }
-        }); 
+        $("#pass-older").toggle("slow");
+        $("#pass-new").toggle("slow");
+        $("#pass-confirme").toggle("slow");
+        if(count == 0){
+          $("#show-pass").text("Cancelar");
+          count = 1;
+        }else{
+          $("#show-pass").text("Editar");
+          count = 0;
+        }
+      }); 
 
 </script>
 </body>

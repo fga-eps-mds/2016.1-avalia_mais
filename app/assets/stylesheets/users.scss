@@ -1,52 +1,77 @@
 * {
- 	box-sizing: border-box;
- 	margin: 0;
- 	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
+body{background-color: #F0F0F0;}
 #header header {
-	width: 100%;
-	height: 30px;
+  width: 100%;
+  height: 30px;
 }
 
 #line {
-	position: fixed;
-	width: 100%;	
-	height: 100%;
-	background-image : linear-gradient(-230deg, #ffc857 0%, #ffc857 47%, #ffc857 100%);
-	z-index: -99;
-	opacity: 0.87;
+  position: fixed;
+  width: 100%;  
+  height: 100%;
+  background-image : linear-gradient(-230deg, #ffc857 0%, #ffc857 47%, #ffc857 100%);
+  z-index: -99;
+  opacity: 0.87;
 }
 
 .img {
-	width: 100%;
-	position: fixed;
-	top: 0;
-	margin-left: 0px;
-	z-index: -100; 
+  width: 100%;
+  position: fixed;
+  top: 0;
+  margin-left: 0px;
+  z-index: -100; 
 }
 
 footer {
-	bottom: 0px;
-	background-color: #c3124d;
+  bottom: 0px;
+  background-color: #c3124d;
 }
 
 #section-form {
-	padding-top: 10%;
-	text-align: center; 
-	height: 100%;
-	position: center;
-	top: 150px;
-	font-size: 20px;
-	z-index: 0;
+  position: absolute;
+  text-align: center;
+  height: 70%; 
+  width: 80%;
+  left: 10%;
+  top: 10%;
+  font-size: 20px;
+  z-index: 0;
   font-family: AvenirNext-Regular;
+}
+#section-form#erro-message{
+  position: relative;
+  text-align: left;
+  z-index: 2;
+}
+#form-new-user{
+  text-align: center;
 }
 
 #section-form h2 {
-	font-size: 40px;
+  font-size: 40px;
   color: #07213F;
 }
 #section-form select {
+  padding-left: 16px;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 200px;
+  height: 40px;
+  border-radius: 8px;
+  border: 0;
+  box-shadow: -2px -2px 1px #7F6F15;
+  color: #FFF;
+  box-sizing: border-box;
+}
+
+.radio-btn {
+  font-size: 20px;
+}
+.text {
   padding-left: 16px;
   font-size: 18px;
   background-color: rgba(0, 0, 0, 0.2);
@@ -58,21 +83,17 @@ footer {
   color: #FFF;
   box-sizing: border-box;
 }
-
-.radio-btn {
-	font-size: 20px;
-}
-.text {
-	padding-left: 16px;
-	font-size: 18px;
-	background-color: rgba(0, 0, 0, 0.2);
-	width: 300px;
+.uf-field{
+  padding-left: 16px;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 150px;
   height: 40px;
   border-radius: 8px;
   border: 0;
-	box-shadow: -2px -2px 1px #7F6F15;
-	color: #FFF;
-  box-sizing: border-box;
+  box-shadow: -2px -2px 1px #7F6F15;
+  color: #FFF;
+  box-sizing: border-box; 
 }
 
 #section-login {
@@ -97,21 +118,21 @@ footer {
 
 
 #radio {
-	text-align: center;
-	font-size: 20px;	
-	width: 100px;
+  text-align: center;
+  font-size: 20px;  
+  width: 100px;
 }
 
 #button {
-	text-align: center;
-	width: 10%;
-	font-size: 16px;
-	color: #FFF;
-	border: 0;
-	height: 40px;
-	border-radius: 4px;
-	background: vertical-align;
-	background-color: #f44336;
+  text-align: center;
+  width: 10%;
+  font-size: 16px;
+  color: #FFF;
+  border: 0;
+  height: 40px;
+  border-radius: 4px;
+  background: vertical-align;
+  background-color: #f44336;
   text-align: center;
   font-size: 25px;
 }
@@ -200,15 +221,14 @@ nav#menu-logado {
   color:#FF4040;
 }
 
-#corpo {
-  background-color: #F0F0F0;
+#corpo-user{
+  
   width: 100%;
-  height: 100%;
-  background-color: #F0F0F0;width: 100%;height: 100%;
-  position: absolute;
+  min-height:200px;
+  display: table; 
 }
 
-#corpo h1 {
+#corpo-user h1 {
   margin-top: 100px;
   font-size: 30px;
   text-align: center;
@@ -216,10 +236,9 @@ nav#menu-logado {
 }
 
 #principal-user-show {
-  z-index: 120;
+  z-index: 1;
   position: absolute;
   width: 800px;
-  height: 350px;
   left:50%;
   top:28%;
   margin-left: -400px;
@@ -228,10 +247,8 @@ nav#menu-logado {
 #principal_table {
   position: relative;
   width: 50%;
-  height: 50%;
   top: 10%;
   left: 25%;
-  z-index: 120;
 }
 
 hr {
@@ -263,6 +280,7 @@ table {
     position: relative;
     top: 0px;
     width: 100%;
+    height: 100%;
     text-align: right;
 }
 
@@ -333,10 +351,11 @@ hr{
   display:inline;
 }  
 
-#nome-update, #genero-update, #date-update, #pass-old, #pass-new, #pass-confirme{
-     position: relative;
+
+#nome-update, #genero-update, #date-update, #pass-older, #pass-new, #pass-confirme{
+    position: relative;
     display:none;
-      width: 430px; margin: 60px auto; padding: 60px 30px;
+    width: 430px; margin: 60px auto; padding: 60px 30px;
     background: #c9d0de; border: 1px solid #e1e1e1;
     -moz-box-shadow: 0px 0px 8px #444;
     -webkit-box-shadow: 0px 0px 8px #444;
@@ -358,4 +377,8 @@ hr{
   top: 5%;
   left: 50%;
   font-size: 20px;
+}
+.field_with_errors{
+  display: inline;
+  padding-right: 5px;
 }

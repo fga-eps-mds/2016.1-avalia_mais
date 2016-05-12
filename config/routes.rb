@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get   '/users/edit/:id' => 'users#edit', :as => 'user_edit'
 
   patch '/users/update/', controller: 'users', action: 'update', :as => 'update_user'
-  patch '/users/update/', controller: 'users', action: 'update_password', :as => 'update_user_password'
+  patch '/users/update/:id', controller: 'users', action: 'update_password', :as => 'update_user_password'
   patch '/users/destroy/', controller: 'users', action: 'destroy', :as => 'destroy_user_now'
 
 
@@ -36,7 +36,8 @@ Rails.application.routes.draw do
 
 
   #evaluation
-
+  post '/company/show', controller: 'evaluations', action: 'rate', :as => 'rate'
+  post '/company/response', controller: 'evaluations', action: 'response_time', :as => 'response_time'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
