@@ -1,0 +1,17 @@
+<%= render "navbar/navbar" %>
+<%= image_tag("business_background.jpeg", :alt => "img", :class => "img") %>
+<section id="line"></section>
+<section id="section-form">
+	<%= form_for(:session, url: login_path) do |f| %>
+		<h1>Login</h1></br>
+		<%= f.text_field :login, :class => "text" , :placeholder => "Apelido ou e-mail" %></br></br>
+		<%= f.password_field :password, :class => "text" , :placeholder => "Senha" %></br></br>
+		<%= f.submit "Entrar", :class => "btn btn-primary"%></br></br>
+	<% end %>
+
+	<%= link_to "Cadastrar", :controller => :users, :action => :new %></br>
+	<div>
+		<%= link_to "Esqueci minha senha"%>
+	</div>
+	
+</section>

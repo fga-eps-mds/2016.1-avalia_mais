@@ -1,0 +1,151 @@
+<%= render "navbar/navbar" %>
+<section id="corpo-user">
+
+  <h1>Perfil</h1><br>
+<section id="principal-user-show">
+<table class="table">
+    <tr class="editar-name">
+      <td class="attribute-name">Nome</td>
+      <td><%= @user.name %></td>
+      <td ><a href="javascript: void(0);" id="show-name">Editar</a></td>
+    </tr>
+    <tr id="nome-update" class="user-infos">
+          <%= form_for(@user, remote: true, :url => { :action => "update", params: {id: @user.id,dateBirthday: @user.dateBirthday, gender: @user.gender}} ) do |f| %>
+             <td class="form-update"></td>
+            <td class="form-update"><%= f.text_field :name, class: 'form-control', :id => "name"%></td>
+            <td id="atualizar"><%= f.submit "Atualizar" %></td>
+
+             <% end %>
+      </tr>
+    <tr>
+      <td class="attribute-name">Apelido</td>
+      <td><%= @user.login %></td>
+       <td class="no-editar">Editar</td>
+    </tr>
+   <tr >
+    <td class="attribute-name">E-mail</td>
+     <td><%= @user.email %></td>
+      <td class="no-editar">Editar</td>
+    </tr>
+    <tr >
+    <td class="attribute-name">UF</td>
+     <% uf = Uf.find(@user.uf_id) %>
+     <td><%= uf.name%></td>
+      <td class="no-editar">Editar</td>
+    </tr>
+    <tr >
+      <td class="attribute-name">G&ecirc;nero</td>
+      <td > 
+        <% if @user.gender == "m" %>
+          <%="Masculino"%> 
+        <% else %> 
+          <%="Feminino"%>
+        <%end%>
+      </td>
+       <td ><a href="javascript: void(0);" id="show-gender">Editar</a></td>
+    </tr>
+     <tr id="genero-update">
+          <%= form_for(@user, remote: true, :url => { :action => "update", params: {id: @user.id,name:@user.name, dateBirthday: @user.dateBirthday}} ) do |f| %>
+             <td class="form-update"></td>
+             <td>
+             <span>
+                Masculino <%= f.radio_button :gender, "m", :class => "radio",  :id =>"masculino"%> Feminino <%= f.radio_button :gender, "f", :class => "radio", :id => "feminino"%>
+              </span>
+                </td>
+            <td id="atualizar"><%= f.submit "Atualizar" %></td>
+            <% end %>
+
+    
+    <tr >
+      <td class="attribute-name">Data Nascimento</td>
+      <td><%= post_date @user.dateBirthday %></td>
+       <td ><a href="javascript: void(0);" id="show-dateBirthday">Editar</a></td>
+    </tr>
+    <tr id="date-update">
+      <%= form_for(@user, remote: true, :url => { :action => "update", params: {id: @user.id, name: @user.name, genero: @user.gender}} ) do |f| %>
+        <td class="form-update"></td>
+        <td class="form-update"><%= f.date_field :dateBirthday, class: 'form-control', :id => "dateBirthday"%></td>
+        <td id="atualizar"><%= f.submit "Atualizar" %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td class="attribute-name">Senha</td>
+      <td>*******</td>
+      <td ><a href="javascript: void(0);" id="show-pass">Editar</a></td>
+    </tr>
+    <%= form_for(@user,  url: update_user_password_path, params: {id: @user.id}) do |f| %>
+      <tr id="pass-older">
+             <td class="form-update attribute-name">Senha atual</td>
+            <td class="form-update"><%= f.password_field :password_older, :id => "password-older"%></td>
+            <td></td>
+      </tr>
+      <tr id="pass-new">
+             <td class="form-update attribute-name">Nova senha</td>
+            <td class="form-update"><%= f.password_field :password, :id => "password-new"%></td>
+            <td></td>
+      </tr>
+      <tr id="pass-confirme">
+             <td class="form-update attribute-name">Confirme a senha</td>
+            <td class="form-update"><%= f.password_field :password_confirmation, :id => "password-confirme"%></td>
+            <td id="atualizar"><%= f.submit "Atualizar" %></td>
+      </tr>
+    <% end %>
+    </table>
+    <%= form_for(@user, :url => { :action => "destroy", params: {id: @user.id}} ) do |f| %>
+      <%= f.submit "Excluir minha conta", data: { confirm: "Tem certeza que deseja excluir sua conta?" }, class: "btn btn-warning destroy-btn"%>
+    <% end %>
+</section>
+
+</section>
+<script>
+
+    var count = 0;
+
+        $("#show-name").click(function(){
+          $("#nome-update").toggle("slow");
+          if(count == 0){
+            $("#show-name").text("Cancelar");
+            count = 1;
+          }else{
+            $("#show-name").text("Editar");
+            count = 0;
+          }
+        });
+        
+        $("#show-gender").click(function(){
+          $("#genero-update").toggle("slow");
+          if(count == 0){
+            $("#show-genero").text("Cancelar");
+            count = 1;
+          }else{
+            $("#show-genero").text("Editar");
+            count = 0;
+          }
+        }); 
+
+        $("#show-dateBirthday").click(function(){
+          $("#date-update").toggle("slow");
+          if(count == 0){
+            $("#show-date").text("Cancelar");
+            count = 1;
+          }else{
+            $("#show-date").text("Editar");
+            count = 0;
+          }
+        });
+
+        $("#show-pass").click(function(){
+        $("#pass-older").toggle("slow");
+        $("#pass-new").toggle("slow");
+        $("#pass-confirme").toggle("slow");
+        if(count == 0){
+          $("#show-pass").text("Cancelar");
+          count = 1;
+        }else{
+          $("#show-pass").text("Editar");
+          count = 0;
+        }
+      }); 
+
+</script>
+</body>

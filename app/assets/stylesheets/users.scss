@@ -1,0 +1,384 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{background-color: #F0F0F0;}
+#header header {
+  width: 100%;
+  height: 30px;
+}
+
+#line {
+  position: fixed;
+  width: 100%;  
+  height: 100%;
+  background-image : linear-gradient(-230deg, #ffc857 0%, #ffc857 47%, #ffc857 100%);
+  z-index: -99;
+  opacity: 0.87;
+}
+
+.img {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  margin-left: 0px;
+  z-index: -100; 
+}
+
+footer {
+  bottom: 0px;
+  background-color: #c3124d;
+}
+
+#section-form {
+  position: absolute;
+  text-align: center;
+  height: 70%; 
+  width: 80%;
+  left: 10%;
+  top: 10%;
+  font-size: 20px;
+  z-index: 0;
+  font-family: AvenirNext-Regular;
+}
+#section-form#erro-message{
+  position: relative;
+  text-align: left;
+  z-index: 2;
+}
+#form-new-user{
+  text-align: center;
+}
+
+#section-form h2 {
+  font-size: 40px;
+  color: #07213F;
+}
+#section-form select {
+  padding-left: 16px;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 200px;
+  height: 40px;
+  border-radius: 8px;
+  border: 0;
+  box-shadow: -2px -2px 1px #7F6F15;
+  color: #FFF;
+  box-sizing: border-box;
+}
+
+.radio-btn {
+  font-size: 20px;
+}
+.text {
+  padding-left: 16px;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height: 40px;
+  border-radius: 8px;
+  border: 0;
+  box-shadow: -2px -2px 1px #7F6F15;
+  color: #FFF;
+  box-sizing: border-box;
+}
+.uf-field{
+  padding-left: 16px;
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 150px;
+  height: 40px;
+  border-radius: 8px;
+  border: 0;
+  box-shadow: -2px -2px 1px #7F6F15;
+  color: #FFF;
+  box-sizing: border-box; 
+}
+
+#section-login {
+  padding-top: 10%;
+  text-align: center; 
+  height: 100%;
+  position: center;
+  top: 150px;
+  font-size: 20px;
+  z-index: 0;
+  font-family: AvenirNext-Regular;
+}
+
+#title-new {
+  font-size: 40px;
+  color: #07213F;
+}
+
+.radio-btn {
+  width: 55px;
+}
+
+
+#radio {
+  text-align: center;
+  font-size: 20px;  
+  width: 100px;
+}
+
+#button {
+  text-align: center;
+  width: 10%;
+  font-size: 16px;
+  color: #FFF;
+  border: 0;
+  height: 40px;
+  border-radius: 4px;
+  background: vertical-align;
+  background-color: #f44336;
+  text-align: center;
+  font-size: 25px;
+}
+
+#button {
+  text-align: center;
+  width: 10%;
+  font-size: 20px;
+  color: #FFF;
+  border: 0;
+  height: 40px;
+  border-radius: 4px;
+  background: vertical-align;
+  background-color: #f44336;
+}
+
+header#header-logado {
+  width: 100%;
+  position: absolute;
+  height: 50px;
+  margin-bottom: 5px;
+  background-color: #07213F;
+  z-index: 100;
+}
+
+header#header-logado > img:first-child {
+  margin-top:-10px;
+  width: 50px;
+  margin-left: 80px;
+}
+
+form.forme-email {
+  position: relative;
+  margin-left: 150px;
+  margin-top: -40px;
+}
+
+.input-subscrypt {
+  z-index: 100;
+  width: 400px;
+  height: 30px;
+  color: #FFF;
+  font-size: 16px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  border: 1px solid #E3625f;
+  padding-left: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  letter-spacing: 0.2em;      
+}
+
+.butto-subscrypt {
+  position: absolute;
+  padding-top: 15px;
+  margin-left: -30px;
+}
+
+nav#menu-logado {
+  position: relative;
+  float:right;
+  margin-right: 20px;
+  z-index: 100;
+  margin-top:-30px;
+}
+
+#menu-logado ul {
+  list-style: none;
+}
+
+#menu-logado ul li {
+  display: inline-block;
+}
+
+#menu-logado ul li a {
+  color: #CCC;
+  text-decoration: none;
+}
+
+#menu-logado ul li a:hover {
+  color: #FF0000;
+}
+
+#menu-logado ul li.pipe {
+  color:#FF4040;
+}
+
+#corpo-user{
+  
+  width: 100%;
+  min-height:200px;
+  display: table; 
+}
+
+#corpo-user h1 {
+  margin-top: 100px;
+  font-size: 30px;
+  text-align: center;
+  color:#0B213A
+}
+
+#principal-user-show {
+  z-index: 1;
+  position: absolute;
+  width: 800px;
+  left:50%;
+  top:28%;
+  margin-left: -400px;
+}
+
+#principal_table {
+  position: relative;
+  width: 50%;
+  top: 10%;
+  left: 25%;
+}
+
+hr {
+  width: 40px;
+  margin: auto;
+}
+#link-to-edit{
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+#button-edit{
+  text-align: center;
+  position: fixed;
+  top: 80%;
+  left: 47.5%;
+  width: 60px;
+  font-size: 16px;
+  color: #FFF;
+  border: 0;
+  height: 40px;
+  border-radius: 4px;
+  background: vertical-align;
+  background-color: #07213F;
+}
+
+table {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    text-align: right;
+}
+
+
+th {
+  display: block;
+  color:#0B213A;
+}
+
+th, td {
+  font-size: 26px;
+  padding: 8px;
+  text-align: left;
+  border-bottom: 6px solid #ddd;
+  font-family: 'OpenSans';
+}
+
+td {
+  text-decoration: none;
+  color:#E3625F;
+  font-weight: bold;
+}
+
+td.editar {
+  color: #0B213A;
+  opacity: 0.9;
+}
+
+td.no-editar {
+  color: #0B213A;
+  opacity: 0.15;
+}
+
+hr {
+  width: 40px;
+  margin: auto;
+}
+
+#error_message {
+  list-style: none;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: AvenirNext-Regular;
+  color:  #FF0000;
+  z-index: 150;
+}
+ 
+.attribute-name{ 
+  text-decoration: none; 
+  color:#07213F; 
+  font-weight: bold;
+}
+
+td.editar{
+  color: #0B213A; 
+  opacity: 0.9;
+}
+
+td.no-editar {
+  color: #0B213A; 
+  opacity: 0.15;
+}
+hr{
+  width: 40px;
+  margin: auto;
+}
+.radio{
+  display:inline;
+}  
+
+
+#nome-update, #genero-update, #date-update, #pass-older, #pass-new, #pass-confirme{
+    position: relative;
+    display:none;
+    width: 430px; margin: 60px auto; padding: 60px 30px;
+    background: #c9d0de; border: 1px solid #e1e1e1;
+    -moz-box-shadow: 0px 0px 8px #444;
+    -webkit-box-shadow: 0px 0px 8px #444;
+}
+
+#nome-update form, #genero-update form, #date-update form, #pass-update form{
+   background: #c9d0de;
+}
+.form-control{
+  width:250px;
+  min-width:200px;
+}
+.destroy-btn{
+  position: absolute;
+  left: 39.7137133%;
+}
+.error{
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  font-size: 20px;
+}
+.field_with_errors{
+  display: inline;
+  padding-right: 5px;
+}

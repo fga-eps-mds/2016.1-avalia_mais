@@ -1,0 +1,43 @@
+<%= render "navbar/navbar" %>
+<section id="cadastrar_empresa">
+	<%= image_tag("business_background.jpeg", :alt => "img", :class => "img") %>
+	<section id="form_empresa">
+		<h3>Cadastre sua Empresa</h3><br/><br/>
+
+		<% if @company.errors.any? %>
+			<ul>
+				<% @company.errors.messages.values.each do |message|%>
+					<% message.each do |m| %>
+						<li id="error_message" style="color: #0B213A"> <%= m %> </li>
+					<%end%>
+				<%end%>
+			</ul>
+		<%end%><br/>
+
+		<%= form_for @company, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>			
+
+			<%= f.text_field :name , :placeholder => "Nome da Empresa", :maxlength => 50, :class => "form_control"%><br/><br/>
+
+			<%= f.file_field :logo, :class => "form_control file_field" %></br>
+
+			<%= f.select :segment_id, Segment.all.collect {|a| [a.name, a.id]}%></br></br>
+
+			<%= f.text_field :address, :placeholder => "Endereço da Empresa", :maxlength => 80, :class => "form_control" %><br/><br/>
+
+			<%= f.select :uf_id, Uf.all.collect {|uf| [uf.name, uf.id]}%><br/><br/>
+
+			<%= f.text_field :telephone , :placeholder => "Telefone de Contato", :class => "form_control" %><br/></br/>
+
+			<%= f.text_field :email , :placeholder => "E-mail da Empresa", :class => "form_control"%><br/><br/>
+
+			<%= f.text_area :description,  :placeholder => "Descrição", :maxlength => 500, :id => "tarea" %><br/><br/>
+
+			<%= button_tag(type: 'submit', class: "btn btn-primary") do %> Confirmar <% end %><br/>
+
+
+			<br/></br/><br/></br/>
+
+		<% end %>
+	</section>
+</section>
+<section id="linear-new"></section>

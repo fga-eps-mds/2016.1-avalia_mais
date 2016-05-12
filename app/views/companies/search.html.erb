@@ -1,0 +1,20 @@
+<%= render "navbar/navbar" %>
+<section id="corpo">
+<section class="show-search">
+    <div>
+
+      <h1>Resultado da Busca</h1>
+
+     	<%if @company.present? %>
+     		<h2>Empresas encontradas com o termo "<%= @search_param%>"</h2>
+			<% @company.each do |c|%>
+				<p><%= link_to c.name, c %></p>
+			<%end%>
+		<%else%>
+			<h2>Nenhuma Empresa encontrada com o termo "<%= @search_param%>".</h2>
+		<%end%>
+
+      </br></br></br>  
+    </div>
+<section>
+</section>

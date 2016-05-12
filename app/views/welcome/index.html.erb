@@ -1,0 +1,56 @@
+<header class="nav">
+  <div class="float-l logo-avalia-index">
+    <span id="header-span-index">avalia&nbsp;
+      <%= link_to :controller => :welcome, :action => :index do %>
+        <%= image_tag("AVALIA_LOGO.png", :alt => "logo") %>
+      <% end %>
+    </span>
+    </div>
+    <input type="checkbox" id="control-nav" />
+    <label for="control-nav" class="control-nav"></label>
+    <label for="control-nav" class="control-nav-close"></label>
+           
+    <nav class="navbar-right" role="navigation">
+      <ul class="list-auto navbar-left">
+          <li><%= link_to "Inicio",:controller => :welcome, :action => :index%></li>
+          <li>
+            <%= link_to "Categorias", segment_path %>
+          </li>
+          <li>
+            <a href="#">Ranking</a>
+          </li>
+          <li class="pipe">|</li>
+          <% if logged_in? %>
+            <li><a href="#" id="welcome-user">Bem Vindo, <%= current_user.name.split(" ")[0] %></a> 
+              <ul> 
+                <li>
+                  <%= link_to "Perfil", :controller => "users", :action => :show ,:id => current_user.id %>
+                </li> 
+                <li>
+                  <%= link_to "Cadastrar Empresa", company_new_path %>
+                </li>                         
+                <li>
+                  <%= link_to "Sair", logout_path %>
+                </li>  
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Cadastrar Empresa", company_new_path %></li>&nbsp;&nbsp;
+            <li><%= link_to "Entrar", login_path %></li>
+        <% end %>   
+        </ul>     
+    </nav>
+</header>
+<section id="index-body">
+<%= image_tag("business_background.jpeg", :alt => "img", :class => "img") %>
+  <section id="principal">
+    <h3>Avalie sua empresa. Resolva seu problema.</h3>
+    <p>Plataforma onde você pode avaliar sua empresa, e muito mais. Avalie, consulte, reclame, ajude e discuta sobre problemas e soluções.</p><br />
+    <%= form_for(:current_search, url: search_company_path) do |f|%>
+      <%= f.text_field :search, :class => "input-subscript forme-email", placeholder: "Buscar" %>
+      <%= f.submit "Buscar", :type => :image, :src => image_path("tool.svg"), :class => "button-subscript"%>
+    <%end%>
+    
+  </section>
+</section>
+<section id="gradienteTeste"></section>

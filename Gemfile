@@ -14,11 +14,16 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Use Paperclip to upload images
+gem 'paperclip', '~> 4.3.2'
+# Use Bcrypt to cryptograph password
+gem 'bcrypt-ruby', '3.1.2'
+
 gem 'simplecov', :require => false, :group => :test
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+#gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -36,6 +41,10 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'metric_fu', '~> 4.12'
 
 group :development, :test do
+  gem "rspec-rails", ">= 2.0.1"
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+  gem 'selenium-webdriver', '~> 2.53'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end

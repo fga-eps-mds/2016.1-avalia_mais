@@ -1,0 +1,51 @@
+#corpo {
+  background-color: #F0F0F0;
+  width: 100%;
+  height: 100%;
+  background-color: #F0F0F0;width: 100%;height: 100%;
+  position: absolute;
+}
+
+#corpo h1 {
+  margin-top: 0px;
+  font-size: 30px;
+  text-align: center;
+  color:#0B213A
+}
+#corpo p{
+  margin-top: 30px;
+  font-size: 30px;
+  text-align: left;
+  color:#0B213A
+}
+.show-search {
+	font-family: AvenirNext-Regular;
+	margin-top: 100px;
+
+}
+
+.show-search h1 {
+	color: #07213F;
+	text-align: center;
+}
+
+.show-search h2 {
+	font-size: 26px;
+	color: #001d89;
+	margin-left: 120px;
+	margin-top: 40px;
+}
+
+.show-search p {
+	font-size: 18px;
+	color: #001d89;
+	margin-left: 120px;
+	-webkit-margin-before: 12px;
+  	-webkit-margin-after: 12px;
+}
+
+.link-to-company-search {
+	font-size: 15px;
+	color: #848484;
+	margin-left: 125px;
+}

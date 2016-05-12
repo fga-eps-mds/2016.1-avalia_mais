@@ -1,0 +1,60 @@
+.container-segments{
+	position: absolute;
+	font-family: AvenirNext-Regular;
+	top: 80px;
+	z-index:1;
+	height: 100%;
+}
+#title-segments{
+	padding-bottom: 30px;
+  	font-size: 30px;
+  	text-align: center;
+  	color:#0B213A
+}
+.show-segments h1 {
+	color: #07213F;
+}
+
+.show-segments h2 {
+	font-size: 30px;
+	color: #001d89;
+	margin-left: 120px;
+	margin-top: 50px;
+}
+
+#logo_segment img{
+	width: 50px;
+	height: 50px;
+	vertical-align: middle;
+	
+}
+.user-row {
+    margin-bottom: 14px;
+}
+
+.user-row:last-child {
+    margin-bottom: 0;
+}
+
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+    height: 100%;
+}
+
+.dropdown-user:hover {
+    cursor: pointer;
+}
+.panel-body ul{
+	list-style-type: none;
+}
+
+.panel-body ul li{
+    border-top: 0;
+    padding-right: 10px;
+}
+.dropdown-user img{
+	width: 25px;
+	height: 25px;
+}
+

@@ -4,7 +4,7 @@ class CreateEvaluations < ActiveRecord::Migration
       t.integer :response_time
       t.integer :grade
       t.string :resolved
-      t.string :uf
+      t.integer :rate
 
       t.timestamps null: false
     end
