@@ -91,6 +91,9 @@ nav ul li ul li a {
   width: inherit;
   padding-right: 22px;
 }
+li.pipe{
+    color:#FFF;
+  }
 
 .input-search {
   z-index: 100;
@@ -138,7 +141,7 @@ nav ul li ul li a {
     border-left: 1px solid #ccc;
     background: #fff;
     overflow-x: auto;
-    z-index: 2;
+    z-index: 20;
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
     -webkit-transform: translate(100%, 0);
@@ -149,6 +152,9 @@ nav ul li ul li a {
   header ul.list-auto {
     padding: 0;
     right: 5px;
+  }
+  li.pipe{
+    display: none;
   }
 
   header ul.list-auto li {
@@ -169,9 +175,9 @@ nav ul li ul li a {
     display: block;
     width: 30px;
     padding: 5px 0;
-    border: solid #333;
+    border: solid #FFF;
     border-width: 3px 0;
-    z-index: 2;
+    z-index: 20;
     cursor: pointer;
   }
 
@@ -179,7 +185,7 @@ nav ul li ul li a {
     content: "";
     display: block;
     height: 3px;
-    background: #333;
+    background: #FFF;
   }
 
   .control-nav-close {
@@ -189,7 +195,7 @@ nav ul li ul li a {
     bottom: 0;
     left: 0;
     display: block;
-    z-index: 1;
+    z-index: 20;
     background: rgba(0,0,0,0.4);
     -webkit-transition: all 500ms ease;
     transition: all 500ms ease;
@@ -204,12 +210,12 @@ nav ul li ul li a {
   }
 
   input#control-nav:focus ~ .control-nav {
-    border-color: #000;
+    border-color: #FFF;
     box-shadow: 0px 0px 9px rgba(0,0,0,0.3);
   }
 
   input#control-nav:focus ~ .control-nav:before {
-    background: #000;
+    background: #FFF;
   }
 
   input#control-nav:checked ~ nav,

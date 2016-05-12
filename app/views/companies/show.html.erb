@@ -19,7 +19,6 @@
 <div id="info_empresa">
   <%= @company.telephone%></br>
   <%= @company.email %></br>
-
 </div></br>
 <% if @company.evaluations.present? %>
   <div id="general-rate">
@@ -120,6 +119,7 @@
 </section>
 
 <script>
+
   <%if @current_evaluation.present? %>
     var current_rate  =  <%= @current_evaluation.grade%>;
     if(current_rate >= 0){
@@ -128,6 +128,11 @@
       }
     }
   <%end%>
+  var selecionado = document.getElementById("decline-radio").checked; 
+    if (selecionado) {
+      $(".response-time-field").attr("disabled", true);
+      $(".btn-submit").attr("disabled", true);
+    }
 
   $("#decline-radio").click(function(){
     $(".response-time-field").attr("disabled", true);
