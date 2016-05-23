@@ -5,6 +5,12 @@ class RankingsController < ApplicationController
 
 	end
 
+	def grade_all
+		@companies = Company.all
+	end
 
-
+	def grade_category
+	  
+	end
+  
 end

@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get  '/company/:id' => 'companies#show', :as => 'company'
   get '/company/:search' => 'companies#search', :as => 'company_search'
   post '/company/new' => 'companies#create', :as => 'create_company'
-  get 'ranking' => 'rankings#response_time_all', :as => 'ranking_response'
 
   #users
   get   '/users/new'      => 'users#new'
@@ -31,6 +30,11 @@ Rails.application.routes.draw do
   get    'login'  => 'sessions#new'
   post   'login'  => 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+
+  #ranking
+  get 'ranking/grade/all' => 'rankings#grade_all'
+  get 'ranking/grade/category' => 'rankings#grade_category'
+  get 'ranking/response/all' => 'rankings#response_time_all', :as => 'ranking_response'
 
   #segment
   get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment' 
