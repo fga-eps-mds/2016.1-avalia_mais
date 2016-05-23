@@ -9,11 +9,12 @@ Rails.application.routes.draw do
   post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
   resources :parsers
 
+  #company
   get  '/company/new' => 'companies#new'
   get  '/company/:id' => 'companies#show', :as => 'company'
   get '/company/:search' => 'companies#search', :as => 'company_search'
   post '/company/new' => 'companies#create', :as => 'create_company'
-
+  get 'ranking' => 'rankings#response_time_all', :as => 'ranking_response'
 
   #users
   get   '/users/new'      => 'users#new'

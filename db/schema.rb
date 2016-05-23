@@ -14,6 +14,8 @@
 ActiveRecord::Schema.define(version: 20160504214317) do
 
   create_table "companies", force: :cascade do |t|
+    t.float    "response_time",     limit: 24
+    t.float    "rate",              limit: 24
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "name",              limit: 255
