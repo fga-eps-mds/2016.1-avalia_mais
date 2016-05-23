@@ -103,9 +103,10 @@
 </section>
 
 <section id="forum">
-   <%if logged_in? %>
-  <%= link_to "Novo tópico", new_topic_path %> 
-  <% end %>
+  <%= hidden_field :company_id, :value => @company.id%>
+  <%if logged_in?%>
+    <p><%= link_to "Novo tópico", new_topic_path(:company_id => @company.id) %> </p>
+  <%end%>
 </section>
 
 <section id="faq">

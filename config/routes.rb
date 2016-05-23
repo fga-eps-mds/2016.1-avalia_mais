@@ -40,6 +40,10 @@ Rails.application.routes.draw do
   post '/company/response', controller: 'evaluations', action: 'response_time', :as => 'response_time'
 
   #topic
+  resources :companies do
+    resources :topics
+  end
+
   resources :topics
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

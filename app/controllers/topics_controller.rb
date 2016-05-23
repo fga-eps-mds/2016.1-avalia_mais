@@ -1,7 +1,13 @@
 class TopicsController < ApplicationController
 
+	def index
+		@company = Company.find(params[:id])
+		@topics = @company.topics
+	end
+
 	def new
 		@topic = Topic.new
+		@company = Company.find(params[:company_id])
 	end
 
 	def create
@@ -21,6 +27,6 @@ class TopicsController < ApplicationController
 
 	private
 	def topic_params
-		params[:topic].permit(:title, :body)
+		params[:topic].permit(:title, :body, :company_id)
 	end
 end
