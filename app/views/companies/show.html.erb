@@ -103,7 +103,9 @@
 </section>
 
 <section id="forum">
-  <p>Fórum da Empresa - Não Implementado</p> 
+   <%if logged_in? %>
+  <%= link_to "Novo tópico", new_topic_path %> 
+  <% end %>
 </section>
 
 <section id="faq">
