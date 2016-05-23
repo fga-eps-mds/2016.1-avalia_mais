@@ -1,4 +1,13 @@
 <%@companies.each do |company|%>
-	<%=company.name%>
-	<br />
+
+	<section class="container-principal">
+		<section class="container">
+			<section class="row">
+				<div class="col-lg-4"><%=link_to company.name, company %></div>
+				<div class="col-lg-4"><%= company.rate.round(2) %></div>
+				<br />
+			</section>
+		</section>
+	</section>
+
 <%end%>

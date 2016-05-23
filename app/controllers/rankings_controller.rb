@@ -6,7 +6,7 @@ class RankingsController < ApplicationController
 	end
 
 	def grade_all
-		@companies = Company.all
+		@companies = Company.all.order('rate DESC')
 	end
 
 	def grade_category
