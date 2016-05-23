@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
     has_many :evaluations
     belongs_to :segment
+    has_many :topics
 
     #validations to register a company
     #image logo
