@@ -31,6 +31,10 @@ Rails.application.routes.draw do
   post   'login'  => 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
+  #ranking
+  get 'ranking/grade/all' => 'rankings#grade_all'
+  get 'ranking/grade/category' => 'rankings#grade_category'
+
   #segment
   get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment' 
 
