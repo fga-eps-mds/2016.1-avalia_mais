@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   get '/company/:search' => 'companies#search', :as => 'company_search'
   post '/company/new' => 'companies#create', :as => 'create_company'
 
-
   #users
   get   '/users/new'      => 'users#new'
   post  '/users/new'      => 'users#create', :as => 'create_user'
@@ -29,6 +28,10 @@ Rails.application.routes.draw do
   post '/survey/new' => 'surveys#create'
   get   '/survey/new' => 'surveys#new'
 
+  #option
+  post '/option/new' => 'option#create'
+  get   '/option/new' => 'option#new'
+
   #login
   get    'login'  => 'sessions#new'
   post   'login'  => 'sessions#create'
@@ -36,7 +39,6 @@ Rails.application.routes.draw do
 
   #segment
   get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment'
-
 
   #evaluation
   post '/company/show', controller: 'evaluations', action: 'rate', :as => 'rate'
