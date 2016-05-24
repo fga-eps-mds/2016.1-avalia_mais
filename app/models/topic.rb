@@ -1,6 +1,6 @@
 class Topic < ActiveRecord::Base
 	belongs_to :company
-
+	belongs_to :user
 	before_create :set_create_date
 
 #something it's wrong

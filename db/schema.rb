@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523152715) do
+ActiveRecord::Schema.define(version: 20160524233708) do
 
   create_table "companies", force: :cascade do |t|
     t.datetime "created_at",                      null: false
@@ -67,9 +67,11 @@ ActiveRecord::Schema.define(version: 20160523152715) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "company_id",  limit: 4
+    t.integer  "user_id",     limit: 4
   end
 
   add_index "topics", ["company_id"], name: "index_topics_on_company_id", using: :btree
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "ufs", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -98,4 +100,5 @@ ActiveRecord::Schema.define(version: 20160523152715) do
   add_foreign_key "evaluations", "ufs"
   add_foreign_key "evaluations", "users"
   add_foreign_key "topics", "companies"
+  add_foreign_key "topics", "users"
 end

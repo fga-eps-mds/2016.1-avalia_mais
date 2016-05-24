@@ -6,6 +6,8 @@ class TopicsController < ApplicationController
 	end
 
 	def new
+
+
 		@topic = Topic.new
 		@company = Company.new
 		@company = Company.find(params[:company_id])
@@ -13,6 +15,7 @@ class TopicsController < ApplicationController
 
 	def create
 		@topic = Topic.new(topic_params)
+		@topic.user = current_user
 
 		if @topic.save
 			render :show
@@ -30,6 +33,6 @@ class TopicsController < ApplicationController
 	private
 
 		def topic_params
-			params[:topic].permit(:title, :body, :company_id)
+			params[:topic].permit(:title, :body, :company_id, :user_id)
 		end
 end
