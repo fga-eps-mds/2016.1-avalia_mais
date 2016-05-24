@@ -1,5 +1,5 @@
 class RankingsController < ApplicationController
-	
+
 	def response_time_all
 		@companies = Company.all.order(:response_time)
 
@@ -9,8 +9,9 @@ class RankingsController < ApplicationController
 		@companies = Company.all.order('rate DESC')
 	end
 
-	def grade_category
-	  
+	def grade_segment
+		@segments = Segment.all
+		@companies = Company.all.order('rate DESC')
 	end
   
 end

@@ -4,7 +4,7 @@
 		<section class="container">
 			<section class="row">
 				<div class="col-lg-4"><%=link_to company.name, company %></div>
-				<div class="col-lg-4"><%= company.rate.round(2) %></div>
+				<div class="col-lg-4"><%= "%g" % company.rate.round(2) %></div>
 				<br />
 			</section>
 		</section>
