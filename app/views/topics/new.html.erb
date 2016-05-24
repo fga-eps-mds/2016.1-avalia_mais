@@ -1,8 +1,33 @@
-<%= form_for(@topic) do |f| %>
-<%= f.hidden_field :company_id, :value => @company.id %>
+<%= render "navbar/navbar" %>
 
-<%= f.text_field :title, :placeholder => "Título do Tópico" %></br>
-<%= f.text_area :body, :placeholder => "Conteúdo Tópico" %></br>
+<div id="erro-message">
+		<% @topic.errors.messages.values.each do |msg| %>
+		<% msg.each do |m| %>
+		<li id="error_message"><%= m %></li>
+			<%end %>
+		<% end %>
+		<% if flash[:error] -%>
+			<p class="error"><%= flash[:error] %></p>
+		<% end -%>
+</div>
+</br></br>
+<h3> Aqui você pode criar seu novo tópico </h3>
 
-<%= button_tag(type: 'submit', class: "btn btn-primary") do %> Confirmar <% end %><br/>
-<% end %>
+<section id="section-form">
+
+	<%= form_for( @topic, url: {action: "create"} ) do |f| %>
+
+	<%= f.hidden_field :company_id, :value => @company.id %>
+
+	<%= f.text_field :title, :placeholder => "Título do Tópico", 
+					 :maxlength => 60 %>
+	</br></br>
+	<%= f.text_area :body, :rows => 10, :placeholder => "Conteúdo do tópico",
+	:maxlength => 1500 %>
+	</br></br>
+
+	<%= button_tag(type: 'submit', class: "btn btn-primary") do %> Confirmar 
+	<% end %><br/>
+	<% end %>
+
+</section>

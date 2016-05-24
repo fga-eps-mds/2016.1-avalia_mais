@@ -103,10 +103,12 @@
 </section>
 
 <section id="forum">
+  
   <%= hidden_field :company_id, :value => @company.id%>
   <%if logged_in?%>
-    <p><%= link_to "Novo tópico", new_topic_path(:company_id => @company.id) %> </p>
+    <p><%= link_to "Novo tópico", new_topic_path(:company_id => @company.id), class: "btn btn-primary" %> </p>
   <%end%>
+
 </section>
 
 <section id="faq">
