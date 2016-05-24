@@ -5,7 +5,6 @@ class CreateSurveys < ActiveRecord::Migration
       t.text :description
       t.integer :total
       t.integer :options_quantity
-
       t.timestamps null: false
     end
   end

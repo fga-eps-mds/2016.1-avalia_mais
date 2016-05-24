@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   patch '/users/update/:id', controller: 'users', action: 'update_password', :as => 'update_user_password'
   patch '/users/destroy/', controller: 'users', action: 'destroy', :as => 'destroy_user_now'
 
+  #survey
+  post '/survey/new' => 'surveys#create'
+  get   '/survey/new' => 'surveys#new'
 
   #login
   get    'login'  => 'sessions#new'
@@ -32,7 +35,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   #segment
-  get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment' 
+  get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment'
 
 
   #evaluation
