@@ -41,7 +41,7 @@
     <div class="btn avaliacao">Avaliações</div>
     <div class="btn geral">Geral</div>
     <div class="btn forum">Fórum</div>
-    <div class="btn faq">FAQ</div>
+    <div class="btn faq">Enquete</div>
   </div>
 </div>
 
@@ -107,7 +107,16 @@
 </section>
 
 <section id="faq">
-  <p>FAQ da Empresa - Não Implementado</p> 
+
+
+    <%= form_for @survey, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>  
+
+      <%= f.text_field :title => "Titulo", :maxlength => 80, :class => "form_control" %><br/><br/>
+
+
+    <%= f.submit  %> 
+    <% end %>
+
 </section>
 
 <section id="description">
