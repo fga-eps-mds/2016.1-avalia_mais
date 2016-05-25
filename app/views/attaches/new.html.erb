@@ -1,0 +1,23 @@
+<%= render "navbar/navbar" %>
+
+<h3> Aqui você pode solicitar um vínculo </h3>
+
+<section id="section-form">
+
+	<%= form_for( @attach, url: {action: "create"} ) do |f| %>
+
+	<%= f.text_field :company_id, :value => @company.id %>
+
+	<%= f.text_field :cnpj, :placeholder => "CNPJ da empresa", 
+					 :maxlength => 60 %>
+	</br></br>
+
+	<%= f.text_field :address, :placeholder => "Endereço da empresa",
+	:maxlength => 1500 %>
+	</br></br>
+
+	<%= button_tag(type: 'submit', class: "btn btn-primary") do %> Confirmar 
+	<% end %><br/>
+	<% end %>
+
+</section>
