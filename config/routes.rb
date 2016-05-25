@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   end
 
   resources :topics
+
+  resources :attaches
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

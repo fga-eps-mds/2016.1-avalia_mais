@@ -8,8 +8,6 @@ class TopicsController < ApplicationController
 =end
 
 	def new
-
-
 		@topic = Topic.new
 		@company = Company.new
 		@company = Company.find(params[:company_id])

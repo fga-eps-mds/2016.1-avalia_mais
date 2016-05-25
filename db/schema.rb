@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524233708) do
+ActiveRecord::Schema.define(version: 20160525154043) do
+
+  create_table "attaches", force: :cascade do |t|
+    t.string   "cnpj",               limit: 255
+    t.string   "address",            limit: 255
+    t.string   "photo_file_name",    limit: 255
+    t.string   "photo_content_type", limit: 255
+    t.integer  "photo_file_size",    limit: 4
+    t.datetime "photo_updated_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "user_id",            limit: 4
+    t.integer  "company_id",         limit: 4
+  end
+
+  add_index "attaches", ["company_id"], name: "index_attaches_on_company_id", using: :btree
+  add_index "attaches", ["user_id"], name: "index_attaches_on_user_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
     t.datetime "created_at",                      null: false
@@ -94,6 +110,8 @@ ActiveRecord::Schema.define(version: 20160524233708) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_foreign_key "attaches", "companies"
+  add_foreign_key "attaches", "users"
   add_foreign_key "companies", "segments"
   add_foreign_key "companies", "ufs"
   add_foreign_key "evaluations", "companies"

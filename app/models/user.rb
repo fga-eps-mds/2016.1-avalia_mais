@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :evaluations
 	has_many :topics
+	has_many :attaches
 	has_secure_password
 	
 	#default values
