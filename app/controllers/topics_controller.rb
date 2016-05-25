@@ -1,9 +1,11 @@
 class TopicsController < ApplicationController
 
+=begin
 	def index
 		@company = Company.find(params[:id])
 		@topics = @company.topics
 	end
+=end
 
 	def new
 

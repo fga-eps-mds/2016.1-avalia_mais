@@ -6,6 +6,15 @@ class CompaniesController < ApplicationController
 		@company = Company.new()
 	end
 	
+
+	def list_topics
+		@company = Company.find(params[:id])
+		@topics = @company.topics
+	end
+
+	helper_method :list_topics
+
+
 	def computeEvaluation(company)
 		totalEvaluation = 0
 		quantity = 0
