@@ -1,5 +1,4 @@
 <%= render "navbar/navbar" %>
-<%classificacao = 0%>
 	<section class="container-principal">
 		<section class="container">
 			<section class="topo-pagina row">
@@ -15,10 +14,10 @@
 				<section id="logo-categoria">
 					<%= image_tag("AVALIA_LOGO.png", :alt => "logo", :class => "logo-in-ranking") %>
 				</section>
-				<%@companies.each do |company|%>
-				<%classificacao += 1%>
+				<%@companies.each_with_index do |company, index|%>
+					<% classification = @companies.offset + index + 1%>
 					<section class="border-radius col-lg-8">
-						<div class="classificacao col-lg-11"><%=classificacao%>º&nbsp;&nbsp;
+						<div class="classificacao col-lg-11"><%= classification  %>º&nbsp;&nbsp;
 							<% if company.logo_file_name == nil %>
 	  						<%= image_tag("default_company_logo.png", :width => "20", :height => "20", :id => "logo-company") %>
 							<%else%>
@@ -28,6 +27,8 @@
 						<br />
 					</section>
 				<%end%>
+
+				<%= will_paginate @companies, renderer: BootstrapPagination::Rails, previous_label: '← Anterior', next_label: 'Próxima →' %>
 			</section>
 		</section>
 	</section>
