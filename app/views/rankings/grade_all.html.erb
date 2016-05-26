@@ -6,8 +6,8 @@
 					<h1>Rankings por nota</h1>
 				</div>
 				<div class="menu-ranking col-lg-12">
-					<span class="">Geral</span>
-					<span class="">Categoria</span>
+					<span class="opcoes" id="grade-geral">Geral</span>
+					<span class="opcoes" id="grade-segment">Categoria</span>
 				</div>
 			</section>
 			<section class="corpo-principal row">
@@ -30,7 +30,106 @@
 
 				<%= will_paginate @companies, renderer: BootstrapPagination::Rails, previous_label: '← Anterior', next_label: 'Próxima →' %>
 			</section>
+			<section class="ranking-grade-segment">
+				<section class="corpo-principal-segment row">
+					<section id="logo-categoria">
+						<%= image_tag("AVALIA_LOGO.png", :alt => "logo", :class => "logo-in-ranking") %>
+					</section>
+					<% segmentos  = 0%>
+  					<% @segments.each do |s| %>
+    					<% total = 0%>
+    					<% segmentos = segmentos + 1%>
+    					<% @companys.each do |f| %>
+      						<% if s.id == f.segment_id %>
+        						<% total = total +1 %>
+      						<%end%>
+    					<%end%>
+    				<% if total > 0 %>
+						<div class="well col-sm-12 col-md-8 col-md-offset-2">
+        					<div class="row user-row">
+          						<div class="col-md-1" id="logo_segment">
+            						<%= image_tag("default_segments.png", :alt => "img", :class => "mg-circle") %>
+          						</div>
+          						<div class="col-md-10 title-segment">
+           							<strong><%=s.name%></strong><br>
+          						</div>
+         						<div class="col-md-1 dropdown-user segment-<%= s.id%>" data-for=".cyruxx-<%=segmentos%>" id="<%=total%>">
+            						(<span style="color: #FF4040"><%=total%></span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down ") %>
+          						</div>
+        					</div>
+        					<div class="row user-infos cyruxx-<%=segmentos%>">
+          						<div class="col-sm-10 col-md-10 col-md-offset-1">
+            						<div class="panel panel-primary">
+              							<div class="panel-heading">
+                							<h3 class5="panel-title">Ranking Desta Categoria</h3>
+              							</div>
+              							<div class="panel-body">
+                							<div class="row">
+                  								<div class="col-md-12">
+                    								<ul>
+                      									<%classificacao = 0%>
+                      									<% @companys.each do |company| %>
+                        									<% if s.id == company.segment_id %>
+                          										<%classificacao += 1%>
+
+		                          								<li><section class="border-radius-segment"><div class="classificacao col-lg-10"><%=classificacao%>º&nbsp;&nbsp;<%=link_to company.name, company%></div><div class="classificacao col-lg-2"><%= "%g" % company.rate.round(2) %></div></section>
+		                          								</li>
+                        									<%end%>
+                      									<%end%>
+                    								</ul>
+                  								</div>
+                							</div>
+              							</div>
+            						</div>
+          						</div>
+        					</div>
+      					</div>
+      				<%end%>	
+      				<%end%>	
+      			</section>	
+			</section>
 		</section>
 	</section>
+<script> 
+var img_current = 0;
+  $(".user-infos").hide();
+  $(".dropdown-user").click(function() {
+    var id = $(this).attr('id');
+    var dataFor = $(this).attr('data-for');
+    var idFor = $(dataFor);
+    var currentButton = $(this);
+    idFor.slideToggle(400, function() {
+      if(img_current == 0){
+          currentButton.html('(<span style="color: #FF4040">'+id+'</span>)<%= image_tag("up.png", :alt => "abrir", :class => "img-down")%>');
+          img_current =1;
+
+      }else{
+        currentButton.html('(<span style="color: #FF4040">'+id+'</span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down")%>');
+        img_current = 0;
+      }
+
+
+    });
+  });
+  $("#grade-geral").addClass("selecionado");
+  $("#grade-geral").click(function(){
+  	$("#grade-segment").removeClass("selecionado");
+  	$(this).addClass("selecionado");
+    $(".ranking-grade-segment").hide("slow");
+    $(".corpo-principal").show("slow");
+  }); 
+
+  $("#grade-segment").click(function(){
+  	$("#grade-geral").removeClass("selecionado");
+  	$(this).addClass("selecionado");
+    $(".corpo-principal").hide("slow");
+    $(".ranking-grade-segment").show("slow");
+  });  
+</script>		
+
+	
+
+		
+
 
 
