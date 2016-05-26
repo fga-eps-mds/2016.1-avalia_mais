@@ -31,15 +31,19 @@
           <div class="col-sm-10 col-md-10 col-md-offset-1">
             <div class="panel panel-primary">
               <div class="panel-heading">
-                <h3 class="panel-title">Empresas Desta Categoria</h3>
+                <h3 class5="panel-title">Empresas Desta Categoria</h3>
               </div>
               <div class="panel-body">
                 <div class="row">
                   <div class="col-md-10">
                     <ul>
+                      <%classificacao = 0%>
                       <% @companies.each do |company| %>
                         <% if s.id == company.segment_id %>
-                          <li><%=link_to company.name, company%><%= "%g" % company.rate.round(2) %></li>
+                          <%classificacao += 1%>
+
+                          <li><section class="border-radius-segment"><div class="classificacao col-lg-10"><%=classificacao%>º&nbsp;&nbsp;<%=link_to company.name, company%></div><div class="classificacao col-lg-2"><%= "%g" % company.rate.round(2) %></div></section>
+                          </li>
                         <%end%>
                       <%end%>
                     </ul>
