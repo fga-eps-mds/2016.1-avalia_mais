@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   #ranking
   get 'ranking/grade/all' => 'rankings#grade_all'
-  get 'ranking/grade/category' => 'rankings#grade_category'
+  get 'ranking/grade/segment' => 'rankings#grade_segment'
   get 'ranking/response/all' => 'rankings#response_time_all', :as => 'ranking_response'
 
   #segment
