@@ -1,3 +1,31 @@
-// Place all the styles related to the Rankings controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#first_place {
+	position: absolute;
+	left: 39%;
+	top: 20%;
+}
+
+#second_place {
+	position: absolute;
+	left: 10%;
+	top: 32%;
+}
+
+#third_place {
+	position: absolute;
+	right: 10%;
+	top: 32%;
+}
+
+#ranking_title {
+	position: absolute;
+	left: 30%;
+	top: 12%;
+	text-align: center;
+	z-index: 200;
+}
+
+#companies_ranking {
+	position: absolute;
+	left: 37%;
+	top: 73%;
+}

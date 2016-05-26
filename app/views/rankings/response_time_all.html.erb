@@ -1,8 +1,33 @@
 <%= render "navbar/navbar" %>
 <section id="corpo">
-	<h1>Ranking Geral por Tempo de Resposta</h1>
+	<h1 id="ranking_title">Ranking Geral por Tempo de Resposta</h1>
 
-	<% @companies.each do |c|%>
-		<p><%= link_to c.name, c %></p>
-	<%end%>
+	<section id="ranking_position">
+		<section id="first_place">
+			<%= image_tag("trophy_1.png", :alt => "trophy_gold", :id => "first_place_image") %>
+			<p id="first_place_name"> 1° <%= link_to @companies.first.name, @companies.first %>
+		</section>
+
+		<section id="second_place">
+			<%= image_tag("trophy_2.png", :id => "second_place_image") %>
+			<p id="second_place_name"> 2° <%= link_to @companies[1].name, @companies[1] %>
+		</section>
+
+		<section id="third_place">
+			<%= image_tag("trophy_3.png", :id => "third_place_image") %>
+			<p id="third_place_name"> 3° <%= link_to @companies[2].name, @companies[2] %>
+		</section>
+	</section>
+
+	<section id="companies_ranking">
+		<% position_ranking = 4 %>
+		<% @companies[3..@companies.size].each do |c|%>
+			<p> <%= position_ranking %>° 
+				<%if c.response_time != nil %>
+					<%= link_to c.name, c %>
+					<% position_ranking = position_ranking + 1 %>
+				<%end%>
+			</p>
+		<%end%>
+	</section>
 </section>
