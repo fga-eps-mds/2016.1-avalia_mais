@@ -14,6 +14,7 @@ class AttachesController < ApplicationController
 
 		if @attach.save
 			redirect_to company_path(@attach.company_id)
+			flash[:notice] = 'Solicitação feita com sucesso!'
 
 		else
 			render :new
@@ -24,7 +25,7 @@ class AttachesController < ApplicationController
 
 	private 
 		def attach_params
-			params[:attach].permit(:cnpj, :address, :user_id, :company_id)
+			params[:attach].permit(:cnpj, :address, :photo, :user_id, :company_id)
 		end
 
 end
