@@ -18,16 +18,25 @@
 			<p id="third_place_name"> 3° <%= link_to @companies[2].name, @companies[2] %>
 		</section>
 	</section>
-
-	<section id="companies_ranking">
-		<% position_ranking = 4 %>
-		<% @companies[3..@companies.size].each do |c|%>
-			<p> <%= position_ranking %>° 
-				<%if c.response_time != nil %>
-					<%= link_to c.name, c %>
-					<% position_ranking = position_ranking + 1 %>
+	<section class="container-principal">
+		<section class="container">
+			<section class="corpo-principal-response-time row">
+				<% position_ranking = 4 %>
+				<% @companies[3..@companies.size].each do |c|%>
+					<section class="border-radius col-lg-8">
+						<div class="classificacao col-lg-11"><%= position_ranking %>° 
+							<%if c.response_time != nil %>
+								<%= link_to c.name, c %>
+								<% position_ranking = position_ranking + 1 %>
+							<%end%>
+						</div>
+						<div class="classificacao col-lg-1"><%= "%g" % c.response_time.round(2) %></div>
+						<br />
+					</section>
 				<%end%>
-			</p>
-		<%end%>
+
+				<%= will_paginate @companies, renderer: BootstrapPagination::Rails, previous_label: '← Anterior', next_label: 'Próxima →' %>
+			</section>
+		</section>
 	</section>
 </section>

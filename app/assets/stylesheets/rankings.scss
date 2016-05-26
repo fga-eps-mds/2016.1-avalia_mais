@@ -1,27 +1,43 @@
 #first_place {
 	position: absolute;
-	left: 39%;
-	top: 20%;
+	width: 350px;
+	height: 250px;
+	left: 35%;
+	top: 23%;
+	text-align: center;
 }
-
+#first_place_image{
+	width: 200px;
+	height: 204.4px;
+}
 #second_place {
 	position: absolute;
-	left: 10%;
-	top: 32%;
+	left: 13%;
+	top: 33%;
+	text-align: center;
 }
-
+#second_place_image{
+	width: 130px;
+	height: 163.67px;
+}
 #third_place {
 	position: absolute;
-	right: 10%;
-	top: 32%;
+	right: 8%;
+	top: 33%;
+	width: 300px;
+	height: 250px;
+	text-align: center;
 }
-
+#third_place_image{
+	width: 150px;
+	height: 154.8px;
+}
 #ranking_title {
 	position: absolute;
 	left: 30%;
 	top: 12%;
 	text-align: center;
-	z-index: 200;
+	z-index: 10;
 }
 
 #companies_ranking {
@@ -29,12 +45,21 @@
 	left: 37%;
 	top: 73%;
 }
+.corpo-principal-response-time{
+	position: absolute;
+	top: 500px;
+	width: 100%;
+	height: 500px;
 
+}
+
+/*
+	Parte do julio e gesiel
+*/
 .container-principal, .container{
 	width: 100%;
 	height: 100%;
 }
-
 .topo-pagina{
 	position: absolute;
 	top: 60px;
@@ -68,20 +93,20 @@
 .btn-group .btn:active {
   font-size: 0.8em;
 }
+
 .corpo-principal{
 	position: absolute;
-	top:250px;
+	top: 250px;
 	width: 100%;
 	height: 500px;
 }
 .border-radius{
 	height: 50px;
 	width: 60%;
-	border:2px solid #000000;
+	border:2px solid #07213F;
 	border-radius: 8px;
 	margin-left: 20%;
 	margin-top: 10px;
-	background-color: #FFFFFF;
 }
 .classificacao{
 	top: 10px;
