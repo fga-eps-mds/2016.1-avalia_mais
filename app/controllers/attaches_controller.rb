@@ -9,8 +9,6 @@ class AttachesController < ApplicationController
 	def create
 		@attach = Attach.new(attach_params)
 		@attach.user = current_user
-		#@company = Company.find(params[:company_id])
-
 
 		if @attach.save
 			redirect_to company_path(@attach.company_id)
@@ -20,8 +18,6 @@ class AttachesController < ApplicationController
 			render :new
 		end
 	end
-
-
 
 	private 
 		def attach_params
