@@ -1,9 +1,10 @@
 <%= render "navbar/navbar" %>
-
+</br></br></br>
 <h3> Aqui você pode solicitar um vínculo </h3>
+<p>Caro usuário, para vincular uma empresa é necessário informar um CNPJ válido, o endereço da sua empresa, e um comprovante do endereço. Entre os comprovantes de endereço, você pode enviar uma foto da sua conta de água, luz ou declaração de imposto de renda da empresa. </p>
 
 <section id="section-form">
-
+</br></br></br></br>	
 	<%= form_for( @attach, url: {action: "create"} ) do |f| %>
 
 	<%= f.hidden_field :company_id, :value => @company.id %>
@@ -13,7 +14,7 @@
 	</br></br>
 
 	<%= f.text_field :address, :placeholder => "Endereço da empresa",
-	:maxlength => 1500 %>
+	:maxlength => 1000 %>
 	</br></br>
 
 	<%= f.file_field :photo, :class => "form_control file_field", :accept => "image/jpeg" %></br>

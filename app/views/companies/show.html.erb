@@ -30,10 +30,12 @@
   </div>
 <%end%>
 
-<% if validated? %>
-  <div id= "attach">
-      <p><%= link_to "Solicitar Vínculo", new_attach_path(:company_id => @company.id), class: "btn btn-primary" %> </p>
-  </div>
+<%if logged_in? %> 
+  <% if validated? %>
+    <div id= "attach">
+        <p><%= link_to "Solicitar Vínculo", new_attach_path(:company_id => @company.id), class: "btn btn-primary" %> </p>
+    </div>
+  <%end%>
 <%end%>
 
 <div id="name_segment">
