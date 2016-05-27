@@ -1,13 +1,18 @@
 
 label {
 	color: #000000;
-	font-family: AvenirNext-Regular;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .btn-attach {
   color: #fff;
   background-color: #337ab7;
   border-color: #2e6da4;
+  position:relative;
+  transition: .5s ease;
+  top: -430px;
+  left: 110px;
+  right: -420px;
 }
 
 .btn-confirm {
@@ -53,5 +58,13 @@ label {
 
 attachStyle {
 	color: #000000;
- 	text-align: justify
+ 	text-align: justify;
+ 	font-family: Arial, Helvetica, sans-serif;
+}
+
+h3attachStyle {
+	font-size: 25px;
+	color: #000000;
+ 	text-align: justify;
+ 	font-family: Arial, Helvetica, sans-serif;
 }
