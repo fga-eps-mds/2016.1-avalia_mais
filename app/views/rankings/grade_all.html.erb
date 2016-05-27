@@ -55,7 +55,7 @@
   					<% @segments.each do |s| %>
     					<% total = 0%>
     					<% segmentos = segmentos + 1%>
-    					<% @companys.each do |f| %>
+    					<% @companies_unpaginated.each do |f| %>
       						<% if s.id == f.segment_id %>
         						<% total = total +1 %>
       						<%end%>
@@ -84,7 +84,7 @@
                   								<div class="col-md-12">
                     								<ul>
                       									<%classificacao = 0%>
-                      									<% @companys.each do |company| %>
+                      									<% @companies_unpaginated.each do |company| %>
                         									<% if s.id == company.segment_id %>
                           										<%classificacao += 1%>
 
