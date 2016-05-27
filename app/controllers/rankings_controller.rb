@@ -6,14 +6,9 @@ class RankingsController < ApplicationController
 	end
 
 	def grade_all
-		@segments = Segment.all
-		@companys = Company.all.order('rate DESC')
-		@companies = Company.all.order('rate DESC').paginate(:page => params[:page], :per_page => 20)
-	end
-
-	def grade_segment
-		@segments = Segment.all
-		@companies = Company.all.order('rate DESC')
+		@segments = Segment.all.order(:name)
+		@companies_unpaginated = Company.all.order('rate DESC')
+		@companies = Company.all.order('rate DESC').paginate(:page => params[:page], :per_page => 15)
 	end
   
 end
