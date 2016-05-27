@@ -1,26 +1,35 @@
 <%= render "navbar/navbar" %>
-</br></br></br>
-<h3> Aqui você pode solicitar um vínculo </h3>
-<p>Caro usuário, para vincular uma empresa é necessário informar um CNPJ válido, o endereço da sua empresa, e um comprovante do endereço. Entre os comprovantes de endereço, você pode enviar uma foto da sua conta de água, luz ou declaração de imposto de renda da empresa. </p>
+</br></br></br></br></br>
 
-<section id="section-form">
-</br></br></br></br>	
-	<%= form_for( @attach, url: {action: "create"} ) do |f| %>
+<section id="section-form-model2">	
+	<div class = "form_attach">
+		<h3> Formulário para solicitar vínculo com a empresa </h3>
+		<attachStyle>Caro usuário, para vincular uma empresa é necessário informar um CNPJ válido, o endereço da sua empresa, e um comprovante do endereço. Entre os comprovantes de endereço, você pode enviar uma foto da sua conta de água, luz ou declaração de imposto de renda da empresa. </attachStyle>
+	</div> 
+</section></br></br></br>
 
-	<%= f.hidden_field :company_id, :value => @company.id %>
+<section id="section-form-model3">
+</br></br></br></br></br></br></br></br></br></br>	
+	<div class = "form_attach">
+		<%= form_for( @attach, url: {action: "create"} ) do |f| %>
 
-	<%= f.text_field :cnpj, :placeholder => "CNPJ da empresa", 
-					 :maxlength => 60 %>
-	</br></br>
+		<%= f.hidden_field :company_id, :value => @company.id %>
 
-	<%= f.text_field :address, :placeholder => "Endereço da empresa",
-	:maxlength => 1000 %>
-	</br></br>
+		<label> <span> CNPJ </span></label>
+		<%= f.text_field :cnpj, :placeholder => "CNPJ da empresa", 
+						 :maxlength => 15 %></br></br>	
+		
 
-	<%= f.file_field :photo, :class => "form_control file_field", :accept => "image/jpeg" %></br>
+		<label> <span> Endereço </span></label>
+		<%= f.text_field :address, :placeholder => "Endereço da empresa"%></br>
+		</br>
 
-	<%= button_tag(type: 'submit', class: "btn btn-primary") do %> Confirmar 
-	<% end %><br/>
-	<% end %>
+		<label> <span> Carregue sua foto aqui </span></label></br>
+		<%= f.file_field :photo, :class => "form_control file_field", :accept => "image/jpeg" %></br>
+
+		<%= button_tag(type: 'submit', class: "btn btn-confirm") do %> Confirmar 
+		<% end %><br/>
+		<% end %>
+	</div>
 
 </section>
