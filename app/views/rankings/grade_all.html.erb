@@ -9,23 +9,39 @@
 					<span class="opcoes" id="grade-geral">Geral</span>
 					<span class="opcoes" id="grade-segment">Categoria</span>
 				</div>
-			</section>
+			</section>	
 			<section class="corpo-principal row">
-				<section id="logo-categoria">
-					<%= image_tag("AVALIA_LOGO.png", :alt => "logo", :class => "logo-in-ranking") %>
-				</section>
 				<%@companies.each_with_index do |company, index|%>
 					<% classification = @companies.offset + index + 1%>
-					<section class="border-radius col-lg-8">
-						<div class="classificacao col-lg-11"><%= classification  %>º&nbsp;&nbsp;
-							<% if company.logo_file_name == nil %>
-	  						<%= image_tag("default_company_logo.png", :width => "20", :height => "20", :id => "logo-company") %>
-							<%else%>
-	  						<%= image_tag(company.logo.url(:default), :width => "20", :height => "20", :id => "logo-company") %>
-							<%end%><%=link_to company.name, company %></div>
-						<div class="classificacao col-lg-1"><%= "%g" % company.rate.round(2) %></div>
-						<br />
-					</section>
+					<% if classification <= 3 %>
+						<section id="ranking_position-grade">
+							<section id="first_place">
+								<%= image_tag("trophy_1.png", :alt => "trophy_gold") %>
+								<p>1° <%= link_to @companies.first.name, @companies.first %></p>
+							</section>
+							<section id="second_place-grade">
+								<%= image_tag("trophy_2.png") %>
+								<p>2° <%= link_to @companies[1].name, @companies[1] %></p>
+							</section>
+							<section id="third_place-grade">
+								<%= image_tag("trophy_3.png") %>
+								<p>3° <%= link_to @companies[2].name, @companies[2] %></p>
+							</section>
+						</section>
+					<%else%>
+						<section class="classification-grade">
+							<section class="border-radius col-lg-8">
+								<div class="classificacao col-lg-11"><%= classification  %>º&nbsp;&nbsp;
+									<% if company.logo_file_name == nil %>
+			  						<%= image_tag("default_company_logo.png", :width => "20", :height => "20", :id => "logo-company") %>
+									<%else%>
+			  						<%= image_tag(company.logo.url(:default), :width => "20", :height => "20", :id => "logo-company") %>
+									<%end%><%=link_to company.name, company %></div>
+								<div class="classificacao col-lg-1"><%= "%g" % company.rate.round(2) %></div>
+								<br />
+							</section>
+						</section>	
+					<%end%>	
 				<%end%>
 
 				<%= will_paginate @companies, renderer: BootstrapPagination::Rails, previous_label: '← Anterior', next_label: 'Próxima →' %>
@@ -124,7 +140,11 @@ var img_current = 0;
   	$(this).addClass("selecionado");
     $(".corpo-principal").hide("slow");
     $(".ranking-grade-segment").show("slow");
-  });  
+  }); 
+  var ancora = window.location.href; 
+	if (ancora !== 'http://localhost:3000/ranking/grade/all' && ancora !== 'http://localhost:3000/ranking/grade/all?page=1') {
+		$(".classification-grade").css({marginTop: '20px'});
+	}
 </script>		
 
 	
