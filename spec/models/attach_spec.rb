@@ -1,5 +1,12 @@
 require 'rails_helper'
-
+=begin
 RSpec.describe Attach, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "Attach saved or not" do
+
+  	it "Should save a attach successfully" do
+  		attach1 = Attach.new :cnpj => "00123456789", 
+  			:address => "Rua do comercio, Bloco K, Loja 7"
+  			:photo => #must descovery how to upload a photo
 end
+=end
+

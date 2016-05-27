@@ -42,8 +42,8 @@ gem 'metric_fu', '~> 4.12'
 gem 'coveralls', require: false
 
 group :development, :test do
-  gem "rspec-rails", ">= 2.0.1"
-  gem 'cucumber-rails'
+  gem 'rspec-rails', '~> 3.4'
+  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'selenium-webdriver', '~> 2.53'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
