@@ -19,7 +19,11 @@
             <%= link_to "Categorias", segment_path %>
           </li>
           <li>
-            <%= link_to "Rankings", ranking_response_path %>
+            <a href="#"> Rankings </a>
+            <ul class="ranking-dropdown">
+              <li><%= link_to "Nota", ranking_grade_path %></li>
+              <li><%= link_to "Tempo de resposta", ranking_response_path %></li>
+            </ul>
             
           </li>
           <li class="pipe">|</li>

@@ -1,3 +1,4 @@
+
 .list-auto, .list-auto li { 
   width: 100%; 
   float: left; 
@@ -28,6 +29,7 @@ header {
 header nav {
   right: 20px;
 }
+
 
 .logo-avalia {
   text-transform: uppercase;
@@ -65,6 +67,7 @@ header li a:hover {
   color:#FFF;
 }
 
+
 input#control-nav {
   visibility: hidden;
   position: absolute;
@@ -78,7 +81,7 @@ nav ul li ul {
 }
 
 nav ul li:hover ul {
-  background-color: rgb(226,226,226);
+  background-color: #07213F;
   display: block;
   margin-top: 0px;
 }
@@ -117,6 +120,13 @@ li.pipe{
   padding-top: 10px;
   margin-left: -30px;
 }
+
+.ranking-dropdown{
+  width: 190px;
+  left: -30px;  
+  
+}
+
 @media screen and (max-width: 1093px) {
 .input-search{
     width: 250px;

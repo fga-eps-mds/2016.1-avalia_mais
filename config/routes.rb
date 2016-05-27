@@ -32,9 +32,10 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   #ranking
-  get 'ranking/grade/all' => 'rankings#grade_all'
-  get 'ranking/grade/segment' => 'rankings#grade_segment'
+  get 'ranking/grade/all' => 'rankings#grade_all', :as => 'ranking_grade'
   get 'ranking/response/all' => 'rankings#response_time_all', :as => 'ranking_response'
+  get 'ranking/response/segment' => 'rankings#response_time_segment', :as => 'response_time_segment'
+  post 'ranking/response/segment'  => 'rankings#segment_selected'
 
   #segment
   get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment' 
@@ -43,6 +44,7 @@ Rails.application.routes.draw do
   #evaluation
   post '/company/show', controller: 'evaluations', action: 'rate', :as => 'rate'
   post '/company/response', controller: 'evaluations', action: 'response_time', :as => 'response_time'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
