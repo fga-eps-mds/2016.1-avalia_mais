@@ -32,8 +32,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   #ranking
-  get 'ranking/grade/all' => 'rankings#grade_all'
-  get 'ranking/grade/segment' => 'rankings#grade_segment'
+  get 'ranking/grade/all' => 'rankings#grade_all', :as => 'ranking_grade'
   get 'ranking/response/all' => 'rankings#response_time_all', :as => 'ranking_response'
 
   #segment
