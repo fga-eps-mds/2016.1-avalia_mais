@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
   resources :parsers
 
+  #company
   get  '/company/new' => 'companies#new'
   get  '/company/:id' => 'companies#show', :as => 'company'
   get '/company/:search' => 'companies#search', :as => 'company_search'
   post '/company/new' => 'companies#create', :as => 'create_company'
-
 
   #users
   get   '/users/new'      => 'users#new'
@@ -30,6 +30,10 @@ Rails.application.routes.draw do
   get    'login'  => 'sessions#new'
   post   'login'  => 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+
+  #ranking
+  get 'ranking/grade/all' => 'rankings#grade_all', :as => 'ranking_grade'
+  get 'ranking/response/all' => 'rankings#response_time_all', :as => 'ranking_response'
 
   #segment
   get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment' 

@@ -1,0 +1,151 @@
+// Place all the styles related to the Rankings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container-principal, .container{
+	width: 100%;
+	height: 100%;
+
+}
+.corpo-principal{
+	
+}
+.ranking-grade-segment{
+	display: none;
+}
+
+.topo-pagina{
+	position: absolute;
+	top: 60px;
+	width: 100%;
+	height: 150px;
+	background: #FFFFFF;
+}
+
+.topo-pagina h1{
+	text-align: center;
+
+}
+
+.menu-ranking{
+	margin-top: 20px;
+	text-align: center;
+}
+
+.menu-ranking span{
+	color:#e3625f;
+	padding-right: 50px;
+	padding-left: 50px;
+	font-size: 20px;
+}
+.menu-ranking span:hover{
+	color:#000;
+}
+.selecionado{
+	border:2px solid #e3625f;
+	border-radius:10px;
+}
+.btn-group .btn:active {
+  font-size: 0.8em;
+}
+.corpo-principal{
+	position: absolute;
+	top:250px;
+	width: 100%;
+	height: 500px;
+}
+.ranking_position-grade{
+	position: relative;
+	top: 200px;
+}
+.classification-grade{
+	position: relative;
+	margin-top: 300px;
+}
+
+.border-radius{
+	height: 50px;
+	width: 60%;
+	border:2px solid #000000;
+	border-radius: 8px;
+	margin-left: 20%;
+	margin-top: 10px;
+	background-color: #FFFFFF;
+}
+.classificacao{
+	top: 10px;
+}
+
+#logo-categoria{
+	margin: auto;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background: #FFFFFF;
+	border: 2px solid #000000; 
+	margin-bottom: 50px;
+}
+
+#logo-categoria img{
+	width: 40px;
+	height: 40px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	margin-left: -20px;
+	transform: translateY(-50%);
+
+}
+
+.pagination{
+	margin-top: 50px;
+	margin-left: 25%;
+}
+/* ranking grade segment */
+.ranking-grade-segment{
+	position: absolute;
+	top:250px;
+	height: 500px;
+	width:100%; 
+}
+.corpo-principal-segment{
+	
+}
+
+/* ---- codigo vitor e thiago */
+
+#first_place {
+	position: absolute;
+	width: 350px;
+	height: 250px;
+	left: 35%;
+	text-align: center;
+}
+#first_place p{
+	margin: 0;
+}
+#second_place-grade{
+	position: absolute;
+	width: 300px;
+	height:200px;
+	left: 13%;
+	text-align: center;
+	
+}
+#second_place-grade p{
+	margin:0;
+}
+#third_place-grade {
+	position: absolute;
+	float: right;
+	right: 8%;
+	width: 300px;
+	height: 250px;
+	text-align: center;
+}
+#third_place-grade  p{
+	margin: 0;
+}
+
+
+

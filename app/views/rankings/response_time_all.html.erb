@@ -1,0 +1,8 @@
+<%= render "navbar/navbar" %>
+<section id="corpo">
+	<h1>Ranking Geral por Tempo de Resposta</h1>
+
+	<% @companies.each do |c|%>
+		<p><%= link_to c.name, c %></p>
+	<%end%>
+</section>

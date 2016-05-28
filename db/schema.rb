@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20160525154043) do
   add_index "attaches", ["user_id"], name: "index_attaches_on_user_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
+    t.float    "response_time",     limit: 24
+    t.float    "rate",              limit: 24
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "name",              limit: 255

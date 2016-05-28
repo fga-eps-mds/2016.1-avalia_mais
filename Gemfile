@@ -20,6 +20,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'paperclip', '~> 4.3.2'
 # Use Bcrypt to cryptograph password
 gem 'bcrypt-ruby', '3.1.2'
+# Use will_paginate for pagination
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 
 gem 'simplecov', :require => false, :group => :test
 # Use jquery as the JavaScript library
@@ -42,6 +45,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'metric_fu', '~> 4.12'
 gem 'coveralls', require: false
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4'
