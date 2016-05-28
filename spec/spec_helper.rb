@@ -1,3 +1,5 @@
+require 'support/factory_girl'
+
 require 'simplecov'
 SimpleCov.start 'rails'
 

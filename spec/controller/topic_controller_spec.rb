@@ -4,7 +4,7 @@ require 'topics_controller'
 
 
 RSpec.describe TopicsController, type: :controller do
-  
+
     describe "Create topic" do
     	it "should show the new topic" do
     		expect {

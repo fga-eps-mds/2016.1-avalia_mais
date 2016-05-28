@@ -1,13 +1,14 @@
-When (/^I press "Fórum" button$/) do
-	find("#forum").click
-	click_link("Forúm")
+
+
+And (/^I will press "Fórum" button$/) do
+	find("#js-btn-forum").click
 end
 
-And (/^I press "Novo Tópico" button$/) do
+And (/^I will press "Novo Tópico" button$/) do
 	click_link ("Novo tópico")
 end
 
-Then (/^I should be redirect to new topic page$/) do
+And (/^I should be redirect to new topic page$/) do
 	expect(page).to have_content("Aqui você pode criar seu novo tópico")
 end
 
@@ -17,6 +18,10 @@ end
 
 And (/^I fill "Conteúdo do tópico" field with "Eu tenho uma dúvida"$/) do
 	fill_in 'topic_body', :with => 'Eu tenho uma dúvida'
+end
+
+And (/^I will press "Confirmar" button$/) do
+	find("#btn-Confirmar").click
 end
 
 Then (/^I should be redirect to show topic page$/) do 
