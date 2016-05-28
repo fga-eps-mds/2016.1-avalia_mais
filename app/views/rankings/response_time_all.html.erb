@@ -37,6 +37,7 @@
                   <%else%>
                     <%= image_tag(company.logo.url(:default), :width => "20", :height => "20", :id => "logo-company") %>
                   <%end%><%=link_to company.name, company %></div>
+                  <% company.response_time ||= 0 %>
                 <div class="classificacao col-lg-1"><%= "%g" % company.response_time.round(2) %></div>
                 <br />
               </section>
@@ -139,7 +140,7 @@ var img_current = 0;
     $(".ranking-grade-segment").show("slow");
   }); 
   var ancora = window.location.href; 
-  if (ancora !== 'http://localhost:3000/ranking/grade/all' && ancora !== 'http://localhost:3000/ranking/grade/all?page=1') {
+  if (ancora !== 'http://localhost:3000/ranking/response/all' && ancora !== 'http://localhost:3000/ranking/response/all?page=1') {
     $(".classification-grade").css({marginTop: '20px'});
   }
 </script>   

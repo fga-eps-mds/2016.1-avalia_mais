@@ -20,7 +20,7 @@
   <%= @company.telephone%></br>
   <%= @company.email %></br>
 </div></br>
-<% if @company.evaluations.present? %>
+<% if @company.rate.present? %>
   <div id="general-rate">
     <h4>Nota geral da Empresa</h4> </br>
     <h4 id="value-rate"><%= number_with_precision(@total_evaluations, :precision => 2)  %></h4>

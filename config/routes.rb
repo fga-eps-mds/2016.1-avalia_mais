@@ -34,7 +34,6 @@ Rails.application.routes.draw do
   #ranking
   get 'ranking/grade/all' => 'rankings#grade_all', :as => 'ranking_grade'
   get 'ranking/response/all' => 'rankings#response_time_all', :as => 'ranking_response'
-  get 'ranking/response/segment' => 'rankings#response_time_segment', :as => 'response_time_segment'
   post 'ranking/response/segment'  => 'rankings#segment_selected'
 
   #segment

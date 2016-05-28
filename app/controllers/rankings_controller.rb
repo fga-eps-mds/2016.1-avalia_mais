@@ -2,13 +2,8 @@ class RankingsController < ApplicationController
 
 	def response_time_all
 		@segments = Segment.all.order(:name)
-		@companies_unpaginated = Company.all.order(:response_time)
+		@companies_unpaginated = Company.where('response_time is not null').order(:response_time)
 		@companies = @companies_unpaginated.paginate(:page => params[:page], :per_page => 15)
-	end
-
-	def response_time_segment
-		@segments = Segment.all.order(:name)
-		@companies = Company.all.order(:response_time)
 	end
 
 	def segment_selected
