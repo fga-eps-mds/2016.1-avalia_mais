@@ -1,0 +1,35 @@
+<%= render "navbar/navbar" %>
+<section id="corpo">
+
+	<section id="segment_form">
+		<h1>Selecione o segmento que deseja ver o Ranking por Tempo de Resposta</h1></br>
+
+		<%=form_for(:segment_selected, url: response_time_segment_path) do |f|%>
+			<%= f.select :id, Segment.all.collect {|a| [a.name, a.id]}%></br></br>
+			<%= f.submit "Pesquisar", :class => "btn btn-primary", :id => "segment_submit" %>
+		<%end%>
+	</section>
+
+</section>
+
+// <script>
+
+// $("#segment_submit").click(function(){
+// 	$("#segment_form").hide("slow");
+// 	$("#ranking_segment").show("slow");
+// });
+
+
+
+// </script>
+
+
+
+
+
+
+
+
+
+
+
