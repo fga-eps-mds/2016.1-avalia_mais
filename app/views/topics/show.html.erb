@@ -1,11 +1,19 @@
 <%= render "navbar/navbar" %>
 </br></br></br></br></br>
-<p>
-  <strong>Título:</strong>
-  <%= @topic.title %>
-</p>
 
-<p>
-  <strong>Conteúdo:</strong>
-  <%= @topic.body %>
-</p>
+	<div class = "form_attach">
+	<topicStyle>
+		<span class = "glyphicon glyphicon-time" ></span>
+		 Tópico criado em <%= @topic.create_date.strftime("%d/%m/%Y") %> 
+	 </topicStyle>
+	</br></br>
+		<topicStyle>
+		  <strong>Título:</strong>
+		  <%= @topic.title %>
+		</topicStyle> </br></br>
+
+		<topicStyle>
+		  <strong>Conteúdo:</strong>
+		  <%= @topic.body %>
+		</topicStyle>
+	</div>
