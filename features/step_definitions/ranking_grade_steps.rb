@@ -19,5 +19,6 @@ When (/^I click on "Categoria"/) do
 end
 
 Then (/^I should see a page with the text "Bancos de Dados e Cadastros de Consumidores"/) do
+	sleep(5)
 	expect(page).to have_content("Bancos de Dados e Cadastros de Consumidores")
 end

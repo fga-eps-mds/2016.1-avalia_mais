@@ -37,6 +37,7 @@
 									<%else%>
 			  						<%= image_tag(company.logo.url(:default), :width => "20", :height => "20", :id => "logo-company") %>
 									<%end%><%=link_to company.name, company %></div>
+                <% company.rate ||= 0 %>
 								<div class="classificacao col-lg-1"><%= "%g" % company.rate.round(2) %></div>
 								<br />
 							</section>
@@ -87,8 +88,9 @@
                       									<% @companies_unpaginated.each do |company| %>
                         									<% if s.id == company.segment_id %>
                           										<%classificacao += 1%>
-
-		                          								<li><section class="border-radius-segment"><div class="classificacao col-lg-10"><%=classificacao%>º&nbsp;&nbsp;<%=link_to company.name, company%></div><div class="classificacao col-lg-2"><%= "%g" % company.rate.round(2) %></div></section>
+		                          								<li><section class="border-radius-segment"><div class="classificacao col-lg-10"><%=classificacao%>º&nbsp;&nbsp;<%=link_to company.name, company%></div><div class="classificacao col-lg-2">
+                                              <% company.rate ||= 0 %>
+                                              <%= "%g" % company.rate.round(2) %></div></section>
 		                          								</li>
                         									<%end%>
                       									<%end%>
