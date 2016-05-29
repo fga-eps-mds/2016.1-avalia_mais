@@ -9,4 +9,12 @@
   	<p><b>CNPJ:</b> <%= @attach.cnpj %></P>
   	<%= image_tag(@attach.photo, :id => "comprovante") %>
 
+  </br></br>
+
+  	<div id="position_buttons">
+	  	<%= button_tag(type: 'submit', class: "btn btn-success", id: "btn-vincular") do %> Aprovar Vínculo 
+		<% end %>
+		<%= button_tag(type: 'submit', class: "btn btn-danger", id: "btn-rejeitar") do %> Rejeitar Vínculo 
+		<% end %>
+	</div>
 </div>
