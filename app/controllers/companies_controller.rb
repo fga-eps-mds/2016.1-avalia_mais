@@ -5,7 +5,6 @@ class CompaniesController < ApplicationController
 	def new
 		@company = Company.new()
 	end
-	
 
 	def list_topics
 		@company = Company.find(params[:id])
@@ -14,19 +13,6 @@ class CompaniesController < ApplicationController
 
 	helper_method :list_topics
 
-
-	def computeEvaluation(company)
-		totalEvaluation = 0
-		quantity = 0
-		company.evaluations.each do |e|
-			if e.grade != nil
-				totalEvaluation = totalEvaluation + e.grade
-				quantity = quantity + 1
-			end
-		end
-		return (totalEvaluation.to_f/quantity)
-	end
-	
 	def switchTypeImage(total)
 		imageName = ""
 		if total >= 4
@@ -41,8 +27,8 @@ class CompaniesController < ApplicationController
 
 	def show
 		@company = Company.find(params[:id])
-		if @company.evaluations.present?
-			@total_evaluations = computeEvaluation(@company)
+		if !@company.rate.nil?
+			@total_evaluations = @company.rate
 			@image_name = switchTypeImage(@total_evaluations)
 		end
 		if logged_in?

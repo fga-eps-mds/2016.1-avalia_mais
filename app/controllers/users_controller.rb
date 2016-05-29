@@ -58,6 +58,8 @@ class UsersController < ApplicationController
 	def destroy
 		session[:user_id] = nil
  		user = User.find(params[:id])
+ 		user.topics.delete_all
+ 		user.attaches.delete_all
  		user.evaluations.delete_all
  		user.destroy
 	
