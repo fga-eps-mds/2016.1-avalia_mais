@@ -1,11 +1,13 @@
 <%= render "navbar/navbar" %>
 
-</br></br></br>
+<section id="body-show-attach">
 <h1> Lista dos vinculos </h1>
 
        
-            <% @attaches.each do |a| %>
-         		<%= link_to a.cnpj, a %>
-         		</br>
-    
-              <%end%>
+<% @attaches.each do |a| %>
+	<%= link_to a.cnpj, a %>
+	</br>
+
+ <%end%>
+
+</section>

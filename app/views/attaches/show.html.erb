@@ -1,0 +1,12 @@
+<%= render "navbar/navbar" %>
+
+<div id="body-show-attach">
+	
+	<h1>Vínculo Solicitado</h1>
+
+	<p><b>Nome da Empresa:</b> </p>
+  	<p><b>Endereço:</b> <%= @attach.address %></p>
+  	<p><b>CNPJ:</b> <%= @attach.cnpj %></P>
+  	<%= image_tag(@attach.photo, :id => "comprovante") %>
+
+</div>
