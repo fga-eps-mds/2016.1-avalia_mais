@@ -82,6 +82,10 @@ class UsersController < ApplicationController
     	
   	end
 
+  	def user_admin?
+		!@user.admin == true
+	end
+
   	def update_password
   		@user = User.find(params[:id])
   		if  @user.authenticate(params[:user][:password_older])

@@ -1,0 +1,11 @@
+<%= render "navbar/navbar" %>
+
+</br></br></br>
+<h1> Lista dos vinculos </h1>
+
+       
+            <% @attaches.each do |a| %>
+         		<%= link_to a.cnpj, a %>
+         		</br>
+    
+              <%end%>

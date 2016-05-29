@@ -6,6 +6,10 @@ class AttachesController < ApplicationController
 		@company = Company.find(params[:company_id])
 	end
 
+	def show
+		@attach = Attach.find(params[:id])
+	end
+
 	def create
 		@attach = Attach.new(attach_params)
 		@attach.user = current_user
