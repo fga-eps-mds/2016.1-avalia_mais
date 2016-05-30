@@ -15,5 +15,9 @@
 		<topicStyle>
 		  <strong>Conteúdo:</strong>
 		  <%= @topic.body %>
+		</br>
+		  <strong>Autor:</strong>
+		  <%= @topic.user.name %>
 		</topicStyle>
+	 	<li><%= link_to "Editar", edit_topic_path(@topic) %></li>
 	</div>

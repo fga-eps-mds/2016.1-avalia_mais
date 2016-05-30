@@ -29,6 +29,12 @@ class TopicsController < ApplicationController
 		@topic = Topic.find(params[:id])
 	end
 
+	def edit
+
+	end
+
+	def update
+	end
 	
 	private
 
