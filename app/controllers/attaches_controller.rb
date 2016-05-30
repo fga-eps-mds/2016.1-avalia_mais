@@ -23,6 +23,11 @@ class AttachesController < ApplicationController
 		end
 	end
 
+	def approve
+		 company = Company.find(params[:attach].company_id)
+		 company.update_attributes(:user_id => params[:attach].user.id)
+	end 
+
 	private 
 		def attach_params
 			params[:attach].permit(:cnpj, :address, :photo, :user_id, :company_id)

@@ -2,19 +2,27 @@
 
 <div id="body-show-attach">
 	
-	<h1>Vínculo Solicitado</h1>
+	<h1>Vínculo Solicitado</h1></br>
 
-	<p><b>Nome da Empresa:</b> </p>
+	<p><b>Nome do Empresário:</b> <%= User.find(@attach.user_id).name %></p>
+	<p><b>Nome da Empresa:</b> <%= Company.find(@attach.company_id).name %></p>
   	<p><b>Endereço:</b> <%= @attach.address %></p>
   	<p><b>CNPJ:</b> <%= @attach.cnpj %></P>
-  	<%= image_tag(@attach.photo, :id => "comprovante") %>
 
-  </br></br>
+  	<% if @attach.photo_file_name != nil %>	
+  		<%= image_tag(@attach.photo, :id => "comprovante") %>
+  	<% else %>
+  		<p>Essa solicitação de vínculo não possui comprovante.</p>
+  	<% end %>
+
+ 	</br></br>
 
   	<div id="position_buttons">
-	  	<%= button_tag(type: 'submit', class: "btn btn-success", id: "btn-vincular") do %> Aprovar Vínculo 
-		<% end %>
+  		<%= link_to "Aprovar Vínculo", approve_path, class: "btn btn-success", id: "btn-vincular"%>
 		<%= button_tag(type: 'submit', class: "btn btn-danger", id: "btn-rejeitar") do %> Rejeitar Vínculo 
 		<% end %>
+
+		</br></br></br></br></br>
+
 	</div>
 </div>

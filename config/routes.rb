@@ -54,6 +54,9 @@ Rails.application.routes.draw do
   resources :topics
 
   resources :attaches
+
+  post '/company/:id', controller: 'attaches', action: 'approve', :as => 'approve'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
