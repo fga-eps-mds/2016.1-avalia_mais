@@ -4,3 +4,8 @@ topicStyle {
  	font-family: Arial, Helvetica, sans-serif;
  	font-size: 20px;
 }
+
+.comment-section{
+	width: 300px;
+	z-index: 120;
+}

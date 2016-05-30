@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   #segment
   get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment' 
 
+  #Comment
+  post '/comment' => 'comments#create', :as=> 'create_comment'
+  get '/comment/delete' => 'comments#destroy', :as => 'delete_comment'
 
   #evaluation
   post '/company/show', controller: 'evaluations', action: 'rate', :as => 'rate'

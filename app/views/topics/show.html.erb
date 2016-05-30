@@ -1,12 +1,12 @@
 <%= render "navbar/navbar" %>
 </br></br></br></br></br>
-
+	
 	<div class = "form_attach">
-	<topicStyle>
-		<span class = "glyphicon glyphicon-time" ></span>
-		 Tópico criado em <%= @topic.create_date.strftime("%d/%m/%Y") %> 
-	 </topicStyle>
-	</br></br>
+		<topicStyle>
+			<span class = "glyphicon glyphicon-time" ></span>
+			 Tópico criado em <%= @topic.create_date.strftime("%d/%m/%Y") %> 
+		</topicStyle>
+		</br></br>
 		<topicStyle>
 		  <strong>Título:</strong>
 		  <%= @topic.title %>
@@ -16,4 +16,23 @@
 		  <strong>Conteúdo:</strong>
 		  <%= @topic.body %>
 		</topicStyle>
+		<section class="comment-section">
+			<%if @comments.present?%>
+				<% @comments.each do |comment|%>
+					<span>
+						<%= User.find(comment.user_id).name%>: 
+						<%= comment.description%></br>
+						<%if comment.user_id == current_user.id%>
+							<%= link_to 'Excluir',delete_comment_path(comment.id)%>
+						<%end%>
+					</span>
+				<%end%>
+			<%end%>
+			<%= form_for(:comment, url: create_comment_path) do |form|%>
+				<%= form.text_area :description, :placeholder => "Escreva um comentário...", :maxlength => 300%>
+				<%= form.hidden_field :topic_id, :value =>@topic.id %>
+				<%= form.hidden_field :user_id, :value =>current_user.id %>
+				<%= form.submit "Comentar", :class => "btn btn-primary"%>
+			<%end%>
+		</section>
 	</div>
