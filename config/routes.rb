@@ -51,6 +51,8 @@ Rails.application.routes.draw do
   root 'questions#new'
 
   get '/questions/new', controller: 'questions', action: 'new', :as => 'questions'
+  post'/questions/new'      => 'questions#create', :as => 'create_questions'
+  get  '/questions/:id'      => 'questions#show', :as => 'questions_show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,16 +1,31 @@
 <h1>Enquete da empresa</h1>
 
+<h3>Titulo</h3>
+
 <div ng-controller="QuestionController">
   <%= form_for(@question, html: { name: "newQuestionForm" }) do |f| %>
     <div class="field">
-      <%= f.text_field :title, class: "large", autocomplete: "off", placeholder: "Add your question here", ng_model: "question" %>
+      <%= f.text_field :title, class: "large", autocomplete: "off", ng_model: "question" %>
     </div>
 
     <h3>Adicione as suas opções:</h3>
 
-    <div class="field" ng-repeat="option in options track by $index">
+    <div class="field">
       <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
     </div>
+
+    <div class="field">
+      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
+    </div>
+
+      <div class="field">
+      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
+    </div>
+
+      <div class="field">
+      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
+    </div>
+
 
     <% if flash[:notice] %>
       <div class="notice"><%= flash[:notice] %></div>
@@ -19,7 +34,7 @@
     <br>
 
     <div class="actions">
-      <%= f.submit "Start" %>
+      <%= f.submit "Criar" %>
     </div>
 
   <% end %>

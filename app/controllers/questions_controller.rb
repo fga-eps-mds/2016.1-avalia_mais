@@ -1,7 +1,5 @@
 class QuestionsController < ApplicationController
 
-  before_filter :set_question, only: [:show, :results]
-
   def new
     @question = Question.new
     @option = Option.new
@@ -9,7 +7,8 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    @question.save!
+    
+    @question.save!   	
 
     params[:options].each do |option|
       if option[:title] != ""
@@ -19,10 +18,11 @@ class QuestionsController < ApplicationController
         new_option.save!
       end
     end
-
+    redirect_to "/#{@question.id}"
   end
 
   def show
+    @question = Question.find(params[:id])
    
   end
 
@@ -30,7 +30,9 @@ class QuestionsController < ApplicationController
     @options = @question.options
   end
 
-
+  def question_params
+   	params.require(:question).permit(:title)
+  end
 
 
 end

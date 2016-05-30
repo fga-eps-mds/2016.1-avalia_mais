@@ -34,8 +34,6 @@
 	<h2><%= @company.segment.name %></h2>
 </div>
 
-
-
 <div class="container-show-company">
 	<div class="btn-group">
 		<div class="btn avaliacao">Avaliações</div>
@@ -107,33 +105,9 @@
 </section>
 
 <section id="enquete">
-<div class="barra">
-<h1>Enquete da empresa</h1>
 
-<div ng-controller="QuestionController">
-  <%= form_for(@question, html: { name: "newQuestionForm" }) do |f| %>
-    <div class="field">
-      <%= f.text_field :title, class: "large", autocomplete: "off", placeholder: "Add your question here", ng_model: "question" %>
-    </div>
-
-    <h3>Adicione as suas opções:</h3>
-
-    <div class="field" ng-repeat="option in options track by $index">
-      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
-    </div>
-
-    <% if flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
-    <% end %>
-
-    <br>
-
-    <div class="actions">
-      <%= f.submit "Start" %>
-    </div>
-
-  <% end %>
-</div>
+	<h1>Enquete da empresa</h1>
+	<h2>Em desenvolvimento: /questions/new</h2>
 
 </section>
 
