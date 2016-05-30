@@ -1,5 +1,6 @@
 class Company < ActiveRecord::Base
     has_many :evaluations
+    has_many :questions
     belongs_to :segment
 
     #validations to register a company

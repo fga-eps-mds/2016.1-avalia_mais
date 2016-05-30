@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   get '/availability/:secret' => 'questions#check_secret_availability'
   root 'questions#new'
 
-  get '/questions/new222132', controller: 'questions', action: 'new', :as => 'questions'
+  get '/questions/new', controller: 'questions', action: 'new', :as => 'questions'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
