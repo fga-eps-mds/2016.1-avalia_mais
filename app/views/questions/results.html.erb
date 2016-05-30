@@ -1,0 +1,36 @@
+<div ng-controller="ResultController" ng-init="setQuestion('<%= @question.secret %>')">
+  <div class="row">
+    <div class="col col-left">
+      <div class="chart">
+        <header class="chart__header">
+          <h1><%= @question.title %></h1><br>
+          <small class="subtle">No need to refresh! Results update in real-time</small>
+        </header>
+        <article class="chart__main">
+          <div class="chart__main__container">
+            <div class="chart__main__container__container">
+              <canvas width="100" height="100"></canvas>
+            </div>
+          </div>
+        </article>
+
+        <footer class="chart__footer">
+          <p><a href="/<%= @question.secret %>">Go to options</a></p>
+        </footer>
+      </div>
+    </div>
+    <div class="col col-right">
+      <h2>Votes</h2>
+      <div ng-repeat="datum in chartData | orderBy:'value':true ">
+        <div class="swatch">
+          <div class="swatch__circle" ng-style="{'color': datum.color, 'border-color': datum.color}">
+            {{ datum.value }}
+          </div>
+          <span class="swatch__label" ng-style="{color: datum.color}">
+            <span class="swatch__label__text">{{ datum.label }}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

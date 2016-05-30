@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160523232933) do
+ActiveRecord::Schema.define(version: 20160530145136) do
 
   create_table "companies", force: :cascade do |t|
     t.datetime "created_at",                      null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160523232933) do
     t.integer  "logo_file_size",    limit: 4
     t.datetime "logo_updated_at"
     t.integer  "uf_id",             limit: 4
+    t.string   "segment",           limit: 255
   end
 
   add_index "companies", ["segment_id"], name: "index_companies_on_segment_id", using: :btree
@@ -61,10 +62,60 @@ ActiveRecord::Schema.define(version: 20160523232933) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.string   "secret",     limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "segments", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "survey_answers", force: :cascade do |t|
+    t.integer  "attempt_id",  limit: 4
+    t.integer  "question_id", limit: 4
+    t.integer  "option_id",   limit: 4
+    t.boolean  "correct"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "survey_attempts", force: :cascade do |t|
+    t.integer "participant_id",   limit: 4
+    t.string  "participant_type", limit: 255
+    t.integer "survey_id",        limit: 4
+    t.boolean "winner"
+    t.integer "score",            limit: 4
+  end
+
+  create_table "survey_options", force: :cascade do |t|
+    t.integer  "question_id", limit: 4
+    t.integer  "weight",      limit: 4,   default: 0
+    t.string   "text",        limit: 255
+    t.boolean  "correct"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "survey_questions", force: :cascade do |t|
+    t.integer  "survey_id",  limit: 4
+    t.string   "text",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "survey_surveys", force: :cascade do |t|
+    t.string   "name",            limit: 255
+    t.text     "description",     limit: 65535
+    t.integer  "attempts_number", limit: 4,     default: 0
+    t.boolean  "finished",                      default: false
+    t.boolean  "active",                        default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "surveys", force: :cascade do |t|
@@ -95,6 +146,14 @@ ActiveRecord::Schema.define(version: 20160523232933) do
     t.integer  "uf_id",           limit: 4
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.string   "secret",      limit: 255
+    t.integer  "question_id", limit: 4
+    t.integer  "option_id",   limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_foreign_key "companies", "segments"

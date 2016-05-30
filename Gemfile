@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-angular'
+  gem 'rails-assets-leaflet'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -58,6 +63,9 @@ group :development do
   gem 'spring'
   gem 'mysql2', '~> 0.3.18'
   
+  gem 'dotenv-rails', :groups => [:development, :test]
+
+
 
 end
 

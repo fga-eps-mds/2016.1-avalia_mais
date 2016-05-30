@@ -2,9 +2,9 @@ class CreateOptions < ActiveRecord::Migration
   def change
     create_table :options do |t|
       t.string :title
-      t.integer :rates
+      t.integer :question_id
 
-      t.timestamps null: false
+      t.timestamps
     end
   end
 end
