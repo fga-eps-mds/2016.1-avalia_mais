@@ -55,8 +55,9 @@ Rails.application.routes.draw do
 
   resources :attaches
 
-  post '/company/:id', controller: 'attaches', action: 'approve', :as => 'approve'
-  
+  get 'management/attachesx', controller: 'attaches', action: 'approve', :as => 'approve'
+  get 'management/attachesz', controller: 'attaches', action: 'reject', :as => 'reject'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

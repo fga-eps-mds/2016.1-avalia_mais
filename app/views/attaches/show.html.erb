@@ -18,11 +18,8 @@
  	</br></br>
 
   	<div id="position_buttons">
-  		<%= link_to "Aprovar Vínculo", approve_path, class: "btn btn-success", id: "btn-vincular"%>
-		<%= button_tag(type: 'submit', class: "btn btn-danger", id: "btn-rejeitar") do %> Rejeitar Vínculo 
-		<% end %>
-
+  		<%= link_to "Aprovar Vínculo", approve_path(@attach), class: "btn btn-success", id: "btn-vincular"%>
+  		<%= link_to "Rejeitar Vínculo", reject_path(@attach), class: "btn btn-danger", id: "btn-rejeitar"%>
 		</br></br></br></br></br>
-
 	</div>
 </div>

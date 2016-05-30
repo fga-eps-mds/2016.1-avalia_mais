@@ -24,9 +24,28 @@ class AttachesController < ApplicationController
 	end
 
 	def approve
-		 company = Company.find(params[:attach].company_id)
-		 company.update_attributes(:user_id => params[:attach].user.id)
-	end 
+		if current_user.admin == true
+			attach = Attach.find(params[:format])
+			company = Company.find(attach.company_id)
+	 		company.update_attributes(:user_id => attach.user.id, :authenticated => true)
+			flash[:notice] = 'Empresa vinculada com sucesso!'
+			attach.destroy
+			redirect_to management_attach_path
+		else
+			redirect_to home_path
+		end
+	end
+
+	def reject
+		if current_user.admin == true
+			attach = Attach.find(params[:format])
+			attach.destroy
+			flash[:notice] = 'Vínculo rejeitado com sucesso!'
+			redirect_to management_attach_path
+		else
+			redirect_to home_path
+		end
+	end
 
 	private 
 		def attach_params
