@@ -30,10 +30,20 @@ class TopicsController < ApplicationController
 	end
 
 	def edit
-
+		@topic = Topic.find(params[:id])
 	end
 
 	def update
+		@topic = Topic.find(params[:id])
+
+		if @topic.update_attributes(topic_params)
+    		respond_to do |format| format.html {redirect_to :action => "show",:id => @topic.id}
+	    		flash[:notice] = "Tópico atualizado"
+
+	    	end	
+    	else
+      		flash[:notice] = 'Erro ao atualizar o tópico!'
+    	end
 	end
 	
 	private
