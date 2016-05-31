@@ -19,5 +19,9 @@
 		  <strong>Autor:</strong>
 		  <%= @topic.user.name %>
 		</topicStyle>
-	 	<li><%= link_to "Editar", edit_topic_path(@topic) %></li>
+
+		<% if @topic.user == current_user %>
+			<li><%= link_to "Editar", edit_topic_path(@topic), class: "btn btn-primary" %></li>
+		<% end %>
+	 	
 	</div>

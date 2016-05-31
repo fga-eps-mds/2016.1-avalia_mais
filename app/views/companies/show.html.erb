@@ -109,19 +109,29 @@
 </section>
 
 <section id="forum">
-  
-  <%= hidden_field :company_id, :value => @company.id%>
+
+
+   <div id="check-response">
+          <div id="confirmation-response">
+
+              <% list_topics.each do |topic| %>
+              <topicStyle>
+                <%= link_to topic.title, topic%>
+                </topicStyle>
+               </br>
+              <% end %> 
+               <%= hidden_field :company_id, :value => @company.id%>
+
   <%if logged_in?%>
     <p><%= link_to "Novo tópico", new_topic_path(:company_id => @company.id), class: "btn btn-primary" %> </p>
 
   <%end%>
+          </div>
+        </div></br></br></br></br>
+  
+ 
 
-
-  <%= list_topics.each do |topic| %>
-      <p><%= link_to topic.title, topic_path(topic)%></p>
-      <p><%= topic.body %></p>
-      </br>
-  <% end %> 
+    
 
 </section>
 

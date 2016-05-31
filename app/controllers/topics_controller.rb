@@ -31,6 +31,11 @@ class TopicsController < ApplicationController
 
 	def edit
 		@topic = Topic.find(params[:id])
+		if current_user != @topic.user
+			redirect_to @topic
+		else
+			#do nothing
+		end
 	end
 
 	def update
