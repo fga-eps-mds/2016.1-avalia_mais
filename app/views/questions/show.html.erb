@@ -1,3 +1,4 @@
+  <div ng-controller="QuestionController")>
 
   <h1><%= @question.title %></h1>
 
@@ -13,5 +14,8 @@
         </div>
       <% end %>
     </fieldset>
+
+    <td><%= button_to 'Votar', {:controller => "votes", :action => "update", :option_id => 21, :question_id=>@question.id} , :method=>:put  %></td>
+
   <% end %>
 

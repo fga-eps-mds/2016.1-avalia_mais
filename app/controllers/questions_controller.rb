@@ -18,7 +18,7 @@ class QuestionsController < ApplicationController
         new_option.save!
       end
     end
-    redirect_to "/#{@question.id}"
+    redirect_to "/questions/#{@question.id}"
   end
 
   def show
@@ -27,6 +27,7 @@ class QuestionsController < ApplicationController
   end
 
   def results
+    @question = Question.find(params[:id])
     @options = @question.options
   end
 
