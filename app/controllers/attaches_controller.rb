@@ -7,7 +7,11 @@ class AttachesController < ApplicationController
 	end
 
 	def show
-		@attach = Attach.find(params[:id])
+		if user_admin?
+			@attach = Attach.find(params[:id])
+		else
+			redirect_to home_path
+		end
 	end
 
 	def create
@@ -24,7 +28,7 @@ class AttachesController < ApplicationController
 	end
 
 	def approve
-		if current_user.admin == true
+		if user_admin?
 			attach = Attach.find(params[:format])
 			company = Company.find(attach.company_id)
 	 		company.update_attributes(:user_id => attach.user.id, :authenticated => true)
@@ -37,7 +41,7 @@ class AttachesController < ApplicationController
 	end
 
 	def reject
-		if current_user.admin == true
+		if user_admin?
 			attach = Attach.find(params[:format])
 			attach.destroy
 			flash[:notice] = 'Vínculo rejeitado com sucesso!'

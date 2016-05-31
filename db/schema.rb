@@ -46,11 +46,9 @@ ActiveRecord::Schema.define(version: 20160530154205) do
     t.integer  "logo_file_size",    limit: 4
     t.datetime "logo_updated_at"
     t.integer  "uf_id",             limit: 4
-    t.integer  "company_id",        limit: 4
     t.integer  "user_id",           limit: 4
   end
 
-  add_index "companies", ["company_id"], name: "index_companies_on_company_id", using: :btree
   add_index "companies", ["segment_id"], name: "index_companies_on_segment_id", using: :btree
   add_index "companies", ["uf_id"], name: "index_companies_on_uf_id", using: :btree
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
@@ -118,7 +116,6 @@ ActiveRecord::Schema.define(version: 20160530154205) do
 
   add_foreign_key "attaches", "companies"
   add_foreign_key "attaches", "users"
-  add_foreign_key "companies", "companies"
   add_foreign_key "companies", "segments"
   add_foreign_key "companies", "ufs"
   add_foreign_key "companies", "users"
