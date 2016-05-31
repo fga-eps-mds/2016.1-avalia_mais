@@ -22,6 +22,7 @@
 
 		<% if @topic.user == current_user %>
 			<li><%= link_to "Editar", edit_topic_path(@topic), class: "btn btn-primary" %></li>
+			<%= link_to "Deletar", @topic, confirm: 'Você tem certeza?', method: :delete %>
 		<% end %>
 	 	
 	</div>

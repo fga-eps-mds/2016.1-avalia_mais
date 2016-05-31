@@ -44,11 +44,18 @@ class TopicsController < ApplicationController
 		if @topic.update_attributes(topic_params)
     		respond_to do |format| format.html {redirect_to :action => "show",:id => @topic.id}
 	    		flash[:notice] = "Tópico atualizado"
-
 	    	end	
     	else
       		flash[:notice] = 'Erro ao atualizar o tópico!'
     	end
+	end
+
+
+	def destroy
+		topic = Topic.find(params[:id])
+		company = topic.company
+		topic.destroy
+		redirect_to company
 	end
 	
 	private
