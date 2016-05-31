@@ -54,8 +54,15 @@ class TopicsController < ApplicationController
 	def destroy
 		topic = Topic.find(params[:id])
 		company = topic.company
-		topic.destroy
-		redirect_to company
+
+		if topic.destroy
+	    	flash[:notice] = "Tópico excluído!"
+	    	redirect_to company
+    	else
+      		flash[:notice] = 'Erro ao excluir tópico.'
+      		redirect_to topic
+    	end
+
 	end
 	
 	private
