@@ -1,12 +1,16 @@
 <h1>Enquete da empresa</h1>
 
 <h3>Titulo</h3>
-
+  
 <div ng-controller="QuestionController">
   <%= form_for(@question, html: { name: "newQuestionForm" }) do |f| %>
     <div class="field">
       <%= f.text_field :title, class: "large", autocomplete: "off", ng_model: "question" %>
     </div>
+
+    <h2>Selecione quantidade de respostas</h2>
+  <%= f.select :options_quantity_chosen, options_for_select([["Quantidade", ""], "2", "3", "4", "5", "6"]) %>
+  </div>
 
     <h3>Adicione as suas opções:</h3>
 
@@ -23,6 +27,14 @@
     </div>
 
       <div class="field">
+      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
+    </div>
+
+     <div class="field">
+      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
+    </div>
+
+     <div class="field">
       <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
     </div>
 
