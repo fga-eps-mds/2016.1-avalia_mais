@@ -44,17 +44,14 @@ Rails.application.routes.draw do
   post '/company/show', controller: 'evaluations', action: 'rate', :as => 'rate'
   post '/company/response', controller: 'evaluations', action: 'response_time', :as => 'response_time'
 
-  put '/votes' => 'votes#update'
-  get ':secret' => 'questions#show'
-  get ':secret/results' => 'questions#results'
-  get '/availability/:secret' => 'questions#check_secret_availability'
-  root 'questions#new'
-
+  #questions
   get '/questions/new', controller: 'questions', action: 'new', :as => 'questions'
   post'/questions/new'      => 'questions#create', :as => 'create_questions'
   get '/questions/:id'      => 'questions#show', :as => 'questions_show'
   get '/questions/:id/results/' => 'questions#results', action: 'results', :as => 'results_questions'
+  get '/votes' => 'votes#update', action: 'update', :as => 'update_vote'
   put '/votes' => 'votes#update'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

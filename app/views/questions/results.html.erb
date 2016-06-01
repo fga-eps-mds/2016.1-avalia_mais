@@ -1,31 +1,5 @@
-<div ng-controller="ResultController" ng-init="setQuestion('<%= @question.id %>')">
-  <div class="row">
-    <div class="col col-left">
-      <div class="chart">
-          <h1><%= @question.title %></h1>
-
-        <article class="chart__main">
-          <div class="chart__main__container">
-            <div class="chart__main__container__container">
-              <canvas width="100" height="100"></canvas>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-
-    <div class="col col-right">
-      <h2>Votes</h2>
-      <div ng-repeat="datum in chartData | orderBy:'value':true ">
-        <div class="swatch">
-          <div class="swatch__circle" ng-style="{'color': datum.color, 'border-color': datum.color}">
-            {{ datum.value }}
-          </div>
-          <span class="swatch__label" ng-style="{color: datum.color}">
-            <span class="swatch__label__text">{{ datum.label }}</span>
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<h1>@question.title</h1>
+<% @question.options.each do |option| %>
+  <span class="outer"><span class="inner"></span></span><%= option.title %>
+  <span>option.votes</span>
+<%end%>

@@ -9,33 +9,33 @@
     </div>
 
     <h2>Selecione quantidade de respostas</h2>
-  <%= f.select :options_quantity_chosen, options_for_select([["Quantidade", ""], "2", "3", "4", "5", "6"]) %>
+    <%= f.select :options_quantity_chosen, options_for_select([["Quantidade", ""], "2", "3", "4", "5", "6"]),onchange: "location = this.value"%>
   </div>
 
     <h3>Adicione as suas opções:</h3>
 
     <div class="field">
-      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
+      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
     </div>
 
     <div class="field">
-      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
+      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
     </div>
 
       <div class="field">
-      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
+      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
     </div>
 
       <div class="field">
-      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
+      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
     </div>
 
      <div class="field">
-      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
+      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
     </div>
 
      <div class="field">
-      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", placeholder: "Option {{$index+1}}", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
+      <%= text_field_tag "options[][title]", @option.title, autocomplete: "off", ng_model: "options[$index]", ng_blur: "optionBlur($index, option)" %>
     </div>
 
 
@@ -51,3 +51,7 @@
 
   <% end %>
 </div>
+<script>
+ var opcao =  $("#question_options_quantity_chosen").val();
+  alert(opcao);
+</script>
