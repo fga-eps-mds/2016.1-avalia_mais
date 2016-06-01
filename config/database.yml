@@ -13,8 +13,8 @@ test: &test
   reconnect: false
   database: avalia_mais_test
   pool: 5
-  username: root
-  password: root
+  username: travis
+  password: 
   host: localhost
 
 production:
