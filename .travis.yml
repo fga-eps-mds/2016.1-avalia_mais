@@ -2,7 +2,7 @@
 language: ruby
 
 before_install: 
-  - mysql -e "create database IF NOT EXISTS test;" -uroot
+    - mysql -e 'create database myapp_test;'
 script:
   - bundle exec spring binstub --all
   - bundle install
