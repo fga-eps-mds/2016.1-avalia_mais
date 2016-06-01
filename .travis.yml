@@ -1,6 +1,9 @@
 
 language: ruby
 
+services:
+  - mysql
+  
 before_install: 
     - mysql -e 'create database avalia_mais_test;'
 script:
