@@ -1,8 +1,11 @@
 
 language: ruby
 
-before_install: 
+services:
+  - mysql
   
+before_install: 
+    - mysql -e 'create database avalia_mais_test;'
 script:
   - bundle exec spring binstub --all
   - bundle install
