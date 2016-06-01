@@ -5,7 +5,8 @@ topicStyle {
  	font-size: 20px;
 }
 
-.comment-section{
-	width: 300px;
-	z-index: 120;
+.form_attach{
+	width: 50%;
+	position: relative;
+	left: 25%;
 }

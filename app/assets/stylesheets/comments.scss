@@ -1,3 +1,27 @@
-// Place all the styles related to the comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.comment-section{
+    width: 70%;
+    position: relative;
+    left: 15%;
+}
+
+.comments-info{
+    width: 100%;
+    position: relative;
+    text-align: justify;
+}
+
+#comment-description{
+    width: 100px;
+}
+
+#delete-comment{
+    float: right;
+}
+
+.comment-text-area{
+    position: relative;
+    width: 90%;
+    left: 5%;
+    height: 30px;
+    padding-left: 8px;
+}
