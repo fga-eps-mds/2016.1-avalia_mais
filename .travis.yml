@@ -9,6 +9,7 @@ before_install:
 script:
   - bundle exec spring binstub --all
   - bundle install
+  - bundle exec rake db:load_config
   - bundle exec rake db:drop
   - bundle exec rake db:create
   - bundle exec rake db:migrate
