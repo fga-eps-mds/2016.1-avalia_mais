@@ -2,7 +2,7 @@
 language: ruby
 
 before_install: 
-    - mysql -e 'create database myapp_test;'
+    - mysql -e 'create database avalia_mais_test;'
 script:
   - bundle exec spring binstub --all
   - bundle install
