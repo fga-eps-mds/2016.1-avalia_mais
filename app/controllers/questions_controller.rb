@@ -40,7 +40,8 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-   	params.require(:question).permit(:title)
+   	params.require(:question).permit(:title, :options_attributes => [:title, :question_id])
+
   end
 
 
