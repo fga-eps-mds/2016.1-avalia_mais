@@ -2,30 +2,25 @@
 
 <h3>Titulo</h3>
   
-<div ng-controller="QuestionController">
-  <%= form_for(@question, html: { name: "newQuestionForm" }) do |f| %>
+<div >
+  <%= form_for(@question) do |f| %>
     <div class="field">
-      <%= f.text_field :title, class: "large", autocomplete: "off", ng_model: "question" %>
+      <%= f.label :title %>
+      <%= f.text_field :title%>
     </div>
 
     <h3>Adicione as suas opções:</h3>
 
-    <%= link_to_add_association 'Adicione sua opção', f, :options, 'data-association-insertion-node' => "#options-questions ol", 'data-association-insertion-method' => "append" }
+    <%= link_to_add_association 'Adicione sua opção', f, :option, 'data-association-insertion-node' => "#options-questions ol", 'data-association-insertion-method' => "append"%>
 
 
     <fieldset id="options-questions">
     <ol>
-      <%= f.fields_for :options do |option| %>
-        <%= render partial: "options_fields", locals: {f: option} %>
+      <%= f.fields_for :option do |options| %>
+        <%= render partial: "option_fields", locals: {f: option} %>
       <% end %>
     </ol>
     <fieldset />
-
-
-
-    <% if flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
-    <% end %>
 
     <br>
 
@@ -36,6 +31,4 @@
   <% end %>
 </div>
 <script>
- var opcao =  $("#question_options_quantity_chosen").val();
-  alert(opcao);
 </script>

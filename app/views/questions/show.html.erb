@@ -4,7 +4,7 @@
 
   <%= form_tag "/votes", :controller => "votes", :action => "update", method: :put, params:{question_id: @question.id} do |f| %>
     <fieldset>
-      <% @question.options.each do |option| %>
+      <% @question.option.each do |option| %>
         <div class="field">
           <%= label_tag "vote_option_id_#{option.id}", class: "radio" do %>
             <%= hidden_field_tag :question_id, @question.id%>
