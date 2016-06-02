@@ -10,5 +10,4 @@ class RankingsController < ApplicationController
 		@companies_unpaginated = Company.all.order('rate DESC')
 		@companies = Company.all.order('rate DESC').paginate(:page => params[:page], :per_page => 15)
 	end
-  
 end
