@@ -1,12 +1,5 @@
 class TopicsController < ApplicationController
 
-=begin
-	def index
-		@company = Company.find(params[:id])
-		@topics = @company.topics
-	end
-=end
-
 	def new
 		@topic = Topic.new
 		@company = Company.new
@@ -45,9 +38,8 @@ class TopicsController < ApplicationController
     		respond_to do |format| format.html {redirect_to :action => "show",:id => @topic.id}
 	    		flash[:notice] = "Tópico atualizado"
 	    	end	
-    	else
-      		flash[:notice] = 'Erro ao atualizar o tópico!'
     	end
+
 	end
 
 
@@ -58,9 +50,6 @@ class TopicsController < ApplicationController
 		if topic.destroy
 	    	flash[:notice] = "Tópico excluído!"
 	    	redirect_to company
-    	else
-      		flash[:notice] = 'Erro ao excluir tópico.'
-      		redirect_to topic
     	end
 
 	end
