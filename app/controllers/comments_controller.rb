@@ -1,11 +1,7 @@
 class CommentsController < ApplicationController
-	def new
-
-	end
 
 	def create
-		comment = Comment.new(comment_params)
-		comment.save
+		comment = Comment.create(comment_params)
 		redirect_to Topic.find(params[:comment][:topic_id])
 	end
 
