@@ -36,19 +36,19 @@ class AttachesController < ApplicationController
 			redirect_to management_attach_path
 			flash[:notice] = 'Empresa vinculada com sucesso!'
 		#else
-			#redirect_to home_path
+		#	redirect_to home_path
 		#end
 	end
 
 	def reject
-		if user_admin?
+		#if user_admin?
 			attach = Attach.find(params[:format])
 			attach.destroy
 			redirect_to management_attach_path
-			flash[:notice] = 'Vínculo rejeitado com sucesso!'
-		else
-			redirect_to home_path
-		end
+			flash[:notice] = 'Vínculo rejeitado com sucesso!'		
+		#else
+		#	redirect_to home_path
+		#end
 	end
 
 	private 

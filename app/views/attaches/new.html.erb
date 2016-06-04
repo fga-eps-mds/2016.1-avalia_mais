@@ -18,15 +18,15 @@
 
 		<label> <span> CNPJ </span></label>
 		<%= f.text_field :cnpj, :placeholder => "CNPJ da empresa", 
-						 :maxlength => 15 %></br></br>	
+						 :maxlength => 15 , required: true%></br></br>	
 		
 
 		<label> <span> Endereço </span></label>
-		<%= f.text_field :address, :placeholder => "Endereço da empresa"%></br>
+		<%= f.text_field :address, :placeholder => "Endereço da empresa", required: true%></br>
 		</br>
 
 		<label> <span> Carregue sua foto aqui </span></label></br>
-		<%= f.file_field :photo, :class => "form_control file_field", :accept => "image/jpeg" %></br>
+		<%= f.file_field :photo, :class => "form_control file_field", :accept => "image/jpeg", required: true %></br>
 
 		<%= button_tag(type: 'submit', class: "btn btn-confirm", id: "btn-Confirmar") do %> Confirmar 
 		<% end %><br/>

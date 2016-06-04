@@ -1,11 +1,13 @@
 require 'rails_helper'
+#include SessionsHelper
 
 RSpec.describe AttachesController, type: :controller do
 	describe 'attach' do
 		before(:each) do
-			@user = User.create(id: 1, name: "admin", login: "admin", password: "12345", password_confirmation: "12345", email: "admin@email.com", gender: "m", admin: true, active: true, dateBirthday: "10-01-1990")
-			@company = Company.create(id: 10)
-			@attach = Attach.create(company_id: @company.id, user_id: @user.id)
+			@user = User.create(name: 'robot', email: 'robot@bot.com', gender: 'm', password: 'pass', password_confirmation: 'pass', login: 'robot', dateBirthday: "1990-05-10", active: true, admin: true)
+			@company = Company.create(name: 'company')
+			@attach = Attach.create(user: @user, company: @company)
+			#SessionsHelper.log_in(@user)
 		end
 
 		context 'test routes for attachs' do
@@ -25,17 +27,11 @@ RSpec.describe AttachesController, type: :controller do
 		it 'approve attach' do
 			get :approve, {:format => @attach.id}
 			expect(flash[:notice]).to eq "Empresa vinculada com sucesso!"
-			#get :approve, {:format => @user.id}
-			#method_attach = assigns(:attach)
-			#expect(method_attach).to eq(test_attach)
 		end
 
 		it 'reject attach' do
 			get :reject, {:format => @attach.id}
 			expect(flash[:notice]).to eq "Vínculo rejeitado com sucesso!"
-		# 	get :approve
-		# 	method_company = assigns(:company)
-		# 	expect(method_company).to eq(@company)
 		end
 	end
 end
