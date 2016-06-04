@@ -1,4 +1,5 @@
 class Question < ActiveRecord::Base
+  belongs_to :company		
   has_many :option
   has_many :votes
 

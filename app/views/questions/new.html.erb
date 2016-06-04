@@ -3,21 +3,21 @@
 <h3>Titulo</h3>
   
 <div >
-  <%= form_for(@question) do |f| %>
+  <%= form_for(@question) do |quest| %>
     <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title%>
+      <%= quest.label :title %>
+      <%= quest.text_field :title%>
     </div>
 
     <h3>Adicione as suas opções:</h3>
 
-    <%= link_to_add_association 'Adicione sua opção', f, :option, 'data-association-insertion-node' => "#options-questions ol", 'data-association-insertion-method' => "append"%>
+    <%= link_to_add_association 'Adicione sua opção', quest, :option, 'data-association-insertion-node' => "#options-questions ol", 'data-association-insertion-method' => "append"%>
 
 
     <fieldset id="options-questions">
     <ol>
-      <%= f.fields_for :option do |options| %>
-        <%= render partial: "option_fields", locals: {f: option} %>
+      <%= quest.fields_for :option do |options| %>
+        <%= render partial: "option_fields", locals: {quest: option} %>
       <% end %>
     </ol>
     <fieldset />
@@ -25,7 +25,7 @@
     <br>
 
     <div class="actions">
-      <%= f.submit "Criar" %>
+      <%= quest.submit "Criar" %>
     </div>
 
   <% end %>

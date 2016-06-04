@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   get '/questions/:id/results/' => 'questions#results', action: 'results', :as => 'results_questions'
   get '/votes' => 'votes#update', action: 'update', :as => 'update_vote'
   put '/votes' => 'votes#update'
+  get '/votes/results' => 'votes#results', action: 'questions', :as => 'results_votes'
 
 
   # Example of regular route:

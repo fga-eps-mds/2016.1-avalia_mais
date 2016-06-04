@@ -24,19 +24,13 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.find(params[:id])
-    @options = @question.option
-
-    # params[:votes].each do |vote|
-    #   if vote[:question_id] = @question.id
-    #         params[:options].each do |option|
-
-      
+    @question = Question.find(params[:id])  
   end
 
   def results
     @question = Question.find(params[:id])
-    @options = @question.options
+    @votes = @question.votes
+    @options = @question.option 
   end
 
   def question_params

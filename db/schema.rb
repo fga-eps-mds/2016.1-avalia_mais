@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160530145136) do
   create_table "questions", force: :cascade do |t|
     t.string   "title",                   limit: 255
     t.integer  "options_quantity_chosen", limit: 4
+    t.integer  "company_id",              limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
