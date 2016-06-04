@@ -27,7 +27,7 @@ class TopicsController < ApplicationController
 
 	def show
 		@topic = Topic.find(params[:id])
-		@comments = @topic.comments 
+		@comments = @topic.comments.order('id DESC')
 	end
 
 	

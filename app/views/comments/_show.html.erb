@@ -6,7 +6,7 @@
 		    	<%= form_for(:comment, url: create_comment_path) do |form|%>
 					<%= form.hidden_field :topic_id, :value =>@topic.id %>
 					<%= form.hidden_field :user_id, :value =>current_user.id %>
-					<%= form.text_area :description, :placeholder => "Escreva um comentário...", :maxlength => 300, :class	=> 'form-control input-sm chat-input comment-text-area', :id => 'userComment' %>
+					<%= form.text_area :description, :placeholder => "Escreva um comentário...", :maxlength => 150, :class	=> 'form-control input-sm chat-input comment-text-area', :id => 'userComment' %>
 					</br>    
 		        	<span class="input-group-btn">     
 						<%= form.submit "Comentar",:class => "btn btn-primary btn-sm btn-comment"%>
@@ -14,22 +14,65 @@
 				<%end%>
 		    </div>
 			</br>
-		    <hr data-brackets-id="12673">
 		    <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
 		        <%if @comments.present?%>
+					<% commentsQuantity = 0%>
 					<% @comments.each do |comment|%>
-				        <strong class="pull-left primary-font"><%= User.find(comment.user_id).name%>:</strong>
-				        <small class="pull-right text-muted">
+				        <% if commentsQuantity <= 5%>
+					        <strong class="pull-left primary-font"><%= User.find(comment.user_id).name%>:</strong>
+					        <small class="pull-right text-muted">
 					           	<%if comment.user_id == current_user.id%>
 									<%= link_to image_tag("remove_icon.png"), delete_comment_path(comment.id), :id => 'delete-comment', data: { confirm: "Tem certeza que deseja excluir o comentário?"}, :class=> 'delete-'+current_user.name.split(" ")[0]%>
 								<%end%>
-				        </small>
-				        </br>
-				        <li class="ui-state-default-comment"><%= comment.description%></li>
-				        </br>
+					        </small>
+				        	</br>
+				        	<li class="ui-state-default-comment"><%= comment.description%>
+				        		</br>
+			        			<h5><%= comment.created_at.to_formatted_s(:long)%></h5>				   
+				        	</li>
+			       		<%else%>
+			       			<div class="hidden_comments">
+			        			<strong class="pull-left primary-font"><%= User.find(comment.user_id).name%>:</strong>
+						        <small class="pull-right text-muted">
+						           	<%if comment.user_id == current_user.id%>
+										<%= link_to image_tag("remove_icon.png"), delete_comment_path(comment.id), :id => 'delete-comment', data: { confirm: "Tem certeza que deseja excluir o comentário?"}, :class=> 'delete-'+current_user.name.split(" ")[0]%>
+									<%end%>
+						        </small>
+					        	</br>
+			        			<li class="ui-state-default-comment"><%= comment.description%>
+			        				</br>
+			        				<h5><%= comment.created_at.to_formatted_s(:long)%></h5>
+			        			</li>
+			       			</div>
+			       		<%end%>
+				        <% commentsQuantity = commentsQuantity + 1%>
+				        </br>					        
 				    <%end%>
+				    <%if @comments.size > 6%>
+				    	<div id="hidden_comments_link">
+				       		<li class="ui-state-default-comment"><a class="show_hidden_comments">Mostrar mais comentários </a></li>
+				    	</div>
+				    <%end%>
+				<%else%>
+					</br></br>
+					<li class="ui-state-default-comment" style="text-align:center">Não existe nenhum comentário. Seja o primeiro a comentar.</li>
 				<%end%> 
 		    </ul>
 		</div>
     </div>
 </div>
+
+<script>
+	var count = 0;
+	$(".show_hidden_comments").click(function(){
+    	$(".hidden_comments").toggle("slow");
+      	if(count == 0){
+        	$(".show_hidden_comments").text("Ocultar comentários");
+        	count = 1;
+      	}else{
+        	$(".show_hidden_comments").text("Mostrar mais comentários");
+        	count = 0;
+      	}
+    });
+
+</script>

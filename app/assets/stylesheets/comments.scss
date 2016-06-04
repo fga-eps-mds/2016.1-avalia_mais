@@ -11,7 +11,11 @@ li.ui-state-default-comment{
     height: auto;
     width: 100%;
 }
-
+li.ui-state-default-comment h5{
+    color: #999999;
+    font-size: 0.765em;
+    right: 0;
+}
 li.ui-state-default-comment:last-child{
     border-bottom:none;
 }
@@ -26,23 +30,6 @@ body {
 .btn,.form-control,.well {
     border-radius:1px;
     box-shadow:0 0 0;
-}
-
-.btn-primary {
-    border-color:transparent;
-}
-
-.btn-primary, .list-group-item.active:focus {
-    background-color:#4285f4;
-} 
-
-.btn-plus {
-    background-color:#ffffff;
-    border-width:1px;
-    border-color:#dddddd;
-    box-shadow:1px 1px 0 #999999;
-    border-radius:3px;color:#666666;
-    text-shadow:0 0 1px #bbbbbb;
 }
 
 .well,.panel {
@@ -67,19 +54,25 @@ button {
     border-radius:0;
 }
 
-h3 { 
-    border:0 solid #efefef; 
-    border-bottom-width:1px;
-    padding-bottom:10px;
-}
 ul#sortable{
     word-wrap: break-word;
 }
+
 .comment-text-area{
     border-color:#d7d7d7;
     padding-left: 8px;
+    resize : none;
 }
 .comment-field{
     width: 70%;
     display: inline-block;
+}
+
+.hidden_comments{
+    display: none;
+}
+
+#hidden_comments_link li{
+    font-size: 0.80em;
+    text-align: center;
 }
