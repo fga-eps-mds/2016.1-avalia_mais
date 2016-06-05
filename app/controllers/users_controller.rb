@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 	end
 
 	def user_params
-		params[:user].permit(:name, :email, :password, :password_confirmation,:login, :dateBirthday, :gender, :uf_id)
+		params[:user].permit(:name, :email, :password, :password_confirmation,:login, :dateBirthday, :gender, :uf_id, :company_id)
 	end
 	
 	def user_params_update
@@ -58,13 +58,15 @@ class UsersController < ApplicationController
 	def destroy
 		session[:user_id] = nil
  		user = User.find(params[:id])
+ 		user.attaches.delete_all
+ 		update_company_user(user.companies)
+ 		user.companies.delete_all
  		user.topics.delete_all
  		user.attaches.delete_all
  		user.evaluations.delete_all
  		user.destroy
 	
 		redirect_to home_path
-
 	end
 
 	# Updating user 
@@ -94,5 +96,11 @@ class UsersController < ApplicationController
   			flash[:notice] = 'Senha invalida!'
   		end
   		redirect_to :action => "show",:id => @user.id
+  	end
+
+  	def update_company_user(companies)
+  		companies.each do |c|
+  			c.update_attributes(:authenticated => false)
+  		end	
   	end
 end

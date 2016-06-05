@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
     has_many :evaluations
     belongs_to :segment
+    belongs_to :user
     has_many :topics
     has_many :attaches
 

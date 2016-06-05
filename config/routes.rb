@@ -39,6 +39,8 @@ Rails.application.routes.draw do
   #segment
   get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment' 
 
+  #management
+  get 'management/attaches' => 'managements#list_attaches', :as => 'management_attach'
 
   #evaluation
   post '/company/show', controller: 'evaluations', action: 'rate', :as => 'rate'
@@ -52,6 +54,10 @@ Rails.application.routes.draw do
   resources :topics
 
   resources :attaches
+
+  get 'management/attachs_approve', controller: 'attaches', action: 'approve', :as => 'approve'
+  get 'management/attachs_reject', controller: 'attaches', action: 'reject', :as => 'reject'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
