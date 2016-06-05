@@ -1,9 +1,22 @@
+<%= render "navbar/navbar" %>
+
+<div id="erro-message">
+    <% if flash[:error] -%>
+      <p class="error"><%= flash[:error] %></p>
+    <% end -%>
+</div>
+</br></br>
+
 <h1>Enquete da empresa</h1>
 
 <h3>Titulo</h3>
-  
+
+
 <div >
   <%= form_for(@question) do |quest| %>
+
+    <%= quest.hidden_field :company_id, :value => @company.id %>
+
     <div class="field">
       <%= quest.label :title %>
       <%= quest.text_field :title%>
@@ -30,5 +43,3 @@
 
   <% end %>
 </div>
-<script>
-</script>

@@ -49,10 +49,21 @@ Rails.application.routes.draw do
   post'/questions/new'      => 'questions#create', :as => 'create_questions'
   get '/questions/:id'      => 'questions#show', :as => 'questions_show'
   get '/questions/:id/results/' => 'questions#results', action: 'results', :as => 'results_questions'
+
+  resources :companies do
+    resources :questions
+  end
+
+  resources :questions
+  resources :attaches
+
+  #votes
   get '/votes' => 'votes#update', action: 'update', :as => 'update_vote'
   put '/votes' => 'votes#update'
   get '/votes/results' => 'votes#results', action: 'questions', :as => 'results_votes'
 
+
+ 
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -106,7 +106,9 @@
 
 <section id="enquete">
 
-	<h1>Em desenvolvimento</h1>
+	<%if logged_in?%>
+    	<p><%= link_to "Criar enquete", create_questions_path(:company_id => @company.id), class: "btn btn-primary" %> </p>
+  <%end%>
 
 </section>
 
