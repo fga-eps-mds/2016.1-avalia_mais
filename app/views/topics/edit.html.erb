@@ -23,11 +23,11 @@
 			<%= f.hidden_field :company_id, :value => @topic.company.id %>
 			<label> <span> Título </span></label>
 			<%= f.text_field :title, :placeholder => "Título do Tópico", 
-							 :maxlength => 60 %>
+							 :maxlength => 60, required: true %>
 			</br></br>
 			<label> <span> Conteúdo </span></label>
 			<%= f.text_area :body, :rows => 10, :placeholder => "Conteúdo do tópico",
-			:maxlength => 1500 %>
+			:maxlength => 1500, required: true %>
 			</br></br>
 
 			<%= button_tag(type: 'submit', class: "btn btn-confirm", id: 'btn-Confirmar' ) do %> Confirmar 
