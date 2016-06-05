@@ -6,7 +6,7 @@ class VotesController < ApplicationController
     if @vote.save
       flash[:notice] = 'voto efetuado com sucesso!'
     end 
-      redirect_to home_path 
+      redirect_to "/questions/#{@vote.question_id}/results" 
   end
   def results
     @votes = Vote.all

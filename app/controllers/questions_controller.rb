@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   def new
     @question = Question.new
     @company = Company.all
-    @company = Company.find(params[:com])
+    @company = Company.find(params[:company_id])
     @question.options_quantity_chosen = 2
     @option = Option.new
   end
@@ -20,11 +20,8 @@ class QuestionsController < ApplicationController
           new_option.question_id = @question.id
           new_option.save!
         end
-
-        redirect_to "#{@question.company_id}/questions/#{@question.id}"
-
       end
-
+      redirect_to "/questions/#{@question.id}"
     end
   end
 
@@ -39,7 +36,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-   	params.require(:question).permit(:title, :options_attributes => [:title, :question_id, :company_id])
+   	params.require(:question).permit(:title, :company_id, :options_attributes => [:title, :question_id])
 
   end
 

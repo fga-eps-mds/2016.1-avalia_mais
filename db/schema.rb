@@ -13,6 +13,22 @@
 
 ActiveRecord::Schema.define(version: 20160530145136) do
 
+  create_table "attaches", force: :cascade do |t|
+    t.string   "cnpj",               limit: 255
+    t.string   "address",            limit: 255
+    t.string   "photo_file_name",    limit: 255
+    t.string   "photo_content_type", limit: 255
+    t.integer  "photo_file_size",    limit: 4
+    t.datetime "photo_updated_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "user_id",            limit: 4
+    t.integer  "company_id",         limit: 4
+  end
+
+  add_index "attaches", ["company_id"], name: "index_attaches_on_company_id", using: :btree
+  add_index "attaches", ["user_id"], name: "index_attaches_on_user_id", using: :btree
+
   create_table "companies", force: :cascade do |t|
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
@@ -64,6 +80,7 @@ ActiveRecord::Schema.define(version: 20160530145136) do
   create_table "questions", force: :cascade do |t|
     t.string   "title",                   limit: 255
     t.integer  "options_quantity_chosen", limit: 4
+    t.integer  "company_id",              limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73,6 +90,19 @@ ActiveRecord::Schema.define(version: 20160530145136) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
+
+  create_table "topics", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.string   "body",        limit: 255
+    t.date     "create_date"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "company_id",  limit: 4
+    t.integer  "user_id",     limit: 4
+  end
+
+  add_index "topics", ["company_id"], name: "index_topics_on_company_id", using: :btree
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "ufs", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -102,9 +132,13 @@ ActiveRecord::Schema.define(version: 20160530145136) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "attaches", "companies"
+  add_foreign_key "attaches", "users"
   add_foreign_key "companies", "segments"
   add_foreign_key "companies", "ufs"
   add_foreign_key "evaluations", "companies"
   add_foreign_key "evaluations", "ufs"
   add_foreign_key "evaluations", "users"
+  add_foreign_key "topics", "companies"
+  add_foreign_key "topics", "users"
 end
