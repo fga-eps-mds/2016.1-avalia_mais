@@ -105,11 +105,21 @@
 </section>
 
 <section id="enquete">
+	<div id="check-response">
+        <div id="confirmation-response">
+         	<% list_questions.each do |questions| %>
+            	<topicStyle>
+                	<%= link_to questions.title, questions%>
+                </topicStyle>
+               	</br>
+            <% end %> 
+            <%= hidden_field :company_id, :value => @company.id%>
 
-	<%if logged_in?%>
-    	<p><%= link_to "Criar enquete", create_questions_path(:company_id => @company.id), class: "btn btn-primary" %> </p>
-  <%end%>
-
+			<%if logged_in?%>
+    			<p><%= link_to "Criar enquete", create_questions_path(:company_id => @company.id), class: "btn btn-primary" %> </p>
+  			<%end%>
+  		</div>
+  	</div>		
 </section>
 
 <section id="description">

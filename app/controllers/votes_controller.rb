@@ -4,9 +4,9 @@ class VotesController < ApplicationController
     @vote.question_id = params[:question_id]
     @vote.option_id = params[:vote][:option_id]
     if @vote.save
-      flash[:notice] = 'voto efetuado com sucesso!'
-    end 
       redirect_to "/questions/#{@vote.question_id}/results" 
+    end 
+      
   end
   def results
     @votes = Vote.all
