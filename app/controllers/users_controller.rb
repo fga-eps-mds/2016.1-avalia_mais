@@ -62,6 +62,7 @@ class UsersController < ApplicationController
  		update_company_user(user.companies)
  		user.companies.delete_all
  		user.topics.delete_all
+ 		user.comments.delete_all
  		user.attaches.delete_all
  		user.evaluations.delete_all
  		user.destroy

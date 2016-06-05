@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	has_many :topics
 	has_many :attaches
 	has_many :companies
+	has_many :comments
 	has_secure_password
 	
 	#default values

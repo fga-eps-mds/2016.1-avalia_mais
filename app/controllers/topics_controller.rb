@@ -20,6 +20,7 @@ class TopicsController < ApplicationController
 
 	def show
 		@topic = Topic.find(params[:id])
+		@comments = @topic.comments.order('id DESC')
 	end
 
 	def edit
@@ -55,7 +56,6 @@ class TopicsController < ApplicationController
 	end
 	
 	private
-
 		def topic_params
 			params[:topic].permit(:title, :body, :company_id, :user_id)
 		end

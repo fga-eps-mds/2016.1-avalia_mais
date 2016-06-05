@@ -29,6 +29,17 @@ ActiveRecord::Schema.define(version: 20160530154205) do
   add_index "attaches", ["company_id"], name: "index_attaches_on_company_id", using: :btree
   add_index "attaches", ["user_id"], name: "index_attaches_on_user_id", using: :btree
 
+  create_table "comments", force: :cascade do |t|
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "topic_id",    limit: 4
+    t.integer  "user_id",     limit: 4
+  end
+
+  add_index "comments", ["topic_id"], name: "index_comments_on_topic_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
   create_table "companies", force: :cascade do |t|
     t.float    "response_time",     limit: 24
     t.float    "rate",              limit: 24
@@ -116,6 +127,8 @@ ActiveRecord::Schema.define(version: 20160530154205) do
 
   add_foreign_key "attaches", "companies"
   add_foreign_key "attaches", "users"
+  add_foreign_key "comments", "topics"
+  add_foreign_key "comments", "users"
   add_foreign_key "companies", "segments"
   add_foreign_key "companies", "ufs"
   add_foreign_key "companies", "users"
