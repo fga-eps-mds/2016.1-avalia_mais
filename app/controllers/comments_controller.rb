@@ -5,6 +5,12 @@ class CommentsController < ApplicationController
 		redirect_to Topic.find(params[:comment][:topic_id])
 	end
 
+	def edit
+		comment = Comment.find(params[:comment][:comment_id])
+		comment.update_attributes(:description => params[:comment][:new_description])
+		redirect_to Topic.find(comment.topic_id)
+	end
+
 	def destroy
 		comment = Comment.find(params[:format])
 		topic = comment.topic_id

@@ -22,26 +22,62 @@
 					        <strong class="pull-left primary-font"><%= User.find(comment.user_id).name%>:</strong>
 					        <small class="pull-right text-muted">
 					           	<%if comment.user_id == current_user.id%>
-									<%= link_to image_tag("remove_icon.png"), delete_comment_path(comment.id), :id => 'delete-comment', data: { confirm: "Tem certeza que deseja excluir o comentário?"}, :class=> 'delete-'+current_user.name.split(" ")[0]%>
+				           		    <div class="btn-group show-on-click">
+								        <button type="button">
+								        	Ações<span class="caret"></span>
+								        </button>
+							           	<ul class="dropdown-menu">
+							            	<li> 
+							            		<div class="dropdown-comment" data-for=".cyruxx-<%= comment.id%>" 	id="<%= comment.id%>">
+        											<%= button_tag "Editar",:alt => "open-div", :class => "button-edit" %>            		
+
+      											</div>
+							             	</li>
+							            	</br>
+								            <li>
+								            	Excluir <%= link_to image_tag("remove_icon.png"), delete_comment_path(comment.id), :id => 'delete-comment', data: { confirm: "Tem certeza que deseja excluir o comentário?"}, :class=> 'delete-'+current_user.name.split(" ")[0]%>
+								            </li>
+							          	</ul>
+							        </div>						
 								<%end%>
 					        </small>
 				        	</br>
-				        	<li class="ui-state-default-comment"><%= comment.description%>
+				        	<li class="ui-state-default-comment"> 
+				        		<%= comment.description%>
 				        		</br>
-			        			<h5><%= comment.created_at.to_formatted_s(:long)%></h5>				   
+			        			<h5><%= comment.created_at.to_formatted_s(:long)%></h5>		
+			        			<div class="row user-infos cyruxx-<%=comment.id%>">
+			        				<%= form_for(:comment, url: edit_comment_path) do |form|%>
+			        					<%= form.hidden_field :comment_id, :value => comment.id%>
+			        					<%= form.text_area :new_description, :placeholder => comment.description, :maxlength => 150, :class	=> 'form-control input-sm chat-input comment-text-area', :id => 'userComment' %>
+			        					<%= form.submit "Editar"%>
+			        				<%end%>
+			        				
+			        			</div>	   
 				        	</li>
 			       		<%else%>
 			       			<div class="hidden_comments">
 			        			<strong class="pull-left primary-font"><%= User.find(comment.user_id).name%>:</strong>
 						        <small class="pull-right text-muted">
 						           	<%if comment.user_id == current_user.id%>
+						           		<div class="dropdown-comment" data-for=".cyruxx-<%= comment.id%>" id="<%= comment.id%>">
+            								<%= button_tag "Editar", :alt => "open-div", :class => "button-edit" %>	            		
+          								</div>
 										<%= link_to image_tag("remove_icon.png"), delete_comment_path(comment.id), :id => 'delete-comment', data: { confirm: "Tem certeza que deseja excluir o comentário?"}, :class=> 'delete-'+current_user.name.split(" ")[0]%>
 									<%end%>
 						        </small>
 					        	</br>
-			        			<li class="ui-state-default-comment"><%= comment.description%>
+			        			<li class="ui-state-default-comment">
+			        				<%= comment.description%>
 			        				</br>
 			        				<h5><%= comment.created_at.to_formatted_s(:long)%></h5>
+			        				<div class="row user-infos cyruxx-<%=comment.id%>">
+				        				<%= form_for(:comment, url: edit_comment_path) do |form|%>
+				        					<%= form.hidden_field :comment_id, :value => comment.id%>
+				        					<%= form.text_area :new_description, :placeholder => comment.description, :maxlength => 150, :class	=> 'form-control input-sm chat-input comment-text-area', :id => 'userComment' %>
+				        					<%= form.submit "Editar"%>
+				        				<%end%>
+			        				</div>	   
 			        			</li>
 			       			</div>
 			       		<%end%>
@@ -75,4 +111,12 @@
       	}
     });
 
+	$(".user-infos").hide();
+	$(".dropdown-comment").click(function() {
+	    var id = $(this).attr('id');
+	    var dataFor = $(this).attr('data-for');
+	    var idFor = $(dataFor);
+	    var currentButton = $(this);
+	    idFor.toggle("slow")
+	  }); 
 </script>

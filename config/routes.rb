@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   #Comment
   post '/comment' => 'comments#create', :as=> 'create_comment'
   get '/comment/delete' => 'comments#destroy', :as => 'delete_comment'
+  post '/comment/edit' => 'comments#edit', :as => 'edit_comment'
 
 
   #evaluation

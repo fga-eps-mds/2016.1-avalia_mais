@@ -76,3 +76,20 @@ ul#sortable{
     font-size: 0.80em;
     text-align: center;
 }
+
+.show-on-click:hover > ul.dropdown-menu {
+    display: block;    
+}
+
+ul.dropdown-menu li{
+    display: inline;
+    font-size: 0.8em;
+
+}
+
+#delete-comment{
+    float: right;
+}
+.button-edit{
+    float: left;
+}
