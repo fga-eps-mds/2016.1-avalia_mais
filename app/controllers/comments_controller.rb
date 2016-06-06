@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
 	def edit
 		comment = Comment.find(params[:comment][:comment_id])
-		comment.update_attributes(:description => params[:comment][:new_description])
+		edit_comment_params(comment)
 		redirect_to Topic.find(comment.topic_id)
 	end
 
@@ -22,5 +22,9 @@ class CommentsController < ApplicationController
 	private
 		def comment_params
 			params[:comment].permit(:description, :user_id, :topic_id)
+		end
+
+		def edit_comment_params(comment)
+			comment.update_attributes(:description => params[:comment][:new_description])
 		end
 end

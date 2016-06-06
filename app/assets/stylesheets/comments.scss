@@ -2,10 +2,10 @@
     padding: 25px;
     left: 25%;
 }
+
 li.ui-state-default-comment{
     background:#fff0;
     border:none;
-    border-bottom:1px solid #ddd;
     text-align: left;
     padding-bottom: 10px;
     height: auto;
@@ -38,8 +38,10 @@ body {
     border-radius:3px;
 }
 
-hr {
-    border-color:#ececec;
+#line-divisor {
+    width: 100%;
+    height: 1px;
+    border-color:#ddd#ececec;
 }
 
 button {
@@ -77,19 +79,10 @@ ul#sortable{
     text-align: center;
 }
 
-.show-on-click:hover > ul.dropdown-menu {
-    display: block;    
-}
-
-ul.dropdown-menu li{
-    display: inline;
-    font-size: 0.8em;
-
-}
-
-#delete-comment{
-    float: right;
-}
-.button-edit{
+#span-divs div{
     float: left;
+    clear: none;
+}
+.user-infos{
+    text-align: center;
 }
