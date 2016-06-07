@@ -1,0 +1,3 @@
+<% @topic_ordered.each do |topic| %>
+	<%= link_to topic.title, topic %>&nbsp;&nbsp;&nbsp;<%= topic.denunciations.count %></br>
+<% end %>

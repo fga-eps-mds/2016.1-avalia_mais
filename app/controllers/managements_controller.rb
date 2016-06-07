@@ -8,12 +8,8 @@ class ManagementsController < ApplicationController
 		#end
 	end
 
-	# def list_topic_denunciations
-	# 	Topics.all.each do |topic|
-	# 		if topic.denunciations.count > 0
-	# 			@topics = @topics + topic
-	# 		end	
-	# 	end
-	# end
+	def list_denunciations
+		@topic_ordered = Topic.joins(:denunciations).select('topics.*, count(*) as denunciations_count').group('topics.id').order('denunciations_count DESC')
+	end
 
 end

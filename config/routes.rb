@@ -42,7 +42,8 @@ Rails.application.routes.draw do
 
   #management
   get 'management/attaches' => 'managements#list_attaches', :as => 'management_attach'
-
+  get 'management/denunciations' => 'managements#list_denunciations', :as => 'managements_denunciations'
+  
   #Comment
   post '/comment' => 'comments#create', :as=> 'create_comment'
   get '/comment/delete' => 'comments#destroy', :as => 'delete_comment'

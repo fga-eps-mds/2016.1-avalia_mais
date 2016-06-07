@@ -33,8 +33,6 @@
 				<%= f.hidden_field :topic_id, :value => @topic.id %>
 				<%= f.submit "Retirar denúncia", :class => "btn btn-info"%></br></br>
 			<% end %>
-
-
 		<% end %>
 
 			<li>Numero de denúncias: <%= @topic.denunciations.count %></li>
