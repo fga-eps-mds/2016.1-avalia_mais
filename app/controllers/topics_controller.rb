@@ -11,8 +11,7 @@ class TopicsController < ApplicationController
 		@topic.user = current_user
 
 		if @topic.save
-			render :show
-
+			redirect_to @topic
 		else
 			render :new
 		end

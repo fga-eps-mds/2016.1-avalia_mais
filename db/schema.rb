@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530154205) do
+ActiveRecord::Schema.define(version: 20160606231641) do
 
   create_table "attaches", force: :cascade do |t|
     t.string   "cnpj",               limit: 255
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(version: 20160530154205) do
   add_index "companies", ["uf_id"], name: "index_companies_on_uf_id", using: :btree
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
 
+  create_table "denunciations", force: :cascade do |t|
+    t.integer "user_id",  limit: 4
+    t.integer "topic_id", limit: 4
+  end
+
+  add_index "denunciations", ["topic_id"], name: "index_denunciations_on_topic_id", using: :btree
+  add_index "denunciations", ["user_id"], name: "index_denunciations_on_user_id", using: :btree
+
   create_table "evaluations", force: :cascade do |t|
     t.integer  "response_time", limit: 4
     t.integer  "grade",         limit: 4
@@ -92,16 +100,18 @@ ActiveRecord::Schema.define(version: 20160530154205) do
   end
 
   create_table "topics", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.string   "body",        limit: 255
+    t.string   "title",           limit: 255
+    t.string   "body",            limit: 255
     t.date     "create_date"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "company_id",  limit: 4
-    t.integer  "user_id",     limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "company_id",      limit: 4
+    t.integer  "user_id",         limit: 4
+    t.integer  "denunciation_id", limit: 4
   end
 
   add_index "topics", ["company_id"], name: "index_topics_on_company_id", using: :btree
+  add_index "topics", ["denunciation_id"], name: "index_topics_on_denunciation_id", using: :btree
   add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "ufs", force: :cascade do |t|
@@ -132,9 +142,12 @@ ActiveRecord::Schema.define(version: 20160530154205) do
   add_foreign_key "companies", "segments"
   add_foreign_key "companies", "ufs"
   add_foreign_key "companies", "users"
+  add_foreign_key "denunciations", "topics"
+  add_foreign_key "denunciations", "users"
   add_foreign_key "evaluations", "companies"
   add_foreign_key "evaluations", "ufs"
   add_foreign_key "evaluations", "users"
   add_foreign_key "topics", "companies"
+  add_foreign_key "topics", "denunciations"
   add_foreign_key "topics", "users"
 end

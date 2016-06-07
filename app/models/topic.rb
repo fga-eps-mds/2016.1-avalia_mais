@@ -2,7 +2,9 @@ class Topic < ActiveRecord::Base
 	belongs_to :company
 	belongs_to :user
 	has_many :comments
+	has_many :denunciations
 	before_create :set_create_date
+
 
 #something it's wrong
 =begin

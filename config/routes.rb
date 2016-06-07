@@ -64,6 +64,8 @@ Rails.application.routes.draw do
   get 'management/attachs_approve', controller: 'attaches', action: 'approve', :as => 'approve'
   get 'management/attachs_reject', controller: 'attaches', action: 'reject', :as => 'reject'
 
+  post '/denunciation' => 'denunciations#create', :as => 'create_denunciation'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -19,7 +19,13 @@
 
 		<% if @topic.user == current_user %>
 			<li><%= link_to "Editar", edit_topic_path(@topic), class: "btn destroy-btn" %></li>
-			<%= link_to "Excluir", @topic, data: { confirm: "Tem certeza que deseja excluir este tópico?" }, class: "btn btn-warning destroy-btn", method: :delete %>
+			<li><%= link_to "Excluir", @topic, data: { confirm: "Tem certeza que deseja excluir este tópico?" }, class: "btn btn-warning destroy-btn", method: :delete %></li>
+			<%= form_for(:session, url: create_denunciation_path) do |f| %>
+				<%= f.hidden_field :topic_id, :value => @topic.id %>
+				<%= f.hidden_field :user_id, :value => current_user.id %>
+				<%= f.submit "Denunciar", :class => "btn btn-primary"%></br></br>
+			<% end %>
+
 		<% end %>
 	 	
 			</div>
