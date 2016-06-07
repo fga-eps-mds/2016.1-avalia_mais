@@ -8,4 +8,12 @@ class ManagementsController < ApplicationController
 		#end
 	end
 
+	# def list_topic_denunciations
+	# 	Topics.all.each do |topic|
+	# 		if topic.denunciations.count > 0
+	# 			@topics = @topics + topic
+	# 		end	
+	# 	end
+	# end
+
 end

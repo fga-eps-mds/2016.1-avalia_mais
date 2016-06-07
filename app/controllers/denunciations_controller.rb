@@ -6,4 +6,14 @@ class DenunciationsController < ApplicationController
 			# error
 		end
 	end
+
+	def destroy
+		debugger
+		denunciation = Denunciation.find(params[:session][:denunciation_id])
+		if denunciation.destroy
+			redirect_to Topic.find(params[:session][:topic_id])
+		else
+			# error
+		end	
+	end
 end

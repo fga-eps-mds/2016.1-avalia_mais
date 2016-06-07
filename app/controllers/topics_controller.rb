@@ -53,7 +53,7 @@ class TopicsController < ApplicationController
     	end
 
 	end
-	
+
 	private
 		def topic_params
 			params[:topic].permit(:title, :body, :company_id, :user_id)
