@@ -10,3 +10,19 @@ topicStyle {
 	position: relative;
 	left: 15%;
 }
+
+.btn-delete {
+  color: #fff;
+  background-color: #EE3B3B;
+  border-color: #2e6da4;
+  position:relative;
+  left: 350px;  
+}
+
+.btn-edit {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  position:relative;
+  left: 350px;  
+}

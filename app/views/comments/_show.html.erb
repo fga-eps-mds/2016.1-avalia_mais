@@ -25,12 +25,12 @@
 					        <small class="pull-right text-muted">
 					           	<%if comment.user_id == current_user.id%>
 			            			<div id="span-divs">
-					            		<div class="dropdown-comment" data-for=".cyruxx-<%= comment.id%>" 	id="<%= comment.id%>">
-											<%= link_to image_tag("edit_comment_icon.png", size: "10x10", title: "Editar comentário"), remote: true %>&nbsp;        							
+					            		<div class="dropdown-comment edit-<%= current_user.name%>-<%= comment.id%>" data-for=".cyruxx-<%= comment.id%>" 	id="<%= comment.id%>">
+											<%= link_to image_tag("edit_comment_icon.png", size: "12x12", title: "Editar comentário"), remote: true %>&nbsp;        							
 										</div>
 									    <div>
 									    	
-									    	<%= link_to image_tag("remove_icon.png", title: "Deletar comentário"), delete_comment_path(comment.id), data: { confirm: "Tem certeza que deseja excluir o comentário?"}, :class=> 'dropdown-comment delete-'+current_user.name.split(" ")[0], :id => comment.id%>
+									    	<%= link_to image_tag("remove_icon.png", size: "12x12", title: "Deletar comentário"), delete_comment_path(comment.id), data: { confirm: "Tem certeza que deseja excluir o comentário?"}, :class=> 'dropdown-comment delete-'+current_user.name.split(" ")[0], :id => comment.id%>
 									    </div>
 			            			</div>
 								<%end%>
