@@ -1,45 +1,51 @@
-<%= render "navbar/navbar" %>
-
-<div id="erro-message">
-    <% if flash[:error] -%>
-      <p class="error"><%= flash[:error] %></p>
-    <% end -%>
-</div>
-</br></br>
-
-<h1>Enquete da empresa</h1>
-
-<h3>Titulo</h3>
-
-
-<div >
-  <%= form_for(@question) do |quest| %>
-
-    <%= quest.hidden_field :company_id, :value => @company.id %>
-
-    <div class="field">
-      <%= quest.label :title %>
-      <%= quest.text_field :title%>
+<section class="pagi-enquete">
+  <%= image_tag("business_background.jpeg", :alt => "img", :class => "img") %>
+  <section class="form-enquete">
+    <div id="header-new-enquete">
+      <h1>Enquete da empresa</h1>
     </div>
-
+    <%options_quantity_chosen = 0%>
+  
+  <div id="form-options">
+    <%= form_for(@question) do |quest| %>
+      <%= quest.hidden_field :company_id, :value => @company.id %>
+      <%= quest.hidden_field :options_quantity_chosen , :value => options_quantity_chosen%>
+      <div class="field">
+        <%= quest.label :Titulo %>
+        <%= quest.text_field :title, :class => "form-large"%>
+      </div>
     <h3>Adicione as suas opções:</h3>
-
     <%= link_to_add_association 'Adicione sua opção', quest, :option, 'data-association-insertion-node' => "#options-questions ol", 'data-association-insertion-method' => "append"%>
-
-
     <fieldset id="options-questions">
-    <ol>
-      <%= quest.fields_for :option do |options| %>
+      <ol>
+        <%= quest.fields_for :option do |options| %>
         <%= render partial: "option_fields", locals: {quest: option} %>
-      <% end %>
-    </ol>
+        <% end %>
+      </ol>
     <fieldset />
-
-    <br>
-
     <div class="actions">
-      <%= quest.submit "Criar" %>
+      <%= quest.submit "Criar", :id => "button"%>
     </div>
 
   <% end %>
 </div>
+</section>
+</section>
+<section id="linear-new"></section>
+  <script>
+    $('#options')
+    alert("clicou");
+      .on('cocoon:after-insert', function() {
+        options_quantity_chosen += 1;
+        if (options_quantity_chosen == 6) {
+          $(".add_fields").hide();
+          
+        }
+      })
+      .on("cocoon:after-remove", function() {
+        options_quantity_chosen -= 1;
+        alert(<%=options_quantity_chosen%>);
+      });
+</script>
+
+

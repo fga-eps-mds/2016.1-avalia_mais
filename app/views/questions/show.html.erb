@@ -1,8 +1,7 @@
-<div ng-controller="QuestionController")>
-
-  <h1><%= @question.title %></h1>
-
-  <%= form_tag "/votes", :controller => "votes", :action => "update", method: :put, params:{question_id: @question.id} do |f| %>
+<section id="show-questions">
+  <div ng-controller="QuestionController")>
+    <h1><%= @question.title %></h1>
+    <%= form_tag "/votes", :controller => "votes", :action => "update", method: :put, params:{question_id: @question.id} do |f| %>
     <fieldset>
       <% @question.option.each do |option| %>
         <div class="field">
@@ -16,6 +15,7 @@
     </fieldset>
 
     <td><%= button_to 'Votar'%></td>
-  <% end %>
+    <% end %>
   </div>
+</section>  
 
