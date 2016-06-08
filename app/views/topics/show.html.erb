@@ -25,17 +25,20 @@
 			<%= form_for(:session, url: create_denunciation_path) do |f| %>
 				<%= f.hidden_field :topic_id, :value => @topic.id %>
 				<%= f.hidden_field :user_id, :value => current_user.id %>
-				<%= f.submit "Denunciar", :class => "btn btn-danger", data: { confirm: "Tem certeza que deseja denunciar este tópico?" }%></br></br>
+				<%= image_submit_tag("denunciation1.png", id: "button-denunciation1", title: "Clique aqui para realizar uma denúncia", data: { confirm: "Tem certeza que deseja denunciar este tópico?" }) %>
+				<p id="p-denunciation1">Denunciar</p>
 			<% end %>
 		<% else %>
 			<%= form_for(:session, url: destroy_denunciation_path) do |f| %>
 				<%= f.hidden_field :denunciation_id, :value =>  current_user_topic_denunciation.id %>
 				<%= f.hidden_field :topic_id, :value => @topic.id %>
-				<%= f.submit "Retirar denúncia", :class => "btn btn-info"%></br></br>
+				<%= image_submit_tag("denunciation2.png", id: "button-denunciation2") %>
+				<p id="p-denunciation2" style="color:#4FBFD4">Retirar Denúncia</p>
 			<% end %>
 		<% end %>
 
-			<li>Numero de denúncias: <%= @topic.denunciations.count %></li>
+
+			<p id="denunciation-count">Numero de denúncias: <%= @topic.denunciations.count %></p>
 
 		<% end %>
 	 	
