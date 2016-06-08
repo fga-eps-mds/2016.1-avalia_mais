@@ -1,0 +1,2 @@
+module FaqQuestionHelper
+end

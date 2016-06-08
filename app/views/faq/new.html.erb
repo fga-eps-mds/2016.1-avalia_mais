@@ -1,0 +1,24 @@
+<section class="container">
+	<div id="form-options">
+    <%= form_for(@faq) do |faq| %>
+      <%= quest.hidden_field :company_id, :value => @company.id %>
+      <div class="field">
+        <%= faq.label :Titulo %>
+        <%= faq.text_field :title, :class => "form-large"%>
+      </div>
+    <h3>Adicione as suas opções:</h3>
+    <%= link_to_add_association 'Adicione sua opção', faq, :faq_answers, 'data-association-insertion-node' => "#options-questions ol", 'data-association-insertion-method' => "append", :wrap_object => Proc.new {|faq_answer| fac_answer.build.faq_question; faq_answer}%>
+    <fieldset id="options-questions">
+      <ol>
+        <%= faq.fields_for :faq_answers do |faq_answer| %>
+        <%= render partial: "faq_answer_fields", locals: {faq: faq_question} %>
+        <% end %>
+      </ol>
+    <fieldset />
+    <div class="actions">
+      <%= quest.submit "Criar", :id => "button"%>
+    </div>
+
+  <% end %>
+</div>
+</section>

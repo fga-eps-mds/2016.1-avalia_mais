@@ -50,11 +50,20 @@ Rails.application.routes.draw do
   get '/questions/:id'      => 'questions#show', :as => 'questions_show'
   get '/questions/:id/results/' => 'questions#results', action: 'results', :as => 'results_questions'
 
+  #fac
+  get '/faq/new' => 'faq#create', :as => 'create_faq'
+
   resources :companies do
     resources :questions
   end
 
   resources :questions
+
+  resources :companies do
+    resources :faqs
+  end
+
+  resources :faqs
   resources :attaches
 
   #votes

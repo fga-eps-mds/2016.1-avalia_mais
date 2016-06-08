@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530145136) do
+ActiveRecord::Schema.define(version: 20160608010501) do
 
   create_table "attaches", force: :cascade do |t|
     t.string   "cnpj",               limit: 255
@@ -64,6 +64,27 @@ ActiveRecord::Schema.define(version: 20160530145136) do
   add_index "evaluations", ["company_id"], name: "index_evaluations_on_company_id", using: :btree
   add_index "evaluations", ["uf_id"], name: "index_evaluations_on_uf_id", using: :btree
   add_index "evaluations", ["user_id"], name: "index_evaluations_on_user_id", using: :btree
+
+  create_table "faq_answers", force: :cascade do |t|
+    t.string   "title",           limit: 255
+    t.integer  "faq_question_id", limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "faq_questions", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.integer  "faq_id",     limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "faqs", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.integer  "company_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "options", force: :cascade do |t|
     t.string   "title",       limit: 255
