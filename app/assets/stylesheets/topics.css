@@ -14,7 +14,7 @@ topicStyle {
 #button-denunciation1 {
 	position: relative;
 	right: -96%;
-	top: -185px;
+	top: -138px;
 	width: 40px;
 	height: 35px;
 }
@@ -22,7 +22,7 @@ topicStyle {
 #button-denunciation2 {
 	position: relative;
 	right: -95%;
-	top: -185px;
+	top: -138px;
 	width: 40px;
 	height: 35px;
 }
@@ -31,13 +31,13 @@ topicStyle {
 	color: red;
 	position: relative;
 	right: -95%;
-	top: -185px;
+	top: -138px;
 }
 
 #p-denunciation2 {
 	position: relative;
 	right: -91%;
-	top: -185px;
+	top: -138px;
 }
 
 #denunciation-count {
