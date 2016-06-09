@@ -31,7 +31,7 @@
     }
     .box {
         margin: 0px auto;
-        width: 70%;
+        width: 100%;
     }
 
     .box-chart .grafico-barras{
@@ -102,7 +102,7 @@
     color: #fff;
     text-transform: uppercase;
 }
-.grafico-barras{
+.box-chart{
 	display: none;
 }
 
@@ -157,20 +157,25 @@
 #header-new-enquete{
     width: 100%;
     height: 100px;
-    border:2px solid #FFF;
     text-align: center;
-    border-radius: 7px;
     margin-bottom: 20px;
-    background: #FFF;
+}
+.input-for-pergunta{
+    display: block;
 }
 #form-options{
+    width: 50%;
+    text-align: center;
     top: 10px;
+    margin: 1px solid #666;
+    background: #E4E4E4;
+    margin-left: 25%;
 
 }
 #form-options a{
     position: relative;
     text-decoration: none;
-    color:#C0C0C0;
+    color:#000;
     bottom: 5px;
 
 }
@@ -184,9 +189,11 @@
     width: 50%;
     margin-left: 25%;
     border-radius: 7px;
-    border:2px solid #07213F;
-    background: #07213F;
+    border:2px solid #CDCDC1;
+    background: #E4E4E4;
     list-style-type: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .controls a{
     color: #c3c3c3;
@@ -204,5 +211,44 @@
 #show-questions{
     text-align: center;
 }
+.result-questions{
+    background-image:url("fundo-result.png");
+    height: 200px;
+}
+.result-questions h1{
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 5%;
+}
+#title-options p{
+   font-size: 16px;
+   padding-left: 10px;
+   margin: 0;
+   padding-bottom: 5px;
+   padding-top: 0px;
+}
+.for-questions-title label{
+    font-size: 20px;
+}
+.for-questions-title textarea{
+    width: 18em;
+    height: 3em;
+}
+.for-questions-title{
+    padding-top: 20px;
+}
+.actions{
+    padding-bottom: 20px;
+}
+.box-chart{
+    height: 400px;
+}
+canvas#GraficoDonut{
+    height: 100%;
+}
+/* formating radion button */
+
+
+
 
 

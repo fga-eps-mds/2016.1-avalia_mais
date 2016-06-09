@@ -50,6 +50,9 @@ Rails.application.routes.draw do
   get '/questions/:id'      => 'questions#show', :as => 'questions_show'
   get '/questions/:id/results/' => 'questions#results', action: 'results', :as => 'results_questions'
 
+  #faq
+  post 'company/faq', controller: 'faq', action: 'create', :as => 'faq'
+
   #fac
   get '/faq/new' => 'faq#create', :as => 'create_faq'
 
@@ -59,11 +62,6 @@ Rails.application.routes.draw do
 
   resources :questions
 
-  resources :companies do
-    resources :faqs
-  end
-
-  resources :faqs
   resources :attaches
 
   #votes

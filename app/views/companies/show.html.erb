@@ -105,7 +105,30 @@
 	<p>Fórum da Empresa - Não Implementado</p>
 </section>
 <section id="faq">
-	<p>Faq</p>
+	<div id="faq-">
+    	<%= form_for(:faq, url: faq_path) do |faq|%>
+      		<div class="field">
+    			<h3>Adicione as suas opções:</h3>
+    			<fieldset id="options-questions">
+   		 			<%= faq.hidden_field :company_id, :value => @company.id%>
+      				<ol>
+        				<%= render partial: "faq_form_fields", locals: {faq: faq} %>	
+      				</ol>
+   		 		</fieldset>
+
+    			<div class="actions">
+    				<%= faq.submit "Criar", :id => "button"%>	
+      			</div>
+      		</div>
+      	<%end%>
+    </div>
+    <div>
+    	<ul class="questions-votes">
+          <% @company.faq.each do |faqs| %>
+            <li><%=faqs.question%></li>
+          <% end %>  
+      </ul>
+    </div>  		
 </section>
 
 <section id="enquete">

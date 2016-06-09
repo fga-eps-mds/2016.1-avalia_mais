@@ -322,3 +322,6 @@ section p {
   .star.full{
     background: linear-gradient(to bottom, #fee24f, #f4bb2f);
   }
+  .controls{
+    color:#000;
+  }

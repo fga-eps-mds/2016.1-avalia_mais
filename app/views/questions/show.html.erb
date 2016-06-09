@@ -1,17 +1,19 @@
+<%= render "navbar/navbar" %>
 <section id="show-questions">
-  <div ng-controller="QuestionController")>
+  <div>
     <h1><%= @question.title %></h1>
-    <%= form_tag "/votes", :controller => "votes", :action => "update", method: :put, params:{question_id: @question.id} do |f| %>
+    <%= form_tag "/votes", :controller => "votes", :action => "update", method: :put, params:{question_id: @que} do |f| %>
     <fieldset>
-      <% @question.option.each do |option| %>
-        <div class="field">
-          <%= label_tag "vote_option_id_#{option.id}", class: "radio" do %>
-            <%= hidden_field_tag :question_id, @question.id%>
-            <%= radio_button("vote", "option_id", option.id, class: "visually-hidden", ng_model: "option") %><!--
-            --><span class="outer"><span class="inner"></span></span><%= option.title %><!--
-          --><% end %>
-        </div>
-      <% end %>
+      
+          <% @question.option.each do |option| %>
+           
+                <%= hidden_field_tag :question_id, @question.id%>
+               
+                <%= radio_button("vote", "option_id", option.id)%>
+                <label for="votes"><%=option.title%></label>
+                <br />
+          <% end %>  
+    
     </fieldset>
 
     <td><%= button_to 'Votar'%></td>

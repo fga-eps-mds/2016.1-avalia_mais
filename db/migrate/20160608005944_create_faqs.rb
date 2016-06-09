@@ -1,9 +1,10 @@
 class CreateFaqs < ActiveRecord::Migration
   def change
     create_table :faqs do |t|
-    	t.string :title
-    	t.integer :company_id
+    	t.string :question
+    	t.string :answer
       t.timestamps null: false
     end
+    add_reference :faqs, :company, index: true, foreign_key: true
   end
 end

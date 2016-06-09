@@ -1,6 +1,6 @@
    <li class = "control-group nested-fields">
 		<div class="controls">
-      		<%= text_field_tag "options[][title]", @option.title%>
+      		<%= f.text_field  :title, required: true%>
       		<%= link_to_remove_association "remova", f %>
    		</div>
    	</li>
