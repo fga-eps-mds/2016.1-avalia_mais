@@ -40,7 +40,7 @@
 		<div class="btn geral">Geral</div>
 		<div class="btn forum">Fórum</div>
 		<div class="btn faq">FAQ</div>
-		<div class="btn enquete">Enquete</div>
+		<div class="btn enquete" id="js-btn-enquete">Enquete</div>
 	</div>
 </div>
 
@@ -156,7 +156,7 @@
 <section id="enquete">
 	<div id="check-response">
 			<%if logged_in?%>
-    			<span><%= link_to "Criar enquete", create_questions_path(:company_id => @company.id), class: "btn btn-primary" %> </span>
+    			<spam><p><%= link_to "Criar enquete", create_questions_path(:company_id => @company.id), class: "btn btn-primary", :id => 'criar_enquete'%></p></spam>
   			<%end%>
   			<br><br>
         <div id="list-questions">

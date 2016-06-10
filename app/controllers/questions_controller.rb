@@ -10,20 +10,20 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    
-    if @question.save! 
-      redirect_to "/questions/#{@question.id}"  	
+
+    if @question.save!
+      redirect_to "/questions/#{@question.id}"
     end
   end
 
   def show
-    @question = Question.find(params[:id])  
+    @question = Question.find(params[:id])
   end
 
   def results
     @question = Question.find(params[:id])
     @votes = @question.votes
-    @options = @question.option 
+    @options = @question.option
   end
 
   def question_params
