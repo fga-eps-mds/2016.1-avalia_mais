@@ -10,16 +10,32 @@ RSpec.describe ManagementsController, type: :controller do
 		context 'test routes for attachs' do
 			it 'routed to correct controller and method' do
 				session[:user_id] = @user.id
-				expect(:get => "management/attaches").to route_to(
+				expect(:get => "management").to route_to(
 	 				 :controller => "managements",
-	 				 :action => "list_attaches")
+	 				 :action => "index")
 			end
 		end	
 
-		it 'list_attaches' do			
- 			get :list_attaches
+		it 'should order attaches' do			
+ 			get :index
 			method_attachs = assigns(:attaches).to_a
 			expect(method_attachs).to eq(@attachs)
+ 		end
+
+ 		it 'should order topics by denunciations count' do
+ 			second_user = User.create(name: 'second', email: 'second@bot.com', gender: 'm', password: 'pass', password_confirmation: 'pass', login: 'robot', dateBirthday: "1990-05-10", active: true)
+ 			topic1 = Topic.create(title: 'title1', body: 'body1')
+ 			topic2 = Topic.create(title: 'title2', body: 'body2')
+ 			Denunciation.create(topic_id: topic1.id, user_id: @user.id)
+ 			Denunciation.create(topic_id: topic2.id, user_id: @user.id)
+ 			Denunciation.create(topic_id: topic2.id, user_id: second_user.id)
+
+ 			expected_order = [topic2, topic1]
+
+ 			get :index
+
+ 			topics_ordered_by_method = assigns(:topic_ordered).to_a
+ 			expect(topics_ordered_by_method).to eql(expected_order)
  		end
 	end
 end
