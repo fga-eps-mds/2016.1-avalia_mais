@@ -105,8 +105,6 @@
 	<p>Fórum da Empresa - Não Implementado</p>
 </section>
 <section id="faq">
-	<%if logged_in?%>
-		<%if current_user.id == company_user_id%>
 		<div id="faq-create">
 	    	<%= form_for(:faq, url: faq_path) do |faq|%>
 	      		<div class="field">
@@ -126,7 +124,6 @@
 	      		</div>
 	      	<%end%>
 	    </div>
-	    <%end%>
     <% @company.faq.each do |faqs| %>
     <div class="well col-sm-12 col-md-8 col-md-offset-2">
         <div class="row user-row">
@@ -156,7 +153,6 @@
       </div>
  <% end %>   	  		
 </section>
-
 <section id="enquete">
 	<div id="check-response">
 			<%if logged_in?%>
@@ -294,5 +290,4 @@
       		}
 		});
   	}); 
-
 </script>
