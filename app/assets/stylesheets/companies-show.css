@@ -106,8 +106,8 @@ hr {
   display: none;
   position: absolute;
   width: 80%;
-  margin-left: 130px;
-  margin-top: -10px;
+  left: 10%;
+   margin: -300px auto;
   text-align: justify;
 }
 section#enquete{
@@ -325,3 +325,12 @@ section p {
   .controls{
     color:#000;
   }
+  .faq-questions{
+    display: none;
+  }
+.actions{
+  text-align: center;
+}
+.for-questions-faq{
+  display: block;
+}

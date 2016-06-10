@@ -105,30 +105,56 @@
 	<p>Fórum da Empresa - Não Implementado</p>
 </section>
 <section id="faq">
-	<div id="faq-">
-    	<%= form_for(:faq, url: faq_path) do |faq|%>
-      		<div class="field">
-    			<h3>Adicione as suas opções:</h3>
-    			<fieldset id="options-questions">
-   		 			<%= faq.hidden_field :company_id, :value => @company.id%>
-      				<ol>
-        				<%= render partial: "faq_form_fields", locals: {faq: faq} %>	
-      				</ol>
-   		 		</fieldset>
-
-    			<div class="actions">
-    				<%= faq.submit "Criar", :id => "button"%>	
-      			</div>
-      		</div>
-      	<%end%>
-    </div>
-    <div>
-    	<ul class="questions-votes">
-          <% @company.faq.each do |faqs| %>
-            <li><%=faqs.question%></li>
-          <% end %>  
-      </ul>
-    </div>  		
+	<%if logged_in?%>
+		<%if current_user.id == company_user_id%>
+		<div id="faq-create">
+	    	<%= form_for(:faq, url: faq_path) do |faq|%>
+	      		<div class="field">
+	    			<h3>Para adicionar perguntas clique no link abaixo</h3>
+	    			<div class="btn adicionar">Adicionar outra pergunta</div>
+	    				<div class="faq-questions">
+	    					<fieldset id="options-questions" >
+	   		 					<%= faq.hidden_field :company_id, :value => @company.id%>
+	      						<ol>
+	        					<%= render partial: "faq_form_fields", locals: {faq: faq} %>	
+	      						</ol>
+	   		 				</fieldset>
+	    					<div class="actions">
+	    						<%= faq.submit "Criar", :id => "button"%>	
+	      					</div>
+	      				</div>	
+	      		</div>
+	      	<%end%>
+	    </div>
+	    <%end%>
+    <% @company.faq.each do |faqs| %>
+    <div class="well col-sm-12 col-md-8 col-md-offset-2">
+        <div class="row user-row">
+          <div class="col-md-10 title-segment">
+           <strong><%=faqs.question%></strong><br>
+          </div>
+          <div class="col-md-2 dropdown-user" data-for=".cyruxx-<%=faqs.id%>" id="<%=faqs.id%>">
+            (<span style="color: #FF4040">resposta</span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down ") %>
+          </div>
+        </div>
+        <div class="row user-infos cyruxx-<%=faqs.id%>">
+          <div class="col-sm-10 col-md-10 col-md-offset-1">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Resposta</h3>
+              </div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="col-md-10">
+                      <span><%=faqs.answer%></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+ <% end %>   	  		
 </section>
 
 <section id="enquete">
@@ -191,6 +217,9 @@
 		$("#enquete").hide("slow");
 		$("#avaliacao").show("slow");
 	});
+	$(".adicionar").click(function(){
+		$(".faq-questions").toggle("slow");
+	});
 	$(".geral").click(function(){
 		$("#avaliacao").hide("slow");
 		$("#forum").hide("slow");
@@ -248,6 +277,22 @@
 		}
 		<%end%>
 	});
-
+	var img_current = 0;
+  		$(".user-infos").hide();
+  		$(".dropdown-user").click(function() {
+    		var id = $(this).attr('id');
+    		var dataFor = $(this).attr('data-for');
+    		var idFor = $(dataFor);
+    		var currentButton = $(this);
+    		idFor.slideToggle(400, function() {
+      			if(img_current == 0){
+          		currentButton.html('(<span style="color: #FF4040">esconder</span>)<%= image_tag("up.png", :alt => "abrir", :class => "img-down")%>');
+          		img_current =1;
+      		}else{
+        		currentButton.html('(<span style="color: #FF4040">resposta</span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down")%>');
+        		img_current = 0;
+      		}
+		});
+  	}); 
 
 </script>
