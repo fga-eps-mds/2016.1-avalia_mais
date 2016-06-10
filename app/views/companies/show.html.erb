@@ -114,13 +114,13 @@
 	    					<fieldset id="options-questions" >
 	   		 					<%= faq.hidden_field :company_id, :value => @company.id%>
 	      						<ol>
-	        					<%= render partial: "faq_form_fields", locals: {faq: faq} %>	
+	        					<%= render partial: "faq_form_fields", locals: {faq: faq} %>
 	      						</ol>
 	   		 				</fieldset>
 	    					<div class="actions">
-	    						<%= faq.submit "Criar", :id => "button"%>	
+	    						<%= faq.submit "Criar", :id => "button"%>
 	      					</div>
-	      				</div>	
+	      				</div>
 	      		</div>
 	      	<%end%>
 	    </div>
@@ -151,7 +151,7 @@
           </div>
         </div>
       </div>
- <% end %>   	  		
+ <% end %>
 </section>
 <section id="enquete">
 	<div id="check-response">
@@ -165,12 +165,12 @@
                 	<%= link_to questions.title, questions%>
                 </topicStyle>
                 <br>
-              
-            <% end %> 
+
+            <% end %>
             <%= hidden_field :company_id, :value => @company.id%>
 
   		</div>
-  	</div>		
+  	</div>
 </section>
 
 <section id="description">
@@ -289,5 +289,5 @@
         		img_current = 0;
       		}
 		});
-  	}); 
+  	});
 </script>
