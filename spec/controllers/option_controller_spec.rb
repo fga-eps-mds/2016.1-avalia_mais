@@ -1,5 +1,7 @@
 require 'rails_helper'
+require 'options_controller'
 
-RSpec.describe OptionController, type: :controller do
-
+RSpec.describe OptionsController, type: :controller do
+	
 end
+

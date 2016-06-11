@@ -2,10 +2,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    @company = Company.all
-    @company = Company.find(params[:company_id])
-    @question.options_quantity_chosen = 2
-    @option = Option.new
+    @company = Company.find(@question.company_id)
   end
 
   def create

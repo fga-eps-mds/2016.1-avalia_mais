@@ -1,2 +1,0 @@
-class FaqAnswerController < ApplicationController
-end

@@ -45,20 +45,18 @@ Rails.application.routes.draw do
   post '/company/response', controller: 'evaluations', action: 'response_time', :as => 'response_time'
 
   #questions
-  get '/questions/new', controller: 'questions', action: 'new', :as => 'questions'
+  #get '/questions/new', controller: 'questions', action: 'new', :as => 'questions'
   post'/questions/new'      => 'questions#create', :as => 'create_questions'
-  get '/questions/:id'      => 'questions#show', :as => 'questions_show'
-  get '/questions/:id/results/' => 'questions#results', action: 'results', :as => 'results_questions'
+  #get '/questions/:id'      => 'questions#show', :as => 'questions_show'
+  get '/questions/:id/results/' => 'questions#results',  :as => 'results_questions'
 
   #faq
   post 'company/faq', controller: 'faq', action: 'create', :as => 'faq'
 
-  #fac
-  get '/faq/new' => 'faq#create', :as => 'create_faq'
 
-  resources :companies do
-    resources :questions
-  end
+  #resources :companies do
+  #  resources :questions
+  #end
 
   resources :questions
 

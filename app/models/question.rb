@@ -3,10 +3,6 @@ class Question < ActiveRecord::Base
   has_many :option
   has_many :votes
 
-  def votes_count
-    votes.count
-  end
-
   accepts_nested_attributes_for :option, reject_if: :all_blank, allow_destroy: true
   
   validates :title, :presence => { :message => 'Titulo não pode ser vazio!' }

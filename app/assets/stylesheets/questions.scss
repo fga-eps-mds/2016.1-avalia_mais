@@ -102,7 +102,7 @@
     color: #fff;
     text-transform: uppercase;
 }
-.box-chart{
+.grafico-barras, .box-chart{
 	display: none;
 }
 
@@ -209,11 +209,30 @@
   color:#FFF;
 }
 #show-questions{
-    text-align: center;
+    width: 50%;
+    margin-left: 25%;
     margin-top: 60px;
+    text-align: center;
 }
 #show-questions h1{
     padding-top: 20px;
+    text-align: center;
+}
+#fieldset-options-vote{
+    position: relative;
+    width: 50%;
+    left: 40%;
+    display: block;
+}
+#fieldset-options-vote ul{
+    list-style-type: none;
+    text-align: left;
+}
+#show-questions input[type="submit"]{
+    width: 80px;
+    height: 30px;
+    background: #006400;
+    border-radius: 7px;
 }
 .result-questions{
     background-image:url("fundo-result.png");
@@ -244,11 +263,12 @@
 .actions{
     padding-bottom: 20px;
 }
-.box-chart{
+.box-chart, .box-chart-pier{
     height: 400px;
 }
-canvas#GraficoDonut{
-    height: 100%;
+canvas#GraficoDonut, .box-chart-pier canvas{
+    height: 350px !important;
+    width: 700px !important;
 }
 /* formating radion button */
 

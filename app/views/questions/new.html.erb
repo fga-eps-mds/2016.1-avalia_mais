@@ -31,8 +31,13 @@
 </section>
 <script>
    
-
-  $ ('.add-colour-link').click(function(){
+  $('.add-colour-link').click(function(){
+    if($('#options-questions .nested-fields:visible').size() > 4) {
+      $('.add-colour-link').hide();
+    } 
+    if($('#options-questions .nested-fields:visible').size() < 4){
+        $('.add-colour-link').show();
+    }
     if($('#options-questions .nested-fields:visible').size() > 0) {
       $('input[type=submit]').attr("disabled", false);
       $('input[type=submit]').css("background", "#006400");
@@ -40,14 +45,9 @@
     else{
         $('input[type=submit]').attr("disabled", true);
         $('input[type=submit]').css("background", "#f44336");
-      } 
-
-    if($('#options-questions .nested-fields:visible').size() > 4) {
-      $('.add-colour-link').hide();
-      } else {
-        $('.add-colour-link').show();
-    }
+      }
   });
+  
 </script>
 
 
