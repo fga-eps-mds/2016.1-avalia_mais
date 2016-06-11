@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    @company = Company.find(@question.company_id)
+    @company = Company.find(params[:company_id])
   end
 
   def create

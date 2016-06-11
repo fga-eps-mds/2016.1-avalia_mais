@@ -25,75 +25,7 @@
   			<li class="barra-vert"><a href="#">Grafico barras vertical</a></li>
   		</ul>
   	</nav>
-	<div class="box-chart">
-
-	  <canvas id="GraficoDonut" width="800px" height="400px"></canvas>
-    <script>
-      var options = {
-        responsive:true                    
-      };
-      var data = [
-        <% @options.each do |option| %>
-          <%votos_option = 0%>
-          <% @votes.each do |voto| %>
-            <% if option.id == voto.option_id %>
-              <%votos_option = votos_option + 1 %>  
-            <%end%>
-          <%end%> 
-        {
-          value: <%=votos_option%>,
-          color:"#F<%=votos_option%>464<%=votos_option%>",
-          highlight: "#FF5A5E",
-          label: "<%=option.title%>"
-        }
-          <% if option.id != @options.last.id%>
-           ,
-          <%end%>
-       <%end%>
-              ]
-        var ctx = document.getElementById("GraficoDonut").getContext("2d");
-        var PizzaChart = new Chart(ctx).Doughnut(data, options);
-        
-    </script>
-	        
-	</div>
-  <div class="box-chart-pier">
-
-            <canvas id="GraficoPizza"></canvas>
-
-            <script type="text/javascript">
-
-                var options = {
-                    responsive:true
-                };
-
-                var data = [
-        <% @options.each do |option| %>
-          <%votos_option = 0%>
-          <% @votes.each do |voto| %>
-            <% if option.id == voto.option_id %>
-              <%votos_option = votos_option + 1 %>  
-            <%end%>
-          <%end%> 
-        {
-          value: <%=votos_option%>,
-          color:"#F<%=votos_option%>464<%=votos_option%>",
-          highlight: "#FF5A5E",
-          label: "<%=option.title%>"
-        }
-          <% if option.id != @options.last.id%>
-           ,
-          <%end%>
-       <%end%>
-              ]
-                
-                window.onload = function(){
-
-                    var ctx = document.getElementById("GraficoPizza").getContext("2d");
-                    var PizzaChart = new Chart(ctx).Pie(data, options);
-                }  
-            </script>       
-   </div>
+  
 	<div class="container grafico-barras">			
     	<div class="row row-aux">
         	<div class="col-sm-6 col-sm-offset-3 col-md-10 col-md-offset-4">
@@ -136,17 +68,6 @@
             itemProgress.css('width', itemProgressWidth);
         });
     };
-	$(".pizza-2").click(function(){
-		$(".box-chart").hide("slow");
-		$(".grafico-barras").hide("slow");
-    $(".box-chart-pier").show("slow");
-
-	});
-  $(".pizza").click(function(){
-    $(".grafico-barras").hide("slow");
-    $(".box-chart").show("slow");
-    $(".box-chart-pier").hide("slow");
-  });
 </script>
 
 	

@@ -8,16 +8,16 @@
     <%= form_for(@question) do |f| %>
       <%= f.hidden_field :company_id, :value => @company.id %>
       <div class="for-questions-title">
-        <label for="title">Pergunta
-          <%= f.text_area :title, :class => "input-for-pergunta", required: true%>
+        <label for="title" >Pergunta
+          <%= f.text_area :title, :id => 'question_t', :class => "input-for-pergunta", required: true%>
         </label>
       </div>
     <h3>Adicione as suas opções:</h3>
-    <%= link_to_add_association image_tag("plus.png", size: "40x40", title: "Adicionar Opção"), f, :option, 'data-association-insertion-node' => "#options-questions ol", 'data-association-insertion-method' => "append", :class => "add-colour-link"%>
+    <%= link_to_add_association image_tag("plus.png", size: "40x40", title: "Adicionar Opção", id: "plus"), f, :option, 'data-association-insertion-node' => "#options-questions ol", 'data-association-insertion-method' => "append", :class => "add-colour-link"%>
     <fieldset id="options-questions">
       <ol>
         <%= f.fields_for :option do |options| %>
-        <%= render partial: "option_fields", locals: { f: options } %>
+        <%= render partial: "option_fields", locals: { f: options }%>
         <% end %>
       </ol>
     </fieldset>
@@ -30,14 +30,8 @@
 </section>
 </section>
 <script>
-   
-  $('.add-colour-link').click(function(){
-    if($('#options-questions .nested-fields:visible').size() > 4) {
-      $('.add-colour-link').hide();
-    } 
-    if($('#options-questions .nested-fields:visible').size() < 4){
-        $('.add-colour-link').show();
-    }
+
+  $ ('.add-colour-link').click(function(){
     if($('#options-questions .nested-fields:visible').size() > 0) {
       $('input[type=submit]').attr("disabled", false);
       $('input[type=submit]').css("background", "#006400");
@@ -46,6 +40,13 @@
         $('input[type=submit]').attr("disabled", true);
         $('input[type=submit]').css("background", "#f44336");
       }
+
+
+    if($('#options-questions .nested-fields:visible').size() > 4) {
+      $('.add-colour-link').hide();
+      } else {
+        $('.add-colour-link').show();
+    }
   });
   
 </script>
