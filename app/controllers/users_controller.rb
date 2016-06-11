@@ -25,9 +25,9 @@ class UsersController < ApplicationController
 		if @user.save
 			# when user create his account he is already log in
 			session[:user_id] = @user.id
-			flash[:notice] = 'Cadastro efetuado com sucesso!'
 			log_in @user
 			redirect_to home_path
+			flash[:notice] = 'Cadastro efetuado com sucesso!'
 		else
 			render :new
 		end
