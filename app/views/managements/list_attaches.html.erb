@@ -1,15 +1,23 @@
-<%= render "navbar/navbar" %>
+<% if user_admin? %>
 
-<section id="body-show-attach">
-	<h1> Lista das Empresas com vínculo solicitado</h1>
+	<%= render "navbar/navbar" %>
 
-	<% if @attaches.blank? %>
-		</br>
-		<h3 style = "color: navy">Nenhum vínculo pendente.</h3>
-	<% else %>
-		<% @attaches.each do |a| %>
-			<h3 id="lista_vinculos"><%= link_to Company.find(a.company_id).name, a %></h3>
-		 <%end%>
-	<%end%>
+	<section id="body-show-attach">
+		<h1> Lista das Empresas com vínculo solicitado</h1>
 
-</section>
+		<% if @attaches.blank? %>
+			</br>
+			<h3 style = "color: navy">Nenhum vínculo pendente.</h3>
+		<% else %>
+			<% @attaches.each do |a| %>
+				<h3 id="lista_vinculos"><%= link_to Company.find(a.company_id).name, a %></h3>
+			 <%end%>
+		<%end%>
+
+	</section>
+
+<% else %>
+
+	<%= controller.redirect_not_admin %>
+	
+<%end%>
