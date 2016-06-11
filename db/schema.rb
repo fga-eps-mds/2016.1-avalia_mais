@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606231641) do
+ActiveRecord::Schema.define(version: 20160608005944) do
 
   create_table "attaches", force: :cascade do |t|
     t.string   "cnpj",               limit: 255
@@ -88,9 +88,34 @@ ActiveRecord::Schema.define(version: 20160606231641) do
   add_index "evaluations", ["uf_id"], name: "index_evaluations_on_uf_id", using: :btree
   add_index "evaluations", ["user_id"], name: "index_evaluations_on_user_id", using: :btree
 
+  create_table "faqs", force: :cascade do |t|
+    t.string   "question",   limit: 255
+    t.string   "answer",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "company_id", limit: 4
+  end
+
+  add_index "faqs", ["company_id"], name: "index_faqs_on_company_id", using: :btree
+
+  create_table "options", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.integer  "question_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "parsers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "title",                   limit: 255
+    t.integer  "options_quantity_chosen", limit: 4
+    t.integer  "company_id",              limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "segments", force: :cascade do |t|
@@ -135,6 +160,13 @@ ActiveRecord::Schema.define(version: 20160606231641) do
     t.datetime "updated_at",                  null: false
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "question_id", limit: 4
+    t.integer  "option_id",   limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   add_foreign_key "attaches", "companies"
   add_foreign_key "attaches", "users"
   add_foreign_key "comments", "topics"
@@ -147,6 +179,7 @@ ActiveRecord::Schema.define(version: 20160606231641) do
   add_foreign_key "evaluations", "companies"
   add_foreign_key "evaluations", "ufs"
   add_foreign_key "evaluations", "users"
+  add_foreign_key "faqs", "companies"
   add_foreign_key "topics", "companies"
   add_foreign_key "topics", "denunciations"
   add_foreign_key "topics", "users"

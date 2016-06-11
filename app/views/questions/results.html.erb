@@ -1,0 +1,73 @@
+<%= render "navbar/navbar" %>
+<div class="box">
+  <div class="result-questions">
+    <h1><%=@question.title%></h1> 
+    <%options_existentes = 0%>
+    <% @options.each do |option| %>
+    	 <%options_existentes = options_existentes +1 %>
+    	 <%votos_option  = 0%>
+    	 <% @votes.each do |voto| %>
+			   <% if option.id == voto.option_id %>
+				    <%votos_option = votos_option + 1 %>	
+  			<%end%>
+		  <%end%>     
+	      <p>
+  			  <%=option.title%><%=votos_option%>
+  		  </p>
+      
+  	<%end%>	
+  </div>  
+  	<nav id="menu-graficos">
+  		<ul>
+  			<li class="pizza"><a href="#">grafico Pizza</a></li>
+  			<li class="pizza-2"><a href="#">grafico Pizza 2</a></li>
+  			<li class="barra-hori"><a href="#">Grafico barras horizontal</a></li>
+  			<li class="barra-vert"><a href="#">Grafico barras vertical</a></li>
+  		</ul>
+  	</nav>
+  
+	<div class="container grafico-barras">			
+    	<div class="row row-aux">
+        	<div class="col-sm-6 col-sm-offset-3 col-md-10 col-md-offset-4">
+            	<div class="bar-chart">
+                	<div class="chart clearfix">
+                		<% @options.each do |option| %>
+	        				<%votos_option = 0.0%>
+	        				<% @votes.each do |voto| %>
+								<% if option.id == voto.option_id %>
+									<%votos_option = votos_option + 1 %>	
+  								<%end%>
+  							<%end%>	
+                   			<div class="item">
+                       			<div class="bar">
+                       				<%votos_option = votos_option/@votes.count*100%>
+                           			<span class="percent"><%=votos_option.round(2)%>%</span>
+                           			<div class="item-progress" data-percent="<%=votos_option.round(2)%>">
+                               			<span class="title"><%=option.title%></span>
+                          			</div>
+                        		</div>
+                    		</div>
+                    	<%end%>	
+                	</div>
+            	</div>
+        	</div>
+    	</div>	
+	</div>
+</div>
+<script>
+	 barChart();
+    
+    $(window).resize(function(){
+        barChart();
+    });
+    
+    function barChart(){
+        $('.bar-chart').find('.item-progress').each(function(){
+            var itemProgress = $(this),
+            itemProgressWidth = $(this).parent().width() * ($(this).data('percent') / 100);
+            itemProgress.css('width', itemProgressWidth);
+        });
+    };
+</script>
+
+	

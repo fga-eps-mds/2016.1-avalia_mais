@@ -25,6 +25,13 @@ Rails.application.routes.draw do
   patch '/users/update/:id', controller: 'users', action: 'update_password', :as => 'update_user_password'
   patch '/users/destroy/', controller: 'users', action: 'destroy', :as => 'destroy_user_now'
 
+  #survey
+  post '/survey/new' => 'surveys#create'
+  get   '/survey/new' => 'surveys#new'
+
+  #option
+  post '/option/new' => 'option#create'
+  get   '/option/new' => 'option#new'
 
   #login
   get    'login'  => 'sessions#new'
@@ -37,8 +44,7 @@ Rails.application.routes.draw do
   post 'ranking/response/segment'  => 'rankings#segment_selected'
 
   #segment
-  get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment' 
-
+  get '/segments/show_segments', controller: 'segments', action: 'show_segment', :as => 'segment'
 
   #management
   get 'management' => 'managements#index', :as => 'management_attach'
@@ -52,6 +58,7 @@ Rails.application.routes.draw do
   #evaluation
   post '/company/show', controller: 'evaluations', action: 'rate', :as => 'rate'
   post '/company/response', controller: 'evaluations', action: 'response_time', :as => 'response_time'
+
 
   #topic
   resources :companies do
@@ -67,6 +74,32 @@ Rails.application.routes.draw do
 
   post '/denunciation_create' => 'denunciations#create', :as => 'create_denunciation'
   post '/denunciation_destroy' => 'denunciations#destroy', :as => 'destroy_denunciation'
+
+  #questions
+  #get '/questions/new', controller: 'questions', action: 'new', :as => 'questions'
+  post'/questions/new'      => 'questions#create', :as => 'create_questions'
+  #get '/questions/:id'      => 'questions#show', :as => 'questions_show'
+  get '/questions/:id/results/' => 'questions#results',  :as => 'results_questions'
+
+  #faq
+  post 'company/faq', controller: 'faq', action: 'create', :as => 'faq'
+
+
+  #resources :companies do
+  #  resources :questions
+  #end
+
+  resources :questions
+
+
+  #votes
+  get '/votes' => 'votes#update', action: 'update', :as => 'update_vote'
+  put '/votes' => 'votes#update'
+  get '/votes/results' => 'votes#results', action: 'questions', :as => 'results_votes'
+
+
+ 
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -6,12 +6,33 @@ class CompaniesController < ApplicationController
 		@company = Company.new()
 	end
 
+
 	def list_topics
 		@company = Company.find(params[:id])
 		@topics = @company.topics
 	end
+helper_method :list_topics
+	
+	def list_questions
+		@company = Company.find(params[:id])
+		@question = @company.questions
+	end
 
-	helper_method :list_topics
+	helper_method :list_questions
+	
+	def computeEvaluation(company)
+		totalEvaluation = 0
+		quantity = 0
+		company.evaluations.each do |e|
+			if e.grade != nil
+				totalEvaluation = totalEvaluation + e.grade
+				quantity = quantity + 1
+			end
+		end
+		return (totalEvaluation.to_f/quantity)
+	end
+
+	
 
 	def switchTypeImage(total)
 		imageName = ""

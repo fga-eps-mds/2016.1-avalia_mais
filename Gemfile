@@ -3,6 +3,12 @@ source 'https://rubygems.org'
 #Gems to use in views
 gem 'bootstrap-sass', '~> 3.3.6'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-angular'
+  gem 'rails-assets-leaflet'
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
@@ -63,5 +69,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'mysql2', '~> 0.3.18'
+
+  
+  gem 'dotenv-rails', :groups => [:development, :test]
+
+  gem "cocoon"
+  gem "nested_form_fields", ">= 0.7.8"
+
+
 end
 
