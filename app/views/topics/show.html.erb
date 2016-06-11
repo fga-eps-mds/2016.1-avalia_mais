@@ -1,24 +1,26 @@
 <%= render "navbar/navbar" %>
 </br></br></br></br></br>
 <div class = "form_attach">
-	<topicStyle>
-		Tópico criado em <%= @topic.create_date.strftime("%d/%m/%Y") %>
+	<topicStyle> <%= image_tag "clock_topic.png", size: "20x20" %>
+		 Tópico criado em <%= @topic.create_date.strftime("%d/%m/%Y") %>
 	</topicStyle>
 	</br></br>
 	<topicStyle>
-		<strong>Título:</strong>
-		<%= @topic.title %>
+	  <strong>Autor:</strong>
+		  <%= @topic.user.name %> </br></br>
+	  <strong>Título:</strong>
+	  <%= @topic.title %>
+
 	</topicStyle> </br></br>
 	<topicStyle>
 		<strong>Conteúdo:</strong>
 		<%= @topic.body %>
 		</br>
-		<strong>Autor:</strong>
-		<%= @topic.user.name %>
+
 	</topicStyle>
 	<% if @topic.user == current_user %>
-		<li><%= link_to "Editar", edit_topic_path(@topic), class: "btn destroy-btn" %></li>
-		<li><%= link_to "Excluir", @topic, data: { confirm: "Tem certeza que deseja excluir este tópico?" }, class: "btn btn-warning destroy-btn", method: :delete %></li>
+		<li><%= link_to "Editar", edit_topic_path(@topic),  class: "btn btn-edit", id: "btn-edit-topic"%></li>
+		<li><%= link_to "Excluir", @topic, data: { confirm: "Tem certeza que deseja excluir este tópico?" }, class: "btn btn-delete", id: "btn-delete-topic", method: :delete %></li>
 	<% end %>
 	<% if current_user_topic_denunciation == nil %>
 		<%= form_for(:session, url: create_denunciation_path) do |f| %>
@@ -36,7 +38,7 @@
 		<% end %>
 	<% end %>
 	<p id="denunciation-count">Numero de denúncias: <%= @topic.denunciations.count %></p>
-	
+
 </div>
 <topicStyle>
 Comentários:
@@ -45,3 +47,4 @@ Comentários:
 	<%= render 'comments/show'%>
 </section>
 </div>
+

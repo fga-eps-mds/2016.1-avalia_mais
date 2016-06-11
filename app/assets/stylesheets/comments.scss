@@ -2,10 +2,10 @@
     padding: 25px;
     left: 25%;
 }
+
 li.ui-state-default-comment{
     background:#fff0;
     border:none;
-    border-bottom:1px solid #ddd;
     text-align: left;
     padding-bottom: 10px;
     height: auto;
@@ -38,8 +38,10 @@ body {
     border-radius:3px;
 }
 
-hr {
-    border-color:#ececec;
+#line-divisor {
+    width: 100%;
+    height: 1px;
+    border-color:#ddd#ececec;
 }
 
 button {
@@ -74,5 +76,13 @@ ul#sortable{
 
 #hidden_comments_link li{
     font-size: 0.80em;
+    text-align: center;
+}
+
+#span-divs div{
+    float: left;
+    clear: none;
+}
+.user-infos{
     text-align: center;
 }

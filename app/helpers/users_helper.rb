@@ -8,4 +8,8 @@ module UsersHelper
   		@user = current_user
 		@user.admin == true
 	end
+
+	def redirect_not_admin
+		redirect_to home_path
+	end
 end

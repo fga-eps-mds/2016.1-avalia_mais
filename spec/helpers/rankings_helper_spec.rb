@@ -11,5 +11,5 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe RankingsHelper, type: :helper do
-  
+	
 end

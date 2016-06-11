@@ -18,37 +18,47 @@
 		        <%if @comments.present?%>
 					<% commentsQuantity = 0%>
 					<% @comments.each do |comment|%>
-				        <% if commentsQuantity <= 5%>
+				        <% if commentsQuantity >= 6%>
+				        	<div class="hidden_comments">
+				        <%end%>
 					        <strong class="pull-left primary-font"><%= User.find(comment.user_id).name%>:</strong>
 					        <small class="pull-right text-muted">
 					           	<%if comment.user_id == current_user.id%>
-									<%= link_to image_tag("remove_icon.png"), delete_comment_path(comment.id), :id => 'delete-comment', data: { confirm: "Tem certeza que deseja excluir o comentário?"}, :class=> 'delete-'+current_user.name.split(" ")[0]%>
+			            			<div id="span-divs">
+					            		<div class="dropdown-comment edit-<%= current_user.name%>-<%= comment.id%>" data-for=".cyruxx-<%= comment.id%>" 	id="<%= comment.id%>">
+											<%= link_to image_tag("edit_comment_icon.png", size: "12x12", title: "Editar comentário"), remote: true %>&nbsp;        							
+										</div>
+									    <div>
+									    	
+									    	<%= link_to image_tag("remove_icon.png", size: "12x12", title: "Deletar comentário"), delete_comment_path(comment.id), data: { confirm: "Tem certeza que deseja excluir o comentário?"}, :class=> 'dropdown-comment delete-'+current_user.name.split(" ")[0], :id => comment.id%>
+									    </div>
+			            			</div>
 								<%end%>
 					        </small>
 				        	</br>
-				        	<li class="ui-state-default-comment"><%= comment.description%>
+				        	<li class="ui-state-default-comment"> 
+				        		<%= comment.description%>
 				        		</br>
-			        			<h5><%= comment.created_at.to_formatted_s(:long)%></h5>				   
+			        			<h5><%= comment.created_at.to_formatted_s(:long)%></h5>		
+			        			<div class="row user-infos cyruxx-<%=comment.id%>">
+			        				<div class="input-group comment-field">
+			        					Edite seu comentário
+			        					<%= form_for(:comment, url: edit_comment_path) do |form|%>
+				        					<%= form.hidden_field :comment_id, :value => comment.id%>
+				        					<%= form.text_area :new_description, :value => comment.description, :maxlength => 150, :class	=> 'form-control input-sm chat-input comment-text-area' %>
+												<%= form.submit "Editar",:class => "btn btn-primary btn-sm btn-comment"%>
+										<%end%>
+								    </div>
+			        			</div>	   
 				        	</li>
-			       		<%else%>
-			       			<div class="hidden_comments">
-			        			<strong class="pull-left primary-font"><%= User.find(comment.user_id).name%>:</strong>
-						        <small class="pull-right text-muted">
-						           	<%if comment.user_id == current_user.id%>
-										<%= link_to image_tag("remove_icon.png"), delete_comment_path(comment.id), :id => 'delete-comment', data: { confirm: "Tem certeza que deseja excluir o comentário?"}, :class=> 'delete-'+current_user.name.split(" ")[0]%>
-									<%end%>
-						        </small>
-					        	</br>
-			        			<li class="ui-state-default-comment"><%= comment.description%>
-			        				</br>
-			        				<h5><%= comment.created_at.to_formatted_s(:long)%></h5>
-			        			</li>
-			       			</div>
-			       		<%end%>
-				        <% commentsQuantity = commentsQuantity + 1%>
-				        </br>					        
+					        <hr id="line-divisor">
+				        	<% if commentsQuantity >= 6%>
+				        		</div>
+				        	<%end%>
+				        <% commentsQuantity = commentsQuantity + 1%>	        
 				    <%end%>
 				    <%if @comments.size > 6%>
+				    	</br>
 				    	<div id="hidden_comments_link">
 				       		<li class="ui-state-default-comment"><a class="show_hidden_comments">Mostrar mais comentários </a></li>
 				    	</div>
@@ -75,4 +85,12 @@
       	}
     });
 
+	$(".user-infos").hide();
+	$(".dropdown-comment").click(function() {
+	    var id = $(this).attr('id');
+	    var dataFor = $(this).attr('data-for');
+	    var idFor = $(dataFor);
+	    var currentButton = $(this);
+	    idFor.toggle("slow")
+	  }); 
 </script>

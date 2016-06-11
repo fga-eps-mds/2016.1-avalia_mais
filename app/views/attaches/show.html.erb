@@ -1,25 +1,32 @@
-<%= render "navbar/navbar" %>
+<% if user_admin? %>
 
-<div id="body-show-attach">
-	
-	<h1>Vínculo Solicitado</h1></br>
+  <%= render "navbar/navbar" %>
 
-	<p><b>Nome do Empresário:</b> <%= User.find(@attach.user_id).name %></p>
-	<p><b>Nome da Empresa:</b> <%= Company.find(@attach.company_id).name %></p>
-  	<p><b>Endereço:</b> <%= @attach.address %></p>
-  	<p><b>CNPJ:</b> <%= @attach.cnpj %></P>
+  <div id="body-show-attach">
+  	
+  	<h1>Vínculo Solicitado</h1></br>
 
-  	<% if @attach.photo_file_name != nil %>	
-  		<%= image_tag(@attach.photo, :id => "comprovante") %>
-  	<% else %>
-  		<p>Essa solicitação de vínculo não possui comprovante.</p>
-  	<% end %>
+  	<p><b>Nome do Empresário:</b> <%= User.find(@attach.user_id).name %></p>
+  	<p><b>Nome da Empresa:</b> <%= Company.find(@attach.company_id).name %></p>
+    	<p><b>Endereço:</b> <%= @attach.address %></p>
+    	<p><b>CNPJ:</b> <%= @attach.cnpj %></P>
 
- 	</br></br>
+    	<% if @attach.photo_file_name != nil %>	
+    		<%= image_tag(@attach.photo, :id => "comprovante") %>
+    	<% else %>
+    		<p>Essa solicitação de vínculo não possui comprovante.</p>
+    	<% end %>
 
-  	<div id="position_buttons">
-  		<%= link_to "Aprovar Vínculo", approve_path(@attach), class: "btn btn-success", id: "btn-vincular"%>
-  		<%= link_to "Rejeitar Vínculo", reject_path(@attach), class: "btn btn-danger", id: "btn-rejeitar"%>
-		</br></br></br></br></br>
-	</div>
-</div>
+   	</br></br>
+
+    	<div id="position_buttons">
+    		<%= link_to "Aprovar Vínculo", approve_path(@attach), class: "btn btn-success", id: "btn-vincular"%>
+    		<%= link_to "Rejeitar Vínculo", reject_path(@attach), class: "btn btn-danger", id: "btn-rejeitar"%>
+  		</br></br></br></br></br>
+  	</div>
+  </div>
+
+<% else %>
+  <%= controller.redirect_not_admin %>
+
+<%end%>

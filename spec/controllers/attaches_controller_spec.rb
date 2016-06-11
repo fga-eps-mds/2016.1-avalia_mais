@@ -33,5 +33,18 @@ RSpec.describe AttachesController, type: :controller do
 			get :reject, {:format => @attach.id}
 			expect(flash[:notice]).to eq "Vínculo rejeitado com sucesso!"
 		end
+
+		it 'set a new attach' do
+			expect(get :new, {company_id: @company.id})
+		end
+
+		it 'show the attach' do
+			expect(get :show, {id: @attach.id})
+		end
+
+		# it 'should create a new attach' do
+		# 	expect(post :create, {:attach =>  {:address => 'Rua do comercio'}}).to redirect_to(Company.find(@attach.company_id))
+		# 	expect(flash[:notice]).to eq "Solicitação feita com sucesso!"
+		# end
 	end
 end
