@@ -16,4 +16,13 @@ class DenunciationsController < ApplicationController
 			# error
 		end	
 	end
+
+	def create_for_comment
+		@denunciation = Denunciation.create(comment_id: params[:session][:comment_id], user_id: params[:session][:user_id])
+		if @denunciation
+			redirect_to Topic.find(params[:session][:topic_id])
+		else
+			#error
+		end
+	end
 end

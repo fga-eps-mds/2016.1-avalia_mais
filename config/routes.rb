@@ -72,8 +72,9 @@ Rails.application.routes.draw do
   get 'management/attachs_approve', controller: 'attaches', action: 'approve', :as => 'approve'
   get 'management/attachs_reject', controller: 'attaches', action: 'reject', :as => 'reject'
 
-  post '/denunciation_create' => 'denunciations#create', :as => 'create_denunciation'
-  post '/denunciation_destroy' => 'denunciations#destroy', :as => 'destroy_denunciation'
+  post '/topic_denunciation_create' => 'denunciations#create', :as => 'create_topic_denunciation'
+  post '/topic_denunciation_destroy' => 'denunciations#destroy', :as => 'destroy_topic_denunciation'
+  post '/comment_denunciation_create' => 'denunciations#create_for_comment', :as => 'create_comment_denunciation'
 
   #questions
   #get '/questions/new', controller: 'questions', action: 'new', :as => 'questions'
