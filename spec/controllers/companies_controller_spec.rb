@@ -1,6 +1,22 @@
 require 'rails_helper'
 require 'spec_helper'
+require 'database_cleaner'
+
+DatabaseCleaner.strategy = :truncation
 RSpec.describe CompaniesController, type: :controller do
+	describe 'Routes' do
+		it 'should access edit method' do
+			expect(:post => 'company/edit').to route_to(:controller => "companies",
+ 				 :action => "edit")
+		end
+
+		it 'should access update method' do
+			expect(:post => '/company/update').to route_to(:controller => "companies",
+ 				 :action => "update")
+		end
+
+	end
+
 	describe 'company' do
 		before(:each) do
 			@company = Company.create(name: 'company', rate: 3)
@@ -18,5 +34,17 @@ RSpec.describe CompaniesController, type: :controller do
 			expect(method_variable).to eq(local_company)
 		end
 
+		it 'should edit an company attribute' do
+			post :update, company: {name: 'changed name', id: @company.id}
+			expect(flash[:notice]).to eq("Atributo atualizado com sucesso")
+		end
+
+		it 'should not edit an company attribute' do
+			local_company = Company.create(name: 'error to update')
+			post :update, company: {name: 'error to update', id: @company.id}
+			expect(flash[:notice]).to eq("Erro ao atualizar o atributo!")
+		end
+
 	end
 end
+DatabaseCleaner.clean
