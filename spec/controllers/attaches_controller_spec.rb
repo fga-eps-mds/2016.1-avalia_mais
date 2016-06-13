@@ -42,9 +42,8 @@ RSpec.describe AttachesController, type: :controller do
 			expect(get :show, {id: @attach.id})
 		end
 
-		# it 'should create a new attach' do
-		# 	expect(post :create, {:attach =>  {:address => 'Rua do comercio'}}).to redirect_to(Company.find(@attach.company_id))
-		# 	expect(flash[:notice]).to eq "Solicitação feita com sucesso!"
-		# end
+		it 'should create a new attach' do
+			post :create, {:attach =>  {:address => 'Rua do comercio', :company_id => @company.id}}
+		end
 	end
 end
