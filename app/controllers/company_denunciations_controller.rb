@@ -1,0 +1,2 @@
+class CompanyDenunciationsController < ApplicationController
+end

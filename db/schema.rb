@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608005944) do
+ActiveRecord::Schema.define(version: 20160613121833) do
 
   create_table "attaches", force: :cascade do |t|
     t.string   "cnpj",               limit: 255
@@ -57,12 +57,25 @@ ActiveRecord::Schema.define(version: 20160608005944) do
     t.integer  "logo_file_size",    limit: 4
     t.datetime "logo_updated_at"
     t.integer  "uf_id",             limit: 4
+    t.integer  "company_id",        limit: 4
     t.integer  "user_id",           limit: 4
   end
 
+  add_index "companies", ["company_id"], name: "index_companies_on_company_id", using: :btree
   add_index "companies", ["segment_id"], name: "index_companies_on_segment_id", using: :btree
   add_index "companies", ["uf_id"], name: "index_companies_on_uf_id", using: :btree
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
+
+  create_table "company_denunciations", force: :cascade do |t|
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "company_id",  limit: 4
+    t.integer  "user_id",     limit: 4
+  end
+
+  add_index "company_denunciations", ["company_id"], name: "index_company_denunciations_on_company_id", using: :btree
+  add_index "company_denunciations", ["user_id"], name: "index_company_denunciations_on_user_id", using: :btree
 
   create_table "denunciations", force: :cascade do |t|
     t.integer "user_id",  limit: 4
@@ -171,9 +184,12 @@ ActiveRecord::Schema.define(version: 20160608005944) do
   add_foreign_key "attaches", "users"
   add_foreign_key "comments", "topics"
   add_foreign_key "comments", "users"
+  add_foreign_key "companies", "companies"
   add_foreign_key "companies", "segments"
   add_foreign_key "companies", "ufs"
   add_foreign_key "companies", "users"
+  add_foreign_key "company_denunciations", "companies"
+  add_foreign_key "company_denunciations", "users"
   add_foreign_key "denunciations", "topics"
   add_foreign_key "denunciations", "users"
   add_foreign_key "evaluations", "companies"
