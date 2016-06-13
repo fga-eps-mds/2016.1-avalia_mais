@@ -97,9 +97,9 @@ Rails.application.routes.draw do
   put '/votes' => 'votes#update'
   get '/votes/results' => 'votes#results', action: 'questions', :as => 'results_votes'
 
-
- 
-
+  #company_denunciation
+  post '/company_denunciation_create' => 'company_denunciations#create', :as => 'create_company_denunciation'
+  post '/company_denunciation_destroy' => 'company_denunciations#destroy', :as => 'destroy_company_denunciation'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
