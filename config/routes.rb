@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get  '/company/:id' => 'companies#show', :as => 'company'
   get '/company/:search' => 'companies#search', :as => 'company_search'
   post '/company/new' => 'companies#create', :as => 'create_company'
-  get '/company/edit/:id' => 'companies#edit', :as => 'edit_company'
+  post 'company/edit' => 'companies#edit', :as => 'edit_company'
   post '/company/update' => 'companies#update', :as => 'update_company'
 
   #users
