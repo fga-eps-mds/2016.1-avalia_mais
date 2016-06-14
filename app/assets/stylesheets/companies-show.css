@@ -106,10 +106,28 @@ hr {
   display: none;
   position: absolute;
   width: 80%;
-  margin-left: 130px;
-  margin-top: -10px;
+  left: 10%;
+   margin: -300px auto;
   text-align: justify;
 }
+section#enquete{
+  display: none;
+  position: relative;
+  width: 50%;
+  margin: -300px auto;
+  
+
+}
+#check-response{
+  position: absolute;
+  text-align: left;
+  left: 40%;
+  float: left;
+}
+#list-questions{
+  float: left;
+}
+
 
 .btn-group {
   position: relative;
@@ -304,3 +322,15 @@ section p {
   .star.full{
     background: linear-gradient(to bottom, #fee24f, #f4bb2f);
   }
+  .controls{
+    color:#000;
+  }
+  .faq-questions{
+    display: none;
+  }
+.actions{
+  text-align: center;
+}
+.for-questions-faq{
+  display: block;
+}

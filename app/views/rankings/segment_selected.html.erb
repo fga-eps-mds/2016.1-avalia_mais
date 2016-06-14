@@ -1,0 +1,67 @@
+<%= render "navbar/navbar" %>
+<section id="corpo">
+
+	<section id="ranking_segment">
+
+		<h1 id="ranking_title">Ranking por Tempo de Resposta da categoria</h1>
+
+		<section id="ranking_position">
+			<section id="first_place">
+				<%= image_tag("trophy_1.png", :alt => "trophy_gold", :id => "first_place_image") %>
+				<p id="first_place_name"> 1° <%= link_to @companies.first.name, @companies.first %></p>
+			</section>
+
+			<section id="second_place">
+				<%= image_tag("trophy_2.png", :id => "second_place_image") %>
+				<p id="second_place_name"> 2° <%= link_to @companies[1].name, @companies[1] %>
+			</section>
+
+			<section id="third_place">
+				<%= image_tag("trophy_3.png", :id => "third_place_image") %>
+				<p id="third_place_name"> 3° <%= link_to @companies[2].name, @companies[2] %>
+			</section>
+		</section>
+
+		<section class="container-principal">
+			<section class="container">
+				<section class="corpo-principal-response-time row">
+					<% position_ranking = 4 %>
+					<% @companies[3..@companies.size].each do |c|%>
+						<section class="border-radius col-lg-8">
+							<div class="classificacao col-lg-11"><%= position_ranking %>° 
+								<%if c.response_time != nil %>
+									<%= link_to c.name, c %>
+									<% position_ranking = position_ranking + 1 %>
+								<%end%>
+							</div>
+							<div class="classificacao col-lg-1"><%= "%g" % c.response_time.round(2) %></div>
+							<br />
+						</section>
+					<%end%>
+				</section>
+			</section>
+		</section>
+	</section>
+</section>
+
+<script>
+
+$("#segment_submit").click(function(){
+	$("#segment_form").hide("slow");
+	$("#ranking_segment").show("slow");
+});
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+

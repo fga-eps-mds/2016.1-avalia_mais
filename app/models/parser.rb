@@ -12,5 +12,19 @@ class Parser < ActiveRecord::Base
 
 			#evaluation_record.update_attributes(:uf_id => row[1])
 		end
+		@companies = Company.all
+		@companies.each do |company|
+			company.update_attributes(:response_time => (company.evaluations.sum(:response_time).to_f)/company.evaluations.size)
+			company.update_attributes(:rate => (company.evaluations.sum(:grade).to_f)/company.evaluations.size)
+		end
 	end
+	# def compute_size(evaluations)
+	# 	quantity = 0
+	# 	evaluations.each do |evaluation|
+	# 		if evaluation.response_time != nil
+	# 			quantity = quantity + 1
+	# 		end
+	# 	end
+	# 	return quantity
+	# end
 end

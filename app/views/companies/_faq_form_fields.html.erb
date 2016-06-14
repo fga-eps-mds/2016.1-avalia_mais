@@ -1,0 +1,12 @@
+<li class = "control-group nested-fields">
+		<div class="controls">
+			<div class="for-questions-faq">
+			<label for"question">Pergunta
+      			<%= faq.text_field :question, :class => "input-for-pergunta", required: true%>
+      		</label>
+      		</div>
+      		<label for="answer">Resposta
+      		<%= faq.text_area :answer, :class => "input-for-pergunta", required: true%> 
+      </label>  		
+   	</div>
+</li>

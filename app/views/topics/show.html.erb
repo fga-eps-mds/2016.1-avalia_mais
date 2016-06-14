@@ -1,0 +1,50 @@
+<%= render "navbar/navbar" %>
+</br></br></br></br></br>
+<div class = "form_attach">
+	<topicStyle> <%= image_tag "clock_topic.png", size: "20x20" %>
+		 Tópico criado em <%= @topic.create_date.strftime("%d/%m/%Y") %>
+	</topicStyle>
+	</br></br>
+	<topicStyle>
+	  <strong>Autor:</strong>
+		  <%= @topic.user.name %> </br></br>
+	  <strong>Título:</strong>
+	  <%= @topic.title %>
+
+	</topicStyle> </br></br>
+	<topicStyle>
+		<strong>Conteúdo:</strong>
+		<%= @topic.body %>
+		</br>
+
+	</topicStyle>
+	<% if @topic.user == current_user %>
+		<li><%= link_to "Editar", edit_topic_path(@topic),  class: "btn btn-edit", id: "btn-edit-topic"%></li>
+		<li><%= link_to "Excluir", @topic, data: { confirm: "Tem certeza que deseja excluir este tópico?" }, class: "btn btn-delete", id: "btn-delete-topic", method: :delete %></li>
+	<% end %>
+	<% if current_user_topic_denunciation == nil %>
+		<%= form_for(:session, url: create_denunciation_path) do |f| %>
+		<%= f.hidden_field :topic_id, :value => @topic.id %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<%= image_submit_tag("denunciation1.png", id: "button-denunciation1", title: "Clique aqui para realizar uma denúncia", data: { confirm: "Tem certeza que deseja denunciar este tópico?" }) %>
+		<p id="p-denunciation1">Denunciar</p>
+		<% end %>
+	<% else %>
+		<%= form_for(:session, url: destroy_denunciation_path) do |f| %>
+		<%= f.hidden_field :denunciation_id, :value =>  current_user_topic_denunciation.id %>
+		<%= f.hidden_field :topic_id, :value => @topic.id %>
+		<%= image_submit_tag("denunciation2.png", id: "button-denunciation2") %>
+		<p id="p-denunciation2" style="color:#4FBFD4">Retirar Denúncia</p>
+		<% end %>
+	<% end %>
+	<p id="denunciation-count">Numero de denúncias: <%= @topic.denunciations.count %></p>
+
+</div>
+<topicStyle>
+Comentários:
+</topicStyle>
+<section class="comment-section">
+	<%= render 'comments/show'%>
+</section>
+</div>
+

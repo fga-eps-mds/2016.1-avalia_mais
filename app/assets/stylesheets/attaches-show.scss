@@ -1,0 +1,31 @@
+#body-show-attach {
+	position: relative;
+	text-align: center;
+	margin-top: 7%;
+	color: #07213F;
+}
+
+#body-show-attach p {
+	font-size: 18px;
+}
+
+#btn_vincular {
+	background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#btn-vincular {
+	position: absolute;
+	margin-left: -120px;
+}
+
+#btn-rejeitar {
+	position: absolute;
+	margin-left: 20px;
+}

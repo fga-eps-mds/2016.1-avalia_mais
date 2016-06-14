@@ -5,6 +5,20 @@ class CompaniesController < ApplicationController
 	def new
 		@company = Company.new()
 	end
+
+
+	def list_topics
+		@company = Company.find(params[:id])
+		@topics = @company.topics
+	end
+helper_method :list_topics
+	
+	def list_questions
+		@company = Company.find(params[:id])
+		@question = @company.questions
+	end
+
+	helper_method :list_questions
 	
 	def computeEvaluation(company)
 		totalEvaluation = 0
@@ -17,7 +31,9 @@ class CompaniesController < ApplicationController
 		end
 		return (totalEvaluation.to_f/quantity)
 	end
+
 	
+
 	def switchTypeImage(total)
 		imageName = ""
 		if total >= 4
@@ -32,8 +48,8 @@ class CompaniesController < ApplicationController
 
 	def show
 		@company = Company.find(params[:id])
-		if @company.evaluations.present?
-			@total_evaluations = computeEvaluation(@company)
+		if !@company.rate.nil?
+			@total_evaluations = @company.rate
 			@image_name = switchTypeImage(@total_evaluations)
 		end
 		if logged_in?
@@ -67,7 +83,7 @@ class CompaniesController < ApplicationController
 	end
 
 	def company_params
-		params[:company].permit(:name, :segment_id, :address, :telephone, :email, :description, :logo, :uf_id)
+		params[:company].permit(:name, :segment_id, :address, :telephone, :email, :description, :logo, :uf_ids)
 	end
 
 end

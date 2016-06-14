@@ -1,0 +1,62 @@
+topicStyle {
+	color: #000000;
+ 	text-align: justify;
+ 	font-family: Arial, Helvetica, sans-serif;
+ 	font-size: 20px;
+}
+
+.form_attach{
+	width: 70%;
+	position: relative;
+	left: 15%;
+}
+
+#button-denunciation1 {
+	position: relative;
+	right: -96%;
+	top: -138px;
+	width: 40px;
+	height: 35px;
+}
+
+#button-denunciation2 {
+	position: relative;
+	right: -95%;
+	top: -138px;
+	width: 40px;
+	height: 35px;
+}
+
+#p-denunciation1 {
+	color: red;
+	position: relative;
+	right: -95%;
+	top: -138px;
+}
+
+#p-denunciation2 {
+	position: relative;
+	right: -91%;
+	top: -138px;
+}
+
+#denunciation-count {
+	font-size: 14px;
+	margin-left: 81%;
+}
+
+.btn-delete {
+  color: #fff;
+  background-color: #EE3B3B;
+  border-color: #2e6da4;
+  position:relative;
+  left: 350px;
+}
+
+.btn-edit {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  position:relative;
+  left: 350px;
+}

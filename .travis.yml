@@ -1,0 +1,28 @@
+
+language: ruby
+
+services:
+  - mysql
+  
+before_install: 
+    - mysql -e 'create database myapp_test;'
+script:
+  - bundle exec spring binstub --all
+  - bundle install
+  - bundle exec rake db:load_config
+  - bundle exec rake db:drop
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+  - bundle exec rake spec
+
+rvm:
+  - 2.2.3
+notifications:
+  email:
+    recipients:
+      - rafael.akiyoshi@gmail.com
+  
+branches:
+  only:
+
+    - edit_topico

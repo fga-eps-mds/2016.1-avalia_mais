@@ -1,0 +1,76 @@
+<% @topic_ordered.each do |topic| %>
+<%= link_to topic.title, topic %>&nbsp;&nbsp;&nbsp;<%= topic.denunciations.count %></br>
+<% end %>
+<%= render "navbar/navbar" %>
+<section class="container-principal">
+	<section class="container">
+		<section class="topo-pagina row">
+			<div class="col-lg-12">
+				<h1>Área de gerenciamento</h1>
+			</div>
+			<div class="menu-ranking col-lg-12">
+				<span class="opcoes" id="grade-geral">Vínculos</span>
+				<span class="opcoes" id="grade-segment">Denúncias</span>
+			</div>
+		</section>
+		<section class="corpo-principal row">
+			<% if @attaches.blank? %>
+				</br>
+				<h3 style = "color: navy">Nenhum vínculo pendente.</h3>
+			<% else %>
+				<% @attaches.each do |a| %>
+				<h3 id="lista_vinculos"><%= link_to Company.find(a.company_id).name, a %></h3>
+				 <%end%>
+			<%end%>
+		</section>
+		<section class="ranking-grade-segment">
+			<section class="corpo-principal-segment row">
+				<section class="classification-grade">
+							<% @topic_ordered.each do |topic| %>
+								<section class="border-radius col-lg-8">
+									<div class="classificacao col-lg-11">
+										<h3 id="lista_vinculos"><%= link_to topic.title, topic %>&nbsp;&nbsp;&nbsp;<%= topic.denunciations.count %></br></h3>
+									</div>
+								</section>
+							<% end %>
+				</section>
+			</section>
+		</section>
+	</section>
+</section>
+<script>
+var img_current = 0;
+$(".user-infos").hide();
+$(".dropdown-user").click(function() {
+var id = $(this).attr('id');
+var dataFor = $(this).attr('data-for');
+var idFor = $(dataFor);
+var currentButton = $(this);
+idFor.slideToggle(400, function() {
+if(img_current == 0){
+currentButton.html('(<span style="color: #FF4040">'+id+'</span>)<%= image_tag("up.png", :alt => "abrir", :class => "img-down")%>');
+img_current =1;
+}else{
+currentButton.html('(<span style="color: #FF4040">'+id+'</span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down")%>');
+img_current = 0;
+}
+});
+});
+$("#grade-geral").addClass("selecionado");
+$("#grade-geral").click(function(){
+	$("#grade-segment").removeClass("selecionado");
+	$(this).addClass("selecionado");
+$(".ranking-grade-segment").hide("slow");
+$(".corpo-principal").show("slow");
+});
+$("#grade-segment").click(function(){
+	$("#grade-geral").removeClass("selecionado");
+	$(this).addClass("selecionado");
+$(".corpo-principal").hide("slow");
+$(".ranking-grade-segment").show("slow");
+});
+var ancora = window.location.href;
+	if (ancora !== 'http://localhost:3000/ranking/grade/all' && ancora !== 'http://localhost:3000/ranking/grade/all?page=1') {
+		$(".classification-grade").css({marginTop: '20px'});
+	}
+</script>
