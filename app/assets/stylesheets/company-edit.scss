@@ -25,19 +25,27 @@
 }
 
 #link-company-page{
-	position: relative;
+	position: absolute;
+	margin-top: -80px;
+	margin-left: 10px;
 	text-align: center;
 }
-.logo-update{
+
+#update-logo{
 	position: relative;
-	left: 15%;
-	width: 70%;
-	padding-top: 20px;
-	padding-bottom: 20px;
+  width: 400px;
+  left: 50%;
+  margin-left: -200px;
 
 }
-#file-field{
-	position: relative;
-	text-align: center;
-	left: 40%;
+#update-logo label{
+	color: #696969;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
+
+#update-logo input[type="file"]{
+	color: #ccc;
+  
+}
+
