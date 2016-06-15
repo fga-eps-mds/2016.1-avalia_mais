@@ -14,7 +14,7 @@
 					<%= f.file_field :logo, id: "btn-vinculo"%>
 				</label>
 				<div id="button-logo">
-					<td id="atualizar"><%= f.submit "Atualizar" %></td>
+					<td id="atualizar"><%= f.submit "carregar" %></td>
 				</div>
 		    <% end %>
 	    </div>
@@ -87,7 +87,7 @@
 	      		<%= form_for(:company, url: update_company_path)do |f| %>
 	             	<%= f.hidden_field :id, value: @company.id%>
 	             	<td class="form-update"></td>
-	            	<td class="form-update"><%= f.text_field :email, class: 'form-control', :id => "name"%></td>
+	            	<td class="form-update"><%= f.text_field :email, class: 'form-control', :id => "email"%></td>
 	            	<td id="atualizar"><%= f.submit "Atualizar" %></td>
 	             <% end %>
 	    	</tr>
@@ -104,7 +104,7 @@
 	          	<%= form_for(:company, url: update_company_path)do |f| %>
 	             	<%= f.hidden_field :id, value: @company.id%>
 	             	<td class="form-update"></td>
-	            	<td class="form-update"><%= f.text_field :telephone, class: 'form-control', :id => "name"%></td>
+	            	<td class="form-update"><%= f.text_field :telephone, class: 'form-control', :id => "telephone"%></td>
 	            	<td id="atualizar"><%= f.submit "Atualizar" %></td>
 	             <% end %>	      	
 	    	</tr>
@@ -124,7 +124,7 @@
 	          	<%= form_for(:company, url: update_company_path)do |f| %>
 	             	<%= f.hidden_field :id, value: @company.id%>
 	             	<td class="form-update"></td>
-	            	<td class="form-update"><%= f.text_area :description, class: 'form-control', :id => "name"%></td>
+	            	<td class="form-update"><%= f.text_area :description, class: 'form-control', :id => "tarea"%></td>
 	            	<td id="atualizar"><%= f.submit "Atualizar" %></td>
 	             <% end %>	      	
 	    	</tr>
