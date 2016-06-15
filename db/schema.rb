@@ -43,8 +43,6 @@ ActiveRecord::Schema.define(version: 20160608005944) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
-    t.float    "response_time",     limit: 24
-    t.float    "rate",              limit: 24
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "name",              limit: 255
