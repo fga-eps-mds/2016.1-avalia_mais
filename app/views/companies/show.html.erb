@@ -35,10 +35,12 @@
   <% if validated? %>
     <div id= "attach">
         <p><%= link_to "Solicitar Vínculo", new_attach_path(:company_id => @company.id), class: "btn btn-attach", id: "btn-vinculo" %> </p>
-        <%= form_for(:company, url: edit_company_path) do |form|%>
-        <%= form.hidden_field :id, value: @company.id%>
-        <p><%= form.submit 'Editar empresa',class: "btn btn-attach", id: "btn-edit" %></p>
-        <%end%>
+    	<%if current_user.id == @company.user_id%>
+			<%= form_for(:company, url: edit_company_path) do |form|%>
+				<%= form.hidden_field :id, value: @company.id%>
+				<p><%= form.submit 'Editar empresa',class: "btn btn-attach", id: "btn-edit" %></p>
+			<%end%>
+    	<%end%>
     </div>
   <%end%>
 <%end%>
