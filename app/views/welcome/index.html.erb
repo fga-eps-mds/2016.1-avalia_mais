@@ -31,6 +31,9 @@
                 <li>
                   <%= link_to "Área de gerenciamento", management_attach_path %>
                 </li>
+                <li>
+                  <%= link_to "Empresas Denunciadas", management_company_path %>
+                </li>
                 <% end %>
                 <li>
                   <%= link_to "Perfil", :controller => "users", :action => :show ,:id => current_user.id %>

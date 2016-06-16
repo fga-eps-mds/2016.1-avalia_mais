@@ -39,23 +39,24 @@
   <%end%>
 <%end%>
 
-<% if current_user_company_denunciation(@company) == nil %>
+<% if logged_in? && current_user_company_denunciation(@company) == nil %>
 	<%= form_for(:session, url: create_company_denunciation_path) do |f| %>
 	<%= f.hidden_field :company_id, :value => @company.id %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
-	<%= image_submit_tag("denunciation1.png", id: "button-denunciation1", title: "Clique aqui para realizar uma denúncia", data: { confirm: "Tem certeza que deseja denunciar este tópico?" }) %>
-		<p id="p-denunciation1">Denunciar</p>
+	<%= image_submit_tag("denunciation1.png", id: "button-company-denunciation1", title: "Clique aqui para denunciar esta Empresa.", data: { confirm: "Tem certeza que deseja denunciar esta Empresa?" }) %>
+		<p id="p-company-denunciation1">Denunciar</p>
 	<% end %>
-<% else %>
+<% elsif logged_in? %>
 	<%= form_for(:session, url: destroy_company_denunciation_path) do |f| %>
 	<%= f.hidden_field :company_denunciation_id, :value =>  current_user_company_denunciation(@company).id %>
 	<%= f.hidden_field :company_id, :value => @company.id %>
-	<%= image_submit_tag("denunciation2.png", id: "button-denunciation2") %>
-	<p id="p-denunciation2" style="color:#4FBFD4">Retirar Denúncia</p>
+	<%= image_submit_tag("denunciation2.png", id: "button-company-denunciation2", title: "Clique aqui para retirar sua denuncia sobre Empresa.", data: { confirm: "Tem certeza que deseja retirar sua denúncia sobre esta Empresa?"}) %>
+	<p id="p-company-denunciation2" style="color:#4FBFD4">Retirar Denúncia</p>
 	<% end %>
+<% else %>
 <% end %>
 
-<p id="denunciation-count">Numero de denúncias: <%= denunciation_count(@company) %></p>
+<p id="company-denunciation-count">Total de denúncias: <%= denunciation_count(@company) %></p>
 
 <div id="name_segment">
 	<h2><%= @company.segment.name %></h2>

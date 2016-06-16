@@ -17,7 +17,6 @@ module CompaniesHelper
 	end
 
 	def denunciation_count(company)
-		debugger
 		return CompanyDenunciation.where(company_id: company.id).count
 	end
 
