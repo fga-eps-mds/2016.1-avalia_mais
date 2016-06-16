@@ -13,10 +13,10 @@ module TopicsHelper
 		return denunciation
 	end
 
-	def current_user_comment_denunciation
+	def current_user_comment_denunciation(comment_id)
 		denunciation = nil
-		@comment = Comment.find(params[:id])
-		@comment.denunciations.each do |d|
+		comment = Comment.find(comment_id)
+		comment.denunciations.each do |d|
 			if d.user == current_user
 				denunciation = d
 				break
