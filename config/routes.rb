@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
   #management
   get 'management' => 'managements#index', :as => 'management_attach'
+  get 'managements' => 'managements#company_denunciations', :as => 'management_company'
 
   #Comment
   post '/comment' => 'comments#create', :as=> 'create_comment'
@@ -100,9 +101,10 @@ Rails.application.routes.draw do
   put '/votes' => 'votes#update'
   get '/votes/results' => 'votes#results', action: 'questions', :as => 'results_votes'
 
-
- 
-
+  #company_denunciation
+  post '/company_denunciation_create' => 'company_denunciations#create', :as => 'create_company_denunciation'
+  post '/company_denunciation_destroy' => 'company_denunciations#destroy', :as => 'destroy_company_denunciation'
+  get '/company_denunciation/show' => 'company_denunciations#show', :as => 'show_company_denunciation'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -9,4 +9,8 @@ class ManagementsController < ApplicationController
 	def comment_ordered
 		@comment_ordered = Comment.joins(:denunciations).select('comments.*, count(*) as denunciations_count').group('comments.id').order('denunciations_count DESC')
 	end
+
+	def company_denunciations
+		@denunciations = CompanyDenunciation.all.order(:id)
+	end
 end
