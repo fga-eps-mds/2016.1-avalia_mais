@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
 	def destroy
 		comment = Comment.find(params[:format])
 		topic = comment.topic_id
+		comment.denunciations.delete_all
 		comment.destroy
 		redirect_to Topic.find(topic)
 	end

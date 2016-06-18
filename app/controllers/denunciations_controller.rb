@@ -25,4 +25,6 @@ class DenunciationsController < ApplicationController
 			#error
 		end
 	end
+
+
 end
