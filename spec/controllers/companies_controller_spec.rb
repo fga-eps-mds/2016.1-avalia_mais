@@ -1,6 +1,7 @@
 require 'rails_helper'
 require 'spec_helper'
 require 'database_cleaner'
+include SessionsHelper
 
 DatabaseCleaner.strategy = :truncation
 RSpec.describe CompaniesController, type: :controller do
@@ -20,6 +21,7 @@ RSpec.describe CompaniesController, type: :controller do
 	describe 'company' do
 		before(:each) do
 			@company = Company.create(name: 'company', rate: 3)
+			@user = User.create(name: 'robot', email: 'robot@bot.com', gender: 'm', password: 'pass', password_confirmation: 'pass', login: 'robot', dateBirthday: "1990-05-10", active: true)
 		end
 
 		it 'show a company' do
@@ -28,6 +30,7 @@ RSpec.describe CompaniesController, type: :controller do
 		end
 
 		it 'should be redirected to edit page' do
+			log_in @user
 			post :edit, :company => {:id => @company.id}
 			local_company = Company.find(@company.id)
 			method_variable = assigns(:company)
