@@ -1,9 +1,9 @@
 <%= render "navbar/navbar" %>
 
 <% if @company.logo_file_name == nil %>
-<%= image_tag("default_company_logo.png", :width => "125", :height => "125", :id => "image-company") %>
+	<%= image_tag("default_company_logo.png", :width => "125", :height => "125", :id => "image-company") %>
 <%else%>
-<%= image_tag(@company.logo.url(:default), :width => "125", :height => "125", :id => "image-company") %>
+	<%= image_tag(@company.logo.url(:default), :width => "125", :height => "125", :id => "image-company") %>
 <%end%>
 
 <% if @company.authenticated != true %>
@@ -35,6 +35,12 @@
   <% if validated? %>
     <div id= "attach">
         <p><%= link_to "Solicitar Vínculo", new_attach_path(:company_id => @company.id), class: "btn btn-attach", id: "btn-vinculo" %> </p>
+    	<%if current_user.id == @company.user_id%>
+			<%= form_for(:company, url: edit_company_path) do |form|%>
+				<%= form.hidden_field :id, value: @company.id%>
+				<p><%= form.submit 'Editar empresa',class: "btn btn-attach", id: "btn-edit" %></p>
+			<%end%>
+    	<%end%>
     </div>
   <%end%>
 <%end%>

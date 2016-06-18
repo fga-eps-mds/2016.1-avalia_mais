@@ -11,7 +11,7 @@ class CompaniesController < ApplicationController
 		@company = Company.find(params[:id])
 		@topics = @company.topics
 	end
-helper_method :list_topics
+	helper_method :list_topics
 	
 	def list_questions
 		@company = Company.find(params[:id])
@@ -31,8 +31,6 @@ helper_method :list_topics
 		end
 		return (totalEvaluation.to_f/quantity)
 	end
-
-	
 
 	def switchTypeImage(total)
 		imageName = ""
@@ -68,7 +66,24 @@ helper_method :list_topics
 			render :new
 		end
 	end
+
+	def edit
+		@company = Company.find(params[:company][:id])
+		if @company.user_id != current_user.id
+			redirect_to home_path
+		end
+	end
 	
+	def update
+		@company = Company.find(params[:company][:id])
+		if @company.update_attributes(edit_company_params)
+			flash[:notice] = 'Atributo atualizado com sucesso'
+		else
+			flash[:notice] = 'Erro ao atualizar o atributo!'
+		end
+		render :edit
+	end
+
 	def search
 		@search_param = params[:current_search][:search]
   		@company = Company.where("name LIKE :search", :search => "%#{params[:current_search][:search]}%")
@@ -83,7 +98,11 @@ helper_method :list_topics
 	end
 
 	def company_params
-		params[:company].permit(:name, :segment_id, :address, :telephone, :email, :description, :logo, :uf_ids)
+		params[:company].permit(:name, :segment_id, :address, :telephone, :email, :description, :logo, :uf_id)
 	end
 
+	private
+		def edit_company_params
+			params[:company].permit(:name, :address, :telephone, :email, :description, :logo, :uf_id)
+		end
 end
