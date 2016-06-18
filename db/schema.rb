@@ -30,13 +30,15 @@ ActiveRecord::Schema.define(version: 20160608005944) do
   add_index "attaches", ["user_id"], name: "index_attaches_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
-    t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "topic_id",    limit: 4
-    t.integer  "user_id",     limit: 4
+    t.string   "description",     limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "topic_id",        limit: 4
+    t.integer  "user_id",         limit: 4
+    t.integer  "denunciation_id", limit: 4
   end
 
+  add_index "comments", ["denunciation_id"], name: "index_comments_on_denunciation_id", using: :btree
   add_index "comments", ["topic_id"], name: "index_comments_on_topic_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
@@ -63,10 +65,12 @@ ActiveRecord::Schema.define(version: 20160608005944) do
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
 
   create_table "denunciations", force: :cascade do |t|
-    t.integer "user_id",  limit: 4
-    t.integer "topic_id", limit: 4
+    t.integer "user_id",    limit: 4
+    t.integer "topic_id",   limit: 4
+    t.integer "comment_id", limit: 4
   end
 
+  add_index "denunciations", ["comment_id"], name: "index_denunciations_on_comment_id", using: :btree
   add_index "denunciations", ["topic_id"], name: "index_denunciations_on_topic_id", using: :btree
   add_index "denunciations", ["user_id"], name: "index_denunciations_on_user_id", using: :btree
 
@@ -167,11 +171,13 @@ ActiveRecord::Schema.define(version: 20160608005944) do
 
   add_foreign_key "attaches", "companies"
   add_foreign_key "attaches", "users"
+  add_foreign_key "comments", "denunciations"
   add_foreign_key "comments", "topics"
   add_foreign_key "comments", "users"
   add_foreign_key "companies", "segments"
   add_foreign_key "companies", "ufs"
   add_foreign_key "companies", "users"
+  add_foreign_key "denunciations", "comments"
   add_foreign_key "denunciations", "topics"
   add_foreign_key "denunciations", "users"
   add_foreign_key "evaluations", "companies"

@@ -1,12 +1,5 @@
 class EvaluationsController < ApplicationController
-	def new 
-		@evaluation = Evaluation.new
-	end
-
-	def create
-		@evaluation = Evaluation.new(rate_params)
-	end
-
+		
 	def rate
 		evaluation = Evaluation.where(	:user_id => params[:evaluations][:user_id],
 									 	:company_id => params[:evaluations][:company_id])
@@ -37,7 +30,7 @@ class EvaluationsController < ApplicationController
 			evaluation.update_all(:response_time => params[:response][:response_time])
 			size = company.evaluations.where('response_time is not null').size
 			company.update_attributes(:response_time => (company.evaluations.sum(:response_time).to_f)/size)
-			flash[:notice] = 'Sua avaliação por tempo de resposta foi realizada com sucesso!'
+			flash[:notice] = 'Avaliação por tempo de resposta alterada com sucesso!'
 		else
 			#create evaluation
 			evaluation = Evaluation.new(response_params)

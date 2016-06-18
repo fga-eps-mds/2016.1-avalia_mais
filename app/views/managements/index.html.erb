@@ -1,6 +1,3 @@
-<% @topic_ordered.each do |topic| %>
-<%= link_to topic.title, topic %>&nbsp;&nbsp;&nbsp;<%= topic.denunciations.count %></br>
-<% end %>
 <%= render "navbar/navbar" %>
 <section class="container-principal">
 	<section class="container">
@@ -29,9 +26,17 @@
 							<% @topic_ordered.each do |topic| %>
 								<section class="border-radius col-lg-8">
 									<div class="classificacao col-lg-11">
-										<h3 id="lista_vinculos"><%= link_to topic.title, topic %>&nbsp;&nbsp;&nbsp;<%= topic.denunciations.count %></br></h3>
+										<h3 id="lista_vinculos">Tópico <%= link_to topic.title, topic %>&nbsp;&nbsp;&nbsp;<%= topic.denunciations.count %></br></h3>
 									</div>
 								</section>
+							<% end %>
+						
+							<% @comment_ordered.each do |comment| %>
+							<section class="border-radius col-lg-8">
+								<div class="classificacao col-lg-11">
+									<h1 id="lista_vinculos">Comentário em <%= link_to comment.topic.title, comment.topic %>&nbsp;&nbsp;&nbsp;<%= comment.denunciations.count %></br></h1>
+								</div>
+							</section>
 							<% end %>
 				</section>
 			</section>
