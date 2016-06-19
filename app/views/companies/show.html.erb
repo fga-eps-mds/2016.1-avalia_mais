@@ -188,7 +188,10 @@
 <section id="enquete">
 	<div id="check-response">
 			<%if logged_in?%>
-    			<spam><p><%= link_to "Criar enquete", create_questions_path(:company_id => @company.id), class: "btn btn-primary", :id => 'criar_enquete'%></p></spam>
+				<%= form_for(:question, url: new_questions_path) do |form|%>
+       				 <%= form.hidden_field :company_id, value: @company.id%>
+        			<span><%= form.submit 'Criar enquete',class: "btn btn-attach", id: "btn-edit" %></span>
+        		<%end%>
   			<%end%>
   			<br><br>
         <div id="list-questions">
