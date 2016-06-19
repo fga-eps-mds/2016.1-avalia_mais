@@ -69,6 +69,9 @@ class CompaniesController < ApplicationController
 
 	def edit
 		@company = Company.find(params[:company][:id])
+		if @company.user_id != current_user.id
+			redirect_to home_path
+		end
 	end
 	
 	def update
