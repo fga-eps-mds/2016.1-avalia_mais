@@ -119,9 +119,10 @@ section#enquete{
 
 }
 #check-response{
-  position: absolute;
+  position: relative;
+  top:300px;
   text-align: left;
-  left: 40%;
+  left: 20%;
   float: left;
 }
 #list-questions{

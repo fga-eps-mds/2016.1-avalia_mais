@@ -47,7 +47,6 @@ RSpec.describe CompaniesController, type: :controller do
 			post :update, company: {name: 'error to update', id: @company.id}
 			expect(flash[:notice]).to eq("Erro ao atualizar o atributo!")
 		end
-
 	end
 end
 DatabaseCleaner.clean

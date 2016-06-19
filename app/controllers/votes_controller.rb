@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  #
   def update
     @vote = Vote.new(vote_params)
     @vote.question_id = params[:question_id]
@@ -6,8 +7,8 @@ class VotesController < ApplicationController
     if @vote.save
       redirect_to "/questions/#{@vote.question_id}/results" 
     end 
-      
   end
+
   def results
     @votes = Vote.all
   end 

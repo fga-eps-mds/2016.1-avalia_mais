@@ -2,42 +2,77 @@ require 'rails_helper'
 
 RSpec.describe QuestionsController, type: :controller do
 	describe 'Routes' do
+		it 'should access new method' do
+			expect(:post => 'questions/new').to route_to(:controller => "questions",
+ 				 :action => "new")
+		end
+
 		it 'access methods create with success' do
-			expect(:post => '/questions/new').to route_to(:controller => "questions",
+			expect(:get => '/questions/create').to route_to(:controller => "questions",
  				 :action => "create")
 			
 		end
+
 	end
+
 	describe 'Acess instance variable in the new' do
 		before('@questions') do
 			@test_companies = [Company.create(name: 'test1'),
 								Company.create(name: 'test2')]	
-			@test_company = Company.new(name: 'test0')	
-				
-			@test_question = Question.new(:title => 'qual time vc torce', :company_id => @test_company.id)	
-			@option = Option.new(:title => 'santos', question_id: @test_question.id)							
+			@test_company = Company.create(name: 'test0')	
+			@test_question = Question.create(:title => 'qual time vc torce', :company_id => @test_company.id)	
+			@option = Option.create(:title => 'santos', question_id: @test_question.id)	
+									
 		end 
-
-		it 'tested in new @questions' do
-			get :new
-				@questions = assigns(:question)
-				expect(@test_question).to eq(@questions)
+		it 'should be redirected to edit page' do
+			post :new, :question => {:company_id => @test_question.company_id}
+			local_company = Company.find(@test_question.company_id)
+			method_variable = assigns(:company)
+			expect(method_variable).to eq(local_company)
 		end
-
-		it 'tested in new @Company' do
-			@test_company = @test_companies.find(@test_question_company.id)
-			get :new
-				@company = assigns(:company)
-				expect(@company).to eq(@test_company)
-		end
+		
 	end
 
-	describe 'Acess instance variable in the create' do
-		it 'testing create new question'do
-			expect(post :create,{:question =>  {:title => 'testando', :company_id => @test_company.id,
-					:option_attributes => [:title => @option.title, :question_id => @question.id]}}).to redirect_to('/questions/#{@question.id}')
-		end				
+	describe 'redirect show' do
+		before('@questions') do
+			@question_test = Question.create(title: 'teste')
+									
+		end
+
+		it 'show a question' do
+			expect(get :show, {id: @question_test.id})
+		end
+	end	
+	
+	describe 'results question' do
+		before('results') do
+			@test_company = Company.create(name: 'test0')
+			@test_question = Question.create(:title => 'qual time vc torce', :company_id => @test_company.id)
+			@option = Option.create(:title => 'santos', question_id: @test_question.id)	
+    		@votes = Vote.create(:question_id => @test_question.id, :option_id => @option.id)
+    
+		end
+		
+		it 'results find question' do
+			
+			get :results, {:id => @test_question.id}
+			@question = assigns(:question)
+			expect(@question).to eq(@test_question)
+		end	
+
+		it 'results option' do
+			get :results, {:id => @test_question.id}
+			@option_method = assigns(:options)
+			expect(@option_method).to eq(@test_question.option)
+		end	
+
+		it 'results votes' do
+			get :results, {:id => @test_question.id}
+			@votes_method = assigns(:votes)
+			expect(@votes_method).to eq(@test_question.votes)
+		end							
 	end
+
 end
 
 

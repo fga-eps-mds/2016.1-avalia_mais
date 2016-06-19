@@ -80,8 +80,8 @@ Rails.application.routes.draw do
   post '/comment_denunciation_create' => 'denunciations#create_for_comment', :as => 'create_comment_denunciation'
 
   #questions
-  #get '/questions/new', controller: 'questions', action: 'new', :as => 'questions'
-  post'/questions/new'      => 'questions#create', :as => 'create_questions'
+  get '/questions/create'   =>  'questions#create', :as => 'create_questions'
+  post'/questions/new'      => 'questions#new', :as => 'new_questions'
   #get '/questions/:id'      => 'questions#show', :as => 'questions_show'
   get '/questions/:id/results/' => 'questions#results',  :as => 'results_questions'
 
