@@ -55,7 +55,6 @@ class TopicsController < ApplicationController
 	end
 
 	def current_user_topic_denunciation
-		debugger
 		denunciation = nil
 		@topic = Topic.find(params[:id])
 		@topic.denunciations.each do |d|
