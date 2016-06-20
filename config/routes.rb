@@ -98,7 +98,6 @@ Rails.application.routes.draw do
   #votes
   get '/votes' => 'votes#update', action: 'update', :as => 'update_vote'
   put '/votes' => 'votes#update'
-  get '/votes/results' => 'votes#results', action: 'questions', :as => 'results_votes'
 
   #company_denunciation
   post '/company_denunciation_create' => 'company_denunciations#create', :as => 'create_company_denunciation'
