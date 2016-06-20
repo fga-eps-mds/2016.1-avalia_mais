@@ -24,6 +24,32 @@ RSpec.describe CompaniesController, type: :controller do
 			@user = User.create(name: 'robot', email: 'robot@bot.com', gender: 'm', password: 'pass', password_confirmation: 'pass', login: 'robot', dateBirthday: "1990-05-10", active: true)
 		end
 
+		it 'should call new' do
+			get :new
+			expect(assigns(:company).valid?).to be(false)
+		end
+
+		it 'should create a new company' do
+			before_create = Company.all.count
+			segment = Segment.create(name: 'Segment')
+			uf = Uf.create(name: 'UF')
+
+			post :create, {company:{name: 'Test', segment_id: segment.id, uf_id: uf.id}}
+			after_create = Company.all.count
+
+			expect(after_create).to be > before_create
+		end
+
+		it 'should fail creating a invalid new company' do
+			before_create = Company.all.count
+
+			post :create, {company:{name: nil, segment_id: nil, uf_id: nil}}
+			after_create = Company.all.count
+
+			expect(after_create).to eql(before_create)
+		end
+
+
 		it 'show a company' do
 			expect(get :show, {id: @company.id})
 			expect(@company.rate).to eq(3)
@@ -46,6 +72,10 @@ RSpec.describe CompaniesController, type: :controller do
 			local_company = Company.create(name: 'error to update')
 			post :update, company: {name: 'error to update', id: @company.id}
 			expect(flash[:notice]).to eq("Erro ao atualizar o atributo!")
+		end
+
+		after(:all) do
+			Rails.application.reload_routes!
 		end
 	end
 end

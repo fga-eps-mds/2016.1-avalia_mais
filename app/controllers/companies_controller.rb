@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
 
-	before_filter :authorize, only: [:create, :new]
+	# before_filter :authorize, only: [:create, :new]
 
 	def new
 		@company = Company.new()
