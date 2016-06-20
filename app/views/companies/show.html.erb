@@ -145,7 +145,7 @@
    <div id="check-response">
           <div id="confirmation-response">
 
-              <% list_topics.each do |topic| %>
+              <% @company.topics.each do |topic| %>
               <topicStyle>
                 <%= link_to topic.title, topic%>
                 </topicStyle>
@@ -220,7 +220,7 @@
   			<%end%>
   			<br><br>
         <div id="list-questions">
-         	<% list_questions.each do |questions| %>
+         	<% @company.questions.each do |questions| %>
             	<topicStyle>
                 	<%= link_to questions.title, questions%>
                 </topicStyle>
