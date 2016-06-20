@@ -22,3 +22,5 @@ Gemfile.lock
 
 # Ignore Mac OS folder configuration file
 .DS_Store
+
+.byebug_history

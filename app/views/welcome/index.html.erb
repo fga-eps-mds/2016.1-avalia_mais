@@ -27,7 +27,7 @@
           <% if logged_in? %>
             <li><a href="#" id="welcome-user">Bem Vindo, <%= current_user.name.split(" ")[0] %></a> 
               <ul>
-                <% if user_admin? %>
+                <% if current_user.admin %>
                 <li>
                   <%= link_to "Área de gerenciamento", management_attach_path %>
                 </li>

@@ -1,4 +1,4 @@
-<% if user_admin? %>
+<% if user.admin %>
 
 	<%= render "navbar/navbar" %>
 
@@ -18,6 +18,6 @@
 
 <% else %>
 
-	<%= controller.redirect_not_admin %>
+	<%= redirect_to home_path %>
 	
 <%end%>
