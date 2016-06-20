@@ -1,9 +1,5 @@
 module CompaniesHelper
 
-	def validated?
-		!@company.authenticated == true
-	end
-
 	def current_user_company_denunciation(company)
 		company_denunciation = nil
 		CompanyDenunciation.all.each do |d|
@@ -14,10 +10,6 @@ module CompaniesHelper
 		end
 
 		return company_denunciation
-	end
-
-	def denunciation_count(company)
-		return CompanyDenunciation.where(company_id: company.id).count
 	end
 
 end
