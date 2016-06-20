@@ -15,7 +15,7 @@ RSpec.describe QuestionsController, type: :controller do
 
 	end
 
-	describe 'Acess instance variable in the new' do
+	describe 'Acess instance variable' do
 		before('@questions') do
 			@test_companies = [Company.create(name: 'test1'),
 								Company.create(name: 'test2')]	
@@ -24,11 +24,19 @@ RSpec.describe QuestionsController, type: :controller do
 			@option = Option.create(:title => 'santos', question_id: @test_question.id)	
 									
 		end 
+
 		it 'should be redirected to edit page' do
 			post :new, :question => {:company_id => @test_question.company_id}
 			local_company = Company.find(@test_question.company_id)
 			method_variable = assigns(:company)
 			expect(method_variable).to eq(local_company)
+		end
+
+		it 'should create a question' do
+			count_before = Question.all.count
+			post :create, {question: {title: "Title", company_id: @test_question.company_id}}
+			count_after = Question.all.count
+			expect(count_after).to be > count_before
 		end
 		
 	end

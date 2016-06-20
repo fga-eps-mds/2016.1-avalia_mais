@@ -10,7 +10,6 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     
     if @question.save! 
-     # redirect_to "/questions/#{@question.id}" 
      redirect_to @question
     end
   end
