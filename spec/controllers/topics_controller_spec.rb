@@ -44,5 +44,16 @@ RSpec.describe TopicsController, type: :controller do
 
 		end
 
+		it 'shoud return topic denunciated by user' do
+			:current_user_topic_denunciation
+		end
+
+		it 'should return comment denunciated by user' do
+			:current_user_comment_denunciation
+		end
+
+		after :all do
+		 Rails.application.reload_routes!
+		end
 	end
 end

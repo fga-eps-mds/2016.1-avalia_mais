@@ -1,29 +1,5 @@
 module TopicsHelper
 
-	def current_user_topic_denunciation
-		denunciation = nil
-		@topic = Topic.find(params[:id])
-		@topic.denunciations.each do |d|
-			if d.user == current_user
-				denunciation = d
-				break
-			end
-		end
-
-		return denunciation
-	end
-
-	def current_user_comment_denunciation(comment_id)
-		denunciation = nil
-		comment = Comment.find(comment_id)
-		comment.denunciations.each do |d|
-			if d.user == current_user
-				denunciation = d
-				break
-			end
-		end
-
-		return denunciation
-	end
+	# do not erase this helper
 
 end
