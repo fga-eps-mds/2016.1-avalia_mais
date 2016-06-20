@@ -9,13 +9,9 @@ class VotesController < ApplicationController
     end 
   end
 
-  def results
-    @votes = Vote.all
-  end 
-
   private
 
-  def vote_params
-    params[:vote].permit(:question_id, :option_id)
-  end
+    def vote_params
+      params[:vote].permit(:question_id, :option_id)
+    end
 end

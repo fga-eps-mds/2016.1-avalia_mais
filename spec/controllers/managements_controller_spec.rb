@@ -4,7 +4,9 @@ RSpec.describe ManagementsController, type: :controller do
 	describe 'attach' do
 		before(:each) do
 			@user = User.create(name: 'robot', email: 'robot@bot.com', gender: 'm', password: 'pass', password_confirmation: 'pass', login: 'robot', dateBirthday: "1990-05-10", active: true)
+			@user2 = User.create(name: 'robots', email: 'robots@bot.com', gender: 'm', password: 'pass', password_confirmation: 'pass', login: 'robots', dateBirthday: "1990-05-10", active: true)
 			@attachs = [Attach.create(cnpj: "123", user: @user), Attach.create(cnpj: "456", user: @user)]
+			@company = Company.create(name: 'company test')
 		end
 
 		context 'test routes for attachs' do
@@ -21,6 +23,14 @@ RSpec.describe ManagementsController, type: :controller do
 			method_attachs = assigns(:attaches).to_a
 			expect(method_attachs).to eq(@attachs)
  		end
+
+ 		it 'should be order by id' do
+			denunciation = [CompanyDenunciation.create(user_id: @user.id, company_id: @company.id), CompanyDenunciation.create(user_id: @user2.id, company_id: @company.id)]			
+			company_denunciations = CompanyDenunciation.all.order(:id)
+			get :company_denunciations
+			method_variable = assigns(:denunciations)
+			expect(method_variable).to eq(company_denunciations)
+		end
 
  		it 'should order topics by denunciations count' do
  			second_user = User.create(name: 'second', email: 'second@bot.com', gender: 'm', password: 'pass', password_confirmation: 'pass', login: 'robot', dateBirthday: "1990-05-10", active: true)
