@@ -6,7 +6,7 @@
 	<%= image_tag(@company.logo.url(:default), :width => "125", :height => "125", :id => "image-company") %>
 <%end%>
 
-<% if @company.authenticated != true %>
+<% if !@company.authenticated %>
 <%= image_tag("no_verified.png", :width => "40", :height => "40", :id => "image-verified") %>
 <%else%>
 <%= image_tag("verified.png", :width => "40", :height => "40", :id => "image-verified") %>
@@ -32,7 +32,7 @@
 <%end%>
 
 <%if logged_in? %> 
-  <% if validated? %>
+  <% if !@company.authenticated %>
     <div id= "attach">
         <p><%= link_to "Solicitar Vínculo", new_attach_path(:company_id => @company.id), class: "btn btn-attach", id: "btn-vinculo" %> </p>
     	<%if current_user.id == @company.user_id%>
@@ -66,7 +66,7 @@
 <% else %>
 <% end %>
 
-<p id="company-denunciation-count">Total de denúncias: <%= denunciation_count(@company) %></p>
+<p id="company-denunciation-count">Total de denúncias: <%= CompanyDenunciation.where(company_id: @company.id).count %></p>
 
 <div id="name_segment">
 	<h2><%= @company.segment.name %></h2>

@@ -6,6 +6,7 @@ class Company < ActiveRecord::Base
     belongs_to :user
     has_many :topics
     has_many :attaches
+    has_many :company_denunciations
 
     #validations to register a company
     #image logo

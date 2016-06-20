@@ -30,7 +30,7 @@
           <% if logged_in? %>
             <li><a href="#">Bem Vindo, <%= current_user.name.split(" ")[0] %></a> 
               <ul>
-                <% if user.admin %>
+                <% if current_user.admin %>
                 <li>
                   <%= link_to "Área de gerenciamento", management_attach_path %>
                 </li>
