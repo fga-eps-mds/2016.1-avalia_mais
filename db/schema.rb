@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 20160613121833) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "companies", force: :cascade do |t|
+    t.float    "response_time",     limit: 24
+    t.float    "rate",              limit: 24
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "name",              limit: 255
@@ -57,11 +59,9 @@ ActiveRecord::Schema.define(version: 20160613121833) do
     t.integer  "logo_file_size",    limit: 4
     t.datetime "logo_updated_at"
     t.integer  "uf_id",             limit: 4
-    t.integer  "company_id",        limit: 4
     t.integer  "user_id",           limit: 4
   end
 
-  add_index "companies", ["company_id"], name: "index_companies_on_company_id", using: :btree
   add_index "companies", ["segment_id"], name: "index_companies_on_segment_id", using: :btree
   add_index "companies", ["uf_id"], name: "index_companies_on_uf_id", using: :btree
   add_index "companies", ["user_id"], name: "index_companies_on_user_id", using: :btree
@@ -187,13 +187,12 @@ ActiveRecord::Schema.define(version: 20160613121833) do
   add_foreign_key "comments", "denunciations"
   add_foreign_key "comments", "topics"
   add_foreign_key "comments", "users"
-  add_foreign_key "companies", "companies"
   add_foreign_key "companies", "segments"
   add_foreign_key "companies", "ufs"
   add_foreign_key "companies", "users"
-  add_foreign_key "denunciations", "comments"
   add_foreign_key "company_denunciations", "companies"
   add_foreign_key "company_denunciations", "users"
+  add_foreign_key "denunciations", "comments"
   add_foreign_key "denunciations", "topics"
   add_foreign_key "denunciations", "users"
   add_foreign_key "evaluations", "companies"
