@@ -87,14 +87,6 @@ class CompaniesController < ApplicationController
 	def search
 		@search_param = params[:current_search][:search]
   		@company = Company.where("name LIKE :search", :search => "%#{params[:current_search][:search]}%")
-  		render "search"
-  		
-	end
-
-	def search_nav_bar
-		@search_param
-		@company = Company.where("name LIKE :nav_search", :nav_search => "%#{params[:new_search][:nav_search]}%")
-  		render "search"
 	end
 
 	def company_params

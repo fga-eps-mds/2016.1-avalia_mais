@@ -74,6 +74,13 @@ RSpec.describe CompaniesController, type: :controller do
 			expect(flash[:notice]).to eq("Erro ao atualizar o atributo!")
 		end
 
+		it 'should search a company' do
+			companies = [Company.create(name: 'test01'),Company.create(name: 'test02'),Company.create(name: 'test03')]
+			post :search, current_search: {search: 'test'}
+			method_variable = assigns(:company)
+			expect(method_variable).to eq(companies)
+		end
+
 		after(:all) do
 			Rails.application.reload_routes!
 		end
