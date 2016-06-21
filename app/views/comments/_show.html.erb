@@ -32,7 +32,7 @@
 									<%= f.hidden_field :topic_id, :value => @topic.id %>
 									<%= f.hidden_field :comment_id, :value => comment.id %>
 									<%= f.hidden_field :user_id, :value => current_user.id %>
-									<%= image_submit_tag("denunciation1.png", id: "denounce-comment"+comment.id.to_s, title: "Clique aqui para denuncia esse tópico", data: { confirm: "Tem certeza que deseja denunciar este comentário?" }) %>
+									<%= image_submit_tag("denunciation1.png", id: "denounce-comment"+comment.id.to_s, title: "Clique aqui para denuncia esse comentário", data: { confirm: "Tem certeza que deseja denunciar este comentário?" }) %>
 									<p id="p-denunciation1">Denunciar</p>
 								<% end %>
 							<% else %>

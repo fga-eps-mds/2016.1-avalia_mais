@@ -1,27 +1,26 @@
 <%= render "navbar/navbar" %>
 </br></br></br></br></br>
 <div class = "form_attach">
-	<topicStyle> <%= image_tag "clock_topic.png", size: "20x20" %>
-		 Tópico criado em <%= @topic.create_date.strftime("%d/%m/%Y") %>
-	</topicStyle>
-	</br></br>
-	<topicStyle>
-	  <strong>Autor:</strong>
-		  <%= @topic.user.name %> </br></br>
-	  <strong>Título:</strong>
-	  <%= @topic.title %>
 
-	</topicStyle> </br></br>
-	<topicStyle>
-		<strong>Conteúdo:</strong>
-		<%= @topic.body %>
-		</br>
+		<p class="topic-title"><%= @topic.title %><p></br>
+		<div class="description-topic">
+			<p class="topic-username"><%= image_tag "file_topic.png"%> por: <b><%= @topic.user.name %></b></p>		
+			<p class="topic-date"><%= image_tag "clock_topic.png", size: "15x15" %> <%= @topic.create_date.strftime("%d/%m/%Y, %T")  %></p>
+		</div>
 
-	</topicStyle>
+	</br></br></br><hr style="width:98%"></br></br>
+
+	<div class="topic-body">
+		<p><%= @topic.body %><p>		
+	</div></br>
+
 	<% if @topic.user == current_user %>
-		<li><%= link_to "Editar", edit_topic_path(@topic),  class: "btn btn-edit", id: "btn-edit-topic"%></li>
-		<li><%= link_to "Excluir", @topic, data: { confirm: "Tem certeza que deseja excluir este tópico?" }, class: "btn btn-delete", id: "btn-delete-topic", method: :delete %></li>
+		<div class="position-topic-button">
+			<%= link_to "Editar", edit_topic_path(@topic),  class: "btn btn-edit", id: "btn-edit-topic"%>
+			<%= link_to "Excluir", @topic, data: { confirm: "Tem certeza que deseja excluir este tópico?" }, class: "btn btn-delete", id: "btn-delete-topic", method: :delete %>
+		</div>
 	<% end %>
+
 	<% if current_user_topic_denunciation == nil %>
 		<%= form_for(:session, url: create_topic_denunciation_path) do |f| %>
 		<%= f.hidden_field :topic_id, :value => @topic.id %>
@@ -37,14 +36,13 @@
 		<p id="p-denunciation2" style="color:#4FBFD4">Retirar Denúncia</p>
 		<% end %>
 	<% end %>
-	<p id="denunciation-count">Numero de denúncias: <%= @topic.denunciations.count %></p>
+
+	
+	<section class="comment-section">
+		<%= render 'comments/show'%>
+	</section>
 
 </div>
-<topicStyle>
-Comentários:
-</topicStyle>
-<section class="comment-section">
-	<%= render 'comments/show'%>
-</section>
-</div>
+
+<b><p id="denunciation-count"><%= @topic.denunciations.count %></p></b>
 
