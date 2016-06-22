@@ -113,7 +113,8 @@
 							Não  <input type="radio" name="confirm-response" value="no" class="response-radio" id="decline-radio" checked>
 						<%end%>
 					</form>
-				</div><br /><br /><br /><br />
+				</div>
+				<div class="evaluations-time">
 				<span id="message-evaluation">
 					Tempo de resposta da empresa:
 				</span>
@@ -131,19 +132,21 @@
 					<%end%>
 					<%= f.submit 'Submeter', :class => "btn btn-primary btn-sm btn-submit"%>
 				<%end%>
-				</br></br></br>
-				<span id="message-evaluation">
-					Avaliação pessoal:
-				</span>
-				<% for rates in 1..5 do %>
-					<%= form_for(:evaluations, url: rate_path) do |f|%>
-						<%= f.hidden_field :grade, :value => rates%>
-						<%= f.hidden_field :user_id, :value => current_user.id%>
-						<%= f.hidden_field :company_id, :value => @company.id%>
-						<%= f.submit 'Rates', :type => :image, :src => image_path("starpng.png"), :class => "star", :id=> 'star-'+rates.to_s%>
+				</div>
+				<div class="evaluation-time">
+					<span id="message-evaluation">
+						Avaliação pessoal:
+					</span>
+					<% for rates in 1..5 do %>
+						<%= form_for(:evaluations, url: rate_path) do |f|%>
+							<%= f.hidden_field :grade, :value => rates%>
+							<%= f.hidden_field :user_id, :value => current_user.id%>
+							<%= f.hidden_field :company_id, :value => @company.id%>
+							<%= f.submit 'Rates', :type => :image, :src => image_path("starpng.png"), :class => "star", :id=> 'star-'+rates.to_s%>
+						<%end%>
 					<%end%>
-				<%end%>
-			</div>
+					</div>
+				</div>
 		<%else%>
 			<p>Para avaliar uma empresa é necessário realizar login.</p>
 		<%end%>
@@ -192,36 +195,38 @@
 	      	<%end%>
 	    </div>
     <% @company.faq.each do |faqs| %>
-    <div class="well col-sm-12 col-md-8 col-md-offset-2">
-        <div class="row user-row">
-          <div class="col-md-10 title-segment">
-           <strong><%=faqs.question%></strong><br>
-          </div>
-          <div class="col-md-2 dropdown-user" data-for=".cyruxx-<%=faqs.id%>" id="<%=faqs.id%>">
-            (<span style="color: #FF4040">resposta</span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down ") %>
-          </div>
-        </div>
-        <div class="row user-infos cyruxx-<%=faqs.id%>">
-          <div class="col-sm-10 col-md-10 col-md-offset-1">
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title">Resposta</h3>
-              </div>
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-10">
-                      <span><%=faqs.answer%></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div id="faq-body">
+	    <div class="well col-sm-12 col-md-8">
+	        <div class="row user-row">
+	          <div class="col-md-10 title-segment">
+	           <strong><%=faqs.question%></strong><br>
+	          </div>
+	          <div class="col-md-2 dropdown-user" data-for=".cyruxx-<%=faqs.id%>" id="<%=faqs.id%>">
+	            (<span style="color: #FF4040">resposta</span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down ") %>
+	          </div>
+	        </div>
+	        <div class="row user-infos cyruxx-<%=faqs.id%>">
+	          <div class="col-sm-10 col-md-10 col-md-offset-1">
+	            <div class="panel panel-primary">
+	              <div class="panel-heading">
+	                <h3 class="panel-title">Resposta</h3>
+	              </div>
+	              <div class="panel-body">
+	                <div class="row">
+	                  <div class="col-md-10">
+	                      <span><%=faqs.answer%></span>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
       </div>
  <% end %>
 </section>
 <section id="enquete">
-	<div id="check-response">
+	<div id="enquete-body">
 			<%if logged_in?%>
 				<%= form_for(:question, url: new_questions_path) do |form|%>
        				 <%= form.hidden_field :company_id, value: @company.id%>

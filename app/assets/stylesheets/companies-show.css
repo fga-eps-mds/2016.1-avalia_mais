@@ -105,8 +105,8 @@ hr {
   display: none;
   position: absolute;
   width: 80%;
-  left: 10%;
-   margin: -300px auto;
+  left: 30%;
+  margin-top: -450px;
   text-align: justify;
 }
 section#enquete{
@@ -117,13 +117,7 @@ section#enquete{
   
 
 }
-#check-response{
-  position: relative;
-  top:300px;
-  text-align: left;
-  left: 20%;
-  float: left;
-}
+
 #list-questions{
   float: left;
 }
@@ -235,10 +229,12 @@ section#enquete{
 }
 
 section p {
-  margin-top: -260px;
+  margin-top: -350px;
   font-family: AvenirNext-Regular;
   font-size: 16px;
   color: #848484;
+  text-align: center;
+
 }
 
 #image-verified {
@@ -327,12 +323,20 @@ section p {
   }
   .faq-questions{
     display: none;
+    float: center;
   }
 .actions{
   text-align: center;
 }
 .for-questions-faq{
   display: block;
+}
+#enquete-body{
+  position: relative;
+  top:300px;
+  text-align: left;
+  left: 30%;
+  float: left;
 }
 
 
