@@ -24,28 +24,6 @@
 					<strong class="pull-left primary-font"><%= User.find(comment.user_id).name%>:</strong>
 					<small class="pull-right text-muted">
 
-					<div>
-								Número de denúncias: <%= comment.denunciations.count %>
-
-							<% if current_user_comment_denunciation(comment.id) == nil %>
-								<%= form_for(:session, url: create_comment_denunciation_path) do |f| %>
-									<%= f.hidden_field :topic_id, :value => @topic.id %>
-									<%= f.hidden_field :comment_id, :value => comment.id %>
-									<%= f.hidden_field :user_id, :value => current_user.id %>
-									<%= image_submit_tag("denunciation1.png", id: "denounce-comment"+comment.id.to_s, title: "Clique aqui para denuncia esse comentário", data: { confirm: "Tem certeza que deseja denunciar este comentário?" }) %>
-									<p id="p-denunciation1">Denunciar</p>
-								<% end %>
-							<% else %>
-								<%= form_for(:session, url: destroy_topic_denunciation_path) do |f| %>
-									<%= f.hidden_field :denunciation_id, :value =>  current_user_comment_denunciation(comment.id).id %>
-									<%= f.hidden_field :topic_id, :value => @topic.id %>
-									<%= image_submit_tag("denunciation2.png", id: "destroy_denounce-comment"+comment.id.to_s) %>
-									<p id="p-denunciation2" style="color:#4FBFD4">Retirar Denúncia</p>
-								<% end %>
-							<% end %>
-						</div>
-
-
 					<%if comment.user_id == current_user.id%>
 					<div id="span-divs">
 						<div class="dropdown-comment edit-<%= current_user.name%>-<%= comment.id%>" data-for=".cyruxx-<%= comment.id%>" 	id="<%= comment.id%>">
@@ -55,12 +33,31 @@
 							
 							<%= link_to image_tag("remove_icon.png", size: "12x12", title: "Deletar comentário"), delete_comment_path(comment.id), data: { confirm: "Tem certeza que deseja excluir o comentário?"}, :class=> 'dropdown-comment delete-'+current_user.name.split(" ")[0], :id => comment.id%>
 						</div>
+						
+						<div>
+							<% if current_user_comment_denunciation(comment.id) == nil %>
+								<%= form_for(:session, url: create_comment_denunciation_path) do |f| %>
+									<%= f.hidden_field :topic_id, :value => @topic.id %>
+									<%= f.hidden_field :comment_id, :value => comment.id %>
+									<%= f.hidden_field :user_id, :value => current_user.id %>
+	     							&nbsp;
+									<%= image_submit_tag("denunciation1.png", width: "12.5px", id: " denounce-comment"+comment.id.to_s, title: "Clique aqui para denuncia esse comentário", data: { confirm: "Tem certeza que deseja denunciar este comentário?" }) %>
+								<% end %>
+							<% else %>
+								<%= form_for(:session, url: destroy_topic_denunciation_path) do |f| %>
+									<%= f.hidden_field :denunciation_id, :value =>  current_user_comment_denunciation(comment.id).id %>
+									<%= f.hidden_field :topic_id, :value => @topic.id %>
+									&nbsp;
+									<%= image_submit_tag("denunciation2.png", width: "12.5px",id: "destroy_denounce-comment"+comment.id.to_s, title: "Clique aqui para retirar a denúncia") %>
+								<% end %>
+							<% end %>
+						</div>
 					</div>
 					<%end%>
 					</small>
 					</br>
 					<li class="ui-state-default-comment">
-						<%= comment.description%>
+						</br><%= comment.description%>
 						</br>
 						<h5><%= comment.created_at.to_formatted_s(:long)%></h5>
 						<div class="row user-infos cyruxx-<%=comment.id%>">
@@ -76,8 +73,8 @@
 					</li>
 					<hr id="line-divisor">
 					<% if commentsQuantity >= 6%>
-				</div>
-				<%end%>
+						</div>
+					<%end%>
 				<% commentsQuantity = commentsQuantity + 1%>
 				<%end%>
 				<%if @comments.size > 6%>
