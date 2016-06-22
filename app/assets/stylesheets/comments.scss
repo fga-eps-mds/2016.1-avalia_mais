@@ -3,6 +3,16 @@
     left: 25%;
 }
 
+.comment-section{
+    position: relative;
+    width: 100%;
+    margin-left: 10%;
+}
+
+.comments-position {
+    margin-left: 120px;
+}
+
 li.ui-state-default-comment{
     background:#fff0;
     border:none;
@@ -85,4 +95,9 @@ ul#sortable{
 }
 .user-infos{
     text-align: center;
+}
+
+#blabla {
+    position: absolute;
+    margin-bottom: 5px;
 }
