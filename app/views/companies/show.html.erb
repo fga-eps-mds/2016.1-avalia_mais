@@ -17,13 +17,13 @@
 </div>
 
 <div id="info_empresa">
-	<%= @company.telephone%></br>
-	<%= @company.email %></br>
-</div></br>
+	<%= @company.telephone%><br />
+	<%= @company.email %><br />
+</div><br />
 
 <% if @company.rate.present? %>
   <div id="general-rate">
-    <h4>Nota geral da Empresa</h4> </br>
+    <h4>Nota geral da Empresa</h4> <br />
     <h4 id="value-rate"><%= number_with_precision(@total_evaluations, :precision => 2)  %></h4>
   </div>
   <div id="image-general-rate">
@@ -43,30 +43,40 @@
     	<%end%>
     </div>
   <%end%>
-<%end%>
+  <%end%>
 
 <% if logged_in? && current_user_company_denunciation(@company) == nil %>
-	<%= form_for(:session, url: create_company_denunciation_path) do |f| %>
-		<%= f.hidden_field :company_id, :value => @company.id %>
-		<%= f.hidden_field :user_id, :value => current_user.id %>
-		<%= link_to image_tag("denunciation1.png", id: "button-company-denunciation1", title: "Clique aqui para denunciar esta Empresa."), remote: true %>
-		<div id="description-denunciation">
-			<%=f.text_area :description%>
-			<%= f.submit "Confirmar denuncia"%>
-		</div>
-		<p id="p-company-denunciation1">Denunciar</p>
-	<% end %>
-<% elsif logged_in? %>
-	<%= form_for(:session, url: destroy_company_denunciation_path) do |f| %>
-		<%= f.hidden_field :company_denunciation_id, :value =>  current_user_company_denunciation(@company).id %>
-		<%= f.hidden_field :company_id, :value => @company.id %>
-		<%=image_submit_tag("denunciation2.png", id: "button-company-denunciation2", title: "Clique aqui para retirar sua denuncia sobre Empresa.", data: { confirm: "Tem certeza que deseja retirar sua denúncia sobre esta Empresa?"})%>
-		<p id="p-company-denunciation2" style="color:#4FBFD4">Retirar Denúncia</p>
-	<% end %>
-<% else %>
+  <div class="click-denuciatios">
+  <%= link_to image_tag("denunciation1.png", id: "button-company-denunciation1", title: "Clique aqui para denunciar esta Empresa."), remote: true %>
+  <p id="p-company-denunciation1">Denunciar</p>
+  </div>
+ <% elsif logged_in? %>
+ 	 <div class="click-denuciatios">
+			<%= form_for(:session, url: destroy_company_denunciation_path) do |f| %>
+			<%= f.hidden_field :company_denunciation_id, :value =>  current_user_company_denunciation(@company).id %>
+			<%= f.hidden_field :company_id, :value => @company.id %>
+			<%=image_submit_tag("denunciation2.png", id: "button-company-denunciation2", title: "Clique aqui para retirar sua denuncia sobre Empresa.", data: { confirm: "Tem certeza que deseja retirar sua denúncia sobre esta Empresa?"})%>
+			<p id="p-company-denunciation2" style="color:#4FBFD4">Retirar Denúncia</p>
+			<%end%>
+	</div>
 <% end %>
+<p id="company-denunciation-count">Total de denúncias: <%= CompanyDenunciation.where(company_id: @company.id).count %></p>	
+<div class="denuciations" id="denuciations">
+	<% if logged_in? && current_user_company_denunciation(@company) == nil %>
 
-<p id="company-denunciation-count">Total de denúncias: <%= CompanyDenunciation.where(company_id: @company.id).count %></p>
+		<%= form_for(:session, url: create_company_denunciation_path) do |f| %>
+			<%= f.hidden_field :company_id, :value => @company.id %>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<div id="description-denunciation">
+				<label for"description">Justificativa
+				<%=f.text_area :description%>
+				</label>
+				<%= f.submit "Confirmar denuncia", class: "btn btn-primary"%>
+
+			</div>
+		<% end %>
+	<%end%>	
+</div>
 
 <div id="name_segment">
 	<h2><%= @company.segment.name %></h2>
@@ -103,7 +113,7 @@
 							Não  <input type="radio" name="confirm-response" value="no" class="response-radio" id="decline-radio" checked>
 						<%end%>
 					</form>
-				</div></br></br></br></br>
+				</div><br /><br /><br /><br />
 				<span id="message-evaluation">
 					Tempo de resposta da empresa:
 				</span>
@@ -274,6 +284,7 @@
 		$("#forum").hide("slow");
 		$("#faq").hide("slow");
 		$("#enquete").hide("slow");
+		$("#denuciations").hide("slow");
 		$("#avaliacao").show("slow");
 	});
 	$(".adicionar").click(function(){
@@ -284,6 +295,7 @@
 		$("#forum").hide("slow");
 		$("#faq").hide("slow");
 		$("#enquete").hide("slow");
+		$("#denuciations").hide("slow");
 		$("#description").show("slow");
 	});
 	$(".forum").click(function(){
@@ -291,6 +303,7 @@
 		$("#faq").hide("slow");
 		$("#description").hide("slow");
 		$("#enquete").hide("slow");
+		$("#denuciations").hide("slow");
 		$("#forum").show("slow");
 	});
 	$(".faq").click(function(){
@@ -298,6 +311,7 @@
 		$("#forum").hide("slow");
 		$("#description").hide("slow");
 		$("#enquete").hide("slow");
+		$("#denuciations").hide("slow");
 		$("#faq").show("slow");
 	});
 
@@ -306,7 +320,17 @@
 		$("#forum").hide("slow");
 		$("#faq").hide("slow");
 		$("#avaliacao").hide("slow");
+		$("#denuciations").hide("slow");
 		$("#enquete").show("slow");
+	});
+	$("#button-company-denunciation1").click(function(){
+		$("#description").hide("slow");
+		$("#forum").hide("slow");
+		$("#faq").hide("slow");
+		$("#avaliacao").hide("slow");
+		$("#enquete").hide("slow");
+		$("#denuciations").show("slow");
+		
 	});
 
 	$('.star').on('click', function(){

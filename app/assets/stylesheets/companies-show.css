@@ -22,7 +22,6 @@ table {
   width: 100%;
   text-align: right;
 }
-
 th{
   display: block;
   color:#0B213A;
@@ -335,4 +334,5 @@ section p {
 .for-questions-faq{
   display: block;
 }
+
 

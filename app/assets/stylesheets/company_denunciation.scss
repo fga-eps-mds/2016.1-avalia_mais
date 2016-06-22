@@ -1,4 +1,10 @@
-#button-company-denunciation1 {
+.click-denuciatios{
+	position: relative;
+	width: 40px;
+	height: 55px !important;
+	left: 10.5%;
+}
+#button-company-denunciation1{
 	position: relative;
 	left: 10.5%;
 	top: -430px;
@@ -11,9 +17,10 @@
 	position: relative;
 	left: 10%;
 	top: -430px;
+	height: 20px;
 }
 
-#button-company-denunciation2 {
+#button-company-denunciation2{
 	position: relative;
 	left: 10.5%;
 	top: -430px;
@@ -28,13 +35,24 @@
 }
 
 #company-denunciation-count {
+	position: absolute;
+	top: 55%;
+	width: 150px;
 	font-size: 14px;
 	margin-left: 7%;
 }
 
 #description-denunciation{
-	position: fixed;
+	position:absolute;
 	width: 30%;
 	display: none;
 	left: 8.5%;
+}
+.denuciations{
+	position: absolute;
+	left: 40%;
+	margin-top: -400px;
+}
+.denuciations label{
+	color:#ccc;
 }
