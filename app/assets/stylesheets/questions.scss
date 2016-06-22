@@ -41,7 +41,7 @@
     }
    /*segundo grafico */
     @import url(https://fonts.googleapis.com/css?family=Roboto);
-.container{
+.grafico-barras{
 	position: relative;
 	left: -10%;
 }
@@ -83,7 +83,6 @@
     background-color: #000;
     margin-top: -8px;
 }
-
 .bar-chart > .legend > .item.text-right:before {
     right: 0;
     left: auto;
