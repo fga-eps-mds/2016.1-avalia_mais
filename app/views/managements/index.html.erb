@@ -14,10 +14,10 @@
 		<section class="corpo-principal row">
 			<% if @attaches.blank? %>
 				<br />
-				<h3 style = "color: navy">Nenhum vínculo pendente.</h3>
+				<h3 style="color: navy" class="lista-vinculos-atual">Nenhum vínculo pendente.</h3>
 			<% else %>
 				<% @attaches.each do |a| %>
-				<h3 id="lista_vinculos"><%= link_to Company.find(a.company_id).name, a %></h3>
+				<h3 id="lista_vinculos" class="lista-vinculos-atual"><%= link_to Company.find(a.company_id).name, a %></h3>
 				 <%end%>
 			<%end%>
 		</section>
@@ -46,15 +46,15 @@
 			<section class="corpo-principal-segment row">
 				<section class="classification-grade">
 					<% if current_user.admin %>
-						<section id="body-show-attach">
-							<h1> Lista das Empresas denunciadas</h1>
-							<% if @denunciations.blank? %>
-								<br />
+						<section id="body-show-attaches">
+							<% if @denunciations.blank? %></br>
 								<h3 style = "color: navy">Nenhuma empresa denunciada.</h3>
 							<% else %>
+								<h1 class="lista-vinculos-atual"> Lista das Empresas denunciadas</h1>
+
 								<% @denunciations.each do |d| %>
 									<h3 id="lista_vinculos"><%= link_to Company.find(d.company_id).name, show_company_denunciation_path(d.id)%></h3>
-			 					<%end%>
+								 <%end%>
 							<%end%>
 						</section>
 					<% else %>
@@ -108,6 +108,7 @@ $("#company_denuciations").click(function(){
 	$("#grade-segment").removeClass("selecionado");
 	$(this).addClass("selecionado");
 $(".corpo-principal").hide("slow");
+$(".ranking-grade-segment").hide("slow");
 $(".company-denunciations-body").show("slow");
 });
 

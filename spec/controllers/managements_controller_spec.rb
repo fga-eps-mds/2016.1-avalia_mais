@@ -27,7 +27,7 @@ RSpec.describe ManagementsController, type: :controller do
  		it 'should be order by id' do
 			denunciation = [CompanyDenunciation.create(user_id: @user.id, company_id: @company.id), CompanyDenunciation.create(user_id: @user2.id, company_id: @company.id)]			
 			company_denunciations = CompanyDenunciation.all.order(:id)
-			get :company_denunciations
+			get :index
 			method_variable = assigns(:denunciations)
 			expect(method_variable).to eq(company_denunciations)
 		end
