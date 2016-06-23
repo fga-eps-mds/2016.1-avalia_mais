@@ -4,6 +4,7 @@ class CompaniesController < ApplicationController
 
 	def new
 		@company = Company.new()
+		redirect_to login_path, alert: "Para cadastrar uma empresa é preciso estar logado" if current_user.nil?
 	end
 
 	def switchTypeImage(total)

@@ -1,4 +1,4 @@
-Feature: Company evaluation
+	Feature: Company evaluation
 	To evaluate a company
 	As a user
 	I will log in, visit a company page and send my avaluation

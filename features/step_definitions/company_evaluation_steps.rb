@@ -38,7 +38,7 @@ Then (/^the page should give me a message "Avaliação realizada com sucesso!"/)
 end
 
 Then (/^the page should give me a message "Sua avaliação por tempo de resposta foi realizada com sucesso!"/) do
-	expect(page).to have_content("Sua avaliação por tempo de resposta foi realizada com sucesso!")
+	expect(page).to have_content("Avaliação por tempo de resposta alterada com sucesso!")
 end
 
 Then (/^the page should give me a message "Valor deve ser maior ou igual a 0"/) do
