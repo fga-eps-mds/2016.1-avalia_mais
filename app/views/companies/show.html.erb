@@ -156,23 +156,22 @@
 <section id="forum">
 
    <div id="check-response">
-          <div id="confirmation-response">
-
-              <% @company.topics.each do |topic| %>
-              <topicStyle>
-                <%= link_to topic.title, topic%>
-                </topicStyle>
-               </br>
-              <% end %> 
-               <%= hidden_field :company_id, :value => @company.id%>
-
-  <%if logged_in?%>
-    <p><%= link_to "Novo tópico", new_topic_path(:company_id => @company.id), class: "btn btn-primary" %> </p>
-
-  <%end%>
-          </div>
-        </div></br></br></br></br>
-
+        <div class="list-forum">
+        	<ul class="nav nav-list">
+        		<% @company.topics.each do |topic| %>
+            		<li><%= link_to topic.title, topic%></li>
+            <% end %> 
+            </ul>
+            <%= hidden_field :company_id, :value => @company.id%>
+        </div>
+      
+		<div class="">
+  			<%if logged_in?%>
+    			<p><%= link_to "Novo tópico", new_topic_path(:company_id => @company.id), class: "btn btn-primary" %> </p>
+  			<%end%>
+  		</div>	
+          
+    </div>
 </section>
 <section id="faq">
 		<div id="faq-create">
@@ -227,19 +226,19 @@
 </section>
 <section id="enquete">
 	<div id="enquete-body">
+		<div class="header-body-enquete">
 			<%if logged_in?%>
 				<%= form_for(:question, url: new_questions_path) do |form|%>
        				 <%= form.hidden_field :company_id, value: @company.id%>
         			<span><%= form.submit 'Criar enquete',class: "btn btn-attach", id: "btn-edit" %></span>
         		<%end%>
   			<%end%>
-  			<br><br>
+  		</div>	
         <div id="list-questions">
          	<% @company.questions.each do |questions| %>
-            	<topicStyle>
-                	<%= link_to questions.title, questions%>
-                </topicStyle>
-                <br>
+            	<ul class="nav nav-list">
+                	<li><%= link_to questions.title, questions%></li>
+                </ul>
 
             <% end %>
             <%= hidden_field :company_id, :value => @company.id%>

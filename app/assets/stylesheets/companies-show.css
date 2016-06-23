@@ -119,7 +119,19 @@ section#enquete{
 }
 
 #list-questions{
-  float: left;
+  position: absolute;
+  margin-top: -110%;
+  width: 100%;
+
+}
+#list-questions ul li{
+  list-style: none;
+    border: 2px solid #CCC;
+  border-radius: 7px;
+  margin-bottom: 5px;
+}
+.header-body-enquete{
+  position: absolute;
 }
 
 
@@ -229,11 +241,12 @@ section#enquete{
 }
 
 section p {
-  margin-top: -350px;
+  margin-top: -300px;
   font-family: AvenirNext-Regular;
   font-size: 16px;
   color: #848484;
   text-align: center;
+  margin-left: 78%;
 
 }
 
@@ -334,9 +347,22 @@ section p {
 #enquete-body{
   position: relative;
   top:300px;
+  width: 50%;
   text-align: left;
   left: 30%;
   float: left;
+}
+.list-forum{
+      float: right;
+    margin-top: -50%;
+    text-align: center;
+}
+.list-forum ul li{
+  border: 2px solid #CCC;
+  border-radius: 7px;
+  margin-bottom: 5px;
+
+
 }
 
 
