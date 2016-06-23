@@ -65,6 +65,7 @@ class UsersController < ApplicationController
  		user.comments.delete_all
  		user.attaches.delete_all
  		user.evaluations.delete_all
+ 		user.denunciations.delete_all
  		user.destroy
 	
 		redirect_to home_path
