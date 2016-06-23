@@ -1,0 +1,32 @@
+<% if current_user.admin %>
+
+  <%= render "navbar/navbar" %>
+
+  <div id="body-show-attach">
+  	
+  	<h1>Vínculo Solicitado</h1></br>
+
+  	<p><b>Nome do Empresário:</b> <%= User.find(@attach.user_id).name %></p>
+  	<p><b>Nome da Empresa:</b> <%= Company.find(@attach.company_id).name %></p>
+    	<p><b>Endereço:</b> <%= @attach.address %></p>
+    	<p><b>CNPJ:</b> <%= @attach.cnpj %></P>
+
+    	<% if @attach.photo_file_name != nil %>	
+    		<%= image_tag(@attach.photo, :id => "comprovante") %>
+    	<% else %>
+    		<p>Essa solicitação de vínculo não possui comprovante.</p>
+    	<% end %>
+
+   	</br></br>
+
+    	<div id="position_buttons">
+    		<%= link_to "Aprovar Vínculo", approve_path(@attach), class: "btn btn-success", id: "btn-vincular"%>
+    		<%= link_to "Rejeitar Vínculo", reject_path(@attach), class: "btn btn-danger", id: "btn-rejeitar"%>
+  		</br></br></br></br></br>
+  	</div>
+  </div>
+
+<% else %>
+  <%= redirect_to home_path %>
+
+<%end%>

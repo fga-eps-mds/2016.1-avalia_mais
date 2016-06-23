@@ -1,0 +1,24 @@
+<% if current_user.admin %>
+
+	<%= render "navbar/navbar" %>
+
+	<section id="body-show-attach">		
+
+		<% if @denunciations.blank? %>
+			</br>
+			<h3 style = "color: navy">Nenhuma empresa denunciada.</h3>
+		<% else %>
+			<h1> Lista das Empresas denunciadas</h1>
+
+			<% @denunciations.each do |d| %>
+				<h3 id="lista_vinculos"><%= link_to Company.find(d.company_id).name, show_company_denunciation_path(d.id)%></h3>
+			 <%end%>
+		<%end%>
+
+	</section>
+
+<% else %>
+
+	<%= redirect_to home_path %>
+	
+<%end%>

@@ -1,0 +1,204 @@
+<%= render "navbar/navbar" %>
+<section id="corpo-user">
+  	<h1>Perfil do <%=@company.name%></h1><br>
+  	<%= link_to 'Voltar para a página da empresa', @company, id: 'link-company-page'%>
+	<div id='logo-update'>
+	  	<% if @company.logo_file_name.blank? %>
+			<%= image_tag("default_company_logo.png", :width => "125", :height => "125", :id => "image-company-edit") %>
+		<%else%>
+			<%= image_tag(@company.logo.url(:default), :width => "125", :height => "125", :id => "image-company-edit") %>
+		<%end%>
+		<div id="update-logo">
+			<%= form_for(:company, url: update_company_path, id: 'file-field') do |f| %>             	 <%= f.hidden_field :id, value: @company.id%>
+				<label for="logo">Atualizar Logo
+					<%= f.file_field :logo, id: "btn-vinculo"%>
+				</label>
+				<div id="button-logo">
+					<td id="atualizar"><%= f.submit "carregar" %></td>
+				</div>
+		    <% end %>
+	    </div>
+	</div>
+	<section id="company-show-update">
+		<table class="table">
+	    	<tr class="editar-name">
+	      		<td class="attribute-name">Nome</td>
+	      		<td><%= @company.name %></td>
+	      		<td ><a href="javascript: void(0);" id="show-name">Editar</a></td>
+	    	</tr>
+	    	<tr id="nome-update" class="user-infos">
+	          	<%= form_for(:company, url: update_company_path)do |f| %>
+	          		<%= f.hidden_field :id, value: @company.id%>
+	             	<td class="form-update"></td>
+	            	<td class="form-update"><%= f.text_field :name, class: 'form-control', :id => "name"%></td>
+	            	<td id="atualizar"><%= f.submit "Atualizar" %></td>
+	             <% end %>
+	      	</tr>
+	    	<tr>
+	      		<td class="attribute-name">Categoria</td>
+	      		<td><%= @company.segment.name %></td>
+	       		<td class="no-editar">Editar</td>
+	    	</tr>
+	    	 <tr >
+   			 	<td class="attribute-name">UF</td>
+   			 	<%if @company.uf_id.nil? %>
+   			 		<td>Não informado</td>
+   			 	<%else%>	
+     				<% @uf = Uf.find(@company.uf_id)%>
+     				<td><%= @uf.name%></td>
+     			<%end%>	
+      			<td ><a href="javascript: void(0);" id="show-uf">Editar</a></td>
+    		</tr>
+    		<tr id="uf-update" class="user-infos">
+	          	<%= form_for(:company, url: update_company_path)do |f| %>
+	          		<%= f.hidden_field :id, value: @company.id%>
+	             	<td class="form-update"></td>
+	            	<td class="form-update"><%= f.select :uf_id, Uf.all.collect {|uf| [uf.name, uf.id]}, class: 'form-control', :id => "uf"%></td>
+	            	<td id="atualizar"><%= f.submit "Atualizar" %></td>
+	             <% end %>
+	      	</tr>
+	    	<tr class="editar-name">
+	      		<td class="attribute-name">Endereço</td>
+	      		<%if @company.address.nil? %>
+	      			<td>Não Cadastrado</td>
+	      		<%else%>		
+	      			<td><%= @company.address%></td>
+	      		<%end%>
+	      		<td ><a href="javascript: void(0);" id="show-address">Editar</a></td>
+	    	</tr>
+	    	<tr id="address-update" class="user-infos">
+	          	<%= form_for(:company, url: update_company_path)do |f| %>
+	          		<%= f.hidden_field :id, value: @company.id%>
+	             	<td class="form-update"></td>
+	            	<td class="form-update"><%= f.text_field :address, class: 'form-control', :id => "address"%></td>
+	            	<td id="atualizar"><%= f.submit "Atualizar" %></td>
+	             <% end %>
+	      	</tr>
+	   		<tr >
+	    	<td class="attribute-name">E-mail</td>
+	    		<%if @company.email.nil?%>
+	    			<td>Não Cadastrado</td>
+	    		<%else%>
+	     			<td><%= @company.email %></td>
+	     		<%end%>
+	      		<td ><a href="javascript: void(0);" id="show-email">Editar</a></td>
+	    	</tr>
+	    	<tr id="email-update">
+	      		<%= form_for(:company, url: update_company_path)do |f| %>
+	             	<%= f.hidden_field :id, value: @company.id%>
+	             	<td class="form-update"></td>
+	            	<td class="form-update"><%= f.text_field :email, class: 'form-control', :id => "email"%></td>
+	            	<td id="atualizar"><%= f.submit "Atualizar" %></td>
+	             <% end %>
+	    	</tr>
+	    	<tr>
+	    		<td class="attribute-name">Telefone</td>
+	    		<%if @company.telephone.nil?%>
+	    			<td>Não Cadastrado</td>
+	    		<%else%>
+	      			<td><%= @company.telephone %></td>
+	      		<%end%>	
+	       		<td ><a href="javascript: void(0);" id="show-telephone">Editar</a></td>
+	    	</tr>
+	     	<tr id="telephone-update">
+	          	<%= form_for(:company, url: update_company_path)do |f| %>
+	             	<%= f.hidden_field :id, value: @company.id%>
+	             	<td class="form-update"></td>
+	            	<td class="form-update"><%= f.text_field :telephone, class: 'form-control', :id => "telephone"%></td>
+	            	<td id="atualizar"><%= f.submit "Atualizar" %></td>
+	             <% end %>	      	
+	    	</tr>
+	    	<tr id="date-update">
+	      		
+	    	</tr>
+	    	<tr>
+	      		<td class="attribute-name">Descrição</td>
+	      		<%if @company.description.nil?%>
+	    			<td>Não Cadastrado</td>
+	      		<%else%>
+	      			<td><%= @company.description%></td>
+	      		<%end%>	
+	      		<td ><a href="javascript: void(0);" id="show-description">Editar</a></td>
+	    	</tr>
+	    	<tr id="description-update">
+	          	<%= form_for(:company, url: update_company_path)do |f| %>
+	             	<%= f.hidden_field :id, value: @company.id%>
+	             	<td class="form-update"></td>
+	            	<td class="form-update"><%= f.text_area :description, class: 'form-control', :id => "tarea"%></td>
+	            	<td id="atualizar"><%= f.submit "Atualizar" %></td>
+	             <% end %>	      	
+	    	</tr>
+	    	
+	    </table>
+	</section>
+</section>
+<script>
+
+    var count = 0;
+
+        $("#show-name").click(function(){
+          $("#nome-update").toggle("slow");
+          if(count == 0){
+            $("#show-name").text("Cancelar");
+            count = 1;
+          }else{
+            $("#show-name").text("Editar");
+            count = 0;
+          }
+        });
+        $("#show-email").click(function(){
+          $("#email-update").toggle("slow");
+          if(count == 0){
+            $("#show-email").text("Cancelar");
+            count = 1;
+          }else{
+            $("#show-email").text("Editar");
+            count = 0;
+          }
+        });
+        
+        $("#show-telephone").click(function(){
+          $("#telephone-update").toggle("slow");
+          if(count == 0){
+            $("#show-telephone").text("Cancelar");
+            count = 1;
+          }else{
+            $("#show-telephone").text("Editar");
+            count = 0;
+          }
+        }); 
+
+        $("#show-description").click(function(){
+        $("#description-update").toggle("slow");
+        if(count == 0){
+          $("#show-description").text("Cancelar");
+          count = 1;
+        }else{
+          $("#show-description").text("Editar");
+          count = 0;
+        }
+      });
+      $("#show-address").click(function(){
+        $("#address-update").toggle("slow");
+        if(count == 0){
+          $("#show-address").text("Cancelar");
+          count = 1;
+        }else{
+          $("#show-address").text("Editar");
+          count = 0;
+        }
+      });  
+      $("#show-uf").click(function(){
+        $("#uf-update").toggle("slow");
+        if(count == 0){
+          $("#show-uf").text("Cancelar");
+          count = 1;
+        }else{
+          $("#show-uf").text("Editar");
+          count = 0;
+        }
+      });  
+        
+
+</script>
+</body>

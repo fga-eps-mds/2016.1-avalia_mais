@@ -1,0 +1,114 @@
+<div class="container-comment container">
+	<div class="col-lg-12 col-sm-12 text-center">
+		<div class="well">
+			<h4>Tem algo em mente? Comente</h4>
+			<div class="input-group comment-field">
+				<%= form_for(:comment, url: create_comment_path) do |form|%>
+				<%= form.hidden_field :topic_id, :value =>@topic.id %>
+				<%= form.hidden_field :user_id, :value =>current_user.id %>
+				<%= form.text_area :description, :placeholder => "Escreva um comentário...", :maxlength => 150, :class	=> 'form-control input-sm chat-input comment-text-area', :id => 'userComment' %>
+				</br>
+				<span class="input-group-btn">
+					<%= form.submit "Comentar",:class => "btn btn-primary btn-sm btn-comment"%>
+				</span>
+				<%end%>
+			</div>
+			</br>
+			<ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
+				<%if @comments.present?%>
+				<% commentsQuantity = 0%>
+				<% @comments.each do |comment|%>
+				<% if commentsQuantity >= 6%>
+				<div class="hidden_comments">
+					<%end%>
+					<strong class="pull-left primary-font"><%= User.find(comment.user_id).name%>:</strong>
+					<small class="pull-right text-muted">
+
+					<%if comment.user_id == current_user.id%>
+					<div id="span-divs">
+						<div class="dropdown-comment edit-<%= current_user.name%>-<%= comment.id%>" data-for=".cyruxx-<%= comment.id%>" 	id="<%= comment.id%>">
+							<%= link_to image_tag("edit_comment_icon.png", size: "12x12", title: "Editar comentário"), remote: true %>&nbsp;
+						</div>
+						<div>
+							
+							<%= link_to image_tag("remove_icon.png", size: "12x12", title: "Deletar comentário"), delete_comment_path(comment.id), data: { confirm: "Tem certeza que deseja excluir o comentário?"}, :class=> 'dropdown-comment delete-'+current_user.name.split(" ")[0], :id => comment.id%>
+						</div>
+						
+						<div>
+							<% if current_user_comment_denunciation(comment.id) == nil %>
+								<%= form_for(:session, url: create_comment_denunciation_path) do |f| %>
+									<%= f.hidden_field :topic_id, :value => @topic.id %>
+									<%= f.hidden_field :comment_id, :value => comment.id %>
+									<%= f.hidden_field :user_id, :value => current_user.id %>
+	     							&nbsp;
+									<%= image_submit_tag("denunciation1.png", width: "12.5px", id: "denounce-comment"+comment.id.to_s, title: "Clique aqui para denuncia esse comentário", data: { confirm: "Tem certeza que deseja denunciar este comentário?" }) %>
+								<% end %>
+							<% else %>
+								<%= form_for(:session, url: destroy_topic_denunciation_path) do |f| %>
+									<%= f.hidden_field :denunciation_id, :value =>  current_user_comment_denunciation(comment.id).id %>
+									<%= f.hidden_field :topic_id, :value => @topic.id %>
+									&nbsp;
+									<%= image_submit_tag("denunciation2.png", width: "12.5px",id: "destroy_denounce-comment"+comment.id.to_s, title: "Clique aqui para retirar a denúncia") %>
+								<% end %>
+							<% end %>
+						</div>
+					</div>
+					<%end%>
+					</small>
+					</br>
+					<li class="ui-state-default-comment">
+						</br><%= comment.description%>
+						</br>
+						<h5><%= comment.created_at.to_formatted_s(:long)%></h5>
+						<div class="row user-infos cyruxx-<%=comment.id%>">
+							<div class="input-group comment-field">
+								Edite seu comentário
+								<%= form_for(:comment, url: edit_comment_path) do |form|%>
+								<%= form.hidden_field :comment_id, :value => comment.id%>
+								<%= form.text_area :new_description, :value => comment.description, :maxlength => 150, :class	=> 'form-control input-sm chat-input comment-text-area' %>
+								<%= form.submit "Editar",:class => "btn btn-primary btn-sm btn-comment"%>
+								<%end%>
+							</div>
+						</div>
+					</li>
+					<hr id="line-divisor">
+					<% if commentsQuantity >= 6%>
+						</div>
+					<%end%>
+				<% commentsQuantity = commentsQuantity + 1%>
+				<%end%>
+				<%if @comments.size > 6%>
+				</br>
+				<div id="hidden_comments_link">
+					<li class="ui-state-default-comment"><a class="show_hidden_comments">Mostrar mais comentários </a></li>
+				</div>
+				<%end%>
+				<%else%>
+				</br></br>
+				<li class="ui-state-default-comment" style="text-align:center">Não existe nenhum comentário. Seja o primeiro a comentar.</li>
+				<%end%>
+			</ul>
+		</div>
+	</div>
+</div>
+<script>
+	var count = 0;
+	$(".show_hidden_comments").click(function(){
+	$(".hidden_comments").toggle("slow");
+	if(count == 0){
+	$(".show_hidden_comments").text("Ocultar comentários");
+	count = 1;
+	}else{
+	$(".show_hidden_comments").text("Mostrar mais comentários");
+	count = 0;
+	}
+});
+	$(".user-infos").hide();
+	$(".dropdown-comment").click(function() {
+	var id = $(this).attr('id');
+	var dataFor = $(this).attr('data-for');
+	var idFor = $(dataFor);
+	var currentButton = $(this);
+	idFor.toggle("slow")
+	});
+</script>

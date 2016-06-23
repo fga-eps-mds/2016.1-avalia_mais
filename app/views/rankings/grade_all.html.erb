@@ -1,0 +1,157 @@
+<%= render "navbar/navbar" %>
+	<section class="container-principal">
+		<section class="container">
+			<section class="topo-pagina row">
+				<div class="col-lg-12">
+					<h1>Rankings por nota</h1>
+				</div>
+				<div class="menu-ranking col-lg-12">
+					<span class="opcoes" id="grade-geral">Geral</span>
+					<span class="opcoes" id="grade-segment">Categoria</span>
+				</div>
+			</section>	
+			<section class="corpo-principal row">
+				<%@companies.each_with_index do |company, index|%>
+					<% classification = @companies.offset + index + 1%>
+					<% if classification <= 3 %>
+						<section id="ranking_position-grade">
+							<section id="first_place">
+								<%= image_tag("trophy_1.png", :alt => "trophy_gold") %>
+								<p>1° <%= link_to @companies.first.name, @companies.first %></p>
+							</section>
+							<section id="second_place-grade">
+								<%= image_tag("trophy_2.png") %>
+								<p>2° <%= link_to @companies[1].name, @companies[1] %></p>
+							</section>
+							<section id="third_place-grade">
+								<%= image_tag("trophy_3.png") %>
+								<p>3° <%= link_to @companies[2].name, @companies[2] %></p>
+							</section>
+						</section>
+					<%else%>
+						<section class="classification-grade">
+							<section class="border-radius col-lg-8">
+								<div class="classificacao col-lg-11"><%= classification  %>º&nbsp;&nbsp;
+									<% if company.logo_file_name == nil %>
+			  						<%= image_tag("default_company_logo.png", :width => "20", :height => "20", :id => "logo-company") %>
+									<%else%>
+			  						<%= image_tag(company.logo.url(:default), :width => "20", :height => "20", :id => "logo-company") %>
+									<%end%><%=link_to company.name, company %></div>
+                <% company.rate ||= 0 %>
+								<div class="classificacao col-lg-1"><%= "%g" % company.rate.round(2) %></div>
+								<br />
+							</section>
+						</section>	
+					<%end%>	
+				<%end%>
+
+				<%= will_paginate @companies, renderer: BootstrapPagination::Rails, previous_label: '← Anterior', next_label: 'Próxima →' %>
+			</section>
+			<section class="ranking-grade-segment">
+				<section class="corpo-principal-segment row">
+					<section id="logo-categoria">
+						<%= image_tag("AVALIA_LOGO.png", :alt => "logo", :class => "logo-in-ranking") %>
+					</section>
+					<% segmentos  = 0%>
+  					<% @segments.each do |s| %>
+    					<% total = 0%>
+    					<% segmentos = segmentos + 1%>
+    					<% @companies_unpaginated.each do |f| %>
+      						<% if s.id == f.segment_id %>
+        						<% total = total +1 %>
+      						<%end%>
+    					<%end%>
+    				<% if total > 0 %>
+						<div class="well col-sm-12 col-md-8 col-md-offset-2">
+        					<div class="row user-row">
+          						<div class="col-md-1" id="logo_segment">
+            						<%= image_tag("default_segments.png", :alt => "img", :class => "mg-circle") %>
+          						</div>
+          						<div class="col-md-10 title-segment">
+           							<strong><%=s.name%></strong><br>
+          						</div>
+         						<div class="col-md-1 dropdown-user segment-<%= s.id%>" data-for=".cyruxx-<%=segmentos%>" id="<%=total%>">
+            						(<span style="color: #FF4040"><%=total%></span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down ") %>
+          						</div>
+        					</div>
+        					<div class="row user-infos cyruxx-<%=segmentos%>">
+          						<div class="col-sm-10 col-md-10 col-md-offset-1">
+            						<div class="panel panel-primary">
+              							<div class="panel-heading">
+                							<h3 class5="panel-title">Ranking Desta Categoria</h3>
+              							</div>
+              							<div class="panel-body">
+                							<div class="row">
+                  								<div class="col-md-12">
+                    								<ul>
+                      									<%classificacao = 0%>
+                      									<% @companies_unpaginated.each do |company| %>
+                        									<% if s.id == company.segment_id %>
+                          										<%classificacao += 1%>
+		                          								<li><section class="border-radius-segment"><div class="classificacao col-lg-10"><%=classificacao%>º&nbsp;&nbsp;<%=link_to company.name, company%></div><div class="classificacao col-lg-2">
+                                              <% company.rate ||= 0 %>
+                                              <%= "%g" % company.rate.round(2) %></div></section>
+		                          								</li>
+                        									<%end%>
+                      									<%end%>
+                    								</ul>
+                  								</div>
+                							</div>
+              							</div>
+            						</div>
+          						</div>
+        					</div>
+      					</div>
+      				<%end%>	
+      				<%end%>	
+      			</section>	
+			</section>
+		</section>
+	</section>
+<script> 
+var img_current = 0;
+  $(".user-infos").hide();
+  $(".dropdown-user").click(function() {
+    var id = $(this).attr('id');
+    var dataFor = $(this).attr('data-for');
+    var idFor = $(dataFor);
+    var currentButton = $(this);
+    idFor.slideToggle(400, function() {
+      if(img_current == 0){
+          currentButton.html('(<span style="color: #FF4040">'+id+'</span>)<%= image_tag("up.png", :alt => "abrir", :class => "img-down")%>');
+          img_current =1;
+
+      }else{
+        currentButton.html('(<span style="color: #FF4040">'+id+'</span>)<%= image_tag("down.png", :alt => "abrir", :class => "img-down")%>');
+        img_current = 0;
+      }
+
+
+    });
+  });
+  $("#grade-geral").addClass("selecionado");
+  $("#grade-geral").click(function(){
+  	$("#grade-segment").removeClass("selecionado");
+  	$(this).addClass("selecionado");
+    $(".ranking-grade-segment").hide("slow");
+    $(".corpo-principal").show("slow");
+  }); 
+
+  $("#grade-segment").click(function(){
+  	$("#grade-geral").removeClass("selecionado");
+  	$(this).addClass("selecionado");
+    $(".corpo-principal").hide("slow");
+    $(".ranking-grade-segment").show("slow");
+  }); 
+  var ancora = window.location.href; 
+	if (ancora !== 'http://localhost:3000/ranking/grade/all' && ancora !== 'http://localhost:3000/ranking/grade/all?page=1') {
+		$(".classification-grade").css({marginTop: '20px'});
+	}
+</script>		
+
+	
+
+		
+
+
+

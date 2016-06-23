@@ -1,0 +1,133 @@
+.form_attach{
+	width: 70%;
+	position: relative;
+	left: 15%;
+}
+
+#denunciation-topic-div{
+	position: relative;
+	width: 10%;
+	height: 10%;
+	margin-top: 10%;
+	padding-right: 80px;
+	float: right;
+}
+
+#button-denunciation1 {
+	position: relative;
+	margin-left: 30px;
+	top: -300px;
+	width: 40px;
+	height: 35px;
+}
+
+#button-denunciation2 {
+	position: relative;
+	margin-left: 30px;
+	top: -300px;
+	width: 40px;
+	height: 35px;
+}
+
+#p-denunciation1 {
+	color: red;
+	position: relative;
+	right: -94%;
+	top: -300px;
+}
+
+#p-denunciation2 {
+	position: relative;
+	right: -91%;
+	top: -300px;
+}
+
+#denunciation-count {
+	position: absolute;
+	font-size: 25px;
+	color: red;
+	margin-left: 81%;
+	top: 101px;
+	left: 25px;
+	font-family: Arial;
+}
+
+.btn-delete {
+  color: #fff;
+  background-color: red;
+  border-color: #EE3B3B;
+}
+
+.btn-edit {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+}
+
+.topic-field {
+	background-color: rgba(0, 0, 79, 0.6);
+	background: rgba(0, 0, 79, 0.6);
+	border-radius: 8px;
+	border: 0;
+	box-shadow: 0px 0px 1px 2px navy;
+	padding: 14px;
+	color: #EEE;
+	font-size: 14px;
+	font-family: AvenirNext-Regular;
+}
+
+.topic-text {
+	background-color: rgba(0, 0, 79, 0.6);
+	background: rgba(0, 0, 79, 0.6);
+	border-radius: 8px;
+	border: 0;
+	box-shadow: 0px 0px 1px 2px navy;
+	padding: 14px;
+	color: #EEE;
+	font-size: 14px;
+	font-family: AvenirNext-Regular;
+}
+
+#button-new-topic {
+	position: absolute;
+	left: 70px;
+	width: 100%;
+	text-align: center;
+}
+
+.topic-title {
+	font-size: 30px;
+	color: navy;
+}
+
+.topic-username {
+	font-size: 20px;
+	color: black;
+}
+
+.topic-date {
+	font-size: 16px;
+	color: black;
+}
+
+.topic-body {
+    margin: 0 auto;
+	font-size: 20px;
+	width: 98%;
+	text-align: justify;
+}
+
+.description-topic {
+	position: absolute;
+	top: 6%;
+}
+
+hr {
+	border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.position-topic-button {
+	text-align: center;
+}

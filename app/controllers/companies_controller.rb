@@ -1,23 +1,11 @@
 class CompaniesController < ApplicationController
 
-	before_filter :authorize, only: [:create, :new]
+	# before_filter :authorize, only: [:create, :new]
 
 	def new
 		@company = Company.new()
 	end
-	
-	def computeEvaluation(company)
-		totalEvaluation = 0
-		quantity = 0
-		company.evaluations.each do |e|
-			if e.grade != nil
-				totalEvaluation = totalEvaluation + e.grade
-				quantity = quantity + 1
-			end
-		end
-		return (totalEvaluation.to_f/quantity)
-	end
-	
+
 	def switchTypeImage(total)
 		imageName = ""
 		if total >= 4
@@ -32,8 +20,8 @@ class CompaniesController < ApplicationController
 
 	def show
 		@company = Company.find(params[:id])
-		if @company.evaluations.present?
-			@total_evaluations = computeEvaluation(@company)
+		if !@company.rate.nil?
+			@total_evaluations = @company.rate
 			@image_name = switchTypeImage(@total_evaluations)
 		end
 		if logged_in?
@@ -52,22 +40,35 @@ class CompaniesController < ApplicationController
 			render :new
 		end
 	end
+
+	def edit
+		@company = Company.find(params[:company][:id])
+		if @company.user_id != current_user.id
+			redirect_to home_path
+		end
+	end
 	
+	def update
+		@company = Company.find(params[:company][:id])
+		if @company.update_attributes(edit_company_params)
+			flash[:notice] = 'Atributo atualizado com sucesso'
+		else
+			flash[:notice] = 'Erro ao atualizar o atributo!'
+		end
+		render :edit
+	end
+
 	def search
 		@search_param = params[:current_search][:search]
   		@company = Company.where("name LIKE :search", :search => "%#{params[:current_search][:search]}%")
-  		render "search"
-  		
-	end
-
-	def search_nav_bar
-		@search_param
-		@company = Company.where("name LIKE :nav_search", :nav_search => "%#{params[:new_search][:nav_search]}%")
-  		render "search"
 	end
 
 	def company_params
 		params[:company].permit(:name, :segment_id, :address, :telephone, :email, :description, :logo, :uf_id)
 	end
 
+	private
+		def edit_company_params
+			params[:company].permit(:name, :address, :telephone, :email, :description, :logo, :uf_id)
+		end
 end

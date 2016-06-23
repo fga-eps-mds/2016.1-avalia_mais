@@ -1,0 +1,56 @@
+<%= render "navbar/navbar" %>
+<section class="pagi-enquete">
+  <section class="form-enquete">
+    <div id="header-new-enquete">
+      <h1>Enquete da empresa</h1>
+    </div>
+  <div id="form-options">
+    <%= form_for(@question) do |f| %>
+      <%= f.hidden_field :company_id, :value => @company.id %>
+      <div class="for-questions-title">
+        <label for="title" >Pergunta
+          <%= f.text_area :title, :id => 'question_t', :class => "input-for-pergunta", required: true%>
+        </label>
+      </div>
+    <h3>Adicione as suas opções:</h3>
+    <%= link_to_add_association image_tag("plus.png", size: "40x40", title: "Adicionar Opção", id: "plus"), f, :option, 'data-association-insertion-node' => "#options-questions ol", 'data-association-insertion-method' => "append", :class => "add-colour-link"%>
+    <fieldset id="options-questions">
+      <ol>
+        <%= f.fields_for :option do |options| %>
+        <%= render partial: "option_fields", locals: { f: options }%>
+        <% end %>
+      </ol>
+    </fieldset>
+    <div class="actions">
+      <%= f.submit "Criar", :id => "button"%>
+    </div>
+
+  <% end %>
+</div>
+</section>
+</section>
+<script>
+
+  $ ('.add-colour-link').click(function(){
+    if($('#options-questions .nested-fields:visible').size() > 0) {
+      $('input[type=submit]').attr("disabled", false);
+      $('input[type=submit]').css("background", "#006400");
+    }
+    else{
+        $('input[type=submit]').attr("disabled", true);
+        $('input[type=submit]').css("background", "#f44336");
+      }
+
+
+    if($('#options-questions .nested-fields:visible').size() > 4) {
+      $('.add-colour-link').hide();
+      } else {
+        $('.add-colour-link').show();
+    }
+  });
+  
+</script>
+
+
+
+

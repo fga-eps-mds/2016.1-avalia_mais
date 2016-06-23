@@ -1,7 +1,4 @@
 class ParsersController < ApplicationController
-	def index
-		render "index"
-	end
 
 	def upload
 		document = params[:document]
@@ -15,4 +12,5 @@ class ParsersController < ApplicationController
 			redirect_to 'http://0.0.0.0:3000/parsers'
 		end
 	end
+	
 end

@@ -1,0 +1,70 @@
+
+label {
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-attach {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  position:relative;
+  transition: .5s ease;
+  top: -430px;
+  left: 110px;
+  right: -420px;
+}
+
+.btn-confirm {
+  color: #fff;
+  background-color: #009933;
+  border-color: #2e6da4;
+}
+
+
+#section-form-model2 {
+  position: absolute;
+  text-align: justify;
+  height: 70%; 
+  width: 80%;
+  left: 10%;
+  top: 10%;
+  font-size: 18px;
+  z-index: 0;
+  font-family: AvenirNext-Regular;
+}
+
+#section-form-model3 {
+  position: absolute;
+  text-align: center;
+  height: 70%; 
+  width: 80%;
+  left: 10%;
+  top: 10%;
+  font-size: 18px;
+  z-index: 0;
+  font-family: AvenirNext-Regular;
+}
+
+.form_attach {
+    padding-top: 0;
+    background: #FFFFFF;
+    border: 2px solid #B0B0B0  ;
+    border-radius: 11px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding: 20px 30px 20px 30px;
+}
+
+attachStyle {
+	color: #000000;
+ 	text-align: justify;
+ 	font-family: Arial, Helvetica, sans-serif;
+}
+
+h3attachStyle {
+	font-size: 25px;
+	color: #000000;
+ 	text-align: justify;
+ 	font-family: Arial, Helvetica, sans-serif;
+}
