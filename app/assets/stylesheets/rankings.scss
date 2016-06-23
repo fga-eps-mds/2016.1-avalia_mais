@@ -1,0 +1,185 @@
+#ranking_title {
+	position: relative;
+	top: 12%;
+	text-align: center;
+	z-index: 10;
+}
+
+#companies_ranking {
+	position: absolute;
+	left: 37%;
+	top: 73%;
+}
+.corpo-principal-response-time{
+	position: absolute;
+	top: 500px;
+	width: 100%;
+	height: 500px;
+}
+
+#segment_form {
+	position: relative;
+	top: 14%;
+	text-align: center;
+}
+
+#ranking_segment {
+	/*display: none;*/
+}
+
+#segment_form select {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 500px;
+  height: 40px;
+  border-radius: 8px;
+  border: 0;
+  box-shadow: -2px -2px 1px #7a7a7a;
+  color: #0f1b3f;
+  font-size: 12px;
+  font-family: AvenirNext-Regular;
+}
+
+/*
+	Parte do julio e gesiel
+*/
+.container-principal, .container{
+	width: 100%;
+	height: 100%;
+
+}
+.corpo-principal{
+
+}
+.ranking-grade-segment{
+	display: none;
+}
+.topo-pagina{
+	position: absolute;
+	top: 60px;
+	width: 100%;
+	height: 150px;
+	background: #FFFFFF;
+}
+
+.topo-pagina h1{
+	text-align: center;
+
+}
+
+.menu-ranking{
+	margin-top: 20px;
+	text-align: center;
+}
+
+.menu-ranking span{
+	color:#e3625f;
+	padding-right: 50px;
+	padding-left: 50px;
+	font-size: 20px;
+}
+.menu-ranking span:hover{
+	color:#000;
+}
+.selecionado{
+	border:2px solid #e3625f;
+	border-radius:10px;
+}
+.btn-group .btn:active {
+  font-size: 0.8em;
+}
+
+.corpo-principal{
+	position: absolute;
+	top: 250px;
+	width: 100%;
+	height: 500px;
+}
+.ranking_position-grade{
+	position: relative;
+	top: 200px;
+}
+.classification-grade{
+	position: relative;
+	margin-top: 300px;
+}
+
+.border-radius{
+	height: 50px;
+	width: 60%;
+	border:2px solid #07213F;
+	border-radius: 8px;
+	margin-left: 20%;
+	margin-top: 10px;
+}
+.classificacao{
+	top: 10px;
+}
+
+#logo-categoria{
+	margin: auto;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background: #FFFFFF;
+	border: 2px solid #000000;
+	margin-bottom: 50px;
+}
+
+#logo-categoria img{
+	width: 40px;
+	height: 40px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	margin-left: -20px;
+	transform: translateY(-50%);
+
+}
+
+.pagination{
+	margin-top: 50px;
+	margin-left: 25%;
+}
+/* ranking grade segment */
+.ranking-grade-segment{
+	position: absolute;
+	top:250px;
+	height: 500px;
+	width:100%;
+}
+
+#first_place {
+	position: absolute;
+	width: 350px;
+	height: 250px;
+	left: 36%;
+	text-align: center;
+}
+#first_place p{
+	margin: 0;
+}
+#second_place-grade{
+	position: absolute;
+	width: 300px;
+	height:200px;
+	left: 13%;
+	text-align: center;
+	
+}
+#second_place-grade p{
+	margin:0;
+}
+#third_place-grade {
+	position: absolute;
+	float: right;
+	right: 15%;
+	width: 300px;
+	height: 250px;
+	text-align: center;
+}
+#third_place-grade  p{
+	margin: 0;
+}
+
+
+

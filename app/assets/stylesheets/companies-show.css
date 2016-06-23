@@ -22,7 +22,6 @@ table {
   width: 100%;
   text-align: right;
 }
-
 th{
   display: block;
   color:#0B213A;
@@ -75,11 +74,17 @@ hr {
 
 #description {
   display: none;
-  position: absolute;
+  position: relative;
   width: 80%;
-  margin-left: 130px;
+  margin-left: 130px !important;
   margin-top: -10px;
   text-align: justify;
+  height: 50%;
+}
+#description p{
+  position: absolute;
+  left: 20% !important;
+  
 }
 
 #avaliacao {
@@ -95,9 +100,10 @@ hr {
 #forum {
   display: none;
   position: absolute;
-  width: 80%;
-  margin-left: 130px;
-  margin-top: -10px;
+  width: 500px;
+  margin-left: 60%;
+  left: -250px;
+  margin-top: 10px;
   text-align: justify;
 }
 
@@ -106,10 +112,35 @@ hr {
   display: none;
   position: absolute;
   width: 80%;
-  margin-left: 130px;
-  margin-top: -10px;
+  left: 30%;
+  margin-top: -450px;
   text-align: justify;
 }
+section#enquete{
+  display: none;
+  position: relative;
+  width: 50%;
+  margin: -300px auto;
+  
+
+}
+
+#list-questions{
+  position: absolute;
+  margin-top: -110%;
+  width: 100%;
+
+}
+#list-questions ul li{
+  list-style: none;
+    border: 2px solid #CCC;
+  border-radius: 7px;
+  margin-bottom: 5px;
+}
+.header-body-enquete{
+  position: absolute;
+}
+
 
 .btn-group {
   position: relative;
@@ -217,10 +248,12 @@ hr {
 }
 
 section p {
-  margin-top: -260px;
+  margin-top: -300px;
   font-family: AvenirNext-Regular;
   font-size: 16px;
   color: #848484;
+  text-align: center;
+
 }
 
 #image-verified {
@@ -304,3 +337,38 @@ section p {
   .star.full{
     background: linear-gradient(to bottom, #fee24f, #f4bb2f);
   }
+  .controls{
+    color:#000;
+  }
+  .faq-questions{
+    display: none;
+    float: center;
+  }
+.actions{
+  text-align: center;
+}
+.for-questions-faq{
+  display: block;
+}
+#enquete-body{
+  position: relative;
+  top:300px;
+  width: 50%;
+  text-align: left;
+  left: 30%;
+  float: left;
+}
+.list-forum{
+      float: right;
+    margin-top: -110%;
+    text-align: center;
+}
+.list-forum ul li{
+  border: 2px solid #CCC;
+  border-radius: 7px;
+  margin-bottom: 5px;
+
+
+}
+
+

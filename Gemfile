@@ -1,5 +1,13 @@
 source 'https://rubygems.org'
 
+#Gems to use in views
+gem 'bootstrap-sass', '~> 3.3.6'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap'
+  gem 'rails-assets-angular'
+  gem 'rails-assets-leaflet'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -25,6 +33,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'paperclip', '~> 4.3.2'
 # Use Bcrypt to cryptograph password
 gem 'bcrypt-ruby', '3.1.2'
+# Use will_paginate for pagination
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 
 gem 'simplecov', :require => false, :group => :test
 # Use jquery as the JavaScript library
@@ -48,9 +59,10 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'metric_fu', '~> 4.12'
 gem 'coveralls', require: false
 
+
 group :development, :test do
-  gem "rspec-rails", ">= 2.0.1"
-  gem 'cucumber-rails'
+  gem 'rspec-rails', '~> 3.4'
+  gem 'cucumber-rails', :require => false
   gem 'database_cleaner'
   gem 'selenium-webdriver', '~> 2.53'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -64,7 +76,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'mysql2', '~> 0.3.18'
+
   
+  gem 'dotenv-rails', :groups => [:development, :test]
+
+  gem "cocoon"
+  gem "nested_form_fields", ">= 0.7.8"
+
 
 end
 

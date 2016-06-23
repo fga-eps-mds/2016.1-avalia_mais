@@ -1,0 +1,78 @@
+<%= render "navbar/navbar" %>
+<div class="box">
+  <div class="result-questions">
+    <div class="col-lg-12 col-sm-12 card">
+    <div class="card hovercard">
+        <div class="card-background">
+          <%= image_tag("fundo-result.png", :alt => "logo", :class =>"card-bkimg") %>
+        </div>
+        <div class="useravatar">
+            <%= image_tag("AVALIA_LOGO.png", :alt => "logo", :class =>"card-bkimg") %>
+        </div>
+        <div class="card-info"><span class="card-title"><%=@question.title%></span>
+
+        </div>
+    </div>
+  </div> 
+</div> 
+  	<nav id="menu-graficos">
+  		<ul>
+        <%options_existentes = 0%>
+          <% @options.each do |option| %>
+            <%options_existentes = options_existentes +1 %>
+             <%votos_option  = 0%>
+            <% @votes.each do |voto| %>
+              <% if option.id == voto.option_id %>
+              <%votos_option = votos_option + 1 %>  
+            <%end%>
+        <%end%>     
+  			<li class="pizza"><a href="#"><%=option.title%>&nbsp;<span>(<%=votos_option%> voto(s))</span></a></li>
+        <%end%> 
+  		</ul>
+  	</nav>
+    <h3>Total de votos <%=@votes.count%></h3>
+	<div class="container grafico-barras">			
+    	<div class="row row-aux">
+        	<div class="col-sm-6 col-sm-offset-3 col-md-10 col-md-offset-4">
+            	<div class="bar-chart">
+                	<div class="chart clearfix">
+                		<% @options.each do |option| %>
+	        				<%votos_option = 0.0%>
+	        				<% @votes.each do |voto| %>
+								<% if option.id == voto.option_id %>
+									<%votos_option = votos_option + 1 %>	
+  								<%end%>
+  							<%end%>	
+                   			<div class="item">
+                       			<div class="bar">
+                       				<%votos_option = votos_option/@votes.count*100%>
+                           			<span class="percent"><%=votos_option.round(2)%>%</span>
+                           			<div class="item-progress" data-percent="<%=votos_option.round(2)%>">
+                               			<span class="title"><%=option.title%></span>
+                          			</div>
+                        		</div>
+                    		</div>
+                    	<%end%>	
+                	</div>
+            	</div>
+        	</div>
+    	</div>	
+	</div>
+</div>
+<script>
+	 barChart();
+    
+    $(window).resize(function(){
+        barChart();
+    });
+    
+    function barChart(){
+        $('.bar-chart').find('.item-progress').each(function(){
+            var itemProgress = $(this),
+            itemProgressWidth = $(this).parent().width() * ($(this).data('percent') / 100);
+            itemProgress.css('width', itemProgressWidth);
+        });
+    };
+</script>
+
+	

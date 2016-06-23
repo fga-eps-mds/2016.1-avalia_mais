@@ -1,0 +1,102 @@
+.container-comment {
+    padding: 25px;
+    left: 25%;
+}
+
+.comment-section{
+    position: relative;
+    width: 100%;
+}
+
+.comments-position {
+    margin-left: 120px;
+}
+
+li.ui-state-default-comment{
+    background:#fff0;
+    border:none;
+    text-align: left;
+    padding-bottom: 10px;
+    height: auto;
+    width: 100%;
+}
+li.ui-state-default-comment h5{
+    color: #999999;
+    font-size: 0.765em;
+    right: 0;
+}
+li.ui-state-default-comment:last-child{
+    border-bottom:none;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400);
+body {
+    background-color:#fff;
+    -webkit-font-smoothing: antialiased;
+    font: normal 14px Roboto,arial,sans-serif;
+}
+
+.btn,.form-control,.well {
+    border-radius:1px;
+    box-shadow:0 0 0;
+}
+
+.well,.panel {
+    border-color:#d2d2d2;
+    box-shadow:0 1px 0 #cfcfcf;
+    border-radius:3px;
+}
+
+#line-divisor {
+    width: 100%;
+    height: 1px;
+    border-color:#ddd#ececec;
+}
+
+button {
+    outline: 0;
+}
+
+.btn span{
+    color:#666666;
+}
+
+.list-group-item:first-child,.list-group-item:last-child {
+    border-radius:0;
+}
+
+ul#sortable{
+    word-wrap: break-word;
+}
+
+.comment-text-area{
+    border-color:#d7d7d7;
+    padding-left: 8px;
+    resize : none;
+}
+.comment-field{
+    width: 70%;
+    display: inline-block;
+}
+
+.hidden_comments{
+    display: none;
+}
+
+#hidden_comments_link li{
+    font-size: 0.80em;
+    text-align: center;
+}
+
+#span-divs div{
+    float: left;
+    clear: none;
+}
+.user-infos{
+    text-align: center;
+}
+
+#blabla {
+    position: absolute;
+    margin-bottom: 5px;
+}

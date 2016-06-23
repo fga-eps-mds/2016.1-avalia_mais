@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
 	has_many :evaluations
+	has_many :topics
+	has_many :attaches
+	has_many :companies
+	has_many :comments
+	has_many :denunciations
 	has_secure_password
 	
 	#default values

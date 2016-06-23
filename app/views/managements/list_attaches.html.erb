@@ -1,0 +1,23 @@
+<% if current_user.admin %>
+
+	<%= render "navbar/navbar" %>
+
+	<section id="body-show-attach">
+		<h1> Lista das Empresas com vínculo solicitado</h1>
+
+		<% if @attaches.blank? %>
+			</br>
+			<h3 style = "color: navy">Nenhum vínculo pendente.</h3>
+		<% else %>
+			<% @attaches.each do |a| %>
+				<h3 id="lista_vinculos"><%= link_to Company.find(a.company_id).name, a %></h3>
+			 <%end%>
+		<%end%>
+
+	</section>
+
+<% else %>
+
+	<%= redirect_to home_path %>
+	
+<%end%>

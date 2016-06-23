@@ -1,0 +1,24 @@
+<% if current_user.admin %>
+
+  <%= render "navbar/navbar" %>
+
+  <div id="body-show-attach">
+  	
+  	<h1>Denúncia da Empresa</h1></br>
+
+  	<p><b>Nome da Empresa:</b> <%= Company.find(@company_denunciation.company_id).name %></p>
+    <p><b>Autor da Denúncia:</b> <%= User.find(@company_denunciation.user_id).name.capitalize %></p>
+    <p><b>Motivo da Denuncia:</b> <%= @company_denunciation.description %></p>
+
+   	</br></br>
+
+    	<div id="position_buttons">
+
+  		</br></br></br></br></br>
+  	</div>
+  </div>
+
+<% else %>
+  <%= redirect_to home_path %>
+
+<%end%>

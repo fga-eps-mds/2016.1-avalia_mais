@@ -1,0 +1,36 @@
+<%= render "navbar/navbar" %>
+</br></br></br></br></br>
+
+<section id="section-form-model2">	
+	<div class = "form_attach">
+		<h3attachStyle> Formulário para solicitar vínculo com a empresa: 
+		</h3attachStyle></br>
+		<attachStyle>Caro usuário, para vincular uma empresa é necessário informar um CNPJ válido, o endereço da sua empresa, e um comprovante do endereço. Entre os comprovantes de endereço, você pode enviar uma foto da sua conta de água, luz ou declaração de imposto de renda da empresa. </attachStyle>
+	</div> 
+</section></br></br></br>
+
+<section id="section-form-model3">
+</br></br></br></br></br></br></br></br></br></br>	
+	<div class = "form_attach">
+		<%= form_for( @attach, url: {action: "create"} ) do |f| %>
+
+		<%= f.hidden_field :company_id, :value => @company.id %>
+
+		<label> <span> CNPJ </span></label>
+		<%= f.text_field :cnpj, :placeholder => "CNPJ da empresa", 
+						 :maxlength => 15 , required: true%></br></br>	
+		
+
+		<label> <span> Endereço </span></label>
+		<%= f.text_field :address, :placeholder => "Endereço da empresa", required: true%></br>
+		</br>
+
+		<label> <span> Carregue sua foto aqui </span></label></br>
+		<%= f.file_field :photo, :class => "form_control file_field", :accept => "image/jpeg" %></br>
+
+		<%= button_tag(type: 'submit', class: "btn btn-confirm", id: "btn-Confirmar") do %> Confirmar 
+		<% end %><br/>
+		<% end %>
+	</div>
+
+</section>

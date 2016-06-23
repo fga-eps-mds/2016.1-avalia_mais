@@ -1,6 +1,12 @@
 class Company < ActiveRecord::Base
     has_many :evaluations
+    has_many :questions
+    has_many :faq
     belongs_to :segment
+    belongs_to :user
+    has_many :topics
+    has_many :attaches
+    has_many :company_denunciations
 
     #validations to register a company
     #image logo

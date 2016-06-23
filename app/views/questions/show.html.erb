@@ -1,0 +1,22 @@
+
+<%= render "navbar/navbar" %>
+<section id="show-questions">
+ 
+    <h1><%= @question.title %></h1>
+    <%= form_tag "/votes", :controller => "votes", :action => "update", method: :put do |f| %>
+      <%= hidden_field_tag :question_id, @question.id%>
+      <fieldset id="fieldset-options-vote">
+        <ul>
+            <% @question.option.each do |option| %>
+              <li>
+                <%= radio_button("vote", "option_id", option.id)%>
+                <label for="votes"><%=option.title%></label>
+              </li>
+            <% end %>
+        </ul>  
+      
+      </fieldset>
+          <%= button_to 'Votar', :id => "button-votar"%>
+      <% end %>
+</section>
+

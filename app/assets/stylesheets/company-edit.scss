@@ -1,0 +1,51 @@
+#email-update{
+	display: none;
+}
+
+#telephone-update{
+	display: none;
+}
+#description-update{
+	display: none;
+}
+
+#image-company-edit{
+	position: relative;
+	left: 45%;
+}
+
+#company-show-update{
+	position: relative;
+	text-align: center;
+	left: 15%;
+	width: 70%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+}
+
+#link-company-page{
+	position: absolute;
+	margin-top: -80px;
+	margin-left: 10px;
+	text-align: center;
+}
+
+#update-logo{
+	position: relative;
+  width: 400px;
+  left: 50%;
+  margin-left: -200px;
+
+}
+#update-logo label{
+	color: #696969;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#update-logo input[type="file"]{
+	color: #ccc;
+  
+}
+
