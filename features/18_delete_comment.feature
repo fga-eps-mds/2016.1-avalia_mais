@@ -7,8 +7,7 @@ Feature: Delete Comment
 		Given I am on the log in page I will log in
 		And I will search for "Oi Fixo" and visit the page
 		And I will press "Fórum" button
-		And I will click on "Dúvida" link
-		And I am redirected to topic page
+		And I will click on "Tópico editado"
 		And I will press "Excluir" link for the comment that I want to delete
 		And I will confirm pressing 'OK'
 		Then My comment should be deleted

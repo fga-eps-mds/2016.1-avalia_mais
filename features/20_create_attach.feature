@@ -10,5 +10,5 @@ Feature: Request Attach
 		And I should be redirect to new attach request
 		And I fill "CNPJ" field with "00000111110000"
 		And I fill "Endereço" field with "Rua do comercio, bloco K, loja 10"
-		And I will press "Confirmar" button
+		And I will create Attach for Oi celular
 		Then I should be redirect to company page with a notice "Solicitação feita com sucesso!"

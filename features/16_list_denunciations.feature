@@ -5,6 +5,5 @@ Feature:
 
 	Scenario: List all denounced topics
 		Given I am logged on a topic created by other and i denounce this topic
-		And I will get in management page
-		And I click on "Denúncias"
+		And I will see all topics denounces in management page
 		Then I should see "Tópico editado"

@@ -21,5 +21,5 @@ And (/^I will press "Confirmar" button$/) do
 end
 
 Then (/^I should be redirect to show topic page$/) do 
-	expect(page).to have_content("Título: Dúvida")
+	expect(page).to have_content("Dúvida")
 end

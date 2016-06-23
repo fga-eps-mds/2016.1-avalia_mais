@@ -7,9 +7,6 @@ Feature: Topic denunciation
 	Given I am logged on a topic created by other
 	And I click on "Denunciar" button
 	And I will confirm pressing 'OK'
-	Then I should see "Retirar Denuncia"
-
-	Scenario: User should remove his denunciation
-	Given I am logged on a topic created by other
+	And I should see "Retirar Denuncia"
 	And I click on "Retirar Denuncia" button
 	Then I should see "Denunciar"

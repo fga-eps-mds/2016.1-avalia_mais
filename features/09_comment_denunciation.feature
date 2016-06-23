@@ -14,7 +14,6 @@ Feature: Comment Denunciation
 		And I am redirected to topic page
 		And I will press on "Denunciar comentário" icon
 		And I will confirm pressing 'OK'
-		And I will see "Retirar Denuncia" in page
 		And I will press on "Tirar denúncia do comentário" icon
-		Then I should see "Denunciar"
+		Then I should see "Denunciar" icon
 

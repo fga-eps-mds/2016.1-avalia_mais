@@ -41,7 +41,7 @@
 									<%= f.hidden_field :comment_id, :value => comment.id %>
 									<%= f.hidden_field :user_id, :value => current_user.id %>
 	     							&nbsp;
-									<%= image_submit_tag("denunciation1.png", width: "12.5px", id: " denounce-comment"+comment.id.to_s, title: "Clique aqui para denuncia esse comentário", data: { confirm: "Tem certeza que deseja denunciar este comentário?" }) %>
+									<%= image_submit_tag("denunciation1.png", width: "12.5px", id: "denounce-comment"+comment.id.to_s, title: "Clique aqui para denuncia esse comentário", data: { confirm: "Tem certeza que deseja denunciar este comentário?" }) %>
 								<% end %>
 							<% else %>
 								<%= form_for(:session, url: destroy_topic_denunciation_path) do |f| %>

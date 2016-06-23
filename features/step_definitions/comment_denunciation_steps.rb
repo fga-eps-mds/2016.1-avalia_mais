@@ -20,3 +20,8 @@ end
 And (/^I will see "Retirar Denuncia" in page$/) do 
 	expect(page).to have_content("Retirar Denúncia")
 end
+
+Then (/^I should see "Denunciar" icon$/) do 
+	#expect(page).to find("#denounce-comment1")
+	expect(page).to have_css("#denounce-comment1")
+end

@@ -4,8 +4,8 @@ Given (/^I am Company pag "oi fixo"$/) do
 	click_link ("Oi Fixo")
 end
 
-And (/^I click on "btn-edit"$/) do
-	click_button ("Editar empresa")
+And (/^I click on "Editar empresa"$/) do
+	click_button("Editar empresa")
 end
 
 And(/^I click on "show-name"$/) do
