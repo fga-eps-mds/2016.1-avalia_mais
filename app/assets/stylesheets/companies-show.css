@@ -79,11 +79,12 @@ hr {
   margin-left: 130px !important;
   margin-top: -10px;
   text-align: justify;
+  height: 50%;
 }
 #description p{
   position: absolute;
-  left: -50% !important;
-  width: 50%;
+  left: 20% !important;
+  
 }
 
 #avaliacao {
@@ -99,9 +100,10 @@ hr {
 #forum {
   display: none;
   position: absolute;
-  width: 80%;
-  margin-left: 130px;
-  margin-top: -10px;
+  width: 500px;
+  margin-left: 60%;
+  left: -250px;
+  margin-top: 10px;
   text-align: justify;
 }
 
@@ -251,7 +253,6 @@ section p {
   font-size: 16px;
   color: #848484;
   text-align: center;
-  margin-left: 78%;
 
 }
 
@@ -359,7 +360,7 @@ section p {
 }
 .list-forum{
       float: right;
-    margin-top: -50%;
+    margin-top: -110%;
     text-align: center;
 }
 .list-forum ul li{
