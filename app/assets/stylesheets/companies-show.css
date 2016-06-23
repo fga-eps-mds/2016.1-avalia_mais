@@ -74,11 +74,16 @@ hr {
 
 #description {
   display: none;
-  position: absolute;
+  position: relative;
   width: 80%;
-  margin-left: 130px;
+  margin-left: 130px !important;
   margin-top: -10px;
   text-align: justify;
+}
+#description p{
+  position: absolute;
+  left: -50% !important;
+  width: 50%;
 }
 
 #avaliacao {
