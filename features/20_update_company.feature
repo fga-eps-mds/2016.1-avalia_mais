@@ -4,7 +4,7 @@ Feature: Update Company
 	I would like in  update my  registed data  
 
 	Scenario: Update Company Name
-		Given I am logged in systens
+		Given I am on the log in page I will log in
 		Given I am Company pag "oi fixo"
 		And I click on "btn-edit"
 		And I click on "show-name"
@@ -13,7 +13,7 @@ Feature: Update Company
 		Then the show page should load with notice message "Atributo atualizado com sucesso"
 
 	Scenario: Update Company address
-		Given I am logged in systens
+		Given I am on the log in page I will log in
 		Given I am Company pag "oi fixo"
 		And I click on "btn-edit"
 		And I click on "show-address"
@@ -22,7 +22,7 @@ Feature: Update Company
 		Then the show page should load with notice message "Atributo atualizado com sucesso"
 
 	Scenario: Update Company email
-		Given I am logged in systens
+		Given I am on the log in page I will log in
 		Given I am Company pag "oi fixo"
 		And I click on "btn-edit"
 		And I click on "show-email"
@@ -31,7 +31,7 @@ Feature: Update Company
 		Then the show page should load with notice message "Atributo atualizado com sucesso"
 
 	Scenario: Update Company Telefone
-		Given I am logged in systens
+		Given I am on the log in page I will log in
 		Given I am Company pag "oi fixo"
 		And I click on "btn-edit"
 		And I click on "show-telephone"
@@ -40,7 +40,7 @@ Feature: Update Company
 		Then the show page should load with notice message "Atributo atualizado com sucesso"	
 
 	Scenario: Update Company Description
-		Given I am logged in systens
+		Given I am on the log in page I will log in
 		Given I am Company pag "oi fixo"
 		And I click on "btn-edit"
 		And I click on "show-description"

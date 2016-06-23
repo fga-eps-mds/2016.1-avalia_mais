@@ -8,10 +8,6 @@ And (/^I will press "Novo Tópico" button$/) do
 	click_link ("Novo tópico")
 end
 
-And (/^I should be redirect to new topic page$/) do
-	expect(page).to have_content("Aqui você pode criar seu novo tópico")
-end
-
 And (/^I fill "Título do tópico" field with "Dúvida"$/) do
 	fill_in 'topic_title', :with => 'Dúvida'
 end

@@ -12,7 +12,7 @@ And (/^I press "Enquete" button/) do
 end
 
 And (/^I will press "Criar enquete" button$/) do
-    find("#criar_enquete").click
+    click_button ("Criar enquete")
     expect(page).to have_content("Pergunta")
 end
 

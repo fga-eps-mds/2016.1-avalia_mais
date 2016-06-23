@@ -8,7 +8,6 @@ Feature: Create Topic
 		And I will search for "Oi Fixo" and visit the page
 		And I will press "Fórum" button
 		And I will press "Novo Tópico" button
-		And I should be redirect to new topic page
 		And I fill "Título do tópico" field with "Dúvida"
 		And I fill "Conteúdo do tópico" field with "Eu tenho uma dúvida"
 		And I will press "Confirmar" button
