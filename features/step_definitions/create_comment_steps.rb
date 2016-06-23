@@ -3,7 +3,7 @@ And (/^I will click on \"Dúvida\" link$/) do
 end
 
 And (/^I am redirected to topic page$/) do
-	expect(page).to have_content("Título: Dúvida")
+	expect(page).to have_content("Dúvida")
 end
 
 And (/^I fill the comment field with \"Comentário teste\"$/) do

@@ -1,11 +1,3 @@
-
-Given (/^I am logged in systens$/) do
-	visit 'http://localhost:3000/login'
-	fill_in 'session_login', :with=> 'freitas'
-	fill_in 'session_password', :with=> '1234'
-	click_button ("Entrar")
-	expect(page).to have_content("Login realizado com sucesso")
-end
 Given (/^I am Company pag "oi fixo"$/) do
 	fill_in 'Buscar', :with => 'Oi Fixo'
 	click_button "Buscar"
