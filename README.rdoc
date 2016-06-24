@@ -1,39 +1,11 @@
-== README
+== Avalia+ | Universidade de Brasília (Unb) - FGa | 1º / 2016 
+
+==== Wiki[https://github.com/fga-gpp-mds/2016.1-avalia_mais/wiki]
 
 A collaborative work for the Software Development Methods and Management of Portfolios and projects courses of the University of Brasilia
 
 Project license: AGPL v3 Read {License File}[https://github.com/KarineValenca/avalia_mais/blob/master/LICENSE.md]
 
 
+{<img src="https://codeclimate.com/github/KarineValenca/avalia_mais/badges/gpa.svg" />}[https://codeclimate.com/github/KarineValenca/avalia_mais]
 
-
-{<img src="https://codeclimate.com/github/KarineValenca/avalia_mais/badges/gpa.svg" />}[https://codeclimate.com/github/KarineValenca/avalia_mais] {<img src="https://coveralls.io/repos/github/KarineValenca/avalia_mais/badge.svg?branch=master" alt="Coverage Status" />}[https://coveralls.io/github/KarineValenca/avalia_mais?branch=master]
-
-{<img src="https://coveralls.io/repos/github/KarineValenca/avalia_mais/badge.svg?branch=dev" alt="Coverage Status" />}[https://coveralls.io/github/KarineValenca/avalia_mais?branch=dev]
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
